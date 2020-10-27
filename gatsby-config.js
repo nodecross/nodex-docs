@@ -11,6 +11,23 @@ module.exports = {
         link: `/`,
         type: `internal`, //internal or anchor
         location: `left`,
+        subMenu: [
+          {
+            name: `Web of Trust`,
+            link: `/trust`,
+            type: `internal`,
+          },
+          {
+            name: `Digital Identity`,
+            link: `/digital-identity`,
+            type: `internal`,
+          },
+          {
+            name: `Use Cases`,
+            link: `/usecases`,
+            type: `internal`,
+          }
+        ],
       },
       {
         name: `Platform`,
