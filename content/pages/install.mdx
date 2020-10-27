@@ -1,0 +1,35 @@
+# install
+
+install react native sdk
+
+## Install
+
+UNiD provides DID operations, authentication, verifiable credential exchange, secure data storage and other features by using the SDK. Add the `@unid/react-native=unid-sdk` dependency:
+
+```
+$ npm install --save @unid/react-native-unid-sdk
+```
+
+Linking
+Since unid SDK also supports native authentication and private key management, we need to link the SDK to your native projects. Above `react-native >= 0.60` you need to do:
+
+```
+$npx @unid/wizard -i reactNative -p ios android
+
+cd ios
+pod install
+```
+Since unid SDK supports `auto-linking` and iOS relies on CocoaPods, you need to install dependencies.
+If you are running a project with `react-native < 0.60` you sitll need to call `react-native link`.
+
+```
+$ react-native link @unid/react-native-unid-sdk
+```
+The link step or the `unid-wizard` call with patch your project accordingly.
+The Unid Wizard will guide you through the process of setting everything up correctly. This has to be done only once, and the files created can go into your version control system.
+
+The following changes will be performed:
+
+- add the unid-cocoa package for native authN and KMS on iOS
+- configure Unid for the supplied DSN in your *index.js/App.js* files
+- store build credentials in *ios/unid.properties* and *android/unid.properties*.

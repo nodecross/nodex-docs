@@ -61,4 +61,9 @@ export default merge(BaseTheme, {
       fontSize: [3, 4, null, 5, null],
     },
   },
+  fonts: {
+    ...tailwind.fonts,
+    body: '"Raleway", sans-serif',
+  },
+  breakpoints: ["480px", "768px", "1024px", "1440px"],
 })
