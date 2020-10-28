@@ -34,6 +34,38 @@ module.exports = {
         link: `/platform`,
         type: `internal`, //internal or anchor
         location: `left`,
+        subMenu: [
+          {
+            name: `Overview`,
+            link: `/platform/overview`,
+            type: `internal`,
+          },
+          {
+            name: `UNiD Core`,
+            link: `/platform/unid-core`,
+            type: `internal`,
+          },
+          {
+            name: `DID Operations`,
+            link: `/platform/did-operations`,
+            type: `internal`,
+          },
+          {
+            name: `Verifiable Credential`,
+            link: `/platform/verifiable-credential`,
+            type: `internal`,
+          },
+          {
+            name: `Secure Data Storage`,
+            link: `/platform/sds`,
+            type: `internal`,
+          },
+          {
+            name: `DID Comm`,
+            link: `/platform/did-comm`,
+            type: `internal`,
+          }
+        ]
       },
       {
         name: `Tenant`,
@@ -48,13 +80,18 @@ module.exports = {
         location: `left`,
         subMenu: [
           {
-            name: `Install`,
-            link: `/install`,
+            name: `Getting Started`,
+            link: `/tutorial/getting-started`,
             type: `internal`,
           },
           {
-            name: `Method`,
-            link: `/method`,
+            name: `DID Operation`,
+            link: `/tutorial/did-operation`,
+            type: `internal`,
+          },
+          {
+            name: `Verifiable Credential`,
+            link: `/tutorial/verifiable-credential`,
             type: `internal`,
           }
         ]
