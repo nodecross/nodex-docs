@@ -1,10 +1,4 @@
-# DID Operation
-
-> In order to issue a transaction in Bitcoin, it will approximately cost 0.0005 BTC for anchoring one batch of operations. (The real fee is calculated along with the size of transaction.) According to sidetree spec, about 10,000 operations can be anchored in one bitcoin transaction, so each DID operation cost will be 0.00000005 BTC (0.005 JPY).
-
-> 21年度Q1からMainnet環境整備でOK。Mainnet環境だと、テナント登録時に決済登録も必要。sidetree bitcoin serviceの動作プロセスの理解が必要（特にBatch Schedulerの動き。10,000 operation溜まると書き込みに行くのか？一定時間で？sidetree node管理者としてそこら辺調整できるのか？）仮に10分ごとに毎回書き込む場合、6・24・30・0.00005BTC = 2.16BTC (216万円)が毎月必要になる。1日単位だと、30・0.0005BTCで、0.015BTC（1.5万円くらい→十分）。十分なbtcがwalletに必要。BTCのアセット管理。
-
-> 現状ではtestnet上へのチュートリアルを記述するでいい。UNiD Coreには事前に、sidetree, mongoDB, sidetree bitcoin service(testnet/mainnet)が立ち上がっている前提。
+# DID Operations
 
 ### Generate New DID
 
@@ -13,89 +7,33 @@ As a default setting, UNiD SDK is going to generate 3 pairs of keys (update, rec
 ```
 import * as Unid from "@unid/react-native-unid-sdk";
 
-DID = Unid.createDid()
-DID.registerDid({
-	network: "test",
-	params: {}
-});
+DID = Unid.createDid();
+DidDocument = DID.registerDid();
 ```
 
-> testnet向けのmethodを切り出した方がいい？
-
-When you post a payload into Sidetree, it soon return HTTP 200 (success status) as follows.
-
-```
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "@context": "https://www.w3.org/ns/did-resolution/v1",
-  "didDocument": {
-    "id": "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-    "@context": [
-      "https://www.w3.org/ns/did/v1",
-      {
-        "@base": "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
-      }
-    ],
-    /// change example of service
-    "service": [
-      {
-        "id": "#serviceEndpointId123",
-        "type": "someType",
-        "serviceEndpoint": "https://www.url.com"
-      }
-    ],
-    "publicKey": [
-      {
-        "id": "#signingKey",
-        "controller": "",
-        "type": "EcdsaSecp256k1VerificationKey2019",
-        "publicKeyJwk": {
-          "kty": "EC",
-          "crv": "secp256k1",
-          "x": "IdNDV0Qv-Iw_dUYeF4gw29a0s-TRD3c84E7v2UlUqYE",
-          "y": "_6WvcTWyOvuAEXPdRB_IpJa7HkRUiSQ7FdXqeBDRj6M"
-        }
-      }
-    ],
-    "authentication": [
-      "#signingKey"
-    ]
-  },
-  "methodMetadata": {
-    "recoveryCommitment": "EiCWhklxteAU_Jr-l5Kh4fA2QRDGmrReQPDKf7A51BQn1Q",
-    "updateCommitment": "EiBuejn9rZnQaQQB1o0J5vIAAHEPaFcYKlYG-gNfNyVFvg"
-  }
-}
-```
-
-> response載せる？
-
-> backend側の動作ってどこまで書く？
-
-> UNiD CLIを作った方が動作検証にはよき。SDK docsとは別で、動作検証はブログで書いてもらうほうがいいんだろうか？
 
 After a while, the queued operation will be periodically extracted and executed by Sidetree scheduler called **Batch Scheduler** and is submitted into Bitcoin blockchain. If you want to know more detailed the operating princile, please refer to [the specification](https://identity.foundation/sidetree/spec/).
 
-### Resolve the DID
+### Resolve DID
 
 After the operation is successfully restored, you can resolve (query) the original DID.
 
 ```
 import * as Unid from "@unid/react-native-unid-sdk";
 
-DID.getDidDocument({
-	network: "test"
-})
+DidDocument = DID.getDidDocument();
 ```
 
 ```
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.getDidDocument({
-	network: "test",
 	DID: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
-})
+});
 ```
 
+### Update DID
+
+### Recover DID
+
+### Deactivate DID

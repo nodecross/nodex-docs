@@ -80,6 +80,11 @@ module.exports = {
         location: `left`,
         subMenu: [
           {
+            name: `Quick Start`,
+            link: `/tutorial/quick-start`,
+            type: `internal`,
+          },
+          {
             name: `Getting Started`,
             link: `/tutorial/getting-started`,
             type: `internal`,
