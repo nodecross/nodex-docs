@@ -14,57 +14,47 @@ module.exports = {
         subMenu: [
           {
             name: `Web of Trust`,
-            link: `/trust`,
+            link: `/intro/trust`,
             type: `internal`,
           },
           {
             name: `Digital Identity`,
-            link: `/digital-identity`,
+            link: `/intro/digital-identity`,
             type: `internal`,
           },
           {
             name: `Use Cases`,
-            link: `/usecases`,
+            link: `/intro/usecases`,
             type: `internal`,
           }
         ],
       },
       {
-        name: `Platform`,
-        link: `/platform`,
+        name: `UNiD Platform`,
+        link: `/unid`,
         type: `internal`, //internal or anchor
         location: `left`,
         subMenu: [
           {
-            name: `Overview`,
-            link: `/platform/overview`,
-            type: `internal`,
-          },
-          {
             name: `UNiD Core`,
-            link: `/platform/unid-core`,
+            link: `/unid/core`,
             type: `internal`,
           },
           {
-            name: `DID Operations`,
-            link: `/platform/did-operations`,
+            name: `UNiD Drivers`,
+            link: `/unid/drivers`,
             type: `internal`,
           },
           {
-            name: `Verifiable Credential`,
-            link: `/platform/verifiable-credential`,
+            name: `UNiD Extensions`,
+            link: `/unid/extensions`,
             type: `internal`,
           },
           {
-            name: `Secure Data Storage`,
-            link: `/platform/sds`,
+            name: `Developer Tools`,
+            link: `/unid/developer-tools`,
             type: `internal`,
           },
-          {
-            name: `DID Comm`,
-            link: `/platform/did-comm`,
-            type: `internal`,
-          }
         ]
       },
       {
@@ -72,6 +62,13 @@ module.exports = {
         link: `/tenant`,
         type: `internal`, //internal or anchor
         location: `left`,
+        subMenu: [
+          {
+            name: `Tenant Setup`,
+            link: `/tenant/setup`,
+            type: `internal`,
+          }
+        ]
       },
       {
         name: `Tutorial`,
@@ -97,6 +94,11 @@ module.exports = {
           {
             name: `Verifiable Credential`,
             link: `/tutorial/verifiable-credential`,
+            type: `internal`,
+          },
+          {
+            name: `DID-Auth`,
+            link: `/tutorial/did-auth`,
             type: `internal`,
           }
         ]
