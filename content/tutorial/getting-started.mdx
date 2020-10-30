@@ -1,0 +1,65 @@
+---
+title: "title"
+description: "description"
+---
+
+# Getting Started
+
+##  UNiD's React Native SDK
+
+On this page, we get you up and running with UNiD React Native SDK for embedding digital wallet capabilities into your mobile application.
+
+If you don't already have an account and tenant setup, head over to [here](https://collabogate.com/products/index.html), then return to this page.
+
+## Install
+
+UNiD Reaxct Native SDK is embedding digital wallet capabilities into your mobile application. Add the `@unid/react-native-unid-sdk` dependency:
+
+```
+npm install --save @unid/react-native-unid-sdk
+```
+
+## Linking
+
+Since UNiD SDK also supports local authentication and key management at OS native layer, we need to link the SDK to your native projects (UNiD SDK is compatible with iOS Native Layer).
+
+Above `react-native >= 0.60` you need to do:
+
+```
+npx @unid/wizard -i reactNative -p ios
+
+cd ios
+pod install
+```
+Since UNiD SDK supports `auto-linking` and iOS relies on CocoaPods, you need to install dependencies.
+If you are running a project with `react-native < 0.60` you sitll need to call `react-native link`.
+
+```
+react-native link @unid/react-native-unid-sdk
+```
+The link step or the `unid-wizard` call with patch your project accordingly.
+The UNiD Wizard will guide you through the process of setting everything up correctly. This has to be done only once, and the files created can go into your version control system.
+
+The following changes will be performed:
+
+- add the unid-cocoa package for native local authentication and key management on iOS
+- configure Unid for the supplied DSN in your *index.js/App.js* files
+- store build credentials in *ios/unid.properties* and *android/unid.properties*.
+
+## Configure
+
+After you've completed setting up a tenant in UNiD, UNiD will give you a value which we call a TID or Tenant token ID. It looks like a standard URL, but it's just a representation of the configuration required by the UNiD SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the tenant identifier. And you can set up network type and environment here (Currently, UNiD SDK is compatible with bitcoin network).
+
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+
+Unid.init({
+	tid: "https://examplePublicKey@o0.ingest.unid.io/0",
+	type_network: "bitcoin",
+	env_network: "testnet"
+});
+```
+
+The `unid-wizard` will try to add it to your `App.js`
+
+Great! Now that you've completed setting up the SDK, maybe you want to quickly test out how UNiD works. You can step forward to [Generate New DID](./did-operation).
