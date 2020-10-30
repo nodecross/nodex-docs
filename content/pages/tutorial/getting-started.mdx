@@ -2,16 +2,16 @@
 
 ##  UNiD's React Native SDK
 
-On this page, we get you up and running with UNiD's React Native SDK, embedding digital wallet capabilities into your mobile application.
+On this page, we get you up and running with UNiD React Native SDK for embedding digital wallet capabilities into your mobile application.
 
 If you don't already have an account and tenant setup, head over to [here](https://collabogate.com/products/index.html), then return to this page.
 
 ## Install
 
-UNiD provides digital wallet capabilities such as DID operations, verifiable credentials, DID Comm, secure data storage and other features for your application. Add the `@unid/react-native-unid-sdk` dependency:
+UNiD Reaxct Native SDK is embedding digital wallet capabilities into your mobile application. Add the `@unid/react-native-unid-sdk` dependency:
 
 ```
-$ npm install --save @unid/react-native-unid-sdk
+npm install --save @unid/react-native-unid-sdk
 ```
 
 ## Linking
@@ -21,7 +21,7 @@ Since UNiD SDK also supports local authentication and key management at OS nativ
 Above `react-native >= 0.60` you need to do:
 
 ```
-$ npx @unid/wizard -i reactNative -p ios
+npx @unid/wizard -i reactNative -p ios
 
 cd ios
 pod install
@@ -30,7 +30,7 @@ Since UNiD SDK supports `auto-linking` and iOS relies on CocoaPods, you need to 
 If you are running a project with `react-native < 0.60` you sitll need to call `react-native link`.
 
 ```
-$ react-native link @unid/react-native-unid-sdk
+react-native link @unid/react-native-unid-sdk
 ```
 The link step or the `unid-wizard` call with patch your project accordingly.
 The UNiD Wizard will guide you through the process of setting everything up correctly. This has to be done only once, and the files created can go into your version control system.
