@@ -1,0 +1,38 @@
+---
+title: "DID Operations"
+description: "description"
+---
+
+### Generate New DID
+
+With a default setting, UNiD SDK generates 3 pairs of keys (update, recovery, and singing) using [SECP256K1 with ECDSA algorithm](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) and computes hash from public key document. A public key document is a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html) and generate a hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for the hash function. Generate the base64-encoded entity including these hash values and document. As a result, `suffix_data` and `delta` are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method.
+
+You might think that the process to generate a payload is so cumbersome. In UNiD, you can easily genetate a payload and manage key files in local.
+
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+
+DID = Unid.registerDid({
+	"method": "ion",
+	"option": {
+		"KeyType": "secp256k"
+	}
+});
+
+```
+
+After a while, the queued operation will be periodically extracted and executed by Sidetree scheduler called **Batch Scheduler** and is submitted into Bitcoin blockchain. If you want to know more detailed the operating princile, please refer to [the specification](https://identity.foundation/sidetree/spec/).
+
+### Resolve DID
+
+After the operation is successfully restored to the verifiable data registry, you can resolve (query) the original DID. UNiD Driver supports to resolve a DID while verifying the authenticity of the response.
+
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+
+DidDocument = Unid.getDidDocument({
+	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+});
+```
+
+Great! Now that you've completed to register and query a DID. However, you just registered a globally unique identifier here. Next is to create a verifiable credential for building Web of Trust in your tenant. [verifiable credential](./4-verifiable-credential).

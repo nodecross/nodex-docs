@@ -1,21 +1,27 @@
 module.exports = {
   siteMetadata: {
-    title: `Document by Code Bushi`,
-    name: `Code Bushi`,
+    title: `UNiD Docs`,
+    name: `UNiD`,
     siteUrl: `https://gatsby-theme-document.netlify.com`,
-    description: `This is my description that will be used in the meta tags and important for search results`,
+    description: `This is UNiD documentation`,
     social: [
       {
         name: `github`,
-        url: `https://github.com/codebushi/gatsby-theme-document`
+        url: `https://github.com/getunid/unid-docs`
       },
       {
         name: `twitter`,
-        url: `https://twitter.com/HuntaroSan`
+        url: `https://twitter.com/masa256k1`
       }
     ],
     sidebarConfig: {
-      forcedNavOrder: ["/introduction", "/codeblock"],
+      forcedNavOrder: [
+        "/intro",
+        "/unid",
+        "/tenant",
+        "/tutorial",
+        "/vc-data"
+      ],
       ignoreIndex: true
     }
   },
