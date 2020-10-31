@@ -3,17 +3,26 @@ title: "DID Operations"
 description: "description"
 ---
 
+UNiD Core supports a variety of DID operations, all of which require the DID owner to generate specific data values and cryptographic material. This page below describe how to perform each type of operation.
+
 ### Generate New DID
 
-With a default setting, UNiD SDK generates 3 pairs of keys (update, recovery, and singing) using [SECP256K1 with ECDSA algorithm](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) and computes hash from public key document. A public key document is a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html) and generate a hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for the hash function. Generate the base64-encoded entity including these hash values and document. As a result, `suffix_data` and `delta` are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method.
+UNiD Core generates 3 pairs of keys: update key, recovery key, and singing key using [SECP256K1](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) with ECDSA algorithm with a default setting (the signing key is used for DID user to generate signature and other keys are used for managing this DID). A public key document is generated with a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html). 
 
-You might think that the process to generate a payload is so cumbersome. In UNiD, you can easily genetate a payload and manage key files in local.
+UNiD Core computes hash from the public key document. The hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for generating hashes of protocol-related values. And then, it generates the base64-encoded entity including these hash values and document are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method.
 
+With UNiD SDKs, you can easily generate key pairs and the payload required for DID create operation:
 ```
 import * as Unid from "@unid/react-native-unid-sdk";
 
-DID = Unid.registerDid({
-	"method": "ion",
+Unid.createDid();
+```
+
+To submit the payload to a UNiD endpoint for DID register operation:
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+Unid.registerDid({
+	"method": "unid",
 	"option": {
 		"KeyType": "secp256k"
 	}
@@ -21,18 +30,91 @@ DID = Unid.registerDid({
 
 ```
 
-After a while, the queued operation will be periodically extracted and executed by Sidetree scheduler called **Batch Scheduler** and is submitted into Bitcoin blockchain. If you want to know more detailed the operating princile, please refer to [the specification](https://identity.foundation/sidetree/spec/).
+You can select a `method` type from [UNiD DID Method support](./unid/2-drivers) and `KeyType` (currently, we support secp256k).
+
+After a while, the queued operation will be periodically extracted and executed by Sidetree scheduler called Batch Scheduler and is submitted into the underlying ledger system. If you want to know more detailed the operating princile, please refer to [the specification](https://identity.foundation/sidetree/spec/).
 
 ### Resolve DID
 
-After the operation is successfully restored to the verifiable data registry, you can resolve (query) the original DID. UNiD Driver supports to resolve a DID while verifying the authenticity of the response.
+After the operation is successfully restored to the verifiable data registry, you can resolve (query) the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```
 import * as Unid from "@unid/react-native-unid-sdk";
 
-DidDocument = Unid.getDidDocument({
+Unid.getDidDocument({
 	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
 });
 ```
 
-Great! Now that you've completed to register and query a DID. However, you just registered a globally unique identifier here. Next is to create a verifiable credential for building Web of Trust in your tenant. [verifiable credential](./4-verifiable-credential).
+Great! Now that you've completed to create and register a DID. However, it is just a globally unique identifier so far. Next is to create a verifiable credential for trusted data exchange. [verifiable credential](./4-verifiable-credential).
+
+### Update DID
+
+When you want to change DID status, UNiD SDKs allow you to update DID document in following ways. 
+
+> ここはsidetreeをreferenceして書いてる。JwkなどはUNiD側で生成するなど。実装イメージはSDSのendpointが変わるなどで、mobile appのsettingsから変更してもらうなど。
+
+To add public keys:
+
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+
+Unid.updateDidDocument({
+	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+	action: "add-public-keys",
+	"publicKeys": [
+    	{
+	    	"id": "key1",
+			"purposes": ["authentication"],
+			"type": "EcdsaSecp256k1VerificationKey2019",
+			"publicKeyJwk": {...}
+    	}
+  	]
+});
+```
+
+To remove public keys:
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+
+Unid.updateDidDocument({
+	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+	action: "remove-public-keys",
+	"ids": ["key1", "key2"]
+});
+```
+
+To add services:
+
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+
+Unid.updateDidDocument({
+	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+	action: "add-services",
+	"services": [
+		{
+			"id": "sds",
+			"type": "SecureDataStore",
+			"serviceEndpoint": "http://hub.my-personal-server.com"
+		},
+		{
+			"id": "did-config",
+			"type": "LinkedDomains",
+			"serviceEndpoint": {
+			"origins": ["https://foo.com", "https://bar.com"]
+		}
+	]
+});
+```
+
+To remove services:
+```
+import * as Unid from "@unid/react-native-unid-sdk";
+
+Unid.updateDidDocument({
+	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+	action: "remove-services",
+	"ids": ["sds1", "sds2"]
+});
+```
