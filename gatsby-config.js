@@ -15,13 +15,7 @@ module.exports = {
       }
     ],
     sidebarConfig: {
-      forcedNavOrder: [
-        "/intro",
-        "/unid",
-        "/tenant",
-        "/tutorial",
-        "/vc-data"
-      ],
+      forcedNavOrder: ["/intro", "/unid", "/tenant", "/tutorial", "/vc-data"],
       ignoreIndex: true
     }
   },

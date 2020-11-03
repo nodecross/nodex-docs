@@ -47,13 +47,19 @@ The following changes will be performed:
 
 ## Configure
 
-After you've completed setting up a tenant in UNiD, UNiD will give you a value which we call a TID or Tenant token ID. It looks like a standard URL, but it's just a representation of the configuration required by the UNiD SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the tenant identifier. And you can set up network type and environment here (Currently, UNiD SDK is compatible with bitcoin network).
+After you've completed setting up a tenant, UNiD will give you a value which we call a `tid` or Tenant token ID. It looks like a standard URL, but it's just a representation of the configuration required by UNiD SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the tenant identifier.
+
+`type_network`
+> Type of an underlying ledger system. Currently, UNiD SDKs are compatible with Bitcoin network.
+
+`env_network`
+> Environment of selected netowrk.
 
 ```
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.init({
-	tid: "https://examplePublicKey@o0.ingest.unid.io/0",
+	tid: "https://examplePublicKey@o0.ingest.unid.plus/0",
 	type_network: "bitcoin",
 	env_network: "testnet"
 });
