@@ -2,6 +2,62 @@
 title: "Intro"
 description: "Introduction"
 ---
+<SEO title="UNiD" />
 
+### Distributed Trust
 
-UNiDは、新たなDigital Trustを構築するための手段を提供します。これまでのインターネット上の信頼は、国家や認証局や巨大なIT企業などの中央集権組織を信頼することで成立していました。これらの信頼をグローバルに拡大するためには、プロトコルレベルでお互いを信頼し、安全にデータを交換できる仕組みが必要になります。社会全体のデジタルトランスフォーメーション（DX）推進にはトラスト（信頼）に基づいたデータ流通が必要で、そのためには自らがデータ管理し、それを通じてトラストが担保されるデータガバナンスをインターネット上に構築することが重要になります。Decentralized Identifiers (DIDs)は、グローバルな標準規格としてW3C, IETE, DIF and Hyperledger project at the Linux Foundationを中心に策定が進んでいます。UNiDはDIDsテクノロジーを応用したデジタルウォレットやクレデンシャル管理などの機能を活用するためのSDKを提供し、新たなDigital Trustを生み出すことに挑戦しています。
+Here at UNiD we are focused on building trusted data exchange platform. The rapid acceleration of digital transformation by COVID-19 has brought to light many issues around "trust" such as complicated administrative procedures, data tampering, and fake news. It can be seen that these issues are occuring when implementing the "trust" structure that traditional social systems have been responsible for on the Internet. According to business thinker [Rachel Botsman](https://www.ted.com/speakers/rachel_botsman), "trust" has been through three significant chapters in human history.
+
+> We’ve moved from ***local trust***, where it was based on one-to-one interactions and personal reputation. Next came ***institutional trust***: “When we went through mass urbanization and wanted to trade internationally, this local trust wasn’t scalable. We invented institutions and institutional mechanisms — from brands and the idea of middlemen to things like insurance and contracts — and they were all a very good thing.”
+
+> But over the years the flow of trust between people has dwindled while institutions have become bureaucratic, centralized and opaque. Technology is now taking that institutional power and distributing it, bringing us in to the third phase she called ***distributed trust***. - [The rise of distributed trust](https://www.i-cio.com/big-thinkers/rachel-botsman/item/the-rise-of-distributed-trust)
+
+> ![Digital Trust](./assets/trust-history.png)
+
+In order to scale the "trust" to the global demand of digital systems and the Internet, it is necessary to establish the ***distributed trust*** on common standards for privacy, security, and transparency. It is extremely important step to establish a globally unique identity that can be controlled directly by a user without the need for centralized authorities or trusted third parties. [UNiD Platform](./unid) provides capabilities to establish ***distributed trust*** around the digital identity by using it in their digital interactions.
+
+### Decentralized Identity
+
+Decentralized identity, also know as self-sovereign identity (SSI), is a digital movement that evolves digital identity on the Internet based on open web standards at organizations such as the [W3C](https://www.w3.org/), [Decentralized Identity Foundation](https://identity.foundation/), [IETF](https://ietf.org/), and [the Hyperledger Project at the Linux Foundation](https://www.hyperledger.org/). A central part of the movement is the emerging standardization around Decentralized Identifiers (DIDs) which is a new type of identifier to allow individuals to create and control their own unique identifiers.
+
+In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) can use these identifiers to obtain Verifiable Credential (VC) from trusted organizations and present these credentials as proof of claims about themselves.
+
+> ![DID Ecosystem Overview](./assets/did-architecture.png)
+> Figure describes the roles of the core actors and the relationships between them in an ecosystem where DIDs and verifiable credentials are expected to be useful.
+
+UNiD Platform provides fundermental capabilities of operating DIDs, verifiable credential exchange between DIDs in a secure and privacy-preserving way, and handling encrypted data through [UNiD Core](./unid/1-core).
+
+### Use Cases
+
+**Intro digital student wallet as a use case**
+
+In the simplest use case, this is a demonstration of passwordless login and credential issuance when students apply for transcripts to their university to understand the roles in DID ecosystem and how to establish ***distributed trust***.
+
+1. A student goes to an university website and read a QR code for login through his digital student wallet. He can easily login and access the website with his DID without any password in a secure manner. The benefits for a service provider (in this case, it may be a vendor or university) can eliminate the need to hold personal information in "HoneyPot" for bad actors, which has become a liability in a recent years.
+
+> ![UNiD DID Authentication](./assets/unid-login.png)
+
+2. A student goes to apply transcript page and read a QR code again. The web application issues a transcript with university digital signature and send the credential to a student. Students can bring a verifiable credential that can be used to prove his educational history to other entities quickly. 
+
+> ![Use Case Student Wallet](./assets/student-credential.png)
+
+This sort of credentials can be presented to apply a job to enterprises. The enterprise as a verifier can cryptographically prove that the credential is correct without contacting the issuer. That begins establishing ***distributed trust*** around that DIDs by using it in their digital interactions. Through the [UNiD Extensions and SDKs](./unid/3-extensions), our platform offers convenient and easy-to-access application logic to build solutions and integrate with digital services that exist out of our platform.
+
+**wide variety of use cases**
+
+Our platform is composed of a collection of microservices, allowing developers to combine pluggable and exntensible modular for flexibility and freedom of choice without compromising security for a wide variety of applications for:
+
+- Online Bank
+- Insurance
+- Human Resource
+- Eduation
+- Healthcare
+- Gig Economy
+- B2B transaction
+- SmartCity
+- Energy
+- Travel
+- Government
+
+Currently, we are working on establishing ***distributed trust*** with leading companies in each industry:
+![CollaboGate Partners](./assets/partners.png)
