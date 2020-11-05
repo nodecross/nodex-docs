@@ -12,14 +12,16 @@ UNiD Core generates 3 pairs of keys: update key, recovery key, and singing key u
 UNiD Core computes hash from the public key document. The hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for generating hashes of protocol-related values. And then, it generates the base64-encoded entity including these hash values and document are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method.
 
 With UNiD SDKs, you can easily generate key pairs and the payload required for DID create operation:
-```
-import * as Unid from "@unid/react-native-unid-sdk";
 
+```js
+import * as Unid from "@unid/react-native-unid-sdk";
 Unid.createDid();
 ```
 
+
 To submit the payload to a UNiD endpoint for DID register operation:
-```
+```js
+// Unid.registerDid()
 import * as Unid from "@unid/react-native-unid-sdk";
 Unid.registerDid({
 	"method": "unid",
@@ -40,7 +42,7 @@ After a while, the queued operation will be periodically extracted and executed 
 
 After the operation is successfully restored to the verifiable data registry, you can resolve (query) the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
-```
+```js
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.getDidDocument({
@@ -61,7 +63,7 @@ When you want to change DID status, UNiD SDKs allow you to update DID document i
 
 To add public keys:
 
-```
+```js
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.updateDidDocument({
@@ -79,7 +81,7 @@ Unid.updateDidDocument({
 ```
 
 To remove public keys:
-```
+```js
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.updateDidDocument({
@@ -91,7 +93,7 @@ Unid.updateDidDocument({
 
 To add services:
 
-```
+```js
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.updateDidDocument({
@@ -114,7 +116,7 @@ Unid.updateDidDocument({
 ```
 
 To remove services:
-```
+```js
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.updateDidDocument({

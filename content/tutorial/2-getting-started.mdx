@@ -14,7 +14,7 @@ If you don't already have an account and tenant setup, head over to [here](https
 
 UNiD Reaxct Native SDK is embedding digital wallet capabilities into your mobile application. Add the `@unid/react-native-unid-sdk` dependency:
 
-```
+```bash
 npm install --save @unid/react-native-unid-sdk
 ```
 
@@ -24,7 +24,7 @@ Since UNiD SDK also supports local authentication and key management at OS nativ
 
 Above `react-native >= 0.60` you need to do:
 
-```
+```bash
 npx @unid/wizard -i reactNative -p ios
 
 cd ios
@@ -33,7 +33,7 @@ pod install
 Since UNiD SDK supports `auto-linking` and iOS relies on CocoaPods, you need to install dependencies.
 If you are running a project with `react-native < 0.60` you sitll need to call `react-native link`.
 
-```
+```bash
 react-native link @unid/react-native-unid-sdk
 ```
 The link step or the `unid-wizard` call with patch your project accordingly.
@@ -55,7 +55,7 @@ After you've completed setting up a tenant, UNiD will give you a value which we 
 `env_network`
 > Environment of selected netowrk.
 
-```
+```js
 import * as Unid from "@unid/react-native-unid-sdk";
 
 Unid.init({
