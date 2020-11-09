@@ -3,34 +3,35 @@ title: "UNiD Platform"
 description: "description"
 ---
 
-### Intro
+### Intro to UNiD Platform
 
-The UNiD Platform provides a means for trusted data exchange in a scalable manner. The UNiD implementation is composed of a collection of microservices, allowing developers to combine pluggable and exntensible modular for flexibility and freedom of choice without compromising security.
+The UNiD Platform provides developers with a means to build ***digital trust*** in a scalable manner.
+UNiD implementation is composed of a collection of microservices, allowing developers to combine pluggable and extensible modular for flexibility and freedom of choice without compromising security.
 
-As the below figure, our platform consists of three components: UNiD Core, Drivers, Extensions, and SDKs.
+As in the diagram below, our platform consists of three components: UNiD Extensions and SDKs, UNiD Core, and UNiD Drivers on the top of Public Trust Layer.
 
-![UNiD platform architecture overview](./assets/unid-platform-overview.png)
+![UNiD Platform Map](./assets/unid-platform-map.png)
 
-
+The Public Trust Layer is actively developed and implemented based on open source codes and open web standards at organizations.
+UNiD Drivers pre-configured integrations to our platform that support decentralized identity capabilities.
+UNiD Core are designed as a set of APIs used through UNiD Extensions and SDKs to easily incorporate these capabilities into your application.
 
 ### UNiD Core
 
-The UNiD Core has fundermental capabilities of decentralized identifiers and verifiable credentials technologies.
+UNiD Core are designed as a set of APIs for supporting DID Operations, Verifiable Credential Operations, and DID Communications.
 
-- DIDs
-- Verifiable Credentials
+- DID Operations
 - DID Communications
-- Secure Data Storage
+- Verifiable Credential Operations
 
 See [more detials](/unid/1-core)
 
-
-
 ### UNiD Drivers
 
-The UNiD Drivers are pre-configured integrations to our platform that support DID methods, operations, key management systems and encrypted data storage. that run atop of public trust layer. The drivers are pluggable for preventing vendor lock-in and enabling users choices.
+The UNiD Drivers are pre-configured integrations to our platform that support DID methods, key management, secure storage, and tenant model.
+The drivers are pluggable for preventing vendor lock-in and enabling users choices without compromising security.
 
-- DID Methods/Operations Support
+- DID Methods Support
 - Key Management Support
 - Storage Support
 - Tenant Support
@@ -41,34 +42,24 @@ See [more details](/unid/2-drivers)
 
 ### UNiD Extensions and SDKs
 
-The UNiD Extensions and SDKs offer convenient and easy-to-access application logic to build solutions and integrate with digital services that exist out of our platform. The required authentication/authorization and credential data model are strongly dependent on use cases which are outside scope of UNiD Core and Drivers.
+The UNiD Extensions and SDKs offer convenient and easy-to-access application logic to build solutions and integrate with digital services that exist out of our platform.
+The required authentication/authorization and credential data model are strongly dependent on use cases which are outside scope of UNiD Core and Drivers.
 
-- DID authentication/authorization
-	- OIDC SIOP
-	- ZCAPS3.0
-- Credential Extensions
-	- Data Schema
-	- Disclosure/ZKP
+- DID Authentication/Authorization
+    - OIDC SIOP
+    - ZCAPS3.0
+- Verifiable Credential Extensions
+    - Extensible Data Schema
+    - Selective Disclosure
 - UNiD Mobile Wallet SDKs
+    - React Native SDKs
 - UNiD SDKs for Relying Parties
+    - Node.js SDKs
 
 See [more detials](/unid/3-extensions)
-
-
-
-### Public Trust Layer
-
-- DID Methods/Ops
-- DID Resolution
-- Decentralized Public Key Infrastruture (DPKI)
-- Crypto Primitives
-
-
 
 ### Developer Tools
 
 - UNiD Command Line Interface (CLI)
-- UNiD Monitoring Tools
 
 See [more details](/unid/4-developer-tools)
-

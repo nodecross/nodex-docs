@@ -2,7 +2,7 @@ export default {
   text: "#000",
   background: "#fff",
   primary: "#e63b19",
-  secondary: "#c70d3a",
+  secondary: "#05386b",
   sidebar: "#eee",
   borderColor: "rgba(0, 0, 0, 0.15)",
   modes: {
