@@ -7,7 +7,7 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 
 ### Generate New DID
 
-UNiD Core generates 3 pairs of keys: update key, recovery key, and singing key using [SECP256K1](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) with ECDSA algorithm with a default setting (the signing key is used for DID user to generate signature and other keys are used for managing this DID). A public key document is generated with a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html). 
+UNiD Core generates 3 pairs of keys: update key, recovery key, and singing key using [SECP256K1](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) with ECDSA algorithm with a default setting (the signing key is used for DID user to generate signature and other keys are used for managing this DID). A public key document is generated with a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html).
 
 UNiD Core computes hash from the public key document. The hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for generating hashes of protocol-related values. And then, it generates the base64-encoded entity including these hash values and document are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method.
 
@@ -50,14 +50,14 @@ Unid.getDidDocument({
 });
 ```
 
-Great! Now that you've completed to create and register a DID. However, it is just a globally unique identifier so far. Next is to create a verifiable credential for trusted data exchange. [verifiable credential](./4-verifiable-credential).
+Great! Now that you've completed to create and register a DID. However, it is just a globally unique identifier so far. Next is to create a verifiable credential for trusted data exchange. [verifiable credential](./3-verifiable-credential).
 
 
 
 
 ### Update DID
 
-When you want to change DID status, UNiD SDKs allow you to update DID document in following ways. 
+When you want to change DID status, UNiD SDKs allow you to update DID document in following ways.
 
 > ここはsidetreeをreferenceして書いてる。JwkなどはUNiD側で生成するなど。実装イメージはSDSのendpointが変わるなどで、mobile appのsettingsから変更してもらうなど。テナント依存のSDSのエンドポイントURLルールについて。 see : https://identity.foundation/sidetree/spec/#did-state-patches
 
