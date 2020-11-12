@@ -1,0 +1,200 @@
+---
+title: 'Resume'
+description: 'description'
+---
+
+<SEO title='Credential Data Schema' />
+
+The types related to `Resume` encapsulate any resume linking a person.
+
+`ResumeCredential` type.
+
+properties tree
+```
+.
+|-- ResumePerson
+    |-- address
+    |-- contactPoint
+    |-- hasCredential
+        |-- about
+        |-- recognizedBy
+    |-- worksFor
+        |-- employee
+            |-- hasOccupation
+    |-- alumniOf
+        |-- employee
+            |-- hasOccupation
+```
+
+### ResumePerson
+Resume credential type.
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `['Person', 'ResumePerson']` | true ||
+| '@id' | `did:unid:test:example#keys-1` | true ||
+| name | `string` | ture ||
+| birthday | `date` | true ||
+| email | `string` | true ||
+| telephone | `string` | true ||
+| image | `string` | true ||
+
+
+### address
+Extension of Resume with extensions
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `PostalAddress` | true ||
+| addressCountry | `string` | ture ||
+| addressLocality | `string` | true ||
+| addressRegion | `string` | true ||
+| postalCode | `string` | true ||
+| streetAddress | `string` | true ||
+
+### contactPoint
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `ContactPoint` | true ||
+| contactType | `string` | ture ||
+| email | `string` | true ||
+
+### hasCredential
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `EducationalOccupationalCredential` | true ||
+| credentialCategory | `string` | ture ||
+| educationalLevel | `string` | true ||
+| dateCreated | `string` | true ||
+| about | `string` | true ||
+| recognizedBy | `string` | true ||
+
+### worksFor
+Oranizations that the person works for.
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `Organization` | true ||
+| name | `string` | ture ||
+| employee | `string` | true ||
+
+### alumniOf
+Organizations that the person is an alumni of.
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `Organization` | true ||
+| name | `string` | ture ||
+| employee | `string` | true ||
+
+### Example of Resume Credential
+
+```js
+{
+    @context: ['http://schema.org', 'https://www.w3.org/2018/credentials/v1', 'https://www.w3.org/2018/credentials/examples/v1'],
+    id: 'https://sds.unid.plus/api/v1',
+    type: ['VerifiableCredential', 'ResumeCredential'],
+    issuer: 'did:unid:test:123456789#keys-1',
+    issuanceDate: '20201101T180000+0900',
+    credentialSubject: {
+        '@type': ['Person', 'ResumePerson'],
+        '@id': 'did:unid:test:123456789#keys-1',
+        name: 'Masayoshi Mitsui',
+        birthDate: '19950316',
+        email: 'example@collabogate.com',
+        telephone: '+818011112222',
+        image: 'https://s3.eu-west-1.amazonaws.com/123456789',
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'JP',
+            addressLocality: 'Shibuya-ku',
+            addressRegion: 'Tokyo',
+            postalCode: '1500044',
+            streetAddress: 'Navi Shibuya V 3 floar, 5-5, Maruyama-cho'
+        },
+        contactPoint: [
+            {
+                '@type': 'ContactPoint',
+                contactType: 'Email',
+                email: 'example@collabogate.com'
+            }
+        ],
+        hasCredential: [
+            {
+                '@type': 'EducationalOccupationalCredential',
+                credentialCategory: 'degree',
+                educationalLevel: 'Bachelors of Science',
+                dateCreated: '201503',
+                about: {
+                    '@type': 'EducationalOccupationalProgram',
+                    name: 'Computer Engineering'
+                },
+                recognizedBy: {
+                    '@type': 'CollegeOrUniversity',
+                    name: 'Example University'
+                }
+            },
+            {
+                '@type': 'EducationalOccupationalCredential',
+                credentialCategory: 'certificate',
+                dateCreated: '201503',
+                about: {
+                    '@type': 'EducationalOccupationalProgram',
+                    name: "1st Grade Driver's License"
+                }
+            }
+        ],
+        worksFor: [
+            {
+                '@type': 'Organization',
+                name: 'CollaboGate Japan, Inc.',
+                employee: {
+                    '@type': 'Person',
+                    hasOccupation: {
+                        '@type': 'EmployeeRole',
+                        roleName: 'Director',
+                        startDate: '201208'
+                    }
+                }
+            }
+        ],
+        alumniOf: [
+            {
+                '@type': 'Organization',
+                name: 'Example Consulting Group',
+                employee: {
+                    '@type': 'Person',
+                    hasOccupation: {
+                        '@type': 'EmployeeRole',
+                        roleName: 'internship',
+                        startDate: '201208',
+                        endDate: '201505'
+                    },
+                }
+            },
+            {
+                '@type': 'Organization',
+                name: 'Ninja, Inc.',
+                employee: {
+                    '@type': 'Person',
+                    hasOccupation: {
+                        '@type': 'EmployeeRole',
+                        roleName: 'Director',
+                        startDate: '201405',
+                        endDate: '201803'
+                    }
+                }
+            }
+        ]
+    },
+    proof: {
+        type: 'EcdsaSecp256k1Signature2019',
+        created: '20201101T180000+0900',
+        proofPurpose: 'assertionMethod',
+        verificationMethod: 'did:unid:test:123456789#key1',
+        jws: 'eyJhbGc...'
+    }
+}
+```
