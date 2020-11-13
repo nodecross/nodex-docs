@@ -1,0 +1,67 @@
+---
+title: 'Work Time Record'
+description: 'Work time record credential schema'
+---
+
+<SEO title='Credential Data Schema' />
+
+The types related to 'workTimeRecord' encapsulate any work time records linking a person.
+
+`workTimeRecord` type.
+
+**Properties tree**
+
+```
+.
+|-- workTimeRecord
+    |-- address
+    |-- contactPoint
+```
+
+### WorkTimeRecord
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `['Person', 'workTimeRecordPerson']` | true ||
+| workTimeRecord | `array` | true ||
+
+
+### workTimeRecord
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `['JobPosting', 'Role']` | true ||
+| employmentType | `string` | ture ||
+| startDate | `string` | true ||
+| endDate | `string` | true ||
+| Duration | `datetime` | false ||
+
+### Example of workTimeRecord Credential
+
+```js
+{
+    '@context': ['http://schema.org', 'https://docs.unid.plus/schemas', 'https://www.w3.org/2018/credentials/v1', 'https://www.w3.org/2018/credentials/examples/v1'],
+    id: 'https://example.unid.plus/credentials/1872',
+    type: ['VerifiableCredential', 'workTimeRecordCredentialV1'],
+    issuer: 'https://example.com/issuer/0001',
+    issuanceDate: '20201101T180000+0900',
+    credentialSubject: {
+        '@type': ['Person', 'workTimeRecordPerson'],
+        '@id': 'did:unid:test:example1234#keys-1'
+    },
+    workTimeRecord: {
+        '@type': ['JobPosting', 'Role'],
+        employmentType: 'part-time',
+        startDate: '20201101T180000+0900',
+        endDate: '20201101T200000+0900',
+        Duration: 'PT2H',
+    },
+    proof: {
+        type: 'EcdsaSecp256k1Signature2019',
+        created: '20201101T180000+0900',
+        proofPurpose: 'assertionMethod',
+        verificationMethod: 'https://example.com/issuers/0001/keys/1',
+        jws: 'eyJhbGc...'
+    }
+}
+```

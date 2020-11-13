@@ -12,7 +12,7 @@ The types related to `Resume` encapsulate any resume linking a person.
 properties tree
 ```
 .
-|-- ResumePerson
+|-- Resume
     |-- address
     |-- contactPoint
     |-- hasCredential
@@ -26,18 +26,22 @@ properties tree
             |-- hasOccupation
 ```
 
-### ResumePerson
+### Resume
 Resume credential type.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
 | '@type' | `['Person', 'ResumePerson']` | true ||
-| '@id' | `did:unid:test:example#keys-1` | true ||
 | name | `string` | ture ||
 | birthday | `date` | true ||
 | email | `string` | true ||
 | telephone | `string` | true ||
 | image | `string` | true ||
+| address | `array` | true ||
+| contactPoint | `array` | true ||
+| hasCredential | `array` | true ||
+| worksFor | `array` | true ||
+| alumniOf | `array` | true ||
 
 
 ### address
@@ -68,8 +72,22 @@ Extension of Resume with extensions
 | credentialCategory | `string` | ture ||
 | educationalLevel | `string` | true ||
 | dateCreated | `string` | true ||
-| about | `string` | true ||
-| recognizedBy | `string` | true ||
+| about | `array` | true ||
+| recognizedBy | `array` | true ||
+
+### about
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `EducationalOccupationalProgram` | true ||
+| name | `string` | ture ||
+
+### recognizedBy
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `CollegeOrUniversity` | true ||
+| name | `string` | ture ||
 
 ### worksFor
 Oranizations that the person works for.
@@ -78,7 +96,7 @@ Oranizations that the person works for.
 | ---- | ---- | ---- | ---- |
 | '@type' | `Organization` | true ||
 | name | `string` | ture ||
-| employee | `string` | true ||
+| employee | `array` | true ||
 
 ### alumniOf
 Organizations that the person is an alumni of.
@@ -87,20 +105,36 @@ Organizations that the person is an alumni of.
 | ---- | ---- | ---- | ---- |
 | '@type' | `Organization` | true ||
 | name | `string` | ture ||
-| employee | `string` | true ||
+| employee | `array` | true ||
+
+### employee
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `Person` | true ||
+| hasOccupation | `array` | ture ||
+
+### hasOccupation
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| '@type' | `EmployeeRole` | true ||
+| roleName | `string` | ture ||
+| startDate | `date` | true ||
+| endDate | `date` | false ||
 
 ### Example of Resume Credential
 
 ```js
 {
-    @context: ['http://schema.org', 'https://www.w3.org/2018/credentials/v1', 'https://www.w3.org/2018/credentials/examples/v1'],
+    '@context': ['http://schema.org', 'https://docs.unid.plus/schemas', 'https://www.w3.org/2018/credentials/v1', 'https://www.w3.org/2018/credentials/examples/v1'],
     id: 'https://sds.unid.plus/api/v1',
-    type: ['VerifiableCredential', 'ResumeCredential'],
-    issuer: 'did:unid:test:123456789#keys-1',
+    type: ['VerifiableCredential', 'ResumeCredentialV1'],
+    issuer: 'did:unid:test:example1234#keys-1',
     issuanceDate: '20201101T180000+0900',
     credentialSubject: {
         '@type': ['Person', 'ResumePerson'],
-        '@id': 'did:unid:test:123456789#keys-1',
+        '@id': 'did:unid:test:example1234#keys-1',
         name: 'Masayoshi Mitsui',
         birthDate: '19950316',
         email: 'example@collabogate.com',
@@ -112,7 +146,7 @@ Organizations that the person is an alumni of.
             addressLocality: 'Shibuya-ku',
             addressRegion: 'Tokyo',
             postalCode: '1500044',
-            streetAddress: 'Navi Shibuya V 3 floar, 5-5, Maruyama-cho'
+            streetAddress: '5-5, Maruyama-cho'
         },
         contactPoint: [
             {
@@ -193,7 +227,7 @@ Organizations that the person is an alumni of.
         type: 'EcdsaSecp256k1Signature2019',
         created: '20201101T180000+0900',
         proofPurpose: 'assertionMethod',
-        verificationMethod: 'did:unid:test:123456789#key1',
+        verificationMethod: 'did:unid:test:example1234#keys-1',
         jws: 'eyJhbGc...'
     }
 }
