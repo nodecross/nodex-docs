@@ -1,11 +1,11 @@
 ---
-title: 'Work Time Record'
-description: 'Work time record credential schema'
+title: "Work Time Record"
+description: "Work time record credential schema"
 ---
 
-<SEO title='Credential Data Schema' />
+<SEO title="Credential Data Schema" />
 
-The types related to 'workTimeRecord' encapsulate any work time records linking a person.
+The types related to "workTimeRecord" encapsulate any work time records linking a person.
 
 `workTimeRecord` type.
 
@@ -22,7 +22,7 @@ The types related to 'workTimeRecord' encapsulate any work time records linking 
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `['Person', 'workTimeRecordPerson']` | true ||
+| "@type" | `["Person", "workTimeRecordPerson"]` | true ||
 | workTimeRecord | `array` | true ||
 
 
@@ -30,7 +30,7 @@ The types related to 'workTimeRecord' encapsulate any work time records linking 
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `['JobPosting', 'Role']` | true ||
+| "@type" | `["JobPosting", "Role"]` | true ||
 | employmentType | `string` | ture ||
 | startDate | `string` | true ||
 | endDate | `string` | true ||
@@ -40,28 +40,28 @@ The types related to 'workTimeRecord' encapsulate any work time records linking 
 
 ```js
 {
-    '@context': ['http://schema.org', 'https://docs.unid.plus/schemas', 'https://www.w3.org/2018/credentials/v1', 'https://www.w3.org/2018/credentials/examples/v1'],
-    id: 'https://example.unid.plus/credentials/1872',
-    type: ['VerifiableCredential', 'workTimeRecordCredentialV1'],
-    issuer: 'https://example.com/issuer/0001',
-    issuanceDate: '20201101T180000+0900',
+    "@context": ["http://schema.org", "https://docs.unid.plus/docs/2020/credentials/worktimerecord", "https://www.w3.org/2018/credentials/v1"],
+    id: "https://example.unid.plus/credentials/1872",
+    type: ["VerifiableCredential", "WorkTimeRecordCredentialV1"],
+    issuer: "https://example.com/issuer/0001",
+    issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        '@type': ['Person', 'workTimeRecordPerson'],
-        '@id': 'did:unid:test:example1234#keys-1'
+        "@type": "Person",
+        "@id": "did:unid:test:example1234#keys-1"
     },
     workTimeRecord: {
-        '@type': ['JobPosting', 'Role'],
-        employmentType: 'part-time',
-        startDate: '20201101T180000+0900',
-        endDate: '20201101T200000+0900',
-        Duration: 'PT2H',
+        "@type": ["JobPosting", "Role"],
+        employmentType: "part-time",
+        startDate: "20201101T180000+0900",
+        endDate: "20201101T200000+0900",
+        Duration: "PT2H",
     },
     proof: {
-        type: 'EcdsaSecp256k1Signature2019',
-        created: '20201101T180000+0900',
-        proofPurpose: 'assertionMethod',
-        verificationMethod: 'https://example.com/issuers/0001/keys/1',
-        jws: 'eyJhbGc...'
+        type: "EcdsaSecp256k1Signature2019",
+        created: "20201101T180000+0900",
+        proofPurpose: "assertionMethod",
+        verificationMethod: "https://example.com/issuers/0001/keys/1",
+        jws: "eyJhbGc..."
     }
 }
 ```

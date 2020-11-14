@@ -1,9 +1,8 @@
 ---
-title: 'Resume'
-description: 'description'
+title: "Resume"
+description: "description"
+Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
 ---
-
-<SEO title='Credential Data Schema' />
 
 The types related to `Resume` encapsulate any resume linking a person.
 
@@ -31,14 +30,14 @@ Resume credential type.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `['Person', 'ResumePerson']` | true ||
+| "@type" | `["Person", "ResumePerson"]` | true ||
 | name | `string` | ture ||
 | birthday | `date` | true ||
 | email | `string` | true ||
 | telephone | `string` | true ||
 | image | `string` | true ||
-| address | `array` | true ||
-| contactPoint | `array` | true ||
+| address | `Address` | true ||
+| contactPoint | `array<contactPoint>` | true ||
 | hasCredential | `array` | true ||
 | worksFor | `array` | true ||
 | alumniOf | `array` | true ||
@@ -49,7 +48,7 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `PostalAddress` | true ||
+| "@type" | `PostalAddress` | true ||
 | addressCountry | `string` | ture ||
 | addressLocality | `string` | true ||
 | addressRegion | `string` | true ||
@@ -60,7 +59,7 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `ContactPoint` | true ||
+| "@type" | `ContactPoint` | true ||
 | contactType | `string` | ture ||
 | email | `string` | true ||
 
@@ -68,7 +67,7 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `EducationalOccupationalCredential` | true ||
+| "@type" | `EducationalOccupationalCredential` | true ||
 | credentialCategory | `string` | ture ||
 | educationalLevel | `string` | true ||
 | dateCreated | `string` | true ||
@@ -79,14 +78,14 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `EducationalOccupationalProgram` | true ||
+| "@type" | `EducationalOccupationalProgram` | true ||
 | name | `string` | ture ||
 
 ### recognizedBy
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `CollegeOrUniversity` | true ||
+| "@type" | `CollegeOrUniversity` | true ||
 | name | `string` | ture ||
 
 ### worksFor
@@ -94,7 +93,7 @@ Oranizations that the person works for.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `Organization` | true ||
+| "@type" | `Organization` | true ||
 | name | `string` | ture ||
 | employee | `array` | true ||
 
@@ -103,7 +102,7 @@ Organizations that the person is an alumni of.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `Organization` | true ||
+| "@type" | `Organization` | true ||
 | name | `string` | ture ||
 | employee | `array` | true ||
 
@@ -111,14 +110,14 @@ Organizations that the person is an alumni of.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `Person` | true ||
+| "@type" | `Person` | true ||
 | hasOccupation | `array` | ture ||
 
 ### hasOccupation
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `EmployeeRole` | true ||
+| "@type" | `EmployeeRole` | true ||
 | roleName | `string` | ture ||
 | startDate | `date` | true ||
 | endDate | `date` | false ||
@@ -127,108 +126,108 @@ Organizations that the person is an alumni of.
 
 ```js
 {
-    '@context': ['http://schema.org', 'https://docs.unid.plus/schemas', 'https://www.w3.org/2018/credentials/v1', 'https://www.w3.org/2018/credentials/examples/v1'],
-    id: 'https://sds.unid.plus/api/v1',
-    type: ['VerifiableCredential', 'ResumeCredentialV1'],
-    issuer: 'did:unid:test:example1234#keys-1',
-    issuanceDate: '20201101T180000+0900',
+    "@context": ["http://schema.org", "https://docs.unid.plus/docs/2020/credentials/resume", "https://www.w3.org/2018/credentials/v1"],
+    id: "https://sds.unid.plus/api/v1",
+    type: ["VerifiableCredential", "ResumeCredentialV1"],
+    issuer: "did:unid:test:example1234#keys-1",
+    issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        '@type': ['Person', 'ResumePerson'],
-        '@id': 'did:unid:test:example1234#keys-1',
-        name: 'Masayoshi Mitsui',
-        birthDate: '19950316',
-        email: 'example@collabogate.com',
-        telephone: '+818011112222',
-        image: 'https://s3.eu-west-1.amazonaws.com/123456789',
+        "@type": "Person",
+        "@id": "did:unid:test:example1234#keys-1",
+        name: "Masayoshi Mitsui",
+        birthDate: "19950316",
+        email: "example@collabogate.com",
+        telephone: "+818011112222",
+        image: "https://s3.eu-west-1.amazonaws.com/123456789",
         address: {
-            '@type': 'PostalAddress',
-            addressCountry: 'JP',
-            addressLocality: 'Shibuya-ku',
-            addressRegion: 'Tokyo',
-            postalCode: '1500044',
-            streetAddress: '5-5, Maruyama-cho'
+            "@type": "PostalAddress",
+            addressCountry: "JP",
+            addressLocality: "Shibuya-ku",
+            addressRegion: "Tokyo",
+            postalCode: "1500044",
+            streetAddress: "5-5, Maruyama-cho"
         },
         contactPoint: [
             {
-                '@type': 'ContactPoint',
-                contactType: 'Email',
-                email: 'example@collabogate.com'
+                "@type": "ContactPoint",
+                contactType: "Email",
+                email: "example@collabogate.com"
             }
         ],
         hasCredential: [
             {
-                '@type': 'EducationalOccupationalCredential',
-                credentialCategory: 'degree',
-                educationalLevel: 'Bachelors of Science',
-                dateCreated: '201503',
+                "@type": "EducationalOccupationalCredential",
+                credentialCategory: "degree",
+                educationalLevel: "Bachelors of Science",
+                dateCreated: "201503",
                 about: {
-                    '@type': 'EducationalOccupationalProgram',
-                    name: 'Computer Engineering'
+                    "@type": "EducationalOccupationalProgram",
+                    name: "Computer Engineering"
                 },
                 recognizedBy: {
-                    '@type': 'CollegeOrUniversity',
-                    name: 'Example University'
+                    "@type": "CollegeOrUniversity",
+                    name: "Example University"
                 }
             },
             {
-                '@type': 'EducationalOccupationalCredential',
-                credentialCategory: 'certificate',
-                dateCreated: '201503',
+                "@type": "EducationalOccupationalCredential",
+                credentialCategory: "certificate",
+                dateCreated: "201503",
                 about: {
-                    '@type': 'EducationalOccupationalProgram',
+                    "@type": "EducationalOccupationalProgram",
                     name: "1st Grade Driver's License"
                 }
             }
         ],
         worksFor: [
             {
-                '@type': 'Organization',
-                name: 'CollaboGate Japan, Inc.',
+                "@type": "Organization",
+                name: "CollaboGate Japan, Inc.",
                 employee: {
-                    '@type': 'Person',
+                    "@type": "Person",
                     hasOccupation: {
-                        '@type': 'EmployeeRole',
-                        roleName: 'Director',
-                        startDate: '201208'
+                        "@type": "EmployeeRole",
+                        roleName: "Director",
+                        startDate: "201208"
                     }
                 }
             }
         ],
         alumniOf: [
             {
-                '@type': 'Organization',
-                name: 'Example Consulting Group',
+                "@type": "Organization",
+                name: "Example Consulting Group",
                 employee: {
-                    '@type': 'Person',
+                    "@type": "Person",
                     hasOccupation: {
-                        '@type': 'EmployeeRole',
-                        roleName: 'internship',
-                        startDate: '201208',
-                        endDate: '201505'
+                        "@type": "EmployeeRole",
+                        roleName: "internship",
+                        startDate: "201208",
+                        endDate: "201505"
                     },
                 }
             },
             {
-                '@type': 'Organization',
-                name: 'Ninja, Inc.',
+                "@type": "Organization",
+                name: "Ninja, Inc.",
                 employee: {
-                    '@type': 'Person',
+                    "@type": "Person",
                     hasOccupation: {
-                        '@type': 'EmployeeRole',
-                        roleName: 'Director',
-                        startDate: '201405',
-                        endDate: '201803'
+                        "@type": "EmployeeRole",
+                        roleName: "Director",
+                        startDate: "201405",
+                        endDate: "201803"
                     }
                 }
             }
         ]
     },
     proof: {
-        type: 'EcdsaSecp256k1Signature2019',
-        created: '20201101T180000+0900',
-        proofPurpose: 'assertionMethod',
-        verificationMethod: 'did:unid:test:example1234#keys-1',
-        jws: 'eyJhbGc...'
+        type: "EcdsaSecp256k1Signature2019",
+        created: "20201101T180000+0900",
+        proofPurpose: "assertionMethod",
+        verificationMethod: "did:unid:test:example1234#keys-1",
+        jws: "eyJhbGc..."
     }
 }
 ```
