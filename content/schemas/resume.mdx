@@ -126,13 +126,16 @@ Organizations that the person is an alumni of.
 
 ```js
 {
-    "@context": ["http://schema.org", "https://docs.unid.plus/docs/2020/credentials/resume", "https://www.w3.org/2018/credentials/v1"],
+    "@context": [
+        "https://docs.unid.plus/docs/2020/credentials/resume",
+        "https://www.w3.org/2018/credentials/v1"
+    ],
     id: "https://sds.unid.plus/api/v1",
     type: ["VerifiableCredential", "ResumeCredentialV1"],
     issuer: "did:unid:test:example1234#keys-1",
     issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        "@type": "Person",
+        "@type": "ResumePerson",
         "@id": "did:unid:test:example1234#keys-1",
         name: "Masayoshi Mitsui",
         birthDate: "19950316",

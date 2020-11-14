@@ -40,7 +40,10 @@ The types related to "workTimeRecord" encapsulate any work time records linking 
 
 ```js
 {
-    "@context": ["http://schema.org", "https://docs.unid.plus/docs/2020/credentials/worktimerecord", "https://www.w3.org/2018/credentials/v1"],
+    "@context": [
+        "https://docs.unid.plus/docs/2020/credentials/worktimerecord",
+        "https://www.w3.org/2018/credentials/v1"
+    ],
     id: "https://example.unid.plus/credentials/1872",
     type: ["VerifiableCredential", "WorkTimeRecordCredentialV1"],
     issuer: "https://example.com/issuer/0001",
