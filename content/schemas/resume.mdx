@@ -6,9 +6,6 @@ Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
 
 The types related to `Resume` encapsulate any resume linking a person.
 
-`ResumeCredential` type.
-
-properties tree
 ```
 .
 |-- Resume
@@ -25,22 +22,23 @@ properties tree
             |-- hasOccupation
 ```
 
-### Resume
-Resume credential type.
+### ResumeCredentialV1
 
-| Attribute | Type | Required | Notes |
+`ResumeCredentialV1` has the following properties and types.
+
+| Property | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| "@type" | `["Person", "ResumePerson"]` | true ||
+| "@type" | `ResumePerson` | true ||
 | name | `string` | ture ||
 | birthday | `date` | true ||
 | email | `string` | true ||
 | telephone | `string` | true ||
 | image | `string` | true ||
-| address | `Address` | true ||
-| contactPoint | `array<contactPoint>` | true ||
-| hasCredential | `array` | true ||
-| worksFor | `array` | true ||
-| alumniOf | `array` | true ||
+| address | `PostalAddress` | true ||
+| contactPoint | `ContactPoint` | true ||
+| hasCredential | `EducationalOccupationalCredential` | true ||
+| worksFor | `Organization` | true ||
+| alumniOf | `Organization` | true ||
 
 
 ### address
