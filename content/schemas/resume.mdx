@@ -1,15 +1,11 @@
 ---
-title: 'Resume'
-description: 'description'
+title: "Resume"
+description: "description"
+Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
 ---
-
-<SEO title='Credential Data Schema' />
 
 The types related to `Resume` encapsulate any resume linking a person.
 
-`ResumeCredential` type.
-
-properties tree
 ```
 .
 |-- Resume
@@ -26,22 +22,23 @@ properties tree
             |-- hasOccupation
 ```
 
-### Resume
-Resume credential type.
+### ResumeCredentialV1
 
-| Attribute | Type | Required | Notes |
+`ResumeCredentialV1` has the following properties and types.
+
+| Property | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `['Person', 'ResumePerson']` | true ||
+| "@type" | `ResumePerson` | true ||
 | name | `string` | ture ||
 | birthday | `date` | true ||
 | email | `string` | true ||
 | telephone | `string` | true ||
 | image | `string` | true ||
-| address | `array` | true ||
-| contactPoint | `array` | true ||
-| hasCredential | `array` | true ||
-| worksFor | `array` | true ||
-| alumniOf | `array` | true ||
+| address | `PostalAddress` | true ||
+| contactPoint | `ContactPoint` | true ||
+| hasCredential | `EducationalOccupationalCredential` | true ||
+| worksFor | `Organization` | true ||
+| alumniOf | `Organization` | true ||
 
 
 ### address
@@ -49,7 +46,7 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `PostalAddress` | true ||
+| "@type" | `PostalAddress` | true ||
 | addressCountry | `string` | ture ||
 | addressLocality | `string` | true ||
 | addressRegion | `string` | true ||
@@ -60,7 +57,7 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `ContactPoint` | true ||
+| "@type" | `ContactPoint` | true ||
 | contactType | `string` | ture ||
 | email | `string` | true ||
 
@@ -68,7 +65,7 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `EducationalOccupationalCredential` | true ||
+| "@type" | `EducationalOccupationalCredential` | true ||
 | credentialCategory | `string` | ture ||
 | educationalLevel | `string` | true ||
 | dateCreated | `string` | true ||
@@ -79,14 +76,14 @@ Extension of Resume with extensions
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `EducationalOccupationalProgram` | true ||
+| "@type" | `EducationalOccupationalProgram` | true ||
 | name | `string` | ture ||
 
 ### recognizedBy
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `CollegeOrUniversity` | true ||
+| "@type" | `CollegeOrUniversity` | true ||
 | name | `string` | ture ||
 
 ### worksFor
@@ -94,7 +91,7 @@ Oranizations that the person works for.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `Organization` | true ||
+| "@type" | `Organization` | true ||
 | name | `string` | ture ||
 | employee | `array` | true ||
 
@@ -103,7 +100,7 @@ Organizations that the person is an alumni of.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `Organization` | true ||
+| "@type" | `Organization` | true ||
 | name | `string` | ture ||
 | employee | `array` | true ||
 
@@ -111,14 +108,14 @@ Organizations that the person is an alumni of.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `Person` | true ||
+| "@type" | `Person` | true ||
 | hasOccupation | `array` | ture ||
 
 ### hasOccupation
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| '@type' | `EmployeeRole` | true ||
+| "@type" | `EmployeeRole` | true ||
 | roleName | `string` | ture ||
 | startDate | `date` | true ||
 | endDate | `date` | false ||
@@ -127,108 +124,274 @@ Organizations that the person is an alumni of.
 
 ```js
 {
-    '@context': ['http://schema.org', 'https://docs.unid.plus/schemas', 'https://www.w3.org/2018/credentials/v1', 'https://www.w3.org/2018/credentials/examples/v1'],
-    id: 'https://sds.unid.plus/api/v1',
-    type: ['VerifiableCredential', 'ResumeCredentialV1'],
-    issuer: 'did:unid:test:example1234#keys-1',
-    issuanceDate: '20201101T180000+0900',
+    "@context": [
+        "https://docs.unid.plus/docs/2020/credentials/resume",
+        "https://www.w3.org/2018/credentials/v1"
+    ],
+    id: "https://sds.unid.plus/api/v1",
+    type: ["VerifiableCredential", "ResumeCredentialV1"],
+    issuer: "did:unid:test:example1234#keys-1",
+    issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        '@type': ['Person', 'ResumePerson'],
-        '@id': 'did:unid:test:example1234#keys-1',
-        name: 'Masayoshi Mitsui',
-        birthDate: '19950316',
-        email: 'example@collabogate.com',
-        telephone: '+818011112222',
-        image: 'https://s3.eu-west-1.amazonaws.com/123456789',
+        "@type": "ResumePerson",
+        "@id": "did:unid:test:example1234#keys-1",
+        name: "Masayoshi Mitsui",
+        birthDate: "19950316",
+        email: "example@collabogate.com",
+        telephone: "+818011112222",
+        image: "https://s3.eu-west-1.amazonaws.com/123456789",
         address: {
-            '@type': 'PostalAddress',
-            addressCountry: 'JP',
-            addressLocality: 'Shibuya-ku',
-            addressRegion: 'Tokyo',
-            postalCode: '1500044',
-            streetAddress: '5-5, Maruyama-cho'
+            "@type": "PostalAddress",
+            addressCountry: "JP",
+            addressLocality: "Shibuya-ku",
+            addressRegion: "Tokyo",
+            postalCode: "1500044",
+            streetAddress: "5-5, Maruyama-cho"
         },
         contactPoint: [
             {
-                '@type': 'ContactPoint',
-                contactType: 'Email',
-                email: 'example@collabogate.com'
+                "@type": "ContactPoint",
+                contactType: "Email",
+                email: "example@collabogate.com"
             }
         ],
         hasCredential: [
             {
-                '@type': 'EducationalOccupationalCredential',
-                credentialCategory: 'degree',
-                educationalLevel: 'Bachelors of Science',
-                dateCreated: '201503',
+                "@type": "EducationalOccupationalCredential",
+                credentialCategory: "degree",
+                educationalLevel: "Bachelors of Science",
+                dateCreated: "201503",
                 about: {
-                    '@type': 'EducationalOccupationalProgram',
-                    name: 'Computer Engineering'
+                    "@type": "EducationalOccupationalProgram",
+                    name: "Computer Engineering"
                 },
                 recognizedBy: {
-                    '@type': 'CollegeOrUniversity',
-                    name: 'Example University'
+                    "@type": "CollegeOrUniversity",
+                    name: "Example University"
                 }
             },
             {
-                '@type': 'EducationalOccupationalCredential',
-                credentialCategory: 'certificate',
-                dateCreated: '201503',
+                "@type": "EducationalOccupationalCredential",
+                credentialCategory: "certificate",
+                dateCreated: "201503",
                 about: {
-                    '@type': 'EducationalOccupationalProgram',
+                    "@type": "EducationalOccupationalProgram",
                     name: "1st Grade Driver's License"
                 }
             }
         ],
         worksFor: [
             {
-                '@type': 'Organization',
-                name: 'CollaboGate Japan, Inc.',
+                "@type": "Organization",
+                name: "CollaboGate Japan, Inc.",
                 employee: {
-                    '@type': 'Person',
+                    "@type": "Person",
                     hasOccupation: {
-                        '@type': 'EmployeeRole',
-                        roleName: 'Director',
-                        startDate: '201208'
+                        "@type": "EmployeeRole",
+                        roleName: "Director",
+                        startDate: "201208"
                     }
                 }
             }
         ],
         alumniOf: [
             {
-                '@type': 'Organization',
-                name: 'Example Consulting Group',
+                "@type": "Organization",
+                name: "Example Consulting Group",
                 employee: {
-                    '@type': 'Person',
+                    "@type": "Person",
                     hasOccupation: {
-                        '@type': 'EmployeeRole',
-                        roleName: 'internship',
-                        startDate: '201208',
-                        endDate: '201505'
+                        "@type": "EmployeeRole",
+                        roleName: "internship",
+                        startDate: "201208",
+                        endDate: "201505"
                     },
                 }
             },
             {
-                '@type': 'Organization',
-                name: 'Ninja, Inc.',
+                "@type": "Organization",
+                name: "Ninja, Inc.",
                 employee: {
-                    '@type': 'Person',
+                    "@type": "Person",
                     hasOccupation: {
-                        '@type': 'EmployeeRole',
-                        roleName: 'Director',
-                        startDate: '201405',
-                        endDate: '201803'
+                        "@type": "EmployeeRole",
+                        roleName: "Director",
+                        startDate: "201405",
+                        endDate: "201803"
                     }
                 }
             }
         ]
     },
     proof: {
-        type: 'EcdsaSecp256k1Signature2019',
-        created: '20201101T180000+0900',
-        proofPurpose: 'assertionMethod',
-        verificationMethod: 'did:unid:test:example1234#keys-1',
-        jws: 'eyJhbGc...'
+        type: "EcdsaSecp256k1Signature2019",
+        created: "20201101T180000+0900",
+        proofPurpose: "assertionMethod",
+        verificationMethod: "did:unid:test:example1234#keys-1",
+        jws: "eyJhbGc..."
+    }
+}
+```
+
+### resume.jsonld file
+
+```js
+{
+    "@context": {
+        "@version": 1.1,
+        "@protected": true,
+
+        "id": "@id",
+        "type": "@type",
+
+        "ResumeCredentialV1": {
+            "@id": "https://docs.unid.plus/docs/2020/credentials/resume#ResumeCredentialV1",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+
+                "id": "@id",
+                "type": "@type",
+
+                "ResumePerson": "http://schema.org/Person",
+                "name": "http://schema.org/name",
+                "birthDate": "http://schema.org/birthDate",
+                "email": "http://schema.org/email",
+                "telephone": "http://schema.org/telephone",
+                "image": "http://schema.org/image",
+
+                "address": {
+                    "@id": "http://schema.org/address",
+                    "@type": "@id",
+                    "@context": {
+                        "@version": 1.1,
+                        "@protected": true,
+
+                        "id": "@id",
+                        "type": "@type",
+                        "PostalAddress": "http://schema.org/PostalAddress",
+                        "addressCountry": "http://schema.org/addressCountry",
+                        "addressLocality": "http://schema.org/addressLocality",
+                        "addressRegion": "http://schema.org/addressRegion",
+                        "postalCode": "http://schema.org/postalCode",
+                        "streetAddress": "http://schema.org/streetAddress"
+                    }
+                },
+
+                "contactPoint": {
+                    "@id": "http://schema.org/contactPoint",
+                    "@type": "@id",
+                    "@context": {
+                        "@version": 1.1,
+                        "@protected": true,
+
+                        "id": "@id",
+                        "type": "@type",
+                        "ContactPoint": "http://schema.org/ContactPoint",
+                        "contactType": "http://schema.org/contactType",
+                        "email": "http://schema.org/email"
+                    }
+                },
+
+                "hasCredential": {
+                    "@id": "http://schema.org/hasCredential",
+                    "@type": "@id",
+                    "@context": {
+                        "@version": 1.1,
+                        "@protected": true,
+
+                        "id": "@id",
+                        "type": "@type",
+                        "EducationalOccupationalCredential": "http://schema.org/EducationalOccupationalCredential",
+                        "credentialCategory": "http://schema.org/credentialCategory",
+                        "educationalLevel": "http://schema.org/educationalLevel",
+                        "dateCreated": "http://schema.org/dateCreated",
+                        "about": {
+                            "@id": "http://schema.org/about",
+                            "@type": "@id",
+                            "@context": {
+                                "@version": 1.1,
+                                "@protected": true,
+
+                                "id": "@id",
+                                "type": "@type",
+                                "EducationalOccupationalProgram": "http://schema.org/EducationalOccupationalProgram",
+                                "name": "http://schema.org/name"
+                            }
+                        },
+                        "recognizedBy": {
+                            "@id": "http://schema.org/recognizedBy",
+                            "@type": "@id",
+                            "@context": {
+                                "@version": 1.1,
+                                "@protected": true,
+
+                                "id": "@id",
+                                "type": "@type",
+                                "CollegeOrUniversity": "http://schema.org/CollegeOrUniversity",
+                                "name": "http://schema.org/name"
+                            }
+                        }
+                    }
+                },
+
+                "worksFor": {
+                    "@id": "http://schema.org/worksFor",
+                    "@type": "@id",
+                    "@context": {
+                        "@version": 1.1,
+                        "@protected": true,
+
+                        "id": "@id",
+                        "type": "@type",
+                        "Organization": "http://schema.org/Organization",
+                        "name": "http://schema.org/name",
+                        "employee": {
+                            "@id": "http://schema.org/employee",
+                            "@type": "@id",
+                            "@context": {
+                                "@version": 1.1,
+                                "@protected": true,
+
+                                "id": "@id",
+                                "type": "@type",
+                                "Person": "http://schema.org/Person",
+                                "roleName": "http://schema.org/roleName",
+                                "startDate": "http://schema.org/startDate"
+                            }
+                        }
+                    }
+                },
+
+                "alumniOf": {
+                    "@id": "http://schema.org/alumniOf",
+                    "@type": "@id",
+                    "@context": {
+                        "@version": 1.1,
+                        "@protected": true,
+
+                        "id": "@id",
+                        "type": "@type",
+                        "Organization": "http://schema.org/Organization",
+                        "name": "http://schema.org/name",
+                        "employee": {
+                            "@id": "http://schema.org/employee",
+                            "@type": "@id",
+                            "@context": {
+                                "@version": 1.1,
+                                "@protected": true,
+
+                                "id": "@id",
+                                "type": "@type",
+                                "Person": "http://schema.org/Person",
+                                "roleName": "http://schema.org/roleName",
+                                "startDate": "http://schema.org/startDate"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 ```

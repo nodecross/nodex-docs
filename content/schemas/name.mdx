@@ -1,0 +1,77 @@
+---
+title: "Name"
+description: "description"
+Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
+---
+
+Name of a person or organization.
+
+### NameCredentialV1
+
+`NameCredentialV1` has the following properties.
+
+| Property | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| "@type" | `NamePerson` | true ||
+| name | `string` | ture ||
+| givenName | `string` | true ||
+| familyName | `string` | true ||
+
+### Example of NameCredentialV1
+
+```js
+{
+    "@context": [
+        "https://docs.unid.plus/docs/2020/credentials/name",
+        "https://www.w3.org/2018/credentials/v1"
+    ],
+    id: "https://sds.unid.plus/api/v1",
+    type: ["VerifiableCredential", "NameCredentialV1"],
+    issuer: "did:unid:test:issuer_example1234#keys-1",
+    issuanceDate: "20201101T180000+0900",
+    credentialSubject: {
+        "@type": "NamePerson",
+        "@id": "did:unid:test:example1234#keys-1",
+        name: "Masayoshi Mitsui",
+        givenName: "Masayoshi",
+        familyName: "Mitsui"
+    },
+    proof: {
+        type: "EcdsaSecp256k1Signature2019",
+        created: "20201101T180000+0900",
+        proofPurpose: "assertionMethod",
+        verificationMethod: "did:unid:test:example1234#keys-1",
+        jws: "eyJhbGc..."
+    }
+}
+```
+
+### name.jsonld
+
+```js
+{
+    "@context": {
+        "@version": 1.1,
+        "@protected": true,
+
+        "id": "@id",
+        "type": "@type",
+
+        "NameCredentialV1": {
+            "@id": "https://docs.unid.plus/docs/2020/credentials/name#NameCredentialV1",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+
+                "id": "@id",
+                "type": "@type",
+
+                "NamePerson": "http://schema.org/Person",
+                "name": "http://schema.org/name",
+                "giveName": "https://schema.org/givenName",
+                "familyName": "https://schema.org/familyName"
+            }
+        }
+    }
+}
+```
