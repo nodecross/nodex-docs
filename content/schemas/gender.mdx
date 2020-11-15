@@ -4,11 +4,12 @@ description: "description"
 Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
 ---
 
-Gender of a person.
-
 ### GenderCredentialV1
 
-`GenderCredentialV1` has the following properties.
+`GenderCredentialV1` is a type extension of credential subject into VC.
+
+### GenderPerson
+Gender of a person.
 
 | Property | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
@@ -62,7 +63,7 @@ Gender of a person.
                 "id": "@id",
                 "type": "@type",
 
-                "GenderPerson": "http://schema.org/Gender",
+                "GenderPerson": "http://schema.org/Person",
                 "gender": "http://schema.org/gender",
             }
         }

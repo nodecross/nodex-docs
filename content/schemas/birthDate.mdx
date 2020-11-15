@@ -8,11 +8,14 @@ BirthDate of a person.
 
 ### BirthDateCredentialV1
 
-`BirthDateCredentialV1` has the following properties.
+`BirthDateCredentialV1` is a type extension of credential subject into VC.
+
+### BirthDatePerson
+BirthDate of a person.
 
 | Property | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| "@type" | `BirthdayPerson` | true ||
+| "@type" | `BirthDatePerson` | true ||
 | birthDate | `datetime` | ture ||
 
 ### Example of BirthDateCredentialV1
@@ -25,7 +28,7 @@ BirthDate of a person.
     ],
     id: "https://sds.unid.plus/api/v1",
     type: ["VerifiableCredential", "BirthDateCredentialV1"],
-    issuer: "did:unid:test:issuer_example1234#keys-1",
+    issuer: "did:unid:test:issuer1234#keys-1",
     issuanceDate: "20201101T180000+0900",
     credentialSubject: {
         "@type": "BirthDatePerson",
@@ -54,7 +57,7 @@ BirthDate of a person.
         "type": "@type",
 
         "BirthDateCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/gender#GenderCredentialV1",
+            "@id": "https://docs.unid.plus/docs/2020/credentials/birthDate#BirthDateCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,
@@ -62,8 +65,8 @@ BirthDate of a person.
                 "id": "@id",
                 "type": "@type",
 
-                "GenderPerson": "http://schema.org/Gender",
-                "gender": "http://schema.org/gender",
+                "BirthDatePerson": "http://schema.org/Person",
+                "birthDate": "http://schema.org/birthDate"
             }
         }
     }

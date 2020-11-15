@@ -1,41 +1,37 @@
 ---
-title: "Name"
+title: "Phone"
 description: "description"
 Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
 ---
 
-### NameCredentialV1
+### PhoneCredentialV1
 
-`NameCredentialV1` is a type extension of credential subject into VC.
+`PhoneCredentialV1` is a type extension of credential subject into VC.
 
-### NamePerson
-Name of a person.
+### PhonePerson
+Phone number of a person.
 
 | Property | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| "@type" | `NamePerson` | true ||
-| name | `string` | ture ||
-| givenName | `string` | true ||
-| familyName | `string` | true ||
+| "@type" | `PhonePerson` | true ||
+| telephone | `string` | ture ||
 
-### Example of NameCredentialV1
+### Example of PhoneCredentialV1
 
 ```js
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/name",
+        "https://docs.unid.plus/docs/2020/credentials/phone",
         "https://www.w3.org/2018/credentials/v1"
     ],
     id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "NameCredentialV1"],
+    type: ["VerifiableCredential", "PhoneCredentialV1"],
     issuer: "did:unid:test:issuer1234#keys-1",
     issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        "@type": "NamePerson",
+        "@type": "PhonePerson",
         "@id": "did:unid:test:example1234#keys-1",
-        name: "Masayoshi Mitsui",
-        givenName: "Masayoshi",
-        familyName: "Mitsui"
+        telephone: "+818033061234"
     },
     proof: {
         type: "EcdsaSecp256k1Signature2019",
@@ -47,32 +43,30 @@ Name of a person.
 }
 ```
 
-### NameOrganization
-Name of an organization.
+### PhoneOrganization
+Phone number of an organization.
 
 | Property | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| "@type" | `NameOrganization` | true ||
-| name | `string` | ture ||
+| "@type" | `PhoneOrganization` | true ||
+| telephone | `string` | ture ||
 
-// Internationalization
-
-### Example of NameCredentialV1
+### Example of PhoneCredentialV1
 
 ```js
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/name",
+        "https://docs.unid.plus/docs/2020/credentials/phone",
         "https://www.w3.org/2018/credentials/v1"
     ],
     id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "NameCredentialV1"],
+    type: ["VerifiableCredential", "PhoneCredentialV1"],
     issuer: "did:unid:test:issuer1234#keys-1",
     issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        "@type": "NameOrganization",
+        "@type": "PhoneOrganization",
         "@id": "did:unid:test:example1234#keys-1",
-        name: "CollaboGate Japan, Inc."
+        telephone: "0312345678"
     },
     proof: {
         type: "EcdsaSecp256k1Signature2019",
@@ -84,7 +78,7 @@ Name of an organization.
 }
 ```
 
-### name.jsonld
+### phone.jsonld
 
 ```js
 {
@@ -95,8 +89,8 @@ Name of an organization.
         "id": "@id",
         "type": "@type",
 
-        "NameCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/name#NameCredentialV1",
+        "PhoneCredentialV1": {
+            "@id": "https://docs.unid.plus/docs/2020/credentials/phone#PhoneCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,
@@ -104,11 +98,9 @@ Name of an organization.
                 "id": "@id",
                 "type": "@type",
 
-                "NamePerson": "http://schema.org/Person",
-                "NameOrganization": "http://schema.org/Organization",
-                "name": "http://schema.org/name",
-                "giveName": "https://schema.org/givenName",
-                "familyName": "https://schema.org/familyName"
+                "PhonePerson": "http://schema.org/Person",
+                "PhoneOrganization": "http://schema.org/Organization",
+                "telephone": "http://schema.org/telephone"
             }
         }
     }

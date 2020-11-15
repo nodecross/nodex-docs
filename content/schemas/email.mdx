@@ -1,41 +1,39 @@
 ---
-title: "Name"
+title: "Email"
 description: "description"
 Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
 ---
 
-### NameCredentialV1
+Email of a person or organization.
 
-`NameCredentialV1` is a type extension of credential subject into VC.
+### EmailCredentialV1
 
-### NamePerson
-Name of a person.
+`EmailCredentialV1` is a type extension of credential subject into VC.
 
-| Property | Type | Required | Notes |
+### EmailPerson
+Email of a person.
+
+| Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| "@type" | `NamePerson` | true ||
-| name | `string` | ture ||
-| givenName | `string` | true ||
-| familyName | `string` | true ||
+| "@type" | `EmailPerson` | true ||
+| email | `string` | ture ||
 
-### Example of NameCredentialV1
+### Example of EmailCredentialV1
 
 ```js
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/name",
+        "https://docs.unid.plus/docs/2020/credentials/email",
         "https://www.w3.org/2018/credentials/v1"
     ],
     id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "NameCredentialV1"],
+    type: ["VerifiableCredential", "EmailCredentialV1"],
     issuer: "did:unid:test:issuer1234#keys-1",
     issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        "@type": "NamePerson",
+        "@type": "EmailPerson",
         "@id": "did:unid:test:example1234#keys-1",
-        name: "Masayoshi Mitsui",
-        givenName: "Masayoshi",
-        familyName: "Mitsui"
+        email: "example@collabogate.com",
     },
     proof: {
         type: "EcdsaSecp256k1Signature2019",
@@ -47,32 +45,30 @@ Name of a person.
 }
 ```
 
-### NameOrganization
-Name of an organization.
+### EmailOrganization
+Email of an organization.
 
-| Property | Type | Required | Notes |
+| Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| "@type" | `NameOrganization` | true ||
-| name | `string` | ture ||
+| "@type" | `EmailOrganization` | true ||
+| email | `string` | ture ||
 
-// Internationalization
-
-### Example of NameCredentialV1
+### Example of AddressCredentialV1
 
 ```js
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/name",
+        "https://docs.unid.plus/docs/2020/credentials/email",
         "https://www.w3.org/2018/credentials/v1"
     ],
     id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "NameCredentialV1"],
+    type: ["VerifiableCredential", "EmailCredentialV1"],
     issuer: "did:unid:test:issuer1234#keys-1",
     issuanceDate: "20201101T180000+0900",
     credentialSubject: {
-        "@type": "NameOrganization",
+        "@type": "EmailOrganization",
         "@id": "did:unid:test:example1234#keys-1",
-        name: "CollaboGate Japan, Inc."
+        email: "example@collabogate.com",
     },
     proof: {
         type: "EcdsaSecp256k1Signature2019",
@@ -84,7 +80,7 @@ Name of an organization.
 }
 ```
 
-### name.jsonld
+### email.jsonld
 
 ```js
 {
@@ -95,8 +91,8 @@ Name of an organization.
         "id": "@id",
         "type": "@type",
 
-        "NameCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/name#NameCredentialV1",
+        "EmailCredentialV1": {
+            "@id": "https://docs.unid.plus/docs/2020/credentials/email#EmailCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,
@@ -104,11 +100,9 @@ Name of an organization.
                 "id": "@id",
                 "type": "@type",
 
-                "NamePerson": "http://schema.org/Person",
-                "NameOrganization": "http://schema.org/Organization",
-                "name": "http://schema.org/name",
-                "giveName": "https://schema.org/givenName",
-                "familyName": "https://schema.org/familyName"
+                "EmailPerson": "http://schema.org/Person",
+                "EmailOrganization": "http://schema.org/Organization",
+                "email": "http://schema.org/email",
             }
         }
     }
