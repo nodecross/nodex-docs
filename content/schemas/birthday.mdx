@@ -1,0 +1,71 @@
+---
+title: "BirthDate"
+description: "description"
+Link: <../../docs/resume.jsonld>; rel="alternate"; type="application/ld+json"
+---
+
+BirthDate of a person.
+
+### BirthDateCredentialV1
+
+`BirthDateCredentialV1` has the following properties.
+
+| Property | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| "@type" | `BirthdayPerson` | true ||
+| birthDate | `datetime` | ture ||
+
+### Example of BirthDateCredentialV1
+
+```js
+{
+    "@context": [
+        "https://docs.unid.plus/docs/2020/credentials/birthDate",
+        "https://www.w3.org/2018/credentials/v1"
+    ],
+    id: "https://sds.unid.plus/api/v1",
+    type: ["VerifiableCredential", "BirthDateCredentialV1"],
+    issuer: "did:unid:test:issuer_example1234#keys-1",
+    issuanceDate: "20201101T180000+0900",
+    credentialSubject: {
+        "@type": "BirthDatePerson",
+        "@id": "did:unid:test:example1234#keys-1",
+        birthDate: "19801212"
+    },
+    proof: {
+        type: "EcdsaSecp256k1Signature2019",
+        created: "20201101T180000+0900",
+        proofPurpose: "assertionMethod",
+        verificationMethod: "did:unid:test:example1234#keys-1",
+        jws: "eyJhbGc..."
+    }
+}
+```
+
+### birthDate.jsonld
+
+```js
+{
+    "@context": {
+        "@version": 1.1,
+        "@protected": true,
+
+        "id": "@id",
+        "type": "@type",
+
+        "BirthDateCredentialV1": {
+            "@id": "https://docs.unid.plus/docs/2020/credentials/gender#GenderCredentialV1",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+
+                "id": "@id",
+                "type": "@type",
+
+                "GenderPerson": "http://schema.org/Gender",
+                "gender": "http://schema.org/gender",
+            }
+        }
+    }
+}
+```
