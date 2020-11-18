@@ -3,3 +3,67 @@ title: "DID Authentication"
 description: "description"
 ---
 
+### 概念的な説明
+
+できるようになること：身体的なF2Fでの認証に近いことができるようになる。これまでの認証とは異なり、プライバシーとセキュリティを担保しつつ、シームレスな認証を実現できる。
+
+- ClientとApplicationが、安全に通信するための認証について
+- Client側のメソッドについて
+- DIDsとインタラクションするRPは、DID-Authプロトコルの上で通信するためのSDKs and/or APIsが必要になる→RP kitsで説明
+
+![DID Auth Protocol Flow](../assets/did-authN.png)
+
+基本的にはこの類型。
+
+### DID AuthN Request Validation
+
+**DID.validateAuthenticationRequest()**
+
+```js
+import * as Unid from "@unid/react-native-unid-sdk";
+function DID.validateAuthenticationRequest(ApplicationDid){
+    return 'validated';
+};
+```
+
+### DID AuthN Request Approval
+
+**DID.approveAuthenticationRequest()**
+
+```js
+import * as Unid from "@unid/react-native-unid-sdk";
+function DID.approveAuthenticationRequest(ApplicationDid){
+    return 'approved';
+};
+```
+
+### Generate DID AuthN Response
+
+**DID.generateAuthenticationResponse()**
+```js
+import * as Unid from "@unid/react-native-unid-sdk";
+function DID.generateAuthenticationResponse(self, requested_params, callback_url){
+    return
+}
+```
+
+requested_params: RP側が要求するparams（email, name, genderなど）
+
+
+### SIOP
+SIOPでは、User AgentとIdentity Wallet（SIOP）を分離し、拡張性を持たせたものという理解。SIOPでは、User Agentは必ずしもIdentity Walletアプリである必要はない、OIDCの仕様に従った通信を行うことが特徴、、、ということでいい？
+
+- [SIOP](https://identity.foundation/did-siop/)
+- [DID auth](https://github.com/decentralized-identity/did-auth-jose/blob/master/docs/OIDCAuthentication.md)
+- [rwot DID auth](https://github.com/WebOfTrustInfo/rwot6-santabarbara/blob/master/final-documents/did-auth.md)
+- [DID SIOP Browser Extension](https://github.com/decentralized-identity/did-siop-browser-ext)
+
+
+SIOPに関する疑問点
+- SIOP RequestをSIOPに渡す方法で何か新しい提案があるか？
+    - rwotでの提案を超えた方法があるんだろうか？
+    - 例えば、Webブラウザからあるアプリケーションのログイン画面にいる。SSIボタンを押して`SIOP Request`がApplicationからブラウザに帰ってくるまではわかる。ここからSIOPに`SIOP request`をどう渡すのか？ブラウザエクステンションというオチなのか？
+
+- OIDCの仕様に準拠することで変化する部分
+    - あるparamはここでは含めるとダメみたいなセキュリティ上の仕様を踏襲できるのはいいこと
+    - SIOPに期待することはここかな
