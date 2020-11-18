@@ -59,25 +59,19 @@ The following changes will be performed:
 
 After you've completed setting up a tenant, UNiD will give you a value which we call a `tid` or Tenant token ID.
 It looks like a standard URL, but it's just a representation of the configuration required by UNiD SDKs.
-It consists of a few pieces, including `protocol`, `api_key`, `secret_key`, `server address`, and `tenant identifier`.
+It consists of a few pieces, including `protocol`, `api_key`, `secret_key`, `server address`, `storageEndpointUri`, and `tenant identifier`. //千葉さん
 
 ```js
 import * as Unid from "@unid/react-native-unid-client-sdk";
 
 Unid.init({
 	tid: "https://examplePublicKey@o0.ingest.unid.plus/0",
-    didMethodName: "did:unid",
-    storageEndpointUri: "https://aws.unid.plus.tenant.00001/vcr",
-	type_network: "bitcoin",
 	env_network: "testnet"
 });
 ```
 |property|description|
 | ---- | ---- |
 |`tid`|Tenant Token ID.|
-|`didMethodName`|DID Method Name.|
-|`storageEndpointUri`|Please set up the endpoint URI for storing verifiable credentials.|
-|`type_network`|Type of an underlying distributed ledger system. Currently, UNiD Drivers support Bitcoin network for anchoring batch files of DID operations.|
 |`env_network`|Environment of selected network.|
 
 The `unid-wizard` will try to add it to your `App.js`
