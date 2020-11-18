@@ -26,16 +26,13 @@ function DID.validateAuthenticationRequest(ApplicationDid){
 };
 ```
 
-### DID AuthN Request Approval
+SIOPでは
 
-**DID.approveAuthenticationRequest()**
+- Resolve the DID Document from the RP's DID specified in the iss request parameter.
+- If jwks_uri is present, ensure that the DID in the jwks_uri matches the DID in the iss claim.
+- Determine the verification method from the RP's DID Document that matches the kid of the SIOP Request.
+- Verify the SIOP Request according to the verification method above. This step depends on the verification method in the authentication section in the DID Document and is out-of-scope of this specification.
 
-```js
-import * as Unid from "@unid/react-native-unid-sdk";
-function DID.approveAuthenticationRequest(ApplicationDid){
-    return 'approved';
-};
-```
 
 ### Generate DID AuthN Response
 
@@ -48,6 +45,7 @@ function DID.generateAuthenticationResponse(self, requested_params, callback_url
 ```
 
 requested_params: RP側が要求するparams（email, name, genderなど）
+リクエストの形はVC Type？ Responseで`ResumeCredentialV1`をください。
 
 
 ### SIOP
