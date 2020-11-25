@@ -20,9 +20,12 @@ description: "description"
 **DID.validateAuthenticationRequest()**
 
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
-function DID.validateAuthenticationRequest(ApplicationDid){
-    return 'validated';
+import { Unid } from "@unid/react-native-unid-client-sdk";
+try {
+    var result = async DID.validateAuthenticationRequest(ApplicationDid);
+    console.log('validated', result);
+} catch err(err){
+    console.err(err);
 };
 ```
 
@@ -38,10 +41,13 @@ SIOPでは
 
 **DID.generateAuthenticationResponse()**
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
-function DID.generateAuthenticationResponse(self, requested_params, callback_url){
-    return 'success';
-}
+import { Unid } from "@unid/react-native-unid-client-sdk";
+try {
+    var result = async DID.generateAuthenticationResponse(self, requested_params, callback_url){
+    console.log('success', result);
+} catch err(err){
+    console.err(err);
+};
 ```
 
 requested_params: RP側が要求するparams（email, name, genderなど）
@@ -65,3 +71,6 @@ SIOPに関する疑問点
 - OIDCの仕様に準拠することで変化する部分
     - あるparamはここでは含めるとダメみたいなセキュリティ上の仕様を踏襲できるのはいいこと
     - SIOPに期待することはここかな
+
+SIOPのreponseには制約がある。おそらく自由にparamsを返すことができない。
+なので、SDS authorizationとセットで解かないといけないし、RP pubkeyで生成したデータのsds endpointとauthorizationのメタデータをSIOPのresponseに載せる交渉をする必要があるよね。

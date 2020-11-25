@@ -12,6 +12,7 @@ On this page, we get you up and running with React Native SDK for embedding digi
 
 Before we begin, make sure you have the following installed:
 - `Node.js v10.x or later`
+- `yarn add @unid/react-native-unid-client-sdk`
 - `npm v5.x or later`
 
 If you don't already have an account and tenant setup, head over to [here](https://collabogate.com/products/index.html), then return to this page.
@@ -62,11 +63,11 @@ It looks like a standard URL, but it's just a representation of the configuratio
 It consists of a few pieces, including `protocol`, `api_key`, `secret_key`, `server address`, `storageEndpointUri`, and `tenant identifier`. //千葉さん
 
 ```js
-import * as Unid from "@unid/react-native-unid-client-sdk";
+import { Unid } from "@unid/react-native-unid-client-sdk";
 
 Unid.init({
-	tid: "https://examplePublicKey@o0.ingest.unid.plus/0",
-	env_network: "testnet"
+    tid: "https://examplePublicKey@o0.ingest.unid.plus/0",
+    env_network: "testnet"
 });
 ```
 |property|description|

@@ -7,48 +7,52 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 
 ### Generate New DID
 
-UNiD Core generates 3 pairs of keys: update key, recovery key, and singing key using [SECP256K1](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) with ECDSA algorithm with a default setting (the signing key is used for DID user to generate signature and other keys are used for managing this DID). A public key document is generated with a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html).
+<!-- UNiD Core generates 3 pairs of keys: update key, recovery key, and singing key using [SECP256K1](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) with ECDSA algorithm with a default setting (the signing key is used for DID user to generate signature and other keys are used for managing this DID). A public key document is generated with a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html).
 
-UNiD Core computes hash from the public key document. The hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for generating hashes of protocol-related values. And then, it generates the base64-encoded entity including these hash values and document are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method.
+UNiD Core computes hash from the public key document. The hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for generating hashes of protocol-related values. And then, it generates the base64-encoded entity including these hash values and document are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method. -->
 
-With UNiD SDKs, you can easily generate key pairs and the payload required for DID create operation:
+With UNiD SDKs, you can easily generate key pairs using [SECP256K1](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) with ECDSA algorithm and the payload required for DID register operation.
 
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
-Unid.createDid();
+import { Unid } from "@unid/react-native-unid-client-sdk";
+
+var payload = Unid.createPayload();
+Unid.registerDid(payload);
 ```
 
-
-To submit the payload to a UNiD endpoint for DID register operation:
+<!--
 ```js
-// Unid.registerDid()
-import * as Unid from "@unid/react-native-unid-sdk";
-Unid.registerDid({
+import { Unid } from "@unid/react-native-unid-client-sdk";
+
+var payload = Unid.createPayload({
 	"method": "unid",
 	"option": {
-		"KeyType": "secp256k"
+		"type": "EcdsaSecp256k1VerificationKey2019",
+		"recovery": "BIP39 seed recovery phrases"
 	}
 });
 
+Unid.registerDid(payload);
 ```
+-->
+<!-- You can select a DID method type, signature algorithm type, and key recovery method. -->
 
-You can select a `method` type from [UNiD DID Method support](./unid/2-drivers) and `KeyType` (currently, we support secp256k).
-
-After a while, the queued operation will be periodically extracted and executed by Sidetree scheduler called Batch Scheduler and is submitted into the underlying ledger system. If you want to know more detailed the operating princile, please refer to [the specification](https://identity.foundation/sidetree/spec/).
-
+After a while, the queued operation will be periodically extracted and executed by Sidetree scheduler and is submitted into the underlying ledger system. If you want to know more detailed the operating principle, please refer to [the specification](https://identity.foundation/sidetree/spec/).
 
 
 ### Resolve DID
 
-After the operation is successfully restored to the verifiable data registry, you can resolve (query) the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
+After the register operation is successfully processed in the underlying distributed ledger network, you can resolve the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
+import { Unid } from "@unid/react-native-unid-client-sdk";
 
 Unid.getDidDocument({
-	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
 });
 ```
+
+<!-- 唯一解けてないこと：holderがDID生成後にbatch処理されるまでの間、RPとAuthNすることができない。RP側で名前解決することができない。holder側のIF制御、署名から復元する。 -->
 
 Great! Now that you've completed to create and register a DID. However, it is just a globally unique identifier so far. Next is to create a verifiable credential for trusted data exchange. [verifiable credential](./3-verifiable-credential).
 
@@ -57,35 +61,35 @@ Great! Now that you've completed to create and register a DID. However, it is ju
 
 ### Update DID
 
-When you want to change DID status, UNiD SDKs allow you to update DID document in following ways.
+Update DID document when adding, changing, and deleting public keys or service endpoints.
 
-> ここはsidetreeをreferenceして書いてる。JwkなどはUNiD側で生成するなど。実装イメージはSDSのendpointが変わるなどで、mobile appのsettingsから変更してもらうなど。テナント依存のSDSのエンドポイントURLルールについて。 see : https://identity.foundation/sidetree/spec/#did-state-patches
+<!-- `updateDidDocument` method need `action` and `updateCommitment` properties. -->
+
+<!-- ここはsidetreeをreferenceして書いてる。JwkなどはUNiD側で生成するなど。実装イメージはSDSのendpointが変わるなどで、mobile appのsettingsから変更してもらうなど。テナント依存のSDSのエンドポイントURLルールについて。 see : https://identity.foundation/sidetree/spec/#did-state-patches -->
 
 To add public keys:
 
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
+import { Unid } from "@unid/react-native-unid-client-sdk";
 
 Unid.updateDidDocument({
-	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
 	action: "add-public-keys",
-	"publicKeys": [
-    	{
-	    	"id": "key1",
-			"purposes": ["authentication"],
-			"type": "EcdsaSecp256k1VerificationKey2019",
-			"publicKeyJwk": {...}
-    	}
-  	]
+	"publicKeys": [{
+    	"id": "key1",
+		"purposes": ["authentication"],
+		"type": "EcdsaSecp256k1VerificationKey2019",
+		"publicKeyJwk": {...}
+	}]
 });
 ```
 
 To remove public keys:
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
+import { Unid } from "@unid/react-native-unid-client-sdk";
 
 Unid.updateDidDocument({
-	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
 	action: "remove-public-keys",
 	"ids": ["key1", "key2"]
 });
@@ -94,30 +98,29 @@ Unid.updateDidDocument({
 To add services:
 
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
+import { Unid } from "@unid/react-native-unid-sdk";
 
 Unid.updateDidDocument({
-	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
 	action: "add-services",
-	"services": [
-		{
-			"id": "sds2",
-			"type": "SecureDataStore",
-			"serviceEndpoint": "https://examplePublicKey@o0.ingest.sds.unid.plus/"
-		},
-		{
-			"id": "did-config",
-			"type": "LinkedDomains",
-			"serviceEndpoint": {
+	"services": [{
+		"id": "sds2",
+		"type": "SecureDataStore",
+		"serviceEndpoint": "https://examplePublicKey@o0.ingest.sds.unid.plus/"
+	},
+	{
+		"id": "did-config",
+		"type": "LinkedDomains",
+		"serviceEndpoint": {
 			"origins": ["https://foo.com", "https://bar.com"]
 		}
-	]
+	}]
 });
 ```
 
 To remove services:
 ```js
-import * as Unid from "@unid/react-native-unid-sdk";
+import { Unid } from "@unid/react-native-unid-sdk";
 
 Unid.updateDidDocument({
 	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
@@ -127,3 +130,25 @@ Unid.updateDidDocument({
 ```
 
 To replace:
+```js
+{
+  "action": "replace",
+  "document": {
+    "publicKeys": [
+      {
+        "id": "key2",
+        "purposes": ["authentication"],
+        "type": "EcdsaSecp256k1VerificationKey2019",
+        "publicKeyJwk": {...}
+      }
+    ],
+    "services": [
+      {
+        "id": "sds3",
+        "type": "SecureDataStore",
+        "serviceEndpoint": "http://hub.my-personal-server.com"
+      }
+    ]
+  }
+}
+```
