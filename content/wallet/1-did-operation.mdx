@@ -14,7 +14,7 @@ UNiD Core computes hash from the public key document. The hash with [Multihash](
 With the SDK, you can easily generate key pairs using SECP256K1 with ECDSA algorithm and the payload required for DID register operation.
 
 ```js
-import { Unid } from "@unid/react-native-unid-client-sdk";
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
 
 var payload = Unid.createPayload();
 Unid.registerDid(payload);
@@ -22,7 +22,7 @@ Unid.registerDid(payload);
 
 <!--
 ```js
-import { Unid } from "@unid/react-native-unid-client-sdk";
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
 
 var payload = Unid.createPayload({
 	"method": "unid",
@@ -45,7 +45,7 @@ After a while, the queued operation will be periodically extracted and executed 
 After the register operation is successfully processed in the underlying distributed ledger network, you can resolve the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```js
-import { Unid } from "@unid/react-native-unid-client-sdk";
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
 
 Unid.getDidDocument({
 	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
@@ -68,7 +68,7 @@ Update DID document when adding, changing, and deleting public keys or service e
 To add public keys:
 
 ```js
-import { Unid } from "@unid/react-native-unid-client-sdk";
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
 
 Unid.updateDidDocument({
 	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
@@ -84,7 +84,7 @@ Unid.updateDidDocument({
 
 To remove public keys:
 ```js
-import { Unid } from "@unid/react-native-unid-client-sdk";
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
 
 Unid.updateDidDocument({
 	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",

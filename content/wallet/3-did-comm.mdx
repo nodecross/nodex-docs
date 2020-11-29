@@ -1,0 +1,57 @@
+---
+title: "DID Communications"
+description: "description"
+---
+
+### DID AuthN
+
+For the wallet to communicate with relying parties (RP) on secure authenticated channel, UNiD wallet SDKs provide methods of:
+
+- validating DID AuthN request from a RP
+- generating DID AuthN response to a RP
+
+The below diagram illustrate the sign-in flow and steps talen to verify a user through their user agent from the wallet side of the webpage to the server side of a RP. If you want to see more details of DID AuthN, please head over [here](../unid/3-extensions).
+
+![DID Auth Protocol Flow](../assets/did-authN-protocol.png)
+
+### Validate AuthN Request
+
+In step 5 of the diagram, the wallet receives an authN request from the RP. The wallet queries for the RP's DID document using a Universal Resolver and verifies the signature with the RP's public key.
+
+**Unid.validateAuthenticationRequest()**
+```js
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
+
+try {
+    var result = async Unid.validateAuthenticationRequest(applicationDid);
+    console.log('validated', result);
+} catch err(err){
+    console.err(err);
+};
+```
+
+### Generate DID AuthN Response
+
+In step 6 of the diagram, the wallet creates a DID AuthN response signed by the selected DID. The response object can envelop a verifiable presentation and will be put into a JWS signed by the DID.
+
+**DID.generateAuthenticationResponse()**
+```js
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
+
+try {
+    var result = async DID.generateAuthenticationResponse({
+        requested_params: presentation
+    });
+    console.log('success', result)
+} catch err(err){
+    console.err(err);
+};
+```
+
+<!--
+### Tutorial DID AuthN
+
+デモ用のDID authN request of RPをQRコードで設置
+テストできるようにする
+
+-->

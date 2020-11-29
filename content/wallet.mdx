@@ -1,0 +1,70 @@
+---
+title: "Wallet SDKs"
+description: "description"
+---
+
+### Getting Started
+
+UNiD Wallet SDKs offer easy-to-use javascript module for DID operations, VC operations, and DID Comm through the underlying UNiD Core APIs and Drivers.
+
+On this page, we get you up and running with React Native SDK for embedding these capabilities into mobile wallet application.
+
+**Prerequisites**
+
+Before we begin, make sure you have the following installed:
+- `Node.js v10.x or later`
+- `npm v5.x or later`
+
+If you don't already have an account and UNiD tenant established, head over to [here](https://getunid.io), then return to this page.
+
+### Install
+
+Add the `@unid/react-native-unid-wallet-sdk` dependency:
+```bash
+npm install --save @unid/react-native-unid-wallet-sdk
+```
+
+### Linking
+
+Since UNiD wallet SDKs also support a local authentication and key management at OS native layer, we need to link the SDK to your native projects.
+
+Above `react-native >= 0.60` you need to do:
+
+```bash
+npx @unid/wizard -i reactNative -p ios
+
+cd ios
+pod install
+```
+Since UNiD wallet SDKs support `auto-linking` and iOS relies on CocoaPods, you need to install dependencies.
+If you are running a project with `react-native < 0.60` you sitll need to call `react-native link`.
+
+```bash
+react-native link @unid/react-native-unid-wallet-sdk
+```
+The link step or the `unid-wizard` call with patch your project accordingly.
+The UNiD Wizard will guide you through the process of setting everything up correctly. This has to be done only once, and the files created can go into your version control system.
+
+The following changes will be performed:
+
+- add the unid-cocoa package for native local authentication and key management on iOS
+- configure Unid for the supplied DSN in your ***index.js/App.js*** files
+- store build credentials in ***ios/unid.properties*** and ***android/unid.properties***.
+
+
+### Configure
+
+After you've completed setting up a tenant and a wallet application in UNiD, UNiD will give you values: `tenant_id` and `client_id` and `client_secret`. These values are used for authetication when wallet application communicates with UNiD SDS or relying parties.
+
+```js
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
+
+Unid.init({
+    client_id: "client_id_token",
+    env_network: "testnet"
+});
+```
+
+<!-- The `unid-wizard` will try to add it to your `App.js`. -->
+
+Great! Now that you've completed setting up the wallet SDK. You can step forward to [Generate New DID](./wallet/1-did-operation).
