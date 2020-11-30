@@ -54,13 +54,14 @@ The following changes will be performed:
 
 ### Configure
 
-After you've completed setting up a tenant and a wallet application in UNiD, UNiD will give you values: `tenant_id` and `client_id` and `client_secret`. These values are used for authetication when wallet application communicates with UNiD SDS or relying parties.
+After you've completed setting up a tenant and a wallet application in UNiD, UNiD will give you values: `client_id` and `client_secret`. These values are used for authorization when the wallet communicates with SDS endpoints or relying parties.
 
 ```js
 import { Unid } from "@unid/react-native-unid-wallet-sdk";
 
 Unid.init({
     client_id: "client_id_token",
+    client_secret: "client_secret_token",
     env_network: "testnet"
 });
 ```
