@@ -7,10 +7,10 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 
 ### Generate New DID
 
-With the Node RP SDK, you can easily generate key pairs using SECP256K1 with ECDSA algorithm and the payload required for DID register operation at RP's server side.
+With the Node SDK, you can easily generate key pairs using SECP256K1 with ECDSA algorithm and the payload required for DID register operation at RP's server side.
 
 ```js
-import { Unid } from "@unid/node-unid-rp-sdk";
+import { Unid } from "@unid/node-unid-server-sdk";
 
 var payload = Unid.createPayload();
 Unid.registerDid(payload);
@@ -24,14 +24,14 @@ After a while, the queued operation will be periodically extracted and executed 
 After the register operation is successfully processed in the underlying distributed ledger network, you can resolve the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```js
-import { Unid } from "@unid/node-unid-rp-sdk";
+import { Unid } from "@unid/node-unid-server-sdk";
 
 Unid.getDidDocument({
 	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
 });
 ```
 
-Great! Now that you've completed to create and register new DID. Next is to issue and exchange a verifiable credential. [VC Operations](./2-verifiable-credential).
+Great! Now that you've completed to create and register new DID. Next is to issue and verify a verifiable credential. [VC Operations](./2-verifiable-credential).
 
 ### Update DID
 
@@ -40,7 +40,7 @@ Update DID document when adding, changing, and deleting public keys or service e
 To add public keys:
 
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { Unid } from "@unid/node-unid-server-sdk";
 
 Unid.updateDidDocument({
 	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
@@ -56,7 +56,7 @@ Unid.updateDidDocument({
 
 To remove public keys:
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { Unid } from "@unid/node-unid-server-sdk";
 
 Unid.updateDidDocument({
 	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",

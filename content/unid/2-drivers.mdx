@@ -14,17 +14,18 @@ This section specifies the requirements on any DID method, which are met by the 
 - `did:ion`
 - `did:{custom_method}`
 
-### Storage Support
+### SDS Support
 
-UNiD Drivers support secure storage.
-UNiD Platform supports building UNiD Secure Data Storage (SDS) to be pre-configured on Amazon Web Services for each tenant.
+UNiD Drivers support SDS (Secure Data Storage) to be pre-configured for each tenant. Every requests to SDS endpoints will be verified by signature and tenant token. Since all data stored in UNiD SDS is encrypted, all systems including UNiD Drivers can not know the contents of data.
 
+<!--
 ![UNiD SDS Example](../assets/unid-sds-example.png)
+-->
 
 ### Key Management Support
 
-**Currently Supported Key Recovery**
-- Mnemonic Recover Seed Phrase
-- Shamir Secret Recover Mechanisms
+Currently, we generate a master seed from 24 mnemonic phrases, and based on this, we generate multiple key pairs required for DID Operations. Currently, we are developing a decentralized key management solution that can respond to the demands of each application by incorporating cryptographic technologies such as secret sharing.
 
 ### Tenant Support
+
+UNiD Platform provides a tenant system for each organization that build a digital trust platform. In your tenant, you can register multi applications and relying parties to expand a digital trust network. Please head over [here](https://tenant.getunid.io) to setup an account.

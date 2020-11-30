@@ -15,7 +15,7 @@ module.exports = {
       }
     ],
     sidebarConfig: {
-      forcedNavOrder: ["/intro", "/unid", "/wallet", "/rp", "/schemas", "/tutorial"],
+      forcedNavOrder: ["/intro", "/unid", "/wallet", "/server", "/schemas", "/tutorial"],
       ignoreIndex: true
     }
   },

@@ -1,192 +1,26 @@
 ---
-title: "Quick Start"
+title: "Getting Started with CLI"
 description: "description"
 ---
 
-On this page, we get you up and running UNiD Core with UNiD CLI to understand the overall flow.
-
-If you don't already have an account and tenant setup, head over to [here](https://collabogate.com/products/index.html), then return to this page.
-
-## Build UNiD (Sidetree) and Configure
+On this page, we get you up and operating decentralized identity and verifiable credential through the UNiD CLI.
+<!--
+### Install
 
 ```bash
-$ git clone git@github.com:getunid/unid-react-native.git
-$ cd getunid
+git clone git@github.com:getunid/unid-cli.git
+cd unid-cli
+npm install
+npm run build
+sudo npm install -g .
 ```
 
-### Install UNiD's React Native SDK
+### DID Operations
 
-UNiD provides digital wallet capabilities such as DID operations, verifiable credentials, DID Comm, secure data storage and other features for your application. Add the `@unid/react-native-unid-sdk` dependency:
-
+**create new did**
 ```bash
-$ npm install --save @unid/react-native-unid-sdk
+unid generate payload
+unid register  (payload)
 ```
 
-And install UNiD CLI on /usr/local/bin.
-
-```bash
-$ cd ion
-$ npm install
-$ npm run build
-$ sudo npm install -g .
-```
-
-### Configure
-
-After you've completed setting up a tenant in UNiD, UNiD will give you a value which we call a TID or Tenant token ID. It looks like a standard URL, but it's just a representation of the configuration required by the UNiD SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the tenant identifier. And you can set up network type and environment here (Currently, UNiD SDK is compatible with bitcoin network).
-
-```bash
-$ unid init (tid: "https://examplePublicKey@o0.ingest.unid.io/0", type_network: "bitcoin", env_network: "testnet")
-```
-
-## Operation DID
-
-### Generate New DID
-
-```bash
-$ unid operation create
-```
-
-When you post a payload into Sidetree, it soon return HTTP 200 (success status) as follows.
-
-```js
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-{
-  "@context": "https://www.w3.org/ns/did-resolution/v1",
-  "didDocument": {
-    "id": "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-    "@context": [
-      "https://www.w3.org/ns/did/v1",
-      {
-        "@base": "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
-      }
-    ],
-    /// change example of service
-    "service": [
-      {
-        "id": "#serviceEndpointId123",
-        "type": "someType",
-        "serviceEndpoint": "https://www.url.com"
-      }
-    ],
-    "publicKey": [
-      {
-        "id": "#signingKey",
-        "controller": "",
-        "type": "EcdsaSecp256k1VerificationKey2019",
-        "publicKeyJwk": {
-          "kty": "EC",
-          "crv": "secp256k1",
-          "x": "IdNDV0Qv-Iw_dUYeF4gw29a0s-TRD3c84E7v2UlUqYE",
-          "y": "_6WvcTWyOvuAEXPdRB_IpJa7HkRUiSQ7FdXqeBDRj6M"
-        }
-      }
-    ],
-    "authentication": [
-      "#signingKey"
-    ]
-  },
-  "methodMetadata": {
-    "recoveryCommitment": "EiCWhklxteAU_Jr-l5Kh4fA2QRDGmrReQPDKf7A51BQn1Q",
-    "updateCommitment": "EiBuejn9rZnQaQQB1o0J5vIAAHEPaFcYKlYG-gNfNyVFvg"
-  }
-}
-```
-
-After a while, the queued operation will be periodically extracted and executed by Sidetree scheduler called **Batch Scheduler** and is submitted into Bitcoin blockchain. If you want to know more detailed the operating princile, please refer to [the specification](https://identity.foundation/sidetree/spec/).
-
-### Resolve the DID
-
-After the operation is successfully restored, you can resolve (query) the original DID.
-
-```bash
-$ unid operation get("did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg")
-```
-
-```js
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "@context": "https://www.w3.org/ns/did-resolution/v1",
-  "didDocument": {
-    "id": "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-    "@context": [
-      "https://www.w3.org/ns/did/v1",
-      {
-        "@base": "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
-      }
-    ],
-    /// change example of service
-    "service": [
-      {
-        "id": "#serviceEndpointId123",
-        "type": "someType",
-        "serviceEndpoint": "https://www.url.com"
-      }
-    ],
-    "publicKey": [
-      {
-        "id": "#signingKey",
-        "controller": "",
-        "type": "EcdsaSecp256k1VerificationKey2019",
-        "publicKeyJwk": {
-          "kty": "EC",
-          "crv": "secp256k1",
-          "x": "IdNDV0Qv-Iw_dUYeF4gw29a0s-TRD3c84E7v2UlUqYE",
-          "y": "_6WvcTWyOvuAEXPdRB_IpJa7HkRUiSQ7FdXqeBDRj6M"
-        }
-      }
-    ],
-    "authentication": [
-      "#signingKey"
-    ]
-  },
-  "methodMetadata": {
-    "recoveryCommitment": "EiCWhklxteAU_Jr-l5Kh4fA2QRDGmrReQPDKf7A51BQn1Q",
-    "updateCommitment": "EiBuejn9rZnQaQQB1o0J5vIAAHEPaFcYKlYG-gNfNyVFvg"
-  }
-}
-```
-
-## Verifiable Credential
-
-### Generate Credential of your address
-
-```bash
-$ unid vc create("type": "PostalAddress", "streetAddress": "123 Main St.", "addressLocality": "Blacksburg", "addressRegion": "VA", "postalCode": "24060", "addressCountry": "US")
-```
-
-You will get
-
-```js
-{
-  "@context": [
-    "https://www.w3.org/2018/credentials/v1",
-    "https://example.org/example-address-credential-context/v1"
-  ],
-  "id": "https:www.aws.s3.unid/tenant/credentials/000000001",
-  "type": "ExampleAddressCredential",
-  "credentialSubject": {
-    "id": "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-    "type": "Person",
-    "address": {
-      "type": "PostalAddress",
-      "streetAddress": "123 Main St."
-      "addressLocality": "Blacksburg",
-      "addressRegion": "VA",
-      "postalCode": "24060",
-      "addressCountry": "US"
-    }
-  },
-  "proof": {  }
-}
-```
-
-### Query Credential
-
-```bash
-$ unid get vc("https:www.aws.s3.unid/tenant/credentials/000000001")
-```
-
+-->

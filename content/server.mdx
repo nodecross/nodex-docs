@@ -1,11 +1,11 @@
 ---
-title: "RP SDKs"
+title: "Server SDKs"
 description: "description"
 ---
 
 ### Getting Started
 
-UNiD RP SDKs are used for embedding UNiD Core capabilities into relying parties such as exisiting applications and IoT devices that communicate with DID wallet applications.
+UNiD RP Server SDKs are used for embedding UNiD Core capabilities into exisiting application server in order to communicate with DID wallet.
 
 On this page, we get you up and running with Node SDK which offers easy-to-use javascript module for DID operations, VC operations, and DID Comm through the underlying UNiD Core APIs and Drivers.
 
@@ -19,9 +19,9 @@ If you don't already have an account and UNiD tenant established, head over to [
 
 ### Install
 
-Add the `@unid/node-unid-rp-sdk` dependency:
+Add the `@unid/node-unid-server-sdk` dependency:
 ```bash
-npm install --save @unid/node-unid-rp-sdk
+npm install --save @unid/node-unid-server-sdk
 ```
 
 ### Configure
@@ -29,7 +29,7 @@ npm install --save @unid/node-unid-rp-sdk
 After you've completed setting up a tenant and a relying party application in UNiD, UNiD will give you values: `client_id` and `client_secret`. These values are used for authorization when the RP communicates with the wallet application and SDS endpoints.
 
 ```js
-import { Unid } from "@unid/node-unid-rp-sdk";
+import { Unid } from "@unid/node-unid-server-sdk";
 
 Unid.init({
     client_id: "client_id_token",
@@ -39,7 +39,4 @@ Unid.init({
 ```
 
 
-
-<!-- The `unid-wizard` will try to add it to your `App.js`. -->
-
-Great! Now that you've completed setting up the RP SDK. You can step forward to [Generate New DID](./rp/1-did-operation).
+Great! Now that you've completed setting up the Node SDK. You can step forward to [Generate New DID](./server/1-did-operation).

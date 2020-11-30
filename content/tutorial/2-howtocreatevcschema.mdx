@@ -1,5 +1,5 @@
 ---
-title: "How to Create VC Schema"
+title: "Create New VC Schema"
 description: "serviceAccount credential schema"
 ---
 
@@ -9,68 +9,76 @@ Intro to create type extensions of credential subject and VCs.
 
 Generally, a user account for a web service is created with the following attributions.
 
-- name
-- email
-- gender
-- birthDate
-- telephone
-- address
+- Name
+- Email
+- Gender
+- BirthDate
+- Telephone
+- Address
 
-### Create a type extension of credential subject
-
-```js
-import * as Unid from "@unid/vc-unid-sdk";
-type ServiceAccountCredentialV1 = Unid.createCredentialType(
-    "@type": ["ServiceAccountPerson", "ServiceAccountOrganization"],
-    "name": Unid.getCredentialType(NameCredentialV1),
-    "birthDate": Unid.getCredentialType(BirthDateCredentialV1),
-    "gender": Unid.getCredentialType(GenderCredentialV1),
-    "image": Unid.getCredentialType(ImageCredentialV1),
-    "email": Unid.getCredentialType(EmailCredentialV1),
-    "telephone": Unid.getCredentialType(PhoneCredentialV1),
-    "address": Unid.getCredentialType(AddressCredentialV1)
-);
-```
-
-The type of credential can be referred in the same tenant network.
-
-error message
-
-### Create ServiceAccountCredentialV1
+### Create New Credential Type
 
 ```js
-import * as Unid from "@unid/vc-unid-sdk";
-ServiceAccountCredentialV1 = Unid.createCredential(
-    "@type": "ServiceAccountPerson",
-    "name": "John Smith",
-    "birthDate": "19801212",
-    "gender": "Male",
-    "image": "https://s3.eu-west-1.amazonaws.com/123456789",
-    "email": "example@collabogate.com",
-    "telephone": "+818033061234",
-    "addressCountry": "JP",
-    "addressLocality": "Tokyo",
-    "addressRegion": "Shibuya-ku",
-    "postalCode": "1500044",
-    "streetAddress": "5-5, Maruyama-cho"
-);
+import { Unid } from "@unid/node-unid-core-sdk";
+
+try{
+    var ServiceAccountCredentialV1 = Unid.createCredentialType({
+        "@type": ["ServiceAccountPersonV1", "ServiceAccountOrganizationV1"],
+        "name": Unid.getCredentialType(NameCredentialV1),
+        "birthDate": Unid.getCredentialType(BirthDateCredentialV1),
+        "gender": Unid.getCredentialType(GenderCredentialV1),
+        "image": Unid.getCredentialType(ImageCredentialV1),
+        "email": Unid.getCredentialType(EmailCredentialV1),
+        "telephone": Unid.getCredentialType(PhoneCredentialV1),
+        "address": Unid.getCredentialType(AddressCredentialV1)
+    });
+    console.log('complete', ServiceAccountCredentialV1)
+} catch(err){
+    console.err(err);
+};
 ```
 
-### Response
+### Create New VC as ServiceAccountCredentialV1
 
+```js
+import { Unid } from "@unid/node-unid-core-sdk";
+
+try{
+    var ServiceAccountCredentialV1 = Unid.createCredential<ServiceAccountCredentialV1>({
+        @type: "ServiceAccountPerson",
+        name: "John Smith",
+        birthDate: "19801212",
+        gender: "Male",
+        image: "https://s3.eu-west-1.amazonaws.com/123456789",
+        email: "example@collabogate.com",
+        telephone: "+818033061234",
+        addressCountry: "JP",
+        addressLocality: "Tokyo",
+        addressRegion: "Shibuya-ku",
+        postalCode: "1500044",
+        streetAddress: "5-5, Maruyama-cho"
+    });
+    console.log('complete', ServiceAccountCredentialV1)
+} catch(err){
+    console.log(err)
+};
+```
+
+
+**example**
 ```js
 {
     "@context": [
-        "https://docs.unid.plus/schemas",
+        "https://docs.getunid.io/schemas",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
+    id: "https://sds.getunid.io/example_tenant_id/v1",
     type: ["VerifiableCredential", "ServiceAccountCredentialV1"],
-    issuer: "https://example.com/issuer/0001",
+    issuer: "did:unid:test:issuer_123456789#keys-1",
     issuanceDate: "20201101T180000+0900",
     credentialSubject: {
         "@type": "ServiceAccountPerson",
-        "@id": "did:unid:test:example1234#keys-1",
+        "@id": "did:unid:test:123456789#keys-1",
         name: "Masayoshi Mitsui",
         birthDate: "19801212",
         gender: "Male",
@@ -127,7 +135,7 @@ A service account of a person.
         "type": "@type",
 
         "ServiceAccountCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/serviceAccount#ServiceAccountCredentialV1",
+            "@id": "https://docs.getunid.io/docs/2020/credentials/serviceAccount#ServiceAccountCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,
@@ -164,14 +172,7 @@ A service account of a person.
     }
 }
 ```
-
-
-
-
-
-
-
-
+<!--
 ## ResumeCredentialV1 Schema
 
 `ResumeCredentialV1` is a type extension of credential subject into VC.
@@ -387,3 +388,4 @@ Organizations that the person is an alumni of.
     }
 }
 ```
+-->
