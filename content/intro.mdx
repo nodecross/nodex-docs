@@ -7,25 +7,30 @@ description: "Introduction"
 ### Digital Trust
 
 Our society has been established by reducing that complexity through trust.
-According [Rachel Botsman](https://www.ted.com/speakers/rachel_botsman), trust has been through three significant chapters in human history:
+Trust has been through three significant chapters in human history:
+
 > We’ve moved from **local trust**, where it was based on one-to-one interactions and personal reputation.
 > Next came **institutional trust**: when we went through mass urbanization and wanted to trade internationally, this local trust wasn’t scalable. So we invented institutions and institutional mechanisms.
 > But over the years the flow of trust between people has dwindled while institutions have become bureaucratic, centralized and opaque.
-> Technology is now taking that institutional power and distributing it, bringing us in to the third phase she called **distributed trust**.
+> Technology is now taking that institutional power and distributing it, bringing us in to the third phase **distributed trust** according to Rachel Botsman.
 
 > ![trust chapters](./assets/trust-history.png)
 
-We believe that it is necessary to implement a distributed trust model on web infrastructure in order to scale **digital trust** to the global demand of web system and the Internet.
+The institutional trust system was not designed for a digital age, and we believe that it is necessary to implement a distributed trust system on web infrastructure in order to scale digital trust to the global demand of web system and the Internet today.
 
-### Problem
+### Issues of Digital Trust
 
-In many parts of the world, the rapid acceleration of digital transformation by COVID-19 has brought to light a number of issues of current web system. If digital transformation is promoted on the current web infrastructure, digital identity will be siled for each product or service, and as a result, the customer experience will become rather complicated. As a simple example, customers need to keep managing passwords for each service, and keep providing personal information for each service over and over again.
+On current web system, whenever using any digital service, we are always required to create accounts and store a small part of our digital identity in the databases of these service providers. Consequently, digital identities become fragmented and locked into numerous different databases controlled by multiple external third parties. It takes away the control of identity and exposes us to privacy risks and user experiences become complicated.
 
-In order to build digital trust with their customers, service providers also need to collect and keep managing unnecessary personal information that can not be used for their business. As you know, the security cost and responsibility to protect privacy are increasing year by year.
+This issues are not only for individuals but also for service providers. The service providers must continue to pay operational costs for inefficient data processing and verification due to data silos. In addition, as long as they retain personal data, they must continue to pay for privacy protection and srcurity cost, which have become increasingly responsible in recent year.
 
-These problems are difficult to solve in each system or application bacause current web infrastructure do not have sufficient functionality as to whether the data transferred is reliable in human social activity.
+These problems are difficult to solve in each system or application bacause current web system do not have sufficient functionality as to whether the data transferred is reliable in human social activity.
 
-At [UNiD](./unid), we are focused on building **digital trust platform** that enable to connect people, machines and services with **digital trust** on common standards for security, privacy, and transparency.
+### Rethink Digital Trust
+
+In many parts of the world, the rapid acceleration of digital transformation by COVID-19 has brought to light a number of issues of trust on current web system. At the moment, we rethink digital trust platform that our society needs in the future.
+
+At [UNiD](./unid), we are focused on building **digital trust platform** that enable to connect people, machines and services with digital trust on common standards for security, privacy, and transparency.
 To achive this goal, it's important first step to establish a globally unique identity that can be controlled directly by a user without the need for centralized authorities or trusted third parties.
 
 ### Decentralized Identity
@@ -43,24 +48,22 @@ Any subject (e.g., a person, organization, thing, data model, abstract entity, e
 
 ### Use Cases
 
-**Intro digital student wallet as a use case**
+**Intro to a digital student wallet**
 
-In the simplest use case, this is a demonstration of passwordless login and credential issuance
-when students apply for transcripts to their university to understand the roles in DID ecosystem and how to establish **digital trust**.
+In order to understand the roles in DID ecosystem and how to establish **digital trust**, we introduce a demonstration of a digital student wallet built on the top of UNiD platform. This demonstration shows passwordless login and credential issuance when students apply for transcripts to their university.
 
 1. A student goes to an university website and read a QR code for login through his digital student wallet.
-He can easily login and access the website with his DID without any password in a secure manner.
-The benefits for a service provider (in this case, it may be a vendor or university) can eliminate the need to hold personal information in "HoneyPot" for bad actors, which has become a liability in a recent years.
+A student can easily login to the website without any password in a secure manner. A service provider (in this case, it may be a vendor or university) can provide a seamlessly onboarding process to students without retaining personal data in their database.
 
 > ![UNiD DID Authentication](./assets/unid-login.png)
 
-2. A student goes to apply transcript page and read a QR code again. The web application issues a transcript with university digital signature and send the credential to a student. Students can bring a verifiable credential that can be used to prove his educational history to other entities quickly.
+2. A student goes to transcript apply page and read a QR code for a request. The web application issues a transcript with the university's signature and send the credential of transcript to a student. Students can bring and present the credential to other parties as proof of his educational history.
 
 > ![Use Case Student Wallet](./assets/student-credential.png)
 
-This sort of credentials can be presented to apply a job to enterprises. The enterprise as a verifier can cryptographically prove that the credential is correct without contacting the issuer. That begins establishing **digital trust** around that DIDs by using it in their digital interactions. Through the [UNiD SDKs](./unid/3-extensions), our platform offers convenient and easy-to-access application logic to build solutions and integrate with digital services that exist out of our platform.
+This sort of credentials can be presented to enterprises for applying a job. The enterprise as a verifier can cryptographically verify that the credential is correct without contacting the issuer. That begins establishing **digital trust** around that DIDs by using it in their digital interactions. Through the [UNiD SDKs](./unid/3-extensions), our platform offers convenient and easy-to-access application logic to build such solutions and integrate with digital services that exist out of our platform.
 
-**wide variety of use cases**
+**Wide variety of use cases**
 
 Our platform is composed of a collection of microservices, allowing developers to combine pluggable and exntensible modular for flexibility and freedom of choice without compromising security for a wide variety of applications for:
 
