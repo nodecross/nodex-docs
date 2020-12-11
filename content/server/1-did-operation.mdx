@@ -7,13 +7,27 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 
 ### Generate New DID
 
-With the Node SDK, you can easily generate key pairs using SECP256K1 with ECDSA algorithm and the payload required for DID register operation at RP's server side.
+With the Node SDK, you can easily generate a master seed and key pairs using SECP256K1 with ECDSA algorithm and the payload required for DID register operation at RP's server side.
 
 ```js
 import { Unid } from "@unid/node-unid-server-sdk";
 
 var payload = Unid.createPayload();
 Unid.registerDid(payload);
+```
+
+After generating a master seed, it can display the seed phrases for validation. Once the server validates the seed phrases, they cannot be displayed again.
+
+```js
+import { Unid } from "@unid/node-unid-server-sdk";
+
+var seed_phrases = DID.getSeedPhrases()
+try{
+    var result = DID.verifySeedPhrase(seed_phrases);
+    console.log('complete', result)
+} catch(err){
+    console.err(err);
+};
 ```
 
 After a while, the queued operation will be periodically extracted and executed by [sidetree batch scheduler]() and is submitted into the underlying ledger system. If you want to know more detailed the operating principle, please refer to [the specification](https://identity.foundation/sidetree/spec/).
