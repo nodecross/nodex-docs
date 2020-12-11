@@ -20,14 +20,21 @@ var payload = Unid.createPayload();
 Unid.registerDid(payload);
 ```
 
-After generating a master seed, it can display the seed phrases for validation. Once the user validates the seed phrases, they cannot be displayed again.
+After generating a master seed, it can display the seed phrases for validation. Once the server validates the seed phrases, they cannot be displayed again.
 
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { Unid } from "@unid/node-unid-server-sdk";
 
 var seed_phrases = DID.getSeedPhrases()
+```
+
+```js
+import { Unid } from "@unid/node-unid-server-sdk";
+
 try{
-    var result = DID.verifySeedPhrase(seed_phrases);
+    var result = DID.verifySeedPhrase([
+		"example1", "example2",...,"example24"
+	]);
     console.log('complete', result)
 } catch(err){
     console.err(err);

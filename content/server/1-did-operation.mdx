@@ -22,8 +22,15 @@ After generating a master seed, it can display the seed phrases for validation. 
 import { Unid } from "@unid/node-unid-server-sdk";
 
 var seed_phrases = DID.getSeedPhrases()
+```
+
+```js
+import { Unid } from "@unid/node-unid-server-sdk";
+
 try{
-    var result = DID.verifySeedPhrase(seed_phrases);
+    var result = DID.verifySeedPhrase([
+		"example1", "example2",...,"example24"
+	]);
     console.log('complete', result)
 } catch(err){
     console.err(err);
