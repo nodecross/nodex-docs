@@ -7,39 +7,62 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 
 ### Generate New DID
 
-<!-- UNiD Core generates 3 pairs of keys: update key, recovery key, and singing key using [SECP256K1](https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/) with ECDSA algorithm with a default setting (the signing key is used for DID user to generate signature and other keys are used for managing this DID). A public key document is generated with a json value and it will be canonicalized by [JCS](https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html).
-
-UNiD Core computes hash from the public key document. The hash with [Multihash](https://multiformats.io/multihash/) format and SHA2-256 (which code is 18 or 0x12) is used for generating hashes of protocol-related values. And then, it generates the base64-encoded entity including these hash values and document are submitted to [Sidetree](https://github.com/decentralized-identity/sidetree) by HTTP POST method. -->
-
 With the SDK, you can easily generate a master seed with BIP39 and key pairs using SECP256K1 with ECDSA algorithm and the payload required for DID register operation.
 
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD, KeyRingType } from "@unid/react-native-unid-wallet-sdk";
 
-var payload = Unid.createPayload();
-Unid.registerDid(payload);
+(async () => {
+	try{
+	    const DID = await UNiD.createDid(
+			// Select KeyRingType Option. Default length is 24.
+			KeyRingType.Mnemonic,
+			{ length: 24 }
+		);
+	    console.log("complete creating a DID:", DID.getIdentifier());
+	} catch(err){
+	    console.err(err);
+	};
+})()
 ```
 
-After generating a master seed, it can display the seed phrases for validation. Once the server validates the seed phrases, they cannot be displayed again.
+After generating a master seed, it can get the seed phrase, which is a list of words which store all the information needed to recover the master seed. Once the server validates the seed phrase, it cannot be displayed again.
 
 ```js
-import { Unid } from "@unid/node-unid-server-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-var seed_phrases = DID.getSeedPhrases()
+(async () => {
+	try{
+		// load DID object (DID object has methods)
+	    const DID = UNiD.loadDid({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+		});
+	    const seedPhrase = await DID.getSeedPhrase();
+	    console.log("complete getting the seed phrase:", seedPhrase);
+	} catch(err){
+		console.log(err);
+	}
+})()
 ```
 
 ```js
-import { Unid } from "@unid/node-unid-server-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-try{
-    var result = DID.verifySeedPhrase([
-		"example1", "example2",...,"example24"
-	]);
-    console.log('complete', result)
-} catch(err){
-    console.err(err);
-};
+(async () => {
+	try{
+		const DID = await UNiD.loadDid({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+		});
+	    const result = await DID.verifySeedPhrase([
+			"word_1", "word_2",...,"word_24"
+		]);
+	    console.log("complete verifying the seed phrase:", result)
+	} catch(err){
+		console.err(err);
+	};
+})()
 ```
+
 
 After a while, the queued operation will be periodically extracted and executed by a Batch Txn Writer and is submitted into the underlying ledger system. If you want to know more detailed the operating principle, please refer to [the specification](https://identity.foundation/sidetree/spec/).
 
@@ -49,14 +72,34 @@ After a while, the queued operation will be periodically extracted and executed 
 After the register operation is successfully processed in the underlying distributed ledger network, you can resolve the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-Unid.getDidDocument({
-	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
-});
+(async () => {
+	try{
+		const didDocument = await UNiD.getDidDocument({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+		});
+		console.log("Complete getting the DID Document:", didDocument);
+	} catch(err){
+		console.log(err);
+	}
+})()
 ```
 
-<!-- 唯一解けてないこと：holderがDID生成後にbatch処理されるまでの間、RPとAuthNすることができない。RP側で名前解決することができない。holder側のIF制御、署名から復元する。 -->
+If you have already created a DID instance, you can get the DID Document by the following method.
+
+```js
+import { Unid } from "@unid/react-native-unid-wallet-sdk";
+
+(async () => {
+	try{
+	    const didDocument = await DID.getDidDocument();
+	    console.log("Complete getting the DID Document:", didDocument);
+	} catch(err){
+		console.log(err);
+	}
+})()
+```
 
 Great! Now that you've completed to create and register new DID. Next is to issue and exchange a verifiable credential. [VC Operations](./2-verifiable-credential).
 
@@ -65,94 +108,125 @@ Great! Now that you've completed to create and register new DID. Next is to issu
 
 Update DID document when adding, changing, and deleting public keys or service endpoints.
 
-<!-- `updateDidDocument` method need `action` and `updateCommitment` properties. -->
-
-<!-- ここはsidetreeをreferenceして書いてる。JwkなどはUNiD側で生成するなど。実装イメージはSDSのendpointが変わるなどで、mobile appのsettingsから変更してもらうなど。テナント依存のSDSのエンドポイントURLルールについて。 see : https://identity.foundation/sidetree/spec/#did-state-patches -->
-
 To add public keys:
 
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-Unid.updateDidDocument({
-	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-	action: "add-public-keys",
-	"publicKeys": [{
-    	"id": "key1",
-		"purposes": ["authentication"],
-		"type": "EcdsaSecp256k1VerificationKey2019",
-		"publicKeyJwk": {...}
-	}]
-});
+(async () => {
+	try{
+		const didDocument = await UNiD.updateDidDocument({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+			action: "add-public-keys",
+			"publicKeys": [{
+		    	"id": "key1",
+				"purposes": ["authentication"],
+				"type": "EcdsaSecp256k1VerificationKey2019",
+				"publicKeyJwk": {...}
+			}]
+		});
+		console.log("Complete adding public keys:", didDocument);
+	} catch(err){
+		console.log(err);
+	}
+})()
 ```
 
 To remove public keys:
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-Unid.updateDidDocument({
-	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-	action: "remove-public-keys",
-	"ids": ["key1", "key2"]
-});
+(async () => {
+	try{
+		const didDocument = await UNiD.updateDidDocument({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+			action: "remove-public-keys",
+			"ids": ["key1", "key2"]
+		});
+		console.log("Complete removing public keys:", didDocument);
+	} catch(err){
+		console.log(err);
+	}
+})()
 ```
 
 To add services:
 
 ```js
-import { Unid } from "@unid/react-native-unid-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-Unid.updateDidDocument({
-	did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-	action: "add-services",
-	"services": [{
-		"id": "sds2",
-		"type": "SecureDataStore",
-		"serviceEndpoint": "https://examplePublicKey@o0.ingest.sds.unid.plus/"
-	},
-	{
-		"id": "did-config",
-		"type": "LinkedDomains",
-		"serviceEndpoint": {
-			"origins": ["https://foo.com", "https://bar.com"]
-		}
-	}]
-});
+(async () => {
+	try{
+		const didDocument = await UNiD.updateDidDocument({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+			action: "add-services",
+			"services": [{
+				"id": "sds2",
+				"type": "SecureDataStore",
+				"serviceEndpoint": "https://examplePublicKey@o0.ingest.sds.unid.plus/"
+			},
+			{
+				"id": "did-config",
+				"type": "LinkedDomains",
+				"serviceEndpoint": {
+					"origins": ["https://foo.com", "https://bar.com"]
+				}
+			}]
+		});
+		console.log("Complete adding service endpoints:", didDocument);
+	} catch(err){
+		console.log(err);
+	}
+})()
 ```
 
 To remove services:
 ```js
-import { Unid } from "@unid/react-native-unid-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-Unid.updateDidDocument({
-	did: "did:ion:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
-	action: "remove-services",
-	"ids": ["sds1", "sds2"]
-});
+(async () => {
+	try{
+		const didDocument = await UNiD.updateDidDocument({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg",
+			action: "remove-services",
+			"ids": ["sds1", "sds2"]
+		});
+		console.log("Complete removing service endpoints:", didDocument);
+	} catch(err){
+		console.log(err);
+	}
+})()
 ```
 
 To replace:
 ```js
-import { Unid } from "@unid/react-native-unid-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-Unid.updateDidDocument({
-  "action": "replace",
-  "document": {
-    "publicKeys": [
-      {
-        "id": "key2",
-        "purposes": ["authentication"],
-        "type": "EcdsaSecp256k1VerificationKey2019",
-        "publicKeyJwk": {...}
-      }
-    ],
-    "services": [
-      {
-        "id": "sds3",
-        "type": "SecureDataStore",
-        "serviceEndpoint": "http://hub.my-personal-server.com"
-      }
-    ]
-  }
-});
+(async () => {
+	try{
+		const didDocument = await UNiD.updateDidDocument({
+		  "action": "replace",
+		  "document": {
+		    "publicKeys": [
+		      {
+		        "id": "key2",
+		        "purposes": ["authentication"],
+		        "type": "EcdsaSecp256k1VerificationKey2019",
+		        "publicKeyJwk": {...}
+		      }
+		    ],
+		    "services": [
+		      {
+		        "id": "sds3",
+		        "type": "SecureDataStore",
+		        "serviceEndpoint": "http://hub.my-personal-server.com"
+		      }
+		    ]
+		  }
+		});
+		console.log("Complete removing service endpoints:", didDocument);
+	} catch(err){
+		console.log(err);
+	}
+})()
 ```
