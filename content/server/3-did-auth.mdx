@@ -20,33 +20,44 @@ In step 2 of the diagram, the application server creates a DID AuthN request sig
 
 **DID.generateAuthenticationRequest()**
 ```js
-import { Unid } from "@unid/node-unid-server-sdk";
+import { UNiD } from "@unid/node-unid-server-sdk";
 
-try {
-    var result = async DID.generateAuthenticationRequest({
-        required_types: ["AddressCredentialV1", "NameCredentialV1", "EmailCredentialV1"],
-        optional_types: ["GenderCredentialV1"]
-    });
-    console.log('success', result)
-} catch err(err){
-    console.err(err);
-};
+(async () => {
+    try {
+        const result = await DID.generateAuthenticationRequest({
+            requiredCredentialTypes: [
+                "AddressCredentialV1",
+                "NameCredentialV1",
+                "EmailCredentialV1"
+            ],
+            optionalCredentialTypes: [
+                "GenderCredentialV1"
+            ]
+        });
+        console.log("Complete generating DID AuthN Request", result);
+    } catch err(err){
+        console.err(err);
+    };
+})()
 ```
 
 ### Validate AuthN Response
 
 In step 9 of the diagram, the application server receives an authN response from the identity wallet. The application server queries for the wallet's DID document using a Universal Resolver and verifies the signature with the wallet's public key.
 
-**Unid.validateAuthenticationResponse()**
+**UNiD.validateAuthenticationResponse()**
 ```js
-import { Unid } from "@unid/node-unid-server-sdk";
+import { UNiD } from "@unid/node-unid-server-sdk";
 
-try {
-    var result = async Unid.validateAuthenticationRequest(applicationDid);
-    console.log('validated', result);
-} catch err(err){
-    console.err(err);
-};
+(async () => {
+    try {
+        // DID AuthN Response with walletDid
+        const result = await UNiD.validateAuthenticationRequest(walletDid);
+        console.log("Complete validating DID AuthN Request", result);
+    } catch err(err){
+        console.err(err);
+    };
+})()
 ```
 
 If the required parameter or authorization code is not included in the response, an error will occur and the authentication process will be interrupted.

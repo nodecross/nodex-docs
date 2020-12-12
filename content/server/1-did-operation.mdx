@@ -34,7 +34,7 @@ import { UNiD } from "@unid/node-unid-server-sdk";
 (async () => {
     try{
     	// load DID object (DID object has methods)
-        const DID = UNiD.loadDid({
+        const DID = await UNiD.loadDid({
     		did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
     	});
         const seedPhrase = await DID.getSeedPhrase();

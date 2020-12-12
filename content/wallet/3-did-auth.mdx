@@ -18,16 +18,19 @@ The below diagram illustrate the sign-in flow and steps taken to verify a user t
 
 In step 5 of the diagram, the wallet receives an authN request from the RP. The wallet queries for the RP's DID document using a Universal Resolver and verifies the signature with the RP's public key.
 
-**Unid.validateAuthenticationRequest()**
+**UNiD.validateAuthenticationRequest()**
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-try {
-    var result = async Unid.validateAuthenticationRequest(applicationDid);
-    console.log('validated', result);
-} catch err(err){
-    console.err(err);
-};
+(async () => {
+    try {
+        // DID AuthN Request with applicationDid
+        const result = await UNiD.validateAuthenticationRequest(applicationDid);
+        console.log("Complete validating DID AuthN Request", result);
+    } catch err(err){
+        console.err(err);
+    };
+})()
 ```
 
 ### Generate DID AuthN Response
@@ -36,16 +39,21 @@ In step 6 of the diagram, the wallet creates a DID AuthN response signed by the 
 
 **DID.generateAuthenticationResponse()**
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
-try {
-    var result = async DID.generateAuthenticationResponse({
-        requested_params: presentation
-    });
-    console.log('success', result)
-} catch err(err){
-    console.err(err);
-};
+(async () => {
+    try {
+        const DID = await UNiD.loadDid({
+			did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+		});
+        const result = await DID.generateAuthenticationResponse({
+            requestedPresentation: presentation
+        });
+        console.log("Complete generating DID AuthN Response", result);
+    } catch err(err){
+        console.err(err);
+    };
+})()
 ```
 
 <!--
