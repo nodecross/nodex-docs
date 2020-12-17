@@ -3,13 +3,11 @@ title: "Mobile Wallet"
 description: "description"
 ---
 
-On this section, we introduce UNiD SDKs for building a wallet which provides storage of cryptographic keys and secrets with mobile devices as an agent. At the moment, we support React Native SDKs.
+On this page, we get you up and running with UNiD SDK, so that it will build a wallet which provides storage of cryptographic keys, credentials, and secrets on a mobile device. At the moment, we support React Native SDK.
 
 ### React Native
 
-UNiD React Native SDKs offer easy-to-use javascript module for DID operations, VC operations, and DID communications through the underlying UNiD Core APIs and Drivers.
-
-Here, we get you up and running with React Native SDKs for embedding wallet capabilities into mobile application.
+UNiD React Native SDK offers easy-to-use javascript module for embedding identity wallet capabilities such as DID operations, VC operations, and DID communications through the underlying UNiD Core APIs and Drivers.
 
 **Prerequisites**
 
@@ -28,7 +26,7 @@ npm install --save @unid/react-native-sdk
 
 ### Linking
 
-Since UNiD wallet SDKs also support a local authentication and key management at OS native layer, we need to link the SDK to your native projects.
+Since our SDKs also support a local authentication and key management at OS native layer, we need to link the SDK to your native projects.
 
 Above `react-native >= 0.60` you need to do:
 
@@ -68,6 +66,4 @@ Unid.init({
 });
 ```
 
-<!-- The `unid-wizard` will try to add it to your `App.js`. -->
-
-Great! Now that you've completed setting up the wallet SDK. You can step forward to [Generate New DID](./wallet/1-did-operation).
+Great! Now that you've completed setting up React Native SDK. You can step forward to [Generate New DID](../wallet/1-did-operation).
