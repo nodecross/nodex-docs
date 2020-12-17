@@ -10,7 +10,7 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 With UNiD Node SDK, you can easily generate key pairs and register a DID on UNiD network. First, you can select a `KeyRingType` which supports several methods for managing key pairs. Here, we introduce the method of generating a binary seed from a seed phrase with BIP39, and generating multiple key pairs using ecc-secp256k1 with BIP32. Finally, the method computes hash from the public keys and objects and register the hash on UNiD network. Click here for more info.
 
 ```ts
-import { UNiD, KeyRingType } from '@unid/node-unid-server-sdk';
+import { UNiD, KeyRingType } from '@unid/nodejs-sdk';
 
 (async () => {
 	try{
@@ -30,7 +30,7 @@ import { UNiD, KeyRingType } from '@unid/node-unid-server-sdk';
 After generating a binary seed, you can get a seed phrase which enables to recover a binary seed and key pairs. Once you have verified a seed phrase, you will never be able to get it again. When verifying a seed phrase, it must be placed correctly in the same order as when the phrase was obtained.
 
 ```ts
-import { UNiD } from '@unid/node-unid-server-sdk';
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
@@ -59,7 +59,7 @@ After a while, the queued operation will be periodically extracted and executed 
 After generating a DID, you can resolve it to get a DID Document. UNiD Node SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```ts
-import { UNiD } from '@unid/node-unid-server-sdk';
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
 	try{
@@ -84,7 +84,7 @@ Update DID document when adding, changing, and deleting public keys or service e
 
 **To add public keys**
 ```ts
-import { UNiD } from '@unid/node-unid-server-sdk';
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
 	try{
@@ -110,7 +110,7 @@ import { UNiD } from '@unid/node-unid-server-sdk';
 
 **To remove public keys**
 ```ts
-import { UNiD } from '@unid/node-unid-server-sdk';
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
 	try{
@@ -131,7 +131,7 @@ import { UNiD } from '@unid/node-unid-server-sdk';
 
 **To add services**
 ```ts
-import { UNiD } from '@unid/node-unid-server-sdk';
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
 	try{
@@ -163,7 +163,7 @@ import { UNiD } from '@unid/node-unid-server-sdk';
 
 **To remove services**
 ```ts
-import { UNiD } from '@unid/node-unid-server-sdk';
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
 	try{
@@ -184,7 +184,7 @@ import { UNiD } from '@unid/node-unid-server-sdk';
 
 **To replace**
 ```ts
-import { UNiD } from '@unid/node-unid-server-sdk';
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
 	try{

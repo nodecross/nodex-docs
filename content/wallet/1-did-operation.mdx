@@ -10,7 +10,7 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 With the SDK, you can easily generate a master seed with BIP39 and key pairs using SECP256K1 with ECDSA algorithm and the payload required for DID register operation.
 
 ```js
-import { UNiD, KeyRingType } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD, KeyRingType } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -29,7 +29,7 @@ import { UNiD, KeyRingType } from "@unid/react-native-unid-wallet-sdk";
 After generating a master seed, it can get the seed phrase, which is a list of words which store all the information needed to recover the master seed. Once the server validates the seed phrase, it cannot be displayed again.
 
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -46,7 +46,7 @@ import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 ```
 
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -72,7 +72,7 @@ After a while, the queued operation will be periodically extracted and executed 
 After the register operation is successfully processed in the underlying distributed ledger network, you can resolve the original DID. UNiD SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -89,7 +89,7 @@ import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 If you have already created a DID instance, you can get the DID Document by the following method.
 
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { Unid } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -111,7 +111,7 @@ Update DID document when adding, changing, and deleting public keys or service e
 To add public keys:
 
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -134,7 +134,7 @@ import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
 To remove public keys:
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -153,7 +153,7 @@ import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 To add services:
 
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -182,7 +182,7 @@ import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
 To remove services:
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{
@@ -200,7 +200,7 @@ import { UNiD } from "@unid/react-native-unid-wallet-sdk";
 
 To replace:
 ```js
-import { UNiD } from "@unid/react-native-unid-wallet-sdk";
+import { UNiD } from "@unid/react-native-sdk";
 
 (async () => {
 	try{

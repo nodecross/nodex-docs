@@ -1,9 +1,11 @@
 ---
-title: "Server SDKs"
+title: "Server Wallet"
 description: "description"
 ---
 
-### Getting Started
+On this section, we introduce UNiD SDKs for building a wallet which provides storage of cryptographic keys and secrets with cloud servers. It is often implemented on an existing server to communicate with another identity wallet, such as authenticating or issuing credentials. At the moment, we support Node.js SDKs.
+
+### Node.js
 
 UNiD RP Server SDKs are used for embedding UNiD Core capabilities into exisiting application server in order to communicate with DID wallet.
 
@@ -19,9 +21,9 @@ If you don't already have an account and UNiD tenant established, head over to [
 
 ### Install
 
-Add the `@unid/node-unid-server-sdk` dependency:
+Add the `@unid/nodejs-sdk` dependency:
 ```bash
-npm install --save @unid/node-unid-server-sdk
+npm install --save @unid/nodejs-sdk
 ```
 
 Please install and Set up MongoDB to store KeyRing.
@@ -31,7 +33,7 @@ Please install and Set up MongoDB to store KeyRing.
 After you've completed setting up a tenant and a relying party application in UNiD, UNiD will give you values: `client_id` and `client_secret`. These values are used for authorization when the RP communicates with the wallet application and SDS endpoints.
 
 ```js
-import { Unid } from "@unid/node-unid-server-sdk";
+import { Unid } from "@unid/nodejs-sdk";
 
 Unid.init({
     client_id: "client_id_token",

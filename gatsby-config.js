@@ -62,6 +62,14 @@ module.exports = {
                 protocol: "https",
                 hostname: "docs.getunid.io"
             },
+        },
+        {
+            resolve: "gatsby-plugin-react-svg",
+            options: {
+                rule: {
+                  include: /assets/
+                }
+            }
         }
     ]
 };

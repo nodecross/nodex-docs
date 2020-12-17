@@ -1,13 +1,15 @@
 ---
-title: "Wallet SDKs"
+title: "Mobile Wallet"
 description: "description"
 ---
 
-### Getting Started
+On this section, we introduce UNiD SDKs for building a wallet which provides storage of cryptographic keys and secrets with mobile devices as an agent. At the moment, we support React Native SDKs.
 
-UNiD Wallet SDKs offer easy-to-use javascript module for DID operations, VC operations, and DID Comm through the underlying UNiD Core APIs and Drivers.
+### React Native
 
-On this page, we get you up and running with React Native SDK for embedding these capabilities into mobile wallet application.
+UNiD React Native SDKs offer easy-to-use javascript module for DID operations, VC operations, and DID communications through the underlying UNiD Core APIs and Drivers.
+
+Here, we get you up and running with React Native SDKs for embedding wallet capabilities into mobile application.
 
 **Prerequisites**
 
@@ -19,9 +21,9 @@ If you don't already have an account and UNiD tenant established, head over to [
 
 ### Install
 
-Add the `@unid/react-native-unid-wallet-sdk` dependency:
+Add the `@unid/react-native-sdk` dependency:
 ```bash
-npm install --save @unid/react-native-unid-wallet-sdk
+npm install --save @unid/react-native-sdk
 ```
 
 ### Linking
@@ -40,7 +42,7 @@ Since UNiD wallet SDKs support `auto-linking` and iOS relies on CocoaPods, you n
 If you are running a project with `react-native < 0.60` you sitll need to call `react-native link`.
 
 ```bash
-react-native link @unid/react-native-unid-wallet-sdk
+react-native link @unid/react-native-sdk
 ```
 The link step or the `unid-wizard` call with patch your project accordingly.
 The UNiD Wizard will guide you through the process of setting everything up correctly. This has to be done only once, and the files created can go into your version control system.
@@ -57,7 +59,7 @@ The following changes will be performed:
 After you've completed setting up a tenant and a wallet application in UNiD, UNiD will give you values: `client_id` and `client_secret`. These values are used for authorization when the wallet communicates with relying parties and SDS endpoints.
 
 ```js
-import { Unid } from "@unid/react-native-unid-wallet-sdk";
+import { Unid } from "@unid/react-native-sdk";
 
 Unid.init({
     client_id: "client_id_token",
