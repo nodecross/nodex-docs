@@ -25,71 +25,84 @@ Alumni of an organization.
 | employee | `Person` | true ||
 
 ### Person
+`hasOccupation`: The Person's occupation. For past professions, use Role for expressing dates.
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
 | "@type" | `Person` | true ||
-| hasOccupation | `EmployeeRole` | ture ||
+| hasOccupation | `Role`, `Occupation` | true ||
 
-### EmployeeRole
+### Occupation
 
 | Attribute | Type | Required | Notes |
 | ---- | ---- | ---- | ---- |
-| "@type" | `EmployeeRole` | true ||
-| roleName | `string` | ture ||
+| "@type" | `Occupation` | true ||
+| name | `string` | ture ||
+
+### Role
+
+| Attribute | Type | Required | Notes |
+| ---- | ---- | ---- | ---- |
+| "@type" | `Role` | true ||
 | startDate | `date` | true ||
 | endDate | `date` | false ||
 
 ### Example of AlumniOfCredentialV1
 
-```js
+```json
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/alumniOf",
+        "https://docs.getunid.io/docs/2020/credentials/alumniOf",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "AlumniOfCredentialV1"],
-    issuer: "did:unid:test:issuer1234#keys-1",
-    issuanceDate: "20201101T180000+0900",
-    credentialSubject: {
+    "id": "https://sds.getunid.io/api/v1",
+    "type": ["VerifiableCredential", "AlumniOfCredentialV1"],
+    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuanceDate": "20201101T180000+0900",
+    "credentialSubject": {
         "@type": "AlumniOfOrganization",
         "@id": "did:unid:test:example1234#keys-1",
-        alumniOf: [
+        "alumniOf": [
             {
                 "@type": "Organization",
-                name: "Example Consulting Group",
-                employee: {
+                "name": "Example Research Group",
+                "employee": {
                     "@type": "Person",
-                    hasOccupation: {
-                        "@type": "EmployeeRole",
-                        roleName: "internship",
-                        startDate: "201208",
-                        endDate: "201505"
+                    "hasOccupation": {
+                        "@type": "Role",
+                        "hasOccupation": {
+                            "@type": "Occupation",
+                            "name": "Patent examiner"
+                        },
+                        "startDate": "20080401",
+                        "endDate": "20120330"
                     },
-                }
+                },
             },
             {
                 "@type": "Organization",
-                name: "Ninja, Inc.",
-                employee: {
+                "name": "Ninja, Inc.",
+                "employee": {
                     "@type": "Person",
-                    hasOccupation: {
-                        "@type": "EmployeeRole",
-                        roleName: "Director",
-                        startDate: "201405",
-                        endDate: "201803"
-                    }
-                }
-            }
-        ]
+                    "hasOccupation": {
+                        "@type": "Role",
+                        "hasOccupation": {
+                            "@type": "Occupation",
+                            "name": "Product Manager"
+                        },
+                        "startDate": "20120401",
+                        "endDate": "20150330"
+                    },
+                },
+            },
+        ],
     },
-    proof: {
-        type: "EcdsaSecp256k1Signature2019",
-        created: "20201101T180000+0900",
-        proofPurpose: "assertionMethod",
-        verificationMethod: "did:unid:test:example1234#keys-1",
-        jws: "eyJhbGc..."
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "20201101T180000+0900",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "jws": "eyJhbGc..."
     }
 }
 ```
