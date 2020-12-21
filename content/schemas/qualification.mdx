@@ -43,58 +43,58 @@ Educational and occupational qualifications of a person.
 
 ### Example of QualificationCredentialV1
 
-```js
+```json
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/qualification",
+        "https://docs.getunid.io/docs/2020/credentials/qualification",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "QualificationCredentialV1"],
-    issuer: "did:unid:test:issuer1234#keys-1",
-    issuanceDate: "20201101T180000+0900",
-    credentialSubject: {
+    "id": "https://sds.getunid.io/api/v1/credentials/",
+    "type": ["VerifiableCredential", "QualificationCredentialV1"],
+    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuanceDate": "20201101T180000+0900",
+    "credentialSubject": {
         "@type": "QualificationPerson",
         "@id": "did:unid:test:example1234#keys-1",
-        hasCredential: [
+        "hasCredential": [
             {
                 "@type": "EducationalOccupationalCredential",
-                credentialCategory: "degree",
-                educationalLevel: "Bachelors of Science",
-                dateCreated: "201503",
-                about: {
+                "credentialCategory": "degree",
+                "educationalLevel": "Bachelors of Science",
+                "dateCreated": "201503",
+                "about": {
                     "@type": "EducationalOccupationalProgram",
-                    name: "Computer Engineering"
+                    "name": "Computer Engineering"
                 },
-                recognizedBy: {
+                "recognizedBy": {
                     "@type": "CollegeOrUniversity",
-                    name: "Example University"
+                    "name": "Example University"
                 }
             },
             {
                 "@type": "EducationalOccupationalCredential",
-                credentialCategory: "certificate",
-                dateCreated: "201503",
-                about: {
+                "credentialCategory": "certificate",
+                "dateCreated": "201503",
+                "about": {
                     "@type": "EducationalOccupationalProgram",
-                    name: "1st Grade Driver's License"
+                    "name": "1st Grade Driver's License"
                 }
             }
         ],
     },
-    proof: {
-        type: "EcdsaSecp256k1Signature2019",
-        created: "20201101T180000+0900",
-        proofPurpose: "assertionMethod",
-        verificationMethod: "did:unid:test:example1234#keys-1",
-        jws: "eyJhbGc..."
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "20201101T180000+0900",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "jws": "eyJhbGc..."
     }
 }
 ```
 
 ### qualification.jsonld
 
-```js
+```json
 {
     "@context": {
         "@version": 1.1,
@@ -104,7 +104,7 @@ Educational and occupational qualifications of a person.
         "type": "@type",
 
         "QualificationCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/qualification#QualificationCredentialV1",
+            "@id": "https://docs.getunid.io/docs/2020/credentials/qualification#QualificationCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,

@@ -19,29 +19,29 @@ Name of a person.
 
 ### Example of NameCredentialV1
 
-```js
+```json
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/name",
+        "https://docs.getunid.io/docs/2020/credentials/name",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "NameCredentialV1"],
-    issuer: "did:unid:test:issuer1234#keys-1",
-    issuanceDate: "20201101T180000+0900",
-    credentialSubject: {
+    "id": "https://sds.getunid.io/api/v1/credentials/",
+    "type": ["VerifiableCredential", "NameCredentialV1"],
+    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuanceDate": "20201101T180000+0900",
+    "credentialSubject": {
         "@type": "NamePerson",
         "@id": "did:unid:test:example1234#keys-1",
-        name: "Masayoshi Mitsui",
-        givenName: "Masayoshi",
-        familyName: "Mitsui"
+        "name": "John Smith",
+        "givenName": "John",
+        "familyName": "Smith"
     },
-    proof: {
-        type: "EcdsaSecp256k1Signature2019",
-        created: "20201101T180000+0900",
-        proofPurpose: "assertionMethod",
-        verificationMethod: "did:unid:test:example1234#keys-1",
-        jws: "eyJhbGc..."
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "20201101T180000+0900",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "jws": "eyJhbGc..."
     }
 }
 ```
@@ -58,34 +58,34 @@ Name of an organization.
 
 ### Example of NameCredentialV1
 
-```js
+```json
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/name",
+        "https://docs.getunid.io/docs/2020/credentials/name",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "NameCredentialV1"],
-    issuer: "did:unid:test:issuer1234#keys-1",
-    issuanceDate: "20201101T180000+0900",
-    credentialSubject: {
+    "id": "https://sds.getunid.io/api/v1/credentials/",
+    "type": ["VerifiableCredential", "NameCredentialV1"],
+    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuanceDate": "20201101T180000+0900",
+    "credentialSubject": {
         "@type": "NameOrganization",
         "@id": "did:unid:test:example1234#keys-1",
-        name: "CollaboGate Japan, Inc."
+        "name": "CollaboGate Japan, Inc."
     },
-    proof: {
-        type: "EcdsaSecp256k1Signature2019",
-        created: "20201101T180000+0900",
-        proofPurpose: "assertionMethod",
-        verificationMethod: "did:unid:test:example1234#keys-1",
-        jws: "eyJhbGc..."
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "20201101T180000+0900",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "jws": "eyJhbGc..."
     }
 }
 ```
 
 ### name.jsonld
 
-```js
+```json
 {
     "@context": {
         "@version": 1.1,
@@ -95,7 +95,7 @@ Name of an organization.
         "type": "@type",
 
         "NameCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/name#NameCredentialV1",
+            "@id": "https://docs.getunid.io/docs/2020/credentials/name#NameCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,

@@ -19,34 +19,34 @@ BirthDate of a person.
 
 ### Example of BirthDateCredentialV1
 
-```js
+```json
 {
     "@context": [
         "https://docs.getunid.io/docs/2020/credentials/birthDate",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "BirthDateCredentialV1"],
-    issuer: "did:unid:test:issuer1234#keys-1",
-    issuanceDate: "20201101T180000+0900",
-    credentialSubject: {
+    "id": "https://sds.getunid.io/api/v1/credentials/",
+    "type": ["VerifiableCredential", "BirthDateCredentialV1"],
+    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuanceDate": "20201101T180000+0900",
+    "credentialSubject": {
         "@type": "BirthDatePerson",
         "@id": "did:unid:test:example1234#keys-1",
-        birthDate: "19801212"
+        "birthDate": "19801212"
     },
-    proof: {
-        type: "EcdsaSecp256k1Signature2019",
-        created: "20201101T180000+0900",
-        proofPurpose: "assertionMethod",
-        verificationMethod: "did:unid:test:example1234#keys-1",
-        jws: "eyJhbGc..."
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "20201101T180000+0900",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "jws": "eyJhbGc..."
     }
 }
 ```
 
 ### birthDate.jsonld
 
-```js
+```json
 {
     "@context": {
         "@version": 1.1,
@@ -56,7 +56,7 @@ BirthDate of a person.
         "type": "@type",
 
         "BirthDateCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/birthDate#BirthDateCredentialV1",
+            "@id": "https://docs.getunid.io/docs/2020/credentials/birthDate#BirthDateCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,

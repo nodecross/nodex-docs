@@ -19,27 +19,27 @@ Email of a person.
 
 ### Example of EmailCredentialV1
 
-```js
+```json
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/email",
+        "https://docs.getunid.io/docs/2020/credentials/email",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "EmailCredentialV1"],
-    issuer: "did:unid:test:issuer1234#keys-1",
-    issuanceDate: "20201101T180000+0900",
-    credentialSubject: {
+    "id": "https://sds.getunid.io/api/v1/credentials/",
+    "type": ["VerifiableCredential", "EmailCredentialV1"],
+    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuanceDate": "20201101T180000+0900",
+    "credentialSubject": {
         "@type": "EmailPerson",
         "@id": "did:unid:test:example1234#keys-1",
-        email: "example@collabogate.com",
+        "email": "example@collabogate.com",
     },
-    proof: {
-        type: "EcdsaSecp256k1Signature2019",
-        created: "20201101T180000+0900",
-        proofPurpose: "assertionMethod",
-        verificationMethod: "did:unid:test:example1234#keys-1",
-        jws: "eyJhbGc..."
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "20201101T180000+0900",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "jws": "eyJhbGc..."
     }
 }
 ```
@@ -54,34 +54,34 @@ Email of an organization.
 
 ### Example of AddressCredentialV1
 
-```js
+```json
 {
     "@context": [
-        "https://docs.unid.plus/docs/2020/credentials/email",
+        "https://docs.getunid.io/docs/2020/credentials/email",
         "https://www.w3.org/2018/credentials/v1"
     ],
-    id: "https://sds.unid.plus/api/v1",
-    type: ["VerifiableCredential", "EmailCredentialV1"],
-    issuer: "did:unid:test:issuer1234#keys-1",
-    issuanceDate: "20201101T180000+0900",
-    credentialSubject: {
+    "id": "https://sds.getunid.io/api/v1/credentials/",
+    "type": ["VerifiableCredential", "EmailCredentialV1"],
+    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuanceDate": "20201101T180000+0900",
+    "credentialSubject": {
         "@type": "EmailOrganization",
         "@id": "did:unid:test:example1234#keys-1",
-        email: "example@collabogate.com",
+        "email": "example@collabogate.com",
     },
-    proof: {
-        type: "EcdsaSecp256k1Signature2019",
-        created: "20201101T180000+0900",
-        proofPurpose: "assertionMethod",
-        verificationMethod: "did:unid:test:example1234#keys-1",
-        jws: "eyJhbGc..."
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "20201101T180000+0900",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "jws": "eyJhbGc..."
     }
 }
 ```
 
 ### email.jsonld
 
-```js
+```json
 {
     "@context": {
         "@version": 1.1,
@@ -91,7 +91,7 @@ Email of an organization.
         "type": "@type",
 
         "EmailCredentialV1": {
-            "@id": "https://docs.unid.plus/docs/2020/credentials/email#EmailCredentialV1",
+            "@id": "https://docs.getunid.io/docs/2020/credentials/email#EmailCredentialV1",
             "@context": {
                 "@version": 1.1,
                 "@protected": true,
