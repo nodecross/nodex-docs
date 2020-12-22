@@ -14,9 +14,12 @@ UNiD React Native SDK offers easy-to-use javascript modules for embedding identi
 Before we begin, make sure you have the following installed:
 - `Node.js v10.x or later`
 - `npm v6.13.x or later`
+
+<!--
 - `React Native v`
 - `xcode (iOS)`
 - `iOS, iPad OS`
+-->
 
 If you don't already have an account and UNiD tenant established, head over to [here](https://docs.getunid.io), then return to this page.
 
@@ -39,8 +42,8 @@ npx @unid/wizard -i reactNative -p ios
 cd ios
 pod install
 ```
-Since UNiD wallet SDKs support `auto-linking` and iOS relies on CocoaPods, you need to install dependencies.
-If you are running a project with `react-native < 0.60` you sitll need to call `react-native link`.
+Since React Native SDKs support `auto-linking` and iOS relies on CocoaPods, you need to install dependencies.
+If you are running a project with `react-native < 0.60` you still need to call `react-native link`.
 
 ```bash
 react-native link @unid/react-native-sdk
@@ -51,8 +54,8 @@ The UNiD Wizard will guide you through the process of setting everything up cor
 The following changes will be performed:
 
 - add the unid-cocoa package for native local authentication and key management on iOS
-- configure Unid for the supplied DSN in your ***index.js/App.js*** files
-- store build credentials in ***ios/unid.properties*** and ***android/unid.properties***.
+- configure UNiD for the supplied DSN in your ***index.js/App.js*** files
+- store build credentials in ***ios/unid.properties***.
 
 
 ### Configure
