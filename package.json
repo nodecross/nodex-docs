@@ -2,7 +2,7 @@
     "name": "gatsby-theme-document-example",
     "author": "Code Bushi",
     "repository": "https://github.com/codebushi/gatsby-theme-document-example",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "scripts": {
         "release": "standard-version",
