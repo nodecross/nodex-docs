@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
+        "release": "standard-version",
         "develop": "gatsby develop",
         "build": "gatsby build",
         "deploy": "npm run -n \"-r dotenv/config\" && npm run build && gatsby-plugin-s3 deploy"
@@ -25,7 +26,8 @@
         "theme-ui": "^0.3.1"
     },
     "devDependencies": {
-        "gatsby-remark-code-titles": "^1.1.0"
+        "gatsby-remark-code-titles": "^1.1.0",
+        "standard-version": "^6.0.1"
     },
     "resolutions": {
         "theme-ui": "0.3.1",
