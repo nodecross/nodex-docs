@@ -1,40 +1,40 @@
 {
-  "name": "gatsby-starter-catalyst",
-  "description": "Gatsby Starter: Gatsby-Theme-Catalyst-Core, Gatsby-Theme-Catalyst-header-top, Gatsby-Theme-Catalyst-footer",
-  "version": "2.2.1",
-  "private": true,
-  "author": "Eric Howey <eric@erichowey.dev>",
-  "dependencies": {
-    "gatsby": "^2.24.58",
-    "gatsby-theme-catalyst-core": "^2.3.0",
-    "gatsby-theme-catalyst-footer": "^1.2.2",
-    "gatsby-theme-catalyst-header-side": "^1.3.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
-  "devDependencies": {
-    "prettier": "^2.0.5"
-  },
-  "keywords": [
-    "gatsby",
-    "gatsby-starter",
-    "gatsby-plugin"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "clean": "gatsby clean",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ehowey/gatsby-starter-catalyst-core"
-  },
-  "bugs": {
-    "url": "https://github.com/ehowey/gatsby-theme-catalyst/issues"
-  }
+    "name": "gatsby-theme-document-example",
+    "author": "Code Bushi",
+    "repository": "https://github.com/codebushi/gatsby-theme-document-example",
+    "version": "1.0.1",
+    "license": "MIT",
+    "scripts": {
+        "release": "standard-version",
+        "develop": "gatsby develop",
+        "build": "gatsby build",
+        "deploy": "npm run -n \"-r dotenv/config\" && npm run build && gatsby-plugin-s3 deploy"
+    },
+    "dependencies": {
+        "@theme-ui/prism": "^0.3.0",
+        "gatsby": "^2.23.3",
+        "gatsby-plugin-google-analytics": "^2.7.0",
+        "gatsby-plugin-react-svg": "^3.0.0",
+        "gatsby-plugin-s3": "^0.3.8",
+        "gatsby-remark-prismjs": "^3.6.0",
+        "gatsby-remark-prismjs-title": "^1.0.0",
+        "gatsby-theme-document": "1.0.10",
+        "gatsby-transformer-remark": "^2.9.2",
+        "prismjs": "^1.22.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "theme-ui": "^0.3.1"
+    },
+    "devDependencies": {
+        "gatsby-remark-code-titles": "^1.1.0",
+        "standard-version": "^6.0.1"
+    },
+    "resolutions": {
+        "theme-ui": "0.3.1",
+        "@theme-ui/color": "0.3.1",
+        "@theme-ui/match-media": "0.3.1",
+        "@theme-ui/preset-tailwind": "0.3.0",
+        "@theme-ui/prism": "0.3.0",
+        "gatsby-plugin-theme-ui": "0.3.0"
+    }
 }
