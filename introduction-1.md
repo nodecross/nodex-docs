@@ -18,7 +18,7 @@ In contrast to typical, federated identifiers, DIDs have been designed so that t
 
 The roles of the core actors and the relationships between them in an ecosystem where DIDs and verifiable credentials are expected to be useful.
 
-![DID Ecosystem Overview](.gitbook/assets/did-map.png)
+![DID Ecosystem Overview](.gitbook/assets/did-map%20%283%29.png)
 
 UNiD Platform provides the fundamental capabilities for operating DIDs, verifiable credentials, and store and exchange encrypted data in a privacy-preserving way.
 
@@ -32,7 +32,7 @@ In order to understand the roles in DID ecosystem and how to establish **digital
 
 A student can easily login to the website without any password in a secure manner. A service provider \(in this case, it may be a vendor or university\) can provide a seamlessly onboarding process to students without retaining personal data in their database.
 
-![UNiD DID Authentication](.gitbook/assets/demo-unid-login%20%281%29%20%281%29.png)
+![UNiD DID Authentication](.gitbook/assets/demo-unid-login%20%281%29%20%283%29%20%282%29.png)
 
 A student goes to transcript apply page and read a QR code for a request. The web application issues a transcript with the university's signature and send the credential of transcript to a student. Students can bring and present the credential to other parties as proof of his educational history.
 
