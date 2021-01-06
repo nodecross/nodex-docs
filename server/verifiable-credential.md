@@ -22,10 +22,10 @@ In UNiD, there are two main methods to submit VP to a wallet holder. The first o
 
 ## Create New VC
 
-Here, we introduce how to create VC. When you create and issue a VC, you need to explicitly specify the credential subject's DID. As a simple example, let's create an [AddressCredentialV1](https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/schemas/address/README.md) through the Node SDK.
+Here, we introduce how to create VC. When you create and issue a VC, you need to explicitly specify the credential subject's DID. As a simple example, let's create an [AddressCredentialV1](https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/schemas/address/README.md) through the Nodejs SDK.
 
-{% tabs %}
-{% tab title="TypeScript" %}
+**DID.createCredential\(\)**
+
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
@@ -66,8 +66,6 @@ import { UNiD } from "@unid/nodejs-sdk"
     }
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
 In UNiD network, we ensure interoperability by referring to the VC data schema defined [here](../schemas/). If you want to generate a new type of VC schema that is not in the UNiD VC schema list, you can request it. For more information, see [Request VC schema](https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/tutorial/3-howtorequestvcschema/README.md).
 
@@ -75,10 +73,10 @@ Great! Now that you've completed to create a verifiable credential with JSON-LD 
 
 ## Storage VC in SDS
 
-The application server can securely access authorized SDS endpoints. The verifiable credentials are always encrypted and stored in the SDS.
+The application server can securely access authorized SDS endpoints. The VCs are always encrypted and stored in the SDS in a privacy-preserving manner.
 
-{% tabs %}
-{% tab title="TypeScript" %}
+**DID.postCredential\(\)**
+
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
@@ -94,8 +92,6 @@ import { UNiD } from "@unid/nodejs-sdk"
     }
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
 UNiD SDS validate every requests to see if the wallet is authorized to access the SDS and if the request has been tampered with.
 
@@ -103,10 +99,10 @@ Great! Now that you've completed to storage a VC to SDS. Next is to get selectiv
 
 ## Composition of VC into VP
 
-The application server can fetch a newest record with `DID.getCredential()`. You can specify  `type`, `credentialSubjectDid`, `issuerDid`, and `issuance_date` .
+The application server can fetch the newest record using `type`, `credential_subject_did`, `issuer_did`, and `issuance_date` of the stored VC.
 
-{% tabs %}
-{% tab title="TypeScript" %}
+**DID.getCredential\(\)**
+
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
@@ -117,9 +113,8 @@ import { UNiD } from "@unid/nodejs-sdk"
         })
         const credential = await DID.getCredential({
             type: "AddressCredentialV1",
-            credentialSubjectDid: "did:unid:test:holder_123456789",
-            issuerDid: "did:unid:test:issuer_12345678#keys-1",
-            issuanceDate: {
+            issuer: "did:unid:test:issuer_12345678#keys-1",
+            issuance_date: {
                 begin: new Date('2020-01-01'),
                 end: new Date('2020-12-31')
             }
@@ -130,13 +125,11 @@ import { UNiD } from "@unid/nodejs-sdk"
     }
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
-The application server can fetch all applicable credentials with `DID.getCredentials()`.  You can specify  `type`, `credentialSubjectDid`, `issuerDid`, `issuance_date`, `limit`, and `page`.
+To get all applicable credentials with options of DID.getCredentials:
 
-{% tabs %}
-{% tab title="TypeScript" %}
+**DID.getCredentials\(\)**
+
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
@@ -148,7 +141,7 @@ import { UNiD } from "@unid/nodejs-sdk"
         const credentials = DID.getCredentials({
             type: "AddressCredentialV1",
             credentialSubjectDid: "did:unid:test:holder_123456789",
-            issuerDid: "did:unid:test:issuer_123456789",
+            issuer: "did:unid:test:issuer_123456789",
             issuance_date: {
                 begin: new Date("2020-01-01"),
                 end: new Date("2020-12-31")
@@ -162,13 +155,11 @@ import { UNiD } from "@unid/nodejs-sdk"
     }
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
-After getting credentials, you can package the verifiable credentials into the verifiable presentation with `DID.createPresentation()`.
+After getting credentials, they will be packaged in verifiable presentation with `VerifiablePresentation` type and the value of the proof property.
 
-{% tabs %}
-{% tab title="TypeScript" %}
+**DID.createPresentation\(\)**
+
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
@@ -184,105 +175,38 @@ import { UNiD } from "@unid/nodejs-sdk"
     }
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
-## Verify a VP
+## Verify VC from Holder
 
-This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the receive VP with `UNiD.validatePresentation()`.
+The application server verifies the digital signature of the VC from a holder. 
 
-{% tabs %}
-{% tab title="TypeScript" %}
+**UNiD.validatePresentation\(\)**
+
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.validatePresentation(presentation)
+        const result = await UNiD.validatePresentation(_presentation)
         console.log("Complete validating a presentation:", result)
     } catch (err) {
         console.error('ERROR:', err)
     }
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
-You will receive the following json object. `payload` is an array of verifiable credential, and `types` is an array of verifiable credential type. 
+**UNiD.validateCredential\(\)**
 
-{% tabs %}
-{% tab title="JSON" %}
-```javascript
-result = {
-  isValid: boolean,
-  metadata: {
-    issuer: string,
-    issuanceDate: Date,
-    ..
-  },
-  payload: Array<VC>,
-  types: Array<string>,
-}
-```
-{% endtab %}
-{% endtabs %}
-
-By specifying the credential type, you can retrieve the verifiable credential with `UNiD.AddressCredentialV1.filter()`.
-
-{% tabs %}
-{% tab title="TypeScript" %}
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
-        const vc = await UNiD.AddressCredentialV1.filter(result.payload)
-        console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
-    } catch (err) {
-        console.error('ERROR:', err)
-    }
-})()
-```
-{% endtab %}
-{% endtabs %}
-
-You can verify the signature of the retrieved verifiable credential with `UNiD.validateCredential()`.
-
-{% tabs %}
-{% tab title="TypeScript" %}
-```typescript
-import { UNiD } from "@unid/nodejs-sdk"
-
-(async () => {
-    try {
-        const result = await UNiD.validateCredential(vc)
+        const result = await UNiD.validateCredential(_credential)
         console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
     } catch (err) {
         console.error('ERROR:', err)
     }
 })()
 ```
-{% endtab %}
-{% endtabs %}
-
-You will receive the following json object.
-
-{% tabs %}
-{% tab title="JSON" %}
-```javascript
-result = {
-  isValid: boolean,
-  metadata: {
-    issuer: string,
-    issuanceDate: Date,
-    ..
-  },
-  payload: VC
-}
-
-// For example, get addressCountry from AddressCredentialV1
-// console.log(result.payload.address.addressCountry)
-```
-{% endtab %}
-{% endtabs %}
 

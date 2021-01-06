@@ -22,9 +22,7 @@ Here, we introduce how to create SIVC \(Self-Issued Verifiable Credential\) by t
 
 If it goes on like this, third parties can not trust the data claimed by users themselves. So, SIVC needs to be submitted to a trusted party for verification. After verification, third parties can trust the VC as long as they believe in the trusted party.
 
-Now let's create an [AddressCredentialV1](https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/schemas/address/README.md) through React Native SDKs.
-
-**DID.createCredential\(\)**
+Now let's create an `AddressCredentialV1` through React Native SDKs.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -72,9 +70,7 @@ Great! Now that you've completed to create a verifiable credential with JSON-LD 
 
 ## Storage VC in SDS
 
-The wallet can securely access authorized SDS endpoints. The VCs are always encrypted and stored in the SDS in a privacy-preserving manner.
-
-**DID.postCredential\(\)**
+The wallet can securely access authorized SDS endpoints. The verifiable credentials are always encrypted and stored in the SDS.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -102,9 +98,7 @@ Great! Now that you've completed to storage a VC to SDS. Next is to get selectiv
 
 ## Composition of VC into VP
 
-The wallet can fetch the newest record using `type`, `issuer_did`, and `issuance_date` of the stored VC.
-
-**DID.getCredential\(\)**
+The mobile wallet can fetch a newest record with `DID.getCredential()`. You can specify  `type`, `issuerDid`, and `issuanceDate`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -118,8 +112,8 @@ import { UNiD } from "@unid/react-native-sdk"
         })
         const credential = await DID.getCredential({
             type: "AddressCredentialV1",
-            issuer: "did:unid:test:issuer_12345678#keys-1",
-            issuance_date: {
+            issuerDid: "did:unid:test:issuer_12345678#keys-1",
+            issuanceDate: {
                 begin: new Date("2020-01-01"),
                 end: new Date("2020-12-31")
             }
@@ -133,9 +127,7 @@ import { UNiD } from "@unid/react-native-sdk"
 {% endtab %}
 {% endtabs %}
 
-To get all applicable credentials with options of DID.getCredentials:
-
-**DID.getCredentials\(\)**
+The mobile wallet can fetch all applicable credentials with `DID.getCredentials()`.  You can specify  `type`, `issuerDid`, `issuance_date`, `limit`, and `page`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -149,8 +141,8 @@ import { UNiD } from "@unid/react-native-sdk";
         })
         const credentials = DID.getCredentials({
             type: "AddressCredentialV1",
-            issuer: "did:unid:test:issuer_123456789",
-            issuance_date: {
+            issuerDid: "did:unid:test:issuer_123456789",
+            issuanceDate: {
                 begin: new Date("2020-01-01"),
                 end: new Date("2020-12-31")
             },
@@ -166,9 +158,7 @@ import { UNiD } from "@unid/react-native-sdk";
 {% endtab %}
 {% endtabs %}
 
-After getting credentials, they will be packaged in verifiable presentation with `VerifiablePresentation` type and the value of the proof property.
-
-**DID.createPresentation\(\)**
+After getting credentials, you can package the verifiable credentials into the verifiable presentation with `DID.createPresentation()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -196,9 +186,7 @@ There are two main methods to submit VP to a verifier. The first one is to inclu
 
 ## Verify VC from Issuer
 
-The wallet verifies the digital signature of the VC from an issuer.
-
-**UNiD.validatePresentation\(\)**
+This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the receive VP with `UNiD.validatePresentation()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -207,7 +195,7 @@ import { UNiD } from "@unid/react-native-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.validatePresentation(_presentation)
+        const result = await UNiD.validatePresentation(presentation)
         console.log("Complete validating a presentation:", result)
     } catch (err) {
         console.error('ERROR:', err)
@@ -217,7 +205,45 @@ import { UNiD } from "@unid/react-native-sdk"
 {% endtab %}
 {% endtabs %}
 
-**UNiD.validateCredential\(\)**
+You will receive the following json object. `payload` is an array of verifiable credential, and `types` is an array of verifiable credential type. 
+
+{% tabs %}
+{% tab title="JSON" %}
+```javascript
+result = {
+  isValid: boolean,
+  metadata: {
+    issuer: string,
+    issuanceDate: Date,
+    ..
+  },
+  payload: Array<VC>,
+  types: Array<string>,
+}
+```
+{% endtab %}
+{% endtabs %}
+
+By specifying the credential type, you can retrieve the verifiable credential with `UNiD.AddressCredentialV1.filter()`.
+
+{% tabs %}
+{% tab title="TypeScript" %}
+```typescript
+import { UNiD } from "@unid/nodejs-sdk"
+
+(async () => {
+    try {
+        const vc = await UNiD.AddressCredentialV1.filter(result.payload)
+        console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
+    } catch (err) {
+        console.error('ERROR:', err)
+    }
+})()
+```
+{% endtab %}
+{% endtabs %}
+
+You can verify the signature of the retrieved verifiable credential with `UNiD.validateCredential()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -226,12 +252,33 @@ import { UNiD } from "@unid/react-native-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.validateCredential(credential)
+        const result = await UNiD.validateCredential(vc)
         console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
     } catch (err) {
         console.error('ERROR:', err)
     }
 })()
+```
+{% endtab %}
+{% endtabs %}
+
+You will receive the following json object.
+
+{% tabs %}
+{% tab title="JSON" %}
+```javascript
+result = {
+  isValid: boolean,
+  metadata: {
+    issuer: string,
+    issuanceDate: Date,
+    ..
+  },
+  payload: VC
+}
+
+// For example, get addressCountry from AddressCredentialV1
+// console.log(result.payload.address.addressCountry)
 ```
 {% endtab %}
 {% endtabs %}

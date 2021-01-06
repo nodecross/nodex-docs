@@ -35,7 +35,7 @@ npm install --save @unid/react-native-sdk
 {% endtab %}
 {% endtabs %}
 
-## 🔗 Linking
+## Linking
 
 Since our SDKs also support a local authentication and key management at OS native layer, we need to link the SDK to your native projects.
 
@@ -66,7 +66,7 @@ The following changes will be performed:
 * configure UNiD for the supplied DSN in your `index.js/App.js` files
 * store build credentials in `ios/unid.properties`
 
-## ⚙ Configure
+## Configure
 
 After you've completed setting up a tenant and a wallet application in UNiD, UNiD will give you values: `client_id` and `client_secret`. These values are used for authorization when the wallet communicates with relying parties and SDS endpoints.
 
