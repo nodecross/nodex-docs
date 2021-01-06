@@ -11,7 +11,7 @@ BirthDate of a person.
 
 `BirthDateCredentialV1` is a type extension of credential subject into VC.
 
-## BirthDatePerson
+### BirthDatePerson
 
 BirthDate of a person.
 
@@ -20,7 +20,7 @@ BirthDate of a person.
 | "@type" | `BirthDatePerson` | true |  |
 | birthDate | `datetime` | ture |  |
 
-## Example of BirthDateCredentialV1
+### Example of BirthDateCredentialV1
 
 ```javascript
 {
@@ -47,7 +47,7 @@ BirthDate of a person.
 }
 ```
 
-## birthDate.jsonld
+### birthDate.jsonld
 
 ```javascript
 {

@@ -11,7 +11,7 @@ Email of a person or organization.
 
 `EmailCredentialV1` is a type extension of credential subject into VC.
 
-## EmailPerson
+### EmailPerson
 
 Email of a person.
 
@@ -20,7 +20,7 @@ Email of a person.
 | "@type" | `EmailPerson` | true |  |
 | email | `string` | ture |  |
 
-## Example of EmailCredentialV1
+### Example of EmailCredentialV1
 
 ```javascript
 {
@@ -47,7 +47,7 @@ Email of a person.
 }
 ```
 
-## EmailOrganization
+### EmailOrganization
 
 Email of an organization.
 
@@ -56,7 +56,7 @@ Email of an organization.
 | "@type" | `EmailOrganization` | true |  |
 | email | `string` | ture |  |
 
-## Example of AddressCredentialV1
+### Example of AddressCredentialV1
 
 ```javascript
 {
@@ -83,7 +83,7 @@ Email of an organization.
 }
 ```
 
-## email.jsonld
+### email.jsonld
 
 ```javascript
 {

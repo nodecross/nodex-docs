@@ -5,7 +5,7 @@ description: description
 
 # DID AuthN
 
-## DID AuthN
+## Introduction
 
 For the wallet to communicate with relying parties \(RP\) on secure authenticated channel, UNiD wallet SDKs provide methods of:
 

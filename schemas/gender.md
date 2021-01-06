@@ -9,7 +9,7 @@ description: description
 
 `GenderCredentialV1` is a type extension of credential subject into VC.
 
-## GenderPerson
+### GenderPerson
 
 Gender of a person.
 
@@ -18,7 +18,7 @@ Gender of a person.
 | "@type" | `GenderPerson` | true |  |
 | gender | `string` | ture |  |
 
-## Example of GenderCredentialV1
+### Example of GenderCredentialV1
 
 ```javascript
 {
@@ -45,7 +45,7 @@ Gender of a person.
 }
 ```
 
-## gender.jsonld
+### gender.jsonld
 
 ```javascript
 {

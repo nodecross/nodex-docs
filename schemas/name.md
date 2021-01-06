@@ -9,7 +9,7 @@ description: description
 
 `NameCredentialV1` is a type extension of credential subject into VC.
 
-## NamePerson
+### NamePerson
 
 Name of a person.
 
@@ -20,7 +20,7 @@ Name of a person.
 | givenName | `string` | true |  |
 | familyName | `string` | true |  |
 
-## Example of NameCredentialV1
+### Example of NameCredentialV1
 
 ```javascript
 {
@@ -49,7 +49,7 @@ Name of a person.
 }
 ```
 
-## NameOrganization
+### NameOrganization
 
 Name of an organization.
 
@@ -58,9 +58,7 @@ Name of an organization.
 | "@type" | `NameOrganization` | true |  |
 | name | `string` | ture |  |
 
-// Internationalization
-
-## Example of NameCredentialV1
+### Example of NameCredentialV1
 
 ```javascript
 {
@@ -87,7 +85,7 @@ Name of an organization.
 }
 ```
 
-## name.jsonld
+### name.jsonld
 
 ```javascript
 {

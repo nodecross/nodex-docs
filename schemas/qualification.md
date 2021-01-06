@@ -9,7 +9,7 @@ description: description
 
 `QualificationCredentialV1` is a type extension of credential subject into VC.
 
-## QualificationPerson
+### QualificationPerson
 
 Educational and occupational qualifications of a person.
 
@@ -18,7 +18,7 @@ Educational and occupational qualifications of a person.
 | "@type" | `QualificationPerson` | true |  |
 | hasCredential | `EducationalOccupationalCredential` | ture |  |
 
-## EducationalOccupationalCredential
+### EducationalOccupationalCredential
 
 | Property | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
@@ -29,21 +29,21 @@ Educational and occupational qualifications of a person.
 | about | `EducationalOccupationalProgram` | ture |  |
 | recognizedBy | `CollegeOrUniversity` | ture |  |
 
-## EducationalOccupationalProgram
+### EducationalOccupationalProgram
 
 | Property | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
 | "@type" | `EducationalOccupationalProgram` | true |  |
 | name | `string` | ture | "University", "Driver's License" |
 
-## CollegeOrUniversity
+### CollegeOrUniversity
 
 | Property | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
 | "@type" | `CollegeOrUniversity` | true |  |
 | name | `string` | ture |  |
 
-## Example of QualificationCredentialV1
+### Example of QualificationCredentialV1
 
 ```javascript
 {
@@ -94,7 +94,7 @@ Educational and occupational qualifications of a person.
 }
 ```
 
-## qualification.jsonld
+### qualification.jsonld
 
 ```javascript
 {

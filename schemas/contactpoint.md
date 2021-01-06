@@ -11,7 +11,7 @@ Contact Point of a person or organization.
 
 `ContactPointCredentialV1` is a type extension of credential subject into VC.
 
-## ContactPointPerson
+### ContactPointPerson
 
 Contact Point of a person.
 
@@ -20,7 +20,7 @@ Contact Point of a person.
 | "@type" | `ContactPointPerson` | true |  |
 | contactPoint | `ContactPoint` | ture |  |
 
-## ContactPoint
+### ContactPoint
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ Contact Point of a person.
 | email | `string` | true |  |
 | telephone | `string` | true |  |
 
-## Example of ContactPointCredentialV1
+### Example of ContactPointCredentialV1
 
 ```javascript
 {
@@ -57,16 +57,14 @@ Contact Point of a person.
 }
 ```
 
-## ContactPointOrganization
+### ContactPointOrganization
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
 | "@type" | `ContactPointOrganization` | true |  |
 | contactPoint | `ContactPoint` | ture |  |
 
-## Example of AddressCredentialV1
-
-## Example of ContactPointCredentialV1
+### Example of ContactPointCredentialV1
 
 ```javascript
 {
@@ -94,7 +92,7 @@ Contact Point of a person.
 }
 ```
 
-## contactPoint.jsonld
+### contactPoint.jsonld
 
 ```javascript
 {

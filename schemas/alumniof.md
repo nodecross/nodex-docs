@@ -11,14 +11,14 @@ Alumni of an organization.
 
 `AlumniOfCredentialV1` is a type extension of credential subject into VC.
 
-## AlumniOfOrganization
+### AlumniOfOrganization
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
 | "@type" | `AlumniOfOrganization` | true |  |
 | alumniOf | `Organization` | ture |  |
 
-## Organization
+### Organization
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
@@ -26,7 +26,7 @@ Alumni of an organization.
 | name | `string` | ture |  |
 | employee | `Person` | true |  |
 
-## Person
+### Person
 
 `hasOccupation`: The Person's occupation. For past professions, use Role for expressing dates.
 
@@ -35,14 +35,14 @@ Alumni of an organization.
 | "@type" | `Person` | true |  |
 | hasOccupation | `Role`, `Occupation` | true |  |
 
-## Occupation
+### Occupation
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
 | "@type" | `Occupation` | true |  |
 | name | `string` | ture |  |
 
-## Role
+### Role
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
@@ -50,7 +50,7 @@ Alumni of an organization.
 | startDate | `date` | true |  |
 | endDate | `date` | false |  |
 
-## Example of AlumniOfCredentialV1
+### Example of `AlumniOfCredentialV1`
 
 ```javascript
 {
@@ -110,7 +110,7 @@ Alumni of an organization.
 }
 ```
 
-## alumniOf.jsonld
+### alumniOf.jsonld
 
 ```javascript
 {

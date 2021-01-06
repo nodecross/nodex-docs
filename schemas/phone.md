@@ -9,7 +9,7 @@ description: description
 
 `PhoneCredentialV1` is a type extension of credential subject into VC.
 
-## PhonePerson
+### PhonePerson
 
 Phone number of a person.
 
@@ -18,7 +18,7 @@ Phone number of a person.
 | "@type" | `PhonePerson` | true |  |
 | telephone | `string` | ture |  |
 
-## Example of PhoneCredentialV1
+### Example of PhoneCredentialV1
 
 ```javascript
 {
@@ -45,7 +45,7 @@ Phone number of a person.
 }
 ```
 
-## PhoneOrganization
+### PhoneOrganization
 
 Phone number of an organization.
 
@@ -54,7 +54,7 @@ Phone number of an organization.
 | "@type" | `PhoneOrganization` | true |  |
 | telephone | `string` | ture |  |
 
-## Example of PhoneCredentialV1
+### Example of PhoneCredentialV1
 
 ```javascript
 {
@@ -81,7 +81,7 @@ Phone number of an organization.
 }
 ```
 
-## phone.jsonld
+### phone.jsonld
 
 ```javascript
 {

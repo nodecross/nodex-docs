@@ -11,7 +11,7 @@ Address of a person or organization.
 
 `AddressCredentialV1` is a type extension of credential subject into VC.
 
-## AddressPerson
+### AddressPerson
 
 Address of a person.
 
@@ -20,7 +20,7 @@ Address of a person.
 | "@type" | `AddressPerson` | true |  |
 | address | `PostalAddress` | ture |  |
 
-## PostalAddress
+### PostalAddress
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
@@ -31,7 +31,7 @@ Address of a person.
 | postalCode | `string` | true |  |
 | streetAddress | `string` | true |  |
 
-## Example of AddressCredentialV1
+### Example of AddressCredentialV1
 
 ```javascript
 {
@@ -65,7 +65,7 @@ Address of a person.
 }
 ```
 
-## AddressOrganization
+### AddressOrganization
 
 Address of an organization.
 
@@ -74,7 +74,7 @@ Address of an organization.
 | "@type" | `AddressOrganization` | true |  |
 | address | `PostalAddress` | ture |  |
 
-## Example of AddressCredentialV1
+### Example of AddressCredentialV1
 
 ```javascript
 {
@@ -108,7 +108,7 @@ Address of an organization.
 }
 ```
 
-## address.jsonld
+### address.jsonld
 
 ```javascript
 {
