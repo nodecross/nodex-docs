@@ -168,7 +168,7 @@ import { UNiD } from "@unid/nodejs-sdk"
         const DID = await UNiD.loadDid({
             did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
         })
-        const presentation = await DID.createPresentation(credentials)
+        const presentation = await DID.createPresentation(_credentials)
         console.log("Complete creating a presentation:", presentation)
     } catch (err) {
         console.error('ERROR:', err)
@@ -182,6 +182,8 @@ The application server verifies the digital signature of the VC from a holder.
 
 **UNiD.validatePresentation\(\)**
 
+{% tabs %}
+{% tab title="TypeScript" %}
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
@@ -194,9 +196,13 @@ import { UNiD } from "@unid/nodejs-sdk"
     }
 })()
 ```
+{% endtab %}
+{% endtabs %}
 
 **UNiD.validateCredential\(\)**
 
+{% tabs %}
+{% tab title="TypeScript" %}
 ```typescript
 import { UNiD } from "@unid/nodejs-sdk"
 
@@ -209,4 +215,6 @@ import { UNiD } from "@unid/nodejs-sdk"
     }
 })()
 ```
+{% endtab %}
+{% endtabs %}
 
