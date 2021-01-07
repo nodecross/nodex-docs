@@ -224,7 +224,7 @@ result = {
 {% endtab %}
 {% endtabs %}
 
-By specifying the credential type, you can retrieve the verifiable credential with `UNiD.AddressCredentialV1.filter()`.
+By specifying the credential type, you can retrieve the verifiable credential with `AddressCredentialV1.select()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -233,7 +233,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
-        const vc = await UNiD.AddressCredentialV1.filter(result.payload)
+        const vc = await AddressCredentialV1.select(result.payload)
         console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
     } catch (err) {
         console.error('ERROR:', err)

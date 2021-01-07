@@ -10,5 +10,5 @@ Currently, we generate a binary seed from a seed phrase with BIP39, and generate
 
 ## Tenant Support
 
-We have choiced a tenant model for building authorize mechanism of SDS which is the encrypted storage stores personal data. At UNiD, you can register multi mobile agents and relying parties in your tenant and will get a `client_id` and `client_secret` for each agents. These values are used for authorization when the wallet communicates with relying parties and SDS endpoints for prevent from phishing fraud and free rider problem at the agent application level without interfering with personal control.
+We have chosen a tenant model for building authorize mechanism of SDS which is the encrypted storage stores personal data. At UNiD, you can register multi mobile agents and relying parties in your tenant and will get a **`client_id`** and **`client_secret`** for each agents. These values are used for authorization when the wallet communicates with relying parties and SDS endpoints for prevent from phishing fraud and free rider problem at the agent application level without interfering with personal control.
 
