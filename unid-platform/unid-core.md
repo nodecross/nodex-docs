@@ -69,11 +69,11 @@ A verifiable credential can represent all of the same information that a physica
 
 DIDComm is a cross-community standard that creates libraries and design patterns for two or more DID-controlling entities from diverse DID-based systems to communicate directly with one another. It creates a secure communication channel between software controlled by each of these entities, which can be people, organizations or things. This constitutes an “authenticated channel” in that control of a given DID’s private keys is, barring a failure of design or operational security, proof of authenticity of the party represented by that DID.
 
-**DID AuthN**
+### **DID AuthN**
 
 For the wallet to communicate with relying parties \(RP\) on secure authenticated channel. The below diagram illustrate the sign-in flow and steps taken to verify a user through their user agent from the wallet side of the webpage to the server side of a RP.
 
-![DID Auth Protocol Flow](../.gitbook/assets/did-authN-protocol%20%281%29.png)
+![](../.gitbook/assets/did-authN-protocol%20%281%29.png)
 
 ### Method Summary
 
