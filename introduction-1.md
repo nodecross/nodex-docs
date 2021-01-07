@@ -38,7 +38,7 @@ A student goes to transcript apply page and read a QR code for a request. The we
 
 ![Use Case Student Wallet](.gitbook/assets/demo-unid-credential.png)
 
-This sort of credentials can be presented to enterprises for applying a job. The enterprise as a verifier can cryptographically verify that the credential is correct without contacting the issuer. That begins establishing **digital trust** around that DIDs by using it in their digital interactions. Through the [UNiD SDKs](https://github.com/getunid/unid-docs/tree/a0e3cb7501479628b5df9b10630e3f29c181f7b2/unid/3-extensions/README.md), our platform offers convenient and easy-to-access application logic to build such solutions and integrate with digital services that exist out of our platform.
+This sort of credentials can be presented to enterprises for applying a job. The enterprise as a verifier can cryptographically verify the credential without contacting the issuer. That begins establishing **digital trust** around that DIDs by using it in their digital interactions. Through UNiD SDKs, our platform offers convenient and easy-to-access application logic to build such solutions and integrate with digital services that exist out of our platform.
 
 ### Wide variety of use cases
 
@@ -58,6 +58,6 @@ Our platform is composed of a collection of micro services, allowing developers 
 * Government
 
 {% hint style="success" %}
-🧠 **NOTE**: We are currently working on joint projects with leading companies in each industry to connect the world with digital trust → [Click here for more info](https://collabogate.com)
+🧠 **NOTE**: We are currently working on joint projects with leading companies in each industry → [Click here for more info](https://collabogate.com)
 {% endhint %}
 
