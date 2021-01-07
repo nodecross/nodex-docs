@@ -16,5 +16,5 @@ If you want to see how to operate and resolve DIDs on UNiD network, please [clic
 
 ## Secure Data Storage
 
-UNiD network serves a SDS \(Secure Data Storage\) storing encrypted verifiable credentials and presentations in a secure and privacy-preserving manner. UNiD SDS has authentication mechanisms to verify all requests with DID signature and pre-configured tenant token and authorization mechanisms to grant access to third parties.
+UNiD network also serves a SDS \(Secure Data Storage\) storing encrypted verifiable credentials and presentations in a secure and privacy-preserving manner. UNiD SDS has authentication mechanisms to verify all requests with DID signature and pre-configured tenant token and authorization mechanisms to grant access to third parties.
 

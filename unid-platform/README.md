@@ -10,7 +10,7 @@ As in the diagram below, our platform consists of four components: **UNiD SDKs**
 
 **UNiD Network** is built on the top of [Sidetree](https://identity.foundation/sidetree/spec/) that is a 2nd layer blockchain-agnostic protocol and has multiple reference implementations for various decentralized ledger systems, such as Bitcoin, Ethereum, etc.
 
-**UNiD Drivers** pre-configured integrations to our platform that support fundamental capabilities. UNiD Core are designed as a set of APIs for communicating with UNiD network and drivers and used through UNiD SDKs to easily incorporate these capabilities into your application.
+**UNiD Drivers** pre-configured integrations to our platform that support fundamental capabilities. **UNiD Core** are designed as a set of APIs for communicating with UNiD network and drivers and used through **UNiD SDKs** to easily incorporate these capabilities into your application.
 
 ## UNiD Core
 
