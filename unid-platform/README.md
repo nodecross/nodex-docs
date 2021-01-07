@@ -6,7 +6,7 @@ UNiD platform provides the fundamental capabilities for DID operations, VC opera
 
 As in the diagram below, our platform consists of four components: **UNiD SDKs**, **UNiD Core**, **UNiD Drivers**, and **UNiD Network**.
 
-![](../.gitbook/assets/unid-platform-map.svg)
+![](../.gitbook/assets/cg-company-deck-2-.svg)
 
 **UNiD Network** is built on the top of [Sidetree](https://identity.foundation/sidetree/spec/) that is a 2nd layer blockchain-agnostic protocol and has multiple reference implementations for various decentralized ledger systems, such as Bitcoin, Ethereum, etc.
 
