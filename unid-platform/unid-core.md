@@ -6,22 +6,22 @@ Regardless of the DID method supported by UNiD Drivers, all DID methods support 
 
 ### Method Summary
 
-**`UNiD.createDidDocument(params = {}, callback)`**  
+**`UNiD.createDidDocument(params = {})`**  
         Create key pairs for registering new DID on UNiD network.
 
-**`UNiD.loadDid(params = {}, callback)`**  
+**`UNiD.loadDid(params = {})`**  
         Get a wallet information including a decentralized identifier and key pairs.
 
-**`DID.getIdentifier(params = {}, callback)`**  
+**`DID.getIdentifier(params = {})`**  
         Get the decentralized identifier.
 
-**`DID.getSeedPhrase(params = {}, callback)`**  
+**`DID.getSeedPhrase(params = {})`**  
         Get a master seed phrase.
 
-**`DID.verifySeedPhrase(params = {}, callback)`**  
+**`DID.verifySeedPhrase(params = {})`**  
         Verify a master seed phrase.
 
-**`UNiD.updateDidDocument(params = {}, callback)`**  
+**`UNiD.updateDidDocument(params = {})`**  
         Send action patches such as _add-public-keys_, _remove-public-keys_, _add-services_, _remove-services_, and _replace._
 
 ## VC Operations
@@ -41,28 +41,28 @@ A verifiable credential can represent all of the same information that a physica
 
 ### Method Summary
 
-**`DID.createCredential(params = {}, callback)`**  
+**`DID.createCredential(params = {})`**  
         Create a verifiable credential following UNiD VC data schema class.
 
-**`DID.postCredential(params = {}, callback)`**  
+**`DID.postCredential(params = {})`**  
         Store a verifiable credential in a secure data storage.
 
-**`DID.getCredential(params = {}, callback)`**   
+**`DID.getCredential(params = {})`**   
         Get a verifiable credential from a secure data storage.
 
-**`DID.getCredentials(params = {}, callback)`**  
+**`DID.getCredentials(params = {})`**  
         Get verifiable credentials from a secure data storage.
 
-**`DID.createPresentation(params = {}, callback)`**  
+**`DID.createPresentation(params = {})`**  
         Wrap verifiable credentials into a verifiable presentation.
 
-**`UNiD.verifyCredential(params = {}, callback)`**  
+**`UNiD.verifyCredential(params = {})`**  
         Verify the signature of the verifiable credential.
 
-**`UNiD.verifyPresentation(params = {}, callback)`**  
+**`UNiD.verifyPresentation(params = {})`**  
         Verify the signature of the verifiable presentation.
 
-**`(schema_type).select(params = {}, callback)`**  
+**`(schema_type).select(params = {})`**  
         Retrieve the verifiable credential wrapped in the verifiable presentation. 
 
 ## DIDComm
@@ -77,15 +77,15 @@ For the wallet to communicate with relying parties \(RP\) on secure authenticate
 
 ### Method Summary
 
-**`DID.generateAuthenticationRequest(params = {}, callback)`**  
+**`DID.generateAuthenticationRequest(params = {})`**  
         Create an authentication request with _requiredCredentialTypes._
 
-**`UNiD.validateAuthenticationRequest(params = {}, callback)`**  
+**`UNiD.validateAuthenticationRequest(params = {})`**  
         Validate an authentication request.
 
-**`DID.generateAuthenticationResponse(params = {}, callback)`**  
+**`DID.generateAuthenticationResponse(params = {})`**  
         Create an authentication response with _requestedPresentation_.
 
-**`UNiD.validateAuthenticationResponse(params = {}, callback)`**  
+**`UNiD.validateAuthenticationResponse(params = {})`**  
         Validate an authentication response.
 
