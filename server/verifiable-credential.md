@@ -43,14 +43,17 @@ import { UNiD } from "@unid/nodejs-sdk"
         // To create AddressCredentialV1
         const AddressCredentialV1 = DID.createCredential(
             new AddressCredentialV1({
-                '@id': SubjectDid.getIdentifier(),
-                '@type': "AddressPerson",
-                address: {
-                    postalCode: "1500044",
-                    addressCountry: "JP",
-                    addressLocality: "Tokyo",
-                    addressRegion: "Shibuya-ku",
-                    streetAddress: "5-5, Marumaya-cho"
+                type: [ 'VerifiableCredential', 'AddressCredentialV1' ],
+                credentialSubject: {
+                    '@id': SubjectDid.getIdentifier(),
+                    '@type': "AddressPerson",
+                    address: {
+                        postalCode: "1500044",
+                        addressCountry: "JP",
+                        addressLocality: "Tokyo",
+                        addressRegion: "Shibuya-ku",
+                        streetAddress: "5-5, Marumaya-cho"
+                    }
                 }
             }, {
                 issuanceDate: new Date(),

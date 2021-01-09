@@ -192,7 +192,7 @@ import { UNiD } from "@unid/react-native-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.validatePresentation(presentation)
+        const result = await UNiD.verifyPresentation(presentation)
         console.log("Complete validating a presentation:", result)
     } catch (err) {
         console.error('ERROR:', err)
@@ -249,7 +249,7 @@ import { UNiD } from "@unid/react-native-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.validateCredential(vc)
+        const result = await UNiD.verifyCredential(vc)
         console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
     } catch (err) {
         console.error('ERROR:', err)
