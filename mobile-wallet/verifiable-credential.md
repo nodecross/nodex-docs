@@ -183,7 +183,7 @@ There are two main methods to submit VP to a verifier. The first one is to inclu
 
 ## Verify VC from Issuer
 
-This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the receive VP with `UNiD.validatePresentation()`.
+This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the receive VP with `UNiD.verifyPresentation()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -240,7 +240,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 {% endtab %}
 {% endtabs %}
 
-You can verify the signature of the retrieved verifiable credential with `UNiD.validateCredential()`.
+You can verify the signature of the retrieved verifiable credential with `UNiD.verifyCredential()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}

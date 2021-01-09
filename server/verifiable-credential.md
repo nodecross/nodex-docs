@@ -43,17 +43,14 @@ import { UNiD } from "@unid/nodejs-sdk"
         // To create AddressCredentialV1
         const AddressCredentialV1 = DID.createCredential(
             new AddressCredentialV1({
-                type: [ 'VerifiableCredential', 'AddressCredentialV1' ],
-                credentialSubject: {
-                    '@id': SubjectDid.getIdentifier(),
-                    '@type': "AddressPerson",
-                    address: {
-                        postalCode: "1500044",
-                        addressCountry: "JP",
-                        addressLocality: "Tokyo",
-                        addressRegion: "Shibuya-ku",
-                        streetAddress: "5-5, Marumaya-cho"
-                    }
+                '@id': SubjectDid.getIdentifier(),
+                '@type': "AddressPerson",
+                address: {
+                    postalCode: "1500044",
+                    addressCountry: "JP",
+                    addressLocality: "Tokyo",
+                    addressRegion: "Shibuya-ku",
+                    streetAddress: "5-5, Marumaya-cho"
                 }
             }, {
                 issuanceDate: new Date(),
@@ -189,7 +186,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 ## Verify a VP
 
-This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the receive VP with `UNiD.validatePresentation()`.
+This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the receive VP with `UNiD.verifyPresentation()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -198,7 +195,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.validatePresentation(presentation)
+        const result = await UNiD.verifyPresentation(presentation)
         console.log("Complete validating a presentation:", result)
     } catch (err) {
         console.error('ERROR:', err)
@@ -242,7 +239,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 {% endtab %}
 {% endtabs %}
 
-You can verify the signature of the retrieved verifiable credential with `UNiD.validateCredential()`.
+You can verify the signature of the retrieved verifiable credential with `UNiD.verifyCredential()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -251,7 +248,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.validateCredential(vc)
+        const result = await UNiD.verifyCredential(vc)
         console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
     } catch (err) {
         console.error('ERROR:', err)
