@@ -17,7 +17,6 @@ UNiD Node SDK offers easy-to-use javascript modules for embedding identity walle
 Before we begin, make sure you have the following installed:
 
 * `node v13.x.x or later`
-* `npm v6.13.x or later`
 
 {% hint style="warning" %}
 If you don't already have an account and UNiD tenant established, head over [here](https://docs.getunid.io), then return to this page.
@@ -31,6 +30,10 @@ Add the `@unid/nodejs-sdk` dependency:
 {% tab title="Bash" %}
 ```bash
 npm install --save @unid/nodejs-sdk
+
+# OR
+
+yarn add @unid/nodejs-sdk
 ```
 {% endtab %}
 {% endtabs %}
