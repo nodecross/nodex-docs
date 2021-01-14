@@ -186,7 +186,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 ## Verify a VP
 
-This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the receive VP with `UNiD.verifyPresentation()`.
+This section describes how the application server verifies the signature of the verifiable presentation and retrieves the data. First of all, the application server verifies the signature of the received VP with `UNiD.verifyPresentation()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -225,7 +225,7 @@ result = {
 }
 ```
 
-By specifying the credential type, you can retrieve the verifiable credential with `AddressCredentialV1.select()`.
+By specifying the credential type, you can retrieve the verifiable credential with `(schema_type).select()`. You can verify the signature of the retrieved verifiable credential with `UNiD.verifyCredential()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -236,26 +236,9 @@ import { UNiD } from "@unid/nodejs-sdk"
     try {
         const vc = await AddressCredentialV1.select(result.payload)
         console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
-    } catch (err) {
-        console.error('ERROR:', err)
-    }
-})()
-```
-{% endtab %}
-{% endtabs %}
-
-You can verify the signature of the retrieved verifiable credential with `UNiD.verifyCredential()`.
-
-{% tabs %}
-{% tab title="TypeScript" %}
-```typescript
-import { UNiD } from "@unid/nodejs-sdk"
-
-(async () => {
-    try {
         if (UNiD.isVerifiableCredential(vc)) {
             const result = await UNiD.verifyCredential(vc)
-            console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
+            console.log("Complete verifying a credential:", JSON.stringfy(result, null, 2))
         } else {
             throw new Error('Invalid input data')
         }

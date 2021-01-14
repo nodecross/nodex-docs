@@ -226,26 +226,7 @@ result = {
 {% endtab %}
 {% endtabs %}
 
-By specifying the credential type, you can retrieve the verifiable credential with `AddressCredentialV1.select()`.
-
-{% tabs %}
-{% tab title="TypeScript" %}
-```typescript
-import { UNiD } from "@unid/nodejs-sdk"
-
-(async () => {
-    try {
-        const vc = await AddressCredentialV1.select(result.payload)
-        console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
-    } catch (err) {
-        console.error('ERROR:', err)
-    }
-})()
-```
-{% endtab %}
-{% endtabs %}
-
-You can verify the signature of the retrieved verifiable credential with `UNiD.verifyCredential()`.
+By specifying the credential type, you can retrieve the verifiable credential with `(schema_type).select()`. You can verify the signature of the retrieved verifiable credential with `UNiD.verifyCredential()`.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -254,10 +235,12 @@ import { UNiD } from "@unid/react-native-sdk"
 
 (async () => {
     try {
+        const vc = await AddressCredentialV1.select(result.payload)
+        console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
         if (UNiD.isVerifiableCredential(vc)) {
             const result = await UNiD.verifyCredential(vc)
-            console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
-        else {
+            console.log("Complete verifying a credential:", JSON.stringfy(result, null, 2))
+        } else {
             throw new Error('Invalid input data')
         }
     } catch (err) {
