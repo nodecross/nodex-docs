@@ -195,8 +195,12 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.verifyPresentation(presentation)
-        console.log("Complete validating a presentation:", result)
+        if (UNiD.isVerifiablePresentation(presentation)) {
+            const result = await UNiD.verifyPresentation(presentation)
+            console.log("Complete validating a presentation:", result)
+        } else {
+            throw new Error('Invalid input data')
+        }
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -248,8 +252,12 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
-        const result = await UNiD.verifyCredential(vc)
-        console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
+        if (UNiD.isVerifiableCredential(vc)) {
+            const result = await UNiD.verifyCredential(vc)
+            console.log("Complete validating a credential:", JSON.stringfy(result, null, 2))
+        } else {
+            throw new Error('Invalid input data')
+        }
     } catch (err) {
         console.error('ERROR:', err)
     }
