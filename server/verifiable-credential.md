@@ -195,6 +195,7 @@ import { UNiD } from "@unid/nodejs-sdk"
 
 (async () => {
     try {
+        const presentation = JSON.parse('{"verifiablePresentation":"...", "proof":"...", ... }')
         if (UNiD.isVerifiablePresentation(presentation)) {
             const result = await UNiD.verifyPresentation(presentation)
             console.log("Complete validating a presentation:", result)
