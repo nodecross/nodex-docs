@@ -56,6 +56,12 @@ A verifiable credential can represent all of the same information that a physica
 **`DID.createPresentation(params = {})`**  
         Wrap verifiable credentials into a verifiable presentation.
 
+**`UNiD.isVerifiableCredential(params = {})`**  
+        Verify the data format of the verifiable credential.
+
+**`UNiD.isVerifiablePresentation(params = {})`**  
+        Verify the data format of the verifiable presentation.
+
 **`UNiD.verifyCredential(params = {})`**  
         Verify the signature of the verifiable credential.
 
