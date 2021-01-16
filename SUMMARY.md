@@ -22,7 +22,7 @@
   * [contactPoint](schemas/contactpoint.md)
   * [email](schemas/email.md)
   * [gender](schemas/gender.md)
-  * [imageObject](schemas/imageobject.md)
+  * [image](schemas/imageobject.md)
   * [name](schemas/name.md)
   * [phone](schemas/phone.md)
   * [qualification](schemas/qualification.md)

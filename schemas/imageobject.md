@@ -1,6 +1,13 @@
-# imageObject
+# image
 
-## ImageObjectCredentialV1
+## ImageCredentialV1
+
+### ImagePerson
+
+| Attribute | Type | Required | Notes |
+| :--- | :--- | :--- | :--- |
+| "@type" | `ImagePerson` | true |  |
+| image | `ImageObject` | true |  |
 
 ### ImageObject
 
@@ -24,11 +31,14 @@
     "issuer": "did:unid:test:issuer1234#keys-1",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
-        "@type": "ImageObject",
+        "@type": "ImagePerson",
         "@id": "did:unid:test:example1234#keys-1",
-        "contentUrl": "https://example.com/...",
-        "name": "Person ID Photo",
-        "uploadDate": "20210101T180000+0900"
+        "image": {
+            "@type": "ImageObject",
+            "contentUrl": "https://example.com/...",
+            "name": "Person ID Photo",
+            "uploadDate": "20210101T180000+0900"
+        }
     },
     "proof": {
         "type": "EcdsaSecp256k1Signature2019",
@@ -40,7 +50,7 @@
 }
 ```
 
-### imageObject.jsonld
+### image.jsonld
 
 ```javascript
 {
@@ -59,11 +69,23 @@
 
                 "id": "@id",
                 "type": "@type",
-
-                "ImageObject": "https://schema.org/ImageObject",
-                "contentUrl": "https://schema.org/contentUrl",
-                "name": "https://schema.org/name",
-                "uploadDate": "https://schema.org/uploadDate"
+                
+                "ImagePerson": "http://schema.org/Person",
+                "image": {
+                    "@id": "https://schema.org/image",
+                    "@type": "@id",
+                    "@context": {
+                        "@version": 1.1,
+                        "@protected": true,
+                        
+                        "id": "@id",
+                        "type": "@type",
+                        "ImageObject": "https://schema.org/ImageObject",
+                        "contentUrl": "https://schema.org/contentUrl",
+                        "name": "https://schema.org/name",
+                        "uploadDate": "https://schema.org/uploadDate"
+                    }
+                }
             }
         }
     }
