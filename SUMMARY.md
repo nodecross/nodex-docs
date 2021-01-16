@@ -25,4 +25,5 @@
   * [name](schemas/name.md)
   * [phone](schemas/phone.md)
   * [qualification](schemas/qualification.md)
+  * [worksFor](schemas/worksfor.md)
 
