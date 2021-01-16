@@ -2,11 +2,11 @@
 
 ## ImageObjectCredentialV1
 
-### ImageObjectPerson
+### ImageObject
 
 | Attribute | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
-| "@type" | `ImageObjectPerson` | true |  |
+| "@type" | `ImageObject` | true |  |
 | contentUrl | `URL` | true |  |
 | name | `string` | false |  |
 | uploadDate | `Date` | false |  |
@@ -24,7 +24,7 @@
     "issuer": "did:unid:test:issuer1234#keys-1",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
-        "@type": "ImageObjectPerson",
+        "@type": "ImageObject",
         "@id": "did:unid:test:example1234#keys-1",
         "contentUrl": "https://example.com/...",
         "name": "Person ID Photo",
@@ -60,7 +60,7 @@
                 "id": "@id",
                 "type": "@type",
 
-                "ImageObjectPerson": "https://schema.org/ImageObject",
+                "ImageObject": "https://schema.org/ImageObject",
                 "contentUrl": "https://schema.org/contentUrl",
                 "name": "https://schema.org/name",
                 "uploadDate": "https://schema.org/uploadDate"
