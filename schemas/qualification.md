@@ -53,11 +53,11 @@ Educational and occupational qualifications of a person.
     ],
     "id": "https://sds.getunid.io/api/v1/credentials/",
     "type": ["VerifiableCredential", "QualificationCredentialV1"],
-    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuer": "did:unid:test:issuer1234",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
         "@type": "QualificationPerson",
-        "@id": "did:unid:test:example1234#keys-1",
+        "@id": "did:unid:test:example1234",
         "hasCredential": [
             {
                 "@type": "EducationalOccupationalCredential",
@@ -88,7 +88,7 @@ Educational and occupational qualifications of a person.
         "type": "EcdsaSecp256k1Signature2019",
         "created": "20201101T180000+0900",
         "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "verificationMethod": "did:unid:test:issuer1234#signingKey",
         "jws": "eyJhbGc..."
     }
 }

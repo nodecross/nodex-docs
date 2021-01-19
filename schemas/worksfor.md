@@ -54,11 +54,11 @@ Organizations that the person works for.
     ],
     "id": "https://sds.getunid.io/api/v1/credentials/",
     "type": ["VerifiableCredential", "WorksForCredentialV1"],
-    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuer": "did:unid:test:issuer1234",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
         "@type": "WorksForOrganization",
-        "@id": "did:unid:test:example1234#keys-1",
+        "@id": "did:unid:test:example1234",
         "worksFor": [
             {
                 "@type": "Organization",
@@ -81,7 +81,7 @@ Organizations that the person works for.
         "type": "EcdsaSecp256k1Signature2019",
         "created": "20201101T180000+0900",
         "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "verificationMethod": "did:unid:test:issuer1234#signingKey",
         "jws": "eyJhbGc..."
     }
 }

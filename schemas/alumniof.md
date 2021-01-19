@@ -60,11 +60,11 @@ Alumni of an organization.
     ],
     "id": "https://sds.getunid.io/api/v1/credentials/",
     "type": ["VerifiableCredential", "AlumniOfCredentialV1"],
-    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuer": "did:unid:test:issuer1234",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
         "@type": "AlumniOfOrganization",
-        "@id": "did:unid:test:example1234#keys-1",
+        "@id": "did:unid:test:example1234",
         "alumniOf": [
             {
                 "@type": "Organization",
@@ -104,7 +104,7 @@ Alumni of an organization.
         "type": "EcdsaSecp256k1Signature2019",
         "created": "20201101T180000+0900",
         "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "verificationMethod": "did:unid:test:issuer1234#signingKey",
         "jws": "eyJhbGc..."
     }
 }
