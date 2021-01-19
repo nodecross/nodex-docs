@@ -77,8 +77,8 @@ Alumni of an organization.
                             "@type": "Occupation",
                             "name": "Patent examiner"
                         },
-                        "startDate": "20080401",
-                        "endDate": "20120330"
+                        "startDate": "2008-04-01",
+                        "endDate": "2012-03-30"
                     },
                 },
             },
@@ -93,8 +93,8 @@ Alumni of an organization.
                             "@type": "Occupation",
                             "name": "Product Manager"
                         },
-                        "startDate": "20120401",
-                        "endDate": "20150330"
+                        "startDate": "2012-04-01",
+                        "endDate": "2015-03-30"
                     },
                 },
             },

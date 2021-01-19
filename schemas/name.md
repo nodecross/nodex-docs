@@ -30,11 +30,11 @@ Name of a person.
     ],
     "id": "https://sds.getunid.io/api/v1/credentials/",
     "type": ["VerifiableCredential", "NameCredentialV1"],
-    "issuer": "did:unid:test:issuer1234",
+    "issuer": "did:unid:test:issuer1234#keys-1",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
         "@type": "NamePerson",
-        "@id": "did:unid:test:example1234",
+        "@id": "did:unid:test:example1234#keys-1",
         "name": "John Smith",
         "givenName": "John",
         "familyName": "Smith"
@@ -43,7 +43,7 @@ Name of a person.
         "type": "EcdsaSecp256k1Signature2019",
         "created": "20201101T180000+0900",
         "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:unid:test:issuer1234#signingKey",
+        "verificationMethod": "did:unid:test:example1234#keys-1",
         "jws": "eyJhbGc..."
     }
 }

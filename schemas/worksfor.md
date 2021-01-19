@@ -71,7 +71,7 @@ Organizations that the person works for.
                             "@type": "Occupation",
                             "name": "Patent examiner"
                         },
-                        "startDate": "20200401",
+                        "startDate": "2020-04-01",
                     },
                 },
             },

@@ -35,7 +35,7 @@ BirthDate of a person.
     "credentialSubject": {
         "@type": "BirthDatePerson",
         "@id": "did:unid:test:example1234",
-        "birthDate": "19801212"
+        "birthDate": "1990-12-12"
     },
     "proof": {
         "type": "EcdsaSecp256k1Signature2019",

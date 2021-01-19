@@ -63,7 +63,7 @@ Educational and occupational qualifications of a person.
                 "@type": "EducationalOccupationalCredential",
                 "credentialCategory": "degree",
                 "educationalLevel": "Bachelors of Science",
-                "dateCreated": "201503",
+                "dateCreated": "2015-03",
                 "about": {
                     "@type": "EducationalOccupationalProgram",
                     "name": "Computer Engineering"
@@ -76,7 +76,7 @@ Educational and occupational qualifications of a person.
             {
                 "@type": "EducationalOccupationalCredential",
                 "credentialCategory": "certificate",
-                "dateCreated": "201503",
+                "dateCreated": "2015-03",
                 "about": {
                     "@type": "EducationalOccupationalProgram",
                     "name": "1st Grade Driver's License"
