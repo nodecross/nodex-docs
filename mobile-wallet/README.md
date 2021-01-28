@@ -60,7 +60,7 @@ The following changes will be performed:
 
 ## ⚙ Configure
 
-After you've completed setting up a tenant and a wallet application in UNiD, UNiD will give you values: `client_id` and `client_secret`. These values are used for authorization when the wallet communicates with relying parties and SDS endpoints.
+After you've completed setting up a tenant and a wallet application in UNiD, UNiD will give you values: `clientId`, `clientSecret`, `encryptionKey`, and `localStorage`. These values are used for authorization when the wallet communicates with relying parties and SDS endpoints.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -74,7 +74,7 @@ UNiD.init({
     clientSecret : 'client_secret',
     encryptionKey: 'encryption_key',
     envNetwork   : 'testnet'
-    asyncStorage : asyncStorage
+    localStorage : asyncStorage
 })
 ```
 {% endtab %}

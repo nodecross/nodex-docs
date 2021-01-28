@@ -42,7 +42,7 @@ In UNiD, MongoDB is used as local repository \(keyRings, secrets, etc\) by defau
 
 ## Configure
 
-After you've completed setting up a tenant and a relying party application in UNiD, UNiD will give you values: `clientId`, `clientSecret`, `encryptionKey` and `mongoClient`. These values are used for authorization when the RP communicates with the wallet application and SDS endpoints.
+After you've completed setting up a tenant and a relying party application in UNiD, UNiD will give you values: `clientId`, `clientSecret`, `encryptionKey` and `localStorage`. These values are used for authorization when the RP communicates with the wallet application and SDS endpoints.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -50,14 +50,14 @@ After you've completed setting up a tenant and a relying party application in UN
 import { UNiD } from '@unid/node-wallet-sdk'
 import { MongoClient } from 'mongodb'
 
-const uri    = 'mongodb://username:password@localhost:27017'
-const client = new MongoClient(uri, {
+const uri = 'mongodb://username:password@localhost:27017'
+const mongoClient = new MongoClient(uri, {
     useUnifiedTopology: true,
 })
 
 (async () => {
     // Connect to your mongodb
-    await client.connect()
+    await mongoClient.connect()
     
     // Initialize UNiD instance
     UNiD.init({
@@ -65,7 +65,7 @@ const client = new MongoClient(uri, {
         clientSecret : 'client_secret',
         encryptionKey: 'encryption_key',
         envNetwork   : 'testnet',
-        mongoClient  : client
+        localStorage : mongoClient
     })
 })()
 ```
