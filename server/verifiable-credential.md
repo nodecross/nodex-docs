@@ -30,7 +30,7 @@ Here, we introduce how to create VC. When you create and issue a VC, you need to
 import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
-    try {
+    try{
         // To get a issuer's DID
         const DID = await UNiD.loadDid({
             did: 'did:unid:test:EiDHnta3sppFajkzGqYm3jIe_lisi7sIq7ZqIxdzaad7fg'
@@ -82,7 +82,7 @@ The application server can securely access authorized SDS endpoints. The verifia
 import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
-    try {
+    try{
         const DID = await UNiD.loadDid({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
@@ -233,7 +233,7 @@ result = {
         ..
     },
     payload: Array<VC>,
-    types  : Array<string>
+    types: Array<string>
 }
 ```
 
