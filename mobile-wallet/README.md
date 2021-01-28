@@ -24,7 +24,7 @@ Before we begin, make sure you have the following installed:
 
 ## ⬇ Install
 
-Add the `@unid/react-native-sdk` dependency:
+Add the `@unid/react-native-wallet-sdk` dependency:
 
 {% tabs %}
 {% tab title="Bash" %}
