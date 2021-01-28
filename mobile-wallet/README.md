@@ -29,11 +29,11 @@ Add the `@unid/react-native-sdk` dependency:
 {% tabs %}
 {% tab title="Bash" %}
 ```bash
-npm install --save @unid/react-native-sdk
+npm install --save @unid/react-native-wallet-sdk
 
 # OR
 
-yarn add @unid/react-native-sdk
+yarn add @unid/react-native-wallet-sdk
 ```
 {% endtab %}
 {% endtabs %}
@@ -45,7 +45,7 @@ Since our SDKs also support a local authentication and key management at OS nati
 {% tabs %}
 {% tab title="Bash" %}
 ```bash
-react-native link @unid/react-native-sdk
+react-native link @unid/react-native-wallet-sdk
 ```
 {% endtab %}
 {% endtabs %}
@@ -65,7 +65,7 @@ After you've completed setting up a tenant and a wallet application in UNiD, UNi
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/react-native-sdk';
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
@@ -73,9 +73,9 @@ import { UNiD } from '@unid/react-native-sdk';
             clientId: 'client_id_token',
             clientSecret: 'client_secret_token',
             envNetwork: 'testnet'
-        });
+        })
     } catch (err) {
-        console.error('ERROR:', err);
+        console.error('ERROR:', err)
     };
 })()
 ```

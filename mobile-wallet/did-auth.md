@@ -25,16 +25,17 @@ In step 5 of the diagram, the wallet receives an authN request from the RP. The 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk";
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
         // DID AuthN Request with applicationDid
-        const result = await UNiD.validateAuthenticationRequest(applicationDid);
-        console.log("Complete validating DID AuthN Request", result);
-    } catch err(err){
-        console.err(err);
-    };
+        const result = await UNiD.validateAuthenticationRequest(applicationDid)
+        
+        console.log('Complete validating DID AuthN Request', result)
+    } catch err(err) {
+        console.err(err)
+    }
 })()
 ```
 {% endtab %}
@@ -49,20 +50,22 @@ In step 6 of the diagram, the wallet creates a DID AuthN response signed by the 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk";
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
-        });
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
+        })
+        
         const result = await DID.generateAuthenticationResponse({
             requestedPresentation: presentation
-        });
-        console.log("Complete generating DID AuthN Response", result);
+        })
+        
+        console.log('Complete generating DID AuthN Response', result)
     } catch err(err){
-        console.err(err);
-    };
+        console.err(err)
+    }
 })()
 ```
 {% endtab %}

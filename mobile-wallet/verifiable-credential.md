@@ -27,32 +27,33 @@ Now let's create an `AddressCredentialV1` through React Native SDKs.
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk";
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try{
         // To get a credential subject's DID
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
 
         const AddressCredentialV1 = DID.createCredential(
             new AddressCredentialV1({
-                '@id': DID.getIdentifier(),
-                '@type': "AddressPerson",
+                '@id'  : DID.getIdentifier(),
+                '@type': 'AddressPerson',
                 address: {
-                    postalCode: "1500044",
-                    addressCountry: "JP",
-                    addressLocality: "Tokyo",
-                    addressRegion: "Shibuya-ku",
-                    streetAddress: "5-5, Marumaya-cho"
+                    postalCode     : '1500044',
+                    addressCountry : 'JP',
+                    addressLocality: 'Tokyo',
+                    addressRegion  : 'Shibuya-ku',
+                    streetAddress  : '5-5, Marumaya-cho'
                 }
             }, {
-                issuanceDate: new Date(),
+                issuanceDate  : new Date(),
                 expirationDate: new Date(),
             })
         )
-        console.log("Complete creating a credential:", JSON.stringfy(AddressCredentialV1, null, 2))
+        
+        console.log('Complete creating a credential:', JSON.stringfy(AddressCredentialV1, null, 2))
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -72,15 +73,17 @@ The wallet can securely access authorized SDS endpoints. The verifiable credenti
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk"
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try{
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const result = await DID.postCredential(AddressCredentialV1)
-        console.log("Complete storing the credential to SDS:", result)
+        
+        console.log('Complete storing the credential to SDS:', result)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -100,22 +103,24 @@ The mobile wallet can fetch a newest record with `DID.getCredential()`. You can 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk"
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const credential = await DID.getCredential({
-            type: "AddressCredentialV1",
-            issuerDid: "did:unid:test:issuer_12345678#keys-1",
+            type     : 'AddressCredentialV1',
+            issuerDid: 'did:unid:test:issuer_12345678#keys-1',
             issuanceDate: {
-                begin: new Date("2020-01-01"),
-                end: new Date("2020-12-31")
+                begin: new Date('2020-01-01'),
+                end  : new Date('2020-12-31')
             }
         })
-        console.log("Complete getting the latest credential from SDS:", credential)
+        
+        console.log('Complete getting the latest credential from SDS:', credential)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -129,24 +134,26 @@ The mobile wallet can fetch all applicable credentials with `DID.getCredentials(
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk";
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const credentials = DID.getCredentials({
-            type: "AddressCredentialV1",
-            issuerDid: "did:unid:test:issuer_123456789",
+            type     : 'AddressCredentialV1',
+            issuerDid: 'did:unid:test:issuer_123456789',
             issuanceDate: {
-                begin: new Date("2020-01-01"),
-                end: new Date("2020-12-31")
+                begin: new Date('2020-01-01'),
+                end  : new Date('2020-12-31')
             },
             limit: 25,
-            page: 1
+            page : 1
         })
-        console.log("Complete getting credentials from SDS:", credentials)
+        
+        console.log('Complete getting credentials from SDS:', credentials)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -160,15 +167,17 @@ After getting credentials, you can package the verifiable credentials into the v
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk";
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const presentation = await DID.createPresentation(credentials)
-        console.log("Complete creating a presentation:", presentation)
+        
+        console.log('Complete creating a presentation:', presentation)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -188,14 +197,16 @@ This section describes how the application server verifies the signature of the 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk"
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
         const presentation = JSON.parse('{"verifiablePresentation":"...", "proof":"...", ... }')
+        
         if (UNiD.isVerifiablePresentation(presentation)) {
             const result = await UNiD.verifyPresentation(presentation)
-            console.log("Complete validating a presentation:", result)
+            
+            console.log('Complete validating a presentation:', result)
         else {
             throw new Error('Invalid input data')
         }
@@ -213,14 +224,14 @@ You will receive the following json object. `payload` is an array of verifiable 
 {% tab title="JSON" %}
 ```javascript
 result = {
-  isValid: boolean,
-  metadata: {
-    issuer: string,
-    issuanceDate: Date,
-    ..
-  },
-  payload: Array<VC>,
-  types: Array<string>,
+    isValid : boolean,
+    metadata: {
+        issuer: string,
+        issuanceDate: Date,
+        ..
+    },
+    payload: Array<VC>,
+    types  : Array<string>
 }
 ```
 {% endtab %}
@@ -231,15 +242,18 @@ By specifying the credential type, you can retrieve the verifiable credential wi
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk"
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
     try {
         const vc = await AddressCredentialV1.select(result.payload)
-        console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
+        
+        console.log('Complete retrieving a credential:', JSON.stringfy(vc, null, 2))
+        
         if (UNiD.isVerifiableCredential(vc)) {
             const result = await UNiD.verifyCredential(vc)
-            console.log("Complete verifying a credential:", JSON.stringfy(result, null, 2))
+            
+            console.log('Complete verifying a credential:', JSON.stringfy(result, null, 2))
         } else {
             throw new Error('Invalid input data')
         }
@@ -257,13 +271,13 @@ You will receive the following json object.
 {% tab title="JSON" %}
 ```javascript
 result = {
-  isValid: boolean,
-  metadata: {
-    issuer: string,
-    issuanceDate: Date,
-    ..
-  },
-  payload: VC
+    isValid : boolean,
+    metadata: {
+        issuer: string,
+        issuanceDate: Date,
+        ..
+    },
+    payload: VC
 }
 
 // For example, get addressCountry from AddressCredentialV1

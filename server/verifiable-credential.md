@@ -226,14 +226,14 @@ You will receive the following json object. `payload` is an array of verifiable 
 
 ```javascript
 result = {
-  isValid: boolean,
-  metadata: {
-    issuer: string,
-    issuanceDate: Date,
-    ..
-  },
-  payload: Array<VC>,
-  types: Array<string>,
+    isValid : boolean,
+    metadata: {
+        issuer: string,
+        issuanceDate: Date,
+        ..
+    },
+    payload: Array<VC>,
+    types: Array<string>
 }
 ```
 
@@ -269,13 +269,13 @@ You will receive the following json object.
 
 ```javascript
 result = {
-  isValid: boolean,
-  metadata: {
-    issuer: string,
-    issuanceDate: Date,
-    ..
-  },
-  payload: VC
+    isValid : boolean,
+    metadata: {
+        issuer: string,
+        issuanceDate: Date,
+        ..
+    },
+    payload: VC
 }
 
 // For example, get addressCountry from AddressCredentialV1

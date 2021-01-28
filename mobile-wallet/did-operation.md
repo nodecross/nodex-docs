@@ -14,18 +14,19 @@ With our React Native SDK, you can easily generate key pairs and register a DID 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD, KeyRingType } from '@unid/react-native-sdk';
+import { UNiD, KeyRingType } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         const DID = await UNiD.createDidDocument(
             KeyRingType.Mnemonic,
             { length: 24 }
-        );
-        console.log('complete generating a DID:', await DID.getIdentifier());
+        )
+        
+        console.log('complete generating a DID:', DID.getIdentifier())
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}
@@ -36,25 +37,29 @@ After generating a binary seed, you can get a seed phrase which enables to recov
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk";
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         // Get a DID Object
         const DID = await UNiD.loadDid({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
-        });
+        })
+        
         // Get a seed phrase of the DID
-        const seedPhrase = await DID.getSeedPhrase();
-        console.log('complete getting a seed phrase:', seedPhrase);
+        const seedPhrase = DID.getSeedPhrase()
+        
+        console.log('complete getting a seed phrase:', seedPhrase)
+        
         // Verify the seed phrase
         const result = await DID.verifySeedPhrase([
-            'word_1', 'word_2',...,'word_24'
-        ]);
+            'word_1', 'word_2', ..., 'word_24'
+        ])
+        
         console.log('complete verifying the seed phrase:', result)
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}
@@ -69,20 +74,21 @@ After generating a DID, you can resolve it to get a DID Document. UNiD Node SDKs
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/react-native-sdk";
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         const didDocument = await UNiD.getDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
-        });
+        })
+        
         console.log(
             'Complete getting a DID Document:',
             JSON.stringify(didDocument, null, 2)
-        );
+        )
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}
@@ -99,27 +105,28 @@ Update DID document when adding, changing, and deleting public keys or service e
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/react-native-sdk';
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'add-public-keys',
-            'publicKeys': [{
-                'id': 'key1',
-                'purposes': ['authentication'],
-                'type': 'EcdsaSecp256k1VerificationKey2019',
-                'publicKeyJwk': {...}
+            publicKeys: [{
+                id: 'key1',
+                purposes: [ 'authentication' ],
+                type: 'EcdsaSecp256k1VerificationKey2019',
+                publicKeyJwk: { ... }
             }]
-        });
+        })
+        
         console.log(
             'Complete adding public keys:',
             JSON.stringify(didDocument, null, 2)
-        );
+        )
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}
@@ -130,22 +137,23 @@ import { UNiD } from '@unid/react-native-sdk';
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/react-native-sdk';
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'remove-public-keys',
-            'ids': ['key1', 'key2']
-        });
+            ids: [ 'key1', 'key2' ]
+        })
+        
         console.log(
             'Complete removing public keys:',
             JSON.stringify(didDocument, null, 2)
-        );
+        )
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}
@@ -156,33 +164,33 @@ import { UNiD } from '@unid/react-native-sdk';
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/react-native-sdk';
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'add-services',
-            'services': [{
-                'id': 'sds2',
-                'type': 'SecureDataStore',
-                'serviceEndpoint': 'https://examplePublicKey@o0.ingest.sds.unid.plus/'
-            },
-            {
-                'id': 'did-config',
-                'type': 'LinkedDomains',
-                'serviceEndpoint': {
-                    'origins': ['https://foo.com', 'https://bar.com']
+            services: [{
+                id: 'sds2',
+                type: 'SecureDataStore',
+                serviceEndpoint: 'https://examplePublicKey@o0.ingest.sds.unid.plus/'
+            }, {
+                id: 'did-config',
+                type: 'LinkedDomains',
+                serviceEndpoint: {
+                    origins: [ 'https://foo.com', 'https://bar.com' ]
                 }
             }]
-        });
+        })
+        
         console.log(
             'Complete adding service endpoints:',
             JSON.stringify(didDocument, null, 2)
-        );
+        )
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}
@@ -193,22 +201,23 @@ import { UNiD } from '@unid/react-native-sdk';
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/react-native-sdk';
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'remove-services',
-            'ids': ['sds1', 'sds2']
-        });
+            ids: [ 'sds1', 'sds2' ]
+        })
+        
         console.log(
             'Complete removing service endpoints:',
             JSON.stringify(didDocument, null, 2)
-        );
+        )
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}
@@ -219,37 +228,33 @@ import { UNiD } from '@unid/react-native-sdk';
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/react-native-sdk';
+import { UNiD } from '@unid/react-native-wallet-sdk'
 
 (async () => {
-    try{
+    try {
         const didDocument = await UNiD.updateDidDocument({
-          'action': 'replace',
-          'document': {
-            'publicKeys': [
-              {
-                'id': 'key2',
-                'purposes': ['authentication'],
-                'type': 'EcdsaSecp256k1VerificationKey2019',
-                'publicKeyJwk': {...}
-              }
-            ],
-            'services': [
-              {
-                'id': 'sds3',
-                'type': 'SecureDataStore',
-                'serviceEndpoint': 'http://hub.my-personal-server.com'
-              }
-            ]
-          }
-        });
+            action: 'replace',
+            document: {
+                publicKeys: [{
+                id: 'key2',
+                purposes: [ 'authentication' ],
+                type: 'EcdsaSecp256k1VerificationKey2019',
+                publicKeyJwk: { ... }
+            }],
+            services: [{
+                id: 'sds3',
+                type: 'SecureDataStore',
+                serviceEndpoint: 'http://hub.my-personal-server.com'
+            }]
+        })
+        
         console.log(
             'Complete replacing a DID Document:',
-             JSON.stringify(didDocument, null, 2)
-         );
+            JSON.stringify(didDocument, null, 2)
+        )
     } catch (err) {
-        console.error('ERROR:', err);
-    };
+        console.error('ERROR:', err)
+    }
 })()
 ```
 {% endtab %}

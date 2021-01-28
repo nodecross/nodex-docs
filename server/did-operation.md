@@ -14,50 +14,45 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 With our Node SDK, you can easily generate key pairs and register a DID on UNiD network. First, you can select a `KeyRingType` which supports several methods for managing key pairs. Here, we introduce the method of generating a binary seed from a seed phrase with BIP39, and generating multiple key pairs using ecc-secp256k1 with BIP32. Finally, the method computes hash from the public keys and objects and register the hash on UNiD network. Click here for more info.
 
 ```typescript
-import { UNiD, KeyRingType } from '@unid/node-wallet-sdk'
+import { UNiD, KeyRingType } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         const DID = await UNiD.createDidDocument(
             KeyRingType.Mnemonic,
             { length: 24 }
-        )
-        
+        );
         // After registering new DID on UNiD network,
         // you can get an identifier.
-        console.log('complete generating a DID:', DID.getIdentifier())
+        console.log('complete generating a DID:', await DID.getIdentifier());
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
 After generating a binary seed, you can get a seed phrase which enables to recover a binary seed and key pairs. Once you have verified a seed phrase, you will never be able to get it again. When verifying a seed phrase, it must be placed correctly in the same order as when the phrase was obtained.
 
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         // Get a DID Object
         const DID = await UNiD.loadDid({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
-        })
-        
+        });
         // Get a seed phrase of the DID
-        const seedPhrase = DID.getSeedPhrase()
-        
-        console.log('complete getting a seed phrase:', seedPhrase)
-        
+        const seedPhrase = await DID.getSeedPhrase();
+        console.log('complete getting a seed phrase:', seedPhrase);
         // Verify the seed phrase
         const result = await DID.verifySeedPhrase([
-            'word_1', 'word_2', ..., 'word_24'
-        ])
-        
+            'word_1', 'word_2',...,'word_24'
+        ]);
         console.log('complete verifying the seed phrase:', result)
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
@@ -68,21 +63,20 @@ After a while, the queued operation will be periodically extracted and executed 
 After generating a DID, you can resolve it to get a DID Document. UNiD Node SDKs allow you to resolve a DID while verifying the authenticity of the response.
 
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         const didDocument = await UNiD.getDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
-        })
-        
+        });
         console.log(
             'Complete getting a DID Document:',
             JSON.stringify(didDocument, null, 2)
-        )
+        );
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
@@ -95,141 +89,141 @@ Update DID document when adding, changing, and deleting public keys or service e
 **To add public keys**
 
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'add-public-keys',
-            publicKeys: [{
-                id: 'key1',
-                purposes: [ 'authentication' ],
-                type: 'EcdsaSecp256k1VerificationKey2019',
-                publicKeyJwk: { ... }
+            'publicKeys': [{
+                'id': 'key1',
+                'purposes': ['authentication'],
+                'type': 'EcdsaSecp256k1VerificationKey2019',
+                'publicKeyJwk': {...}
             }]
-        })
-        
+        });
         console.log(
             'Complete adding public keys:',
             JSON.stringify(didDocument, null, 2)
-        )
+        );
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
 **To remove public keys**
 
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'remove-public-keys',
-            ids: [ 'key1', 'key2' ]
-        })
-        
+            'ids': ['key1', 'key2']
+        });
         console.log(
             'Complete removing public keys:',
             JSON.stringify(didDocument, null, 2)
-        )
+        );
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
 **To add services**
 
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'add-services',
-            services: [{
-                id: 'sds2',
-                type: 'SecureDataStore',
-                serviceEndpoint: 'https://examplePublicKey@o0.ingest.sds.unid.plus/'
-            }, {
-                id: 'did-config',
-                type: 'LinkedDomains',
-                serviceEndpoint: {
-                    origins: [ 'https://foo.com', 'https://bar.com' ]
+            'services': [{
+                'id': 'sds2',
+                'type': 'SecureDataStore',
+                'serviceEndpoint': 'https://examplePublicKey@o0.ingest.sds.unid.plus/'
+            },
+            {
+                'id': 'did-config',
+                'type': 'LinkedDomains',
+                'serviceEndpoint': {
+                    'origins': ['https://foo.com', 'https://bar.com']
                 }
             }]
-        })
-        
+        });
         console.log(
             'Complete adding service endpoints:',
             JSON.stringify(didDocument, null, 2)
-        )
+        );
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
 **To remove services**
 
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         const didDocument = await UNiD.updateDidDocument({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg',
             action: 'remove-services',
-            ids: [ 'sds1', 'sds2' ]
-        })
-        
+            'ids': ['sds1', 'sds2']
+        });
         console.log(
             'Complete removing service endpoints:',
             JSON.stringify(didDocument, null, 2)
-        )
+        );
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
 **To replace**
 
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@unid/nodejs-sdk';
 
 (async () => {
     try{
         const didDocument = await UNiD.updateDidDocument({
-            action: 'replace',
-            document: {
-                publicKeys: [{
-                    id: 'key2',
-                    purposes: [ 'authentication' ],
-                    type: 'EcdsaSecp256k1VerificationKey2019',
-                    publicKeyJwk: { ... }
-                }],
-                services: [{
-                    id: 'sds3',
-                    type: 'SecureDataStore',
-                    serviceEndpoint: 'http://hub.my-personal-server.com'
-                }]
-            }
-        })
-        
+          'action': 'replace',
+          'document': {
+            'publicKeys': [
+              {
+                'id': 'key2',
+                'purposes': ['authentication'],
+                'type': 'EcdsaSecp256k1VerificationKey2019',
+                'publicKeyJwk': {...}
+              }
+            ],
+            'services': [
+              {
+                'id': 'sds3',
+                'type': 'SecureDataStore',
+                'serviceEndpoint': 'http://hub.my-personal-server.com'
+              }
+            ]
+          }
+        });
         console.log(
             'Complete replacing a DID Document:',
              JSON.stringify(didDocument, null, 2)
-        )
+         );
     } catch (err) {
-        console.error('ERROR:', err)
-    }
+        console.error('ERROR:', err);
+    };
 })()
 ```
 
