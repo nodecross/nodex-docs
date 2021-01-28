@@ -27,37 +27,39 @@ Here, we introduce how to create VC. When you create and issue a VC, you need to
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk"
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try{
         // To get a issuer's DID
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiDHnta3sppFajkzGqYm3jIe_lisi7sIq7ZqIxdzaad7fg"
+            did: 'did:unid:test:EiDHnta3sppFajkzGqYm3jIe_lisi7sIq7ZqIxdzaad7fg'
         })
+        
         // To get a credential subject's DID
         const SubjectDid = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
 
         // To create AddressCredentialV1
         const AddressCredentialV1 = DID.createCredential(
             new AddressCredentialV1({
-                '@id': SubjectDid.getIdentifier(),
-                '@type': "AddressPerson",
+                '@id'  : SubjectDid.getIdentifier(),
+                '@type': 'AddressPerson',
                 address: {
-                    postalCode: "1500044",
-                    addressCountry: "JP",
-                    addressLocality: "Tokyo",
-                    addressRegion: "Shibuya-ku",
-                    streetAddress: "5-5, Marumaya-cho"
+                    postalCode     : '1500044',
+                    addressCountry : 'JP',
+                    addressLocality: 'Tokyo',
+                    addressRegion  : 'Shibuya-ku',
+                    streetAddress  : '5-5, Marumaya-cho'
                 }
             }, {
-                issuanceDate: new Date(),
-                expirationDate: new Date(),
+                issuanceDate  : new Date(),
+                expirationDate: new Date()
             })
         )
-        console.log("Complete creating a credential:", JSON.stringfy(AddressCredentialV1, null, 2))
+        
+        console.log('Complete creating a credential:', JSON.stringfy(AddressCredentialV1, null, 2))
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -77,15 +79,17 @@ The application server can securely access authorized SDS endpoints. The verifia
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk"
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try{
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const result = await DID.postCredential(AddressCredentialV1)
-        console.log("Complete storing the credential to SDS:", result)
+        
+        console.log('Complete storing the credential to SDS:', result)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -105,23 +109,25 @@ The application server can fetch a newest record with `DID.getCredential()`. You
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk"
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const credential = await DID.getCredential({
-            type: "AddressCredentialV1",
-            credentialSubjectDid: "did:unid:test:holder_123456789",
-            issuerDid: "did:unid:test:issuer_12345678#keys-1",
+            type: 'AddressCredentialV1',
+            credentialSubjectDid: 'did:unid:test:holder_123456789',
+            issuerDid   : 'did:unid:test:issuer_12345678#keys-1',
             issuanceDate: {
                 begin: new Date('2020-01-01'),
-                end: new Date('2020-12-31')
+                end  : new Date('2020-12-31')
             }
         })
-        console.log("Complete getting the latest credential from SDS:", credential)
+        
+        console.log('Complete getting the latest credential from SDS:', credential)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -135,25 +141,27 @@ The application server can fetch all applicable credentials with `DID.getCredent
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk"
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const credentials = DID.getCredentials({
-            type: "AddressCredentialV1",
-            credentialSubjectDid: "did:unid:test:holder_123456789",
-            issuerDid: "did:unid:test:issuer_123456789",
+            type: 'AddressCredentialV1',
+            credentialSubjectDid: 'did:unid:test:holder_123456789',
+            issuerDid    : 'did:unid:test:issuer_123456789',
             issuance_date: {
-                begin: new Date("2020-01-01"),
-                end: new Date("2020-12-31")
+                begin: new Date('2020-01-01'),
+                end  : new Date('2020-12-31')
             },
             limit: 25,
-            page: 1
+            page : 1
         })
-        console.log("Complete getting credentials from SDS:", credentials)
+        
+        console.log('Complete getting credentials from SDS:', credentials)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -167,15 +175,17 @@ After getting credentials, you can package the verifiable credentials into the v
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk"
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
         const DID = await UNiD.loadDid({
-            did: "did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg"
+            did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
+        
         const presentation = await DID.createPresentation(credentials)
-        console.log("Complete creating a presentation:", presentation)
+        
+        console.log('Complete creating a presentation:', presentation)
     } catch (err) {
         console.error('ERROR:', err)
     }
@@ -191,14 +201,16 @@ This section describes how the application server verifies the signature of the 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk"
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
         const presentation = JSON.parse('{"verifiablePresentation":"...", "proof":"...", ... }')
+        
         if (UNiD.isVerifiablePresentation(presentation)) {
             const result = await UNiD.verifyPresentation(presentation)
-            console.log("Complete validating a presentation:", result)
+            
+            console.log('Complete validating a presentation:', result)
         } else {
             throw new Error('Invalid input data')
         }
@@ -230,15 +242,18 @@ By specifying the credential type, you can retrieve the verifiable credential wi
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk"
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
         const vc = await AddressCredentialV1.select(result.payload)
-        console.log("Complete retrieving a credential:", JSON.stringfy(vc, null, 2))
+        
+        console.log('Complete retrieving a credential:', JSON.stringfy(vc, null, 2))
+        
         if (UNiD.isVerifiableCredential(vc)) {
             const result = await UNiD.verifyCredential(vc)
-            console.log("Complete verifying a credential:", JSON.stringfy(result, null, 2))
+            
+            console.log('Complete verifying a credential:', JSON.stringfy(result, null, 2))
         } else {
             throw new Error('Invalid input data')
         }

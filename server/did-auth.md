@@ -23,23 +23,24 @@ In step 2 of the diagram, the application server creates a DID AuthN request sig
 **DID.generateAuthenticationRequest\(\)**
 
 ```javascript
-import { UNiD } from "@unid/nodejs-sdk";
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
         const result = await DID.generateAuthenticationRequest({
             requiredCredentialTypes: [
-                "AddressCredentialV1",
-                "NameCredentialV1",
-                "EmailCredentialV1"
+                'AddressCredentialV1',
+                'NameCredentialV1',
+                'EmailCredentialV1'
             ],
             optionalCredentialTypes: [
-                "GenderCredentialV1"
+                'GenderCredentialV1'
             ]
-        });
-        console.log("Complete generating DID AuthN Request", result);
+        })
+        
+        console.log('Complete generating DID AuthN Request', result)
     } catch err(err){
-        console.err(err);
+        console.err(err)
     };
 })()
 ```
@@ -51,16 +52,17 @@ In step 9 of the diagram, the application server receives an authN response from
 **UNiD.validateAuthenticationResponse\(\)**
 
 ```javascript
-import { UNiD } from "@unid/nodejs-sdk";
+import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
         // DID AuthN Response with walletDid
-        const result = await UNiD.validateAuthenticationRequest(walletDid);
-        console.log("Complete validating DID AuthN Request", result);
+        const result = await UNiD.validateAuthenticationRequest(walletDid)
+        
+        console.log('Complete validating DID AuthN Request', result)
     } catch err(err){
-        console.err(err);
-    };
+        console.err(err)
+    }
 })()
 ```
 

@@ -29,11 +29,11 @@ Add the `@unid/nodejs-sdk` dependency:
 {% tabs %}
 {% tab title="Bash" %}
 ```bash
-npm install --save @unid/nodejs-sdk
+npm install --save @unid/node-wallet-sdk
 
 # OR
 
-yarn add @unid/nodejs-sdk
+yarn add @unid/node-wallet-sdk
 ```
 {% endtab %}
 {% endtabs %}
@@ -47,7 +47,7 @@ After you've completed setting up a tenant and a relying party application in UN
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk";
+import { UNiD } from "@unid/node-wallet-sdk";
 
 UNiD.init({
     client_id: "client_id_token",
