@@ -55,17 +55,19 @@ const client = new MongoClient(uri, {
     useUnifiedTopology: true,
 })
 
-// Connect to your mongodb
-await client.connect()
-
-// Initialize UNiD instance
-UNiD.init({
-    clientId     : 'client_id',
-    clientSecret : 'client_secret',
-    encryptionKey: 'encryption_key',
-    envNetwork   : 'testnet',
-    mongoClient  : client
-})
+(async () => {
+    // Connect to your mongodb
+    await client.connect()
+    
+    // Initialize UNiD instance
+    UNiD.init({
+        clientId     : 'client_id',
+        clientSecret : 'client_secret',
+        encryptionKey: 'encryption_key',
+        envNetwork   : 'testnet',
+        mongoClient  : client
+    })
+})()
 ```
 {% endtab %}
 {% endtabs %}
