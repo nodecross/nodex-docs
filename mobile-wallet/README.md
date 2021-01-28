@@ -66,18 +66,16 @@ After you've completed setting up a tenant and a wallet application in UNiD, UNi
 {% tab title="TypeScript" %}
 ```typescript
 import { UNiD } from '@unid/react-native-wallet-sdk'
+import asyncStorage from '@react-native-async-storage/async-storage'
 
-(async () => {
-    try {
-        UNiD.init({
-            clientId: 'client_id_token',
-            clientSecret: 'client_secret_token',
-            envNetwork: 'testnet'
-        })
-    } catch (err) {
-        console.error('ERROR:', err)
-    };
-})()
+// Initialize UNiD instance
+UNiD.init({
+    clientId     : 'client_id',
+    clientSecret : 'client_secret',
+    encryptionKey: 'encryption_key',
+    envNetwork   : 'testnet'
+    asyncStorage : asyncStorage
+})
 ```
 {% endtab %}
 {% endtabs %}

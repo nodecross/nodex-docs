@@ -29,11 +29,11 @@ Add the `@unid/nodejs-sdk` dependency:
 {% tabs %}
 {% tab title="Bash" %}
 ```bash
-npm install --save @unid/nodejs-sdk
+npm install --save @unid/node-wallet-sdk
 
 # OR
 
-yarn add @unid/nodejs-sdk
+yarn add @unid/node-wallet-sdk
 ```
 {% endtab %}
 {% endtabs %}
@@ -47,13 +47,25 @@ After you've completed setting up a tenant and a relying party application in UN
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from "@unid/nodejs-sdk";
+import { UNiD } from '@unid/node-wallet-sdk'
+import { MongoClient } from 'mongodb'
 
+const uri    = 'mongodb://username:password@localhost:27017'
+const client = new MongoClient(uri, {
+    useUnifiedTopology: true,
+})
+
+// Connect to your mongodb
+await client.connect()
+
+// Initialize UNiD instance
 UNiD.init({
-    client_id: "client_id_token",
-    client_secret: "client_secret_token",
-    env_network: "testnet"
-});
+    clientId     : 'client_id',
+    clientSecret : 'client_secret',
+    encryptionKey: 'encryption_key',
+    envNetwork   : 'testnet',
+    mongoClient  : client
+})
 ```
 {% endtab %}
 {% endtabs %}
