@@ -15,7 +15,7 @@
   * [DID Operations](server/did-operation.md)
   * [VC Operations](server/verifiable-credential.md)
   * [DID AuthN](server/did-auth.md)
-* [Credential Schemas](schemas/README.md)
+* [VC Data Schemas](schemas/README.md)
   * [address](schemas/address.md)
   * [alumniOf](schemas/alumniof.md)
   * [birthDate](schemas/birthdate.md)
