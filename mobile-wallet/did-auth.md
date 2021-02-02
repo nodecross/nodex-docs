@@ -12,13 +12,13 @@ For the wallet to communicate with relying parties \(RP\) on secure authenticate
 * validating DID AuthN request from a RP
 * generating DID AuthN response to a RP
 
-The below diagram illustrate the sign-in flow and steps taken to verify a user through their user agent from the wallet side of the webpage to the server side of a RP. If you want to see more details of DID AuthN, please head over [here](https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/unid/3-extensions/README.md).
+The below diagram illustrate the sign-in flow and steps taken to verify a user through their user agent from the wallet side of the webpage to the server side of a RP. If you want to see more details of DID AuthN, please head over [here](../unid-platform/#unid-core).
 
-![DID Auth Protocol Flow](../.gitbook/assets/did-authN-protocol%20%281%29.png)
+![](../.gitbook/assets/siop.svg)
 
 ## Validate AuthN Request
 
-In step 5 of the diagram, the wallet receives an authN request from the RP. The wallet queries for the RP's DID document using a Universal Resolver and verifies the signature with the RP's public key.
+In step \#3 and \#4 of the diagram, the wallet receives an authN request from the RP. The wallet queries for the RP's DID document using a Universal Resolver and verifies the signature with the RP's public key.
 
 **UNiD.validateAuthenticationRequest\(\)**
 
@@ -43,7 +43,7 @@ import { UNiD } from '@unid/react-native-wallet-sdk'
 
 ## Generate DID AuthN Response
 
-In step 6 of the diagram, the wallet creates a DID AuthN response signed by the selected DID. The response object can envelop a verifiable presentation and will be put into a JWS signed by the DID.
+In step \#5 of the diagram, the wallet creates a DID AuthN response signed by the selected DID. The response object can envelop a verifiable presentation and will be put into a JWS signed by the DID.
 
 **DID.generateAuthenticationResponse\(\)**
 
