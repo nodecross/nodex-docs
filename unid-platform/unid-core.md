@@ -56,6 +56,12 @@ A verifiable credential can represent all of the same information that a physica
 **`DID.createPresentation(params = {})`**  
         Wrap verifiable credentials into a verifiable presentation.
 
+**`UNiD.isVerifiableCredential(params = {})`**  
+        Verify the data format of the verifiable credential.
+
+**`UNiD.isVerifiablePresentation(params = {})`**  
+        Verify the data format of the verifiable presentation.
+
 **`UNiD.verifyCredential(params = {})`**  
         Verify the signature of the verifiable credential.
 
@@ -73,7 +79,7 @@ DIDComm is a cross-community standard that creates libraries and design patterns
 
 For the wallet to communicate with relying parties \(RP\) on secure authenticated channel. The below diagram illustrate the sign-in flow and steps taken to verify a user through their user agent from the wallet side of the webpage to the server side of a RP.
 
-![](../.gitbook/assets/did-authN-protocol%20%281%29.png)
+![](../.gitbook/assets/siop.svg)
 
 ### Method Summary
 

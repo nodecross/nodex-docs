@@ -28,18 +28,18 @@ Phone number of a person.
     ],
     "id": "https://sds.getunid.io/api/v1/credentials",
     "type": ["VerifiableCredential", "PhoneCredentialV1"],
-    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuer": "did:unid:test:issuer1234",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
         "@type": "PhonePerson",
-        "@id": "did:unid:test:example1234#keys-1",
+        "@id": "did:unid:test:example1234",
         "telephone": "+818033061234"
     },
     "proof": {
         "type": "EcdsaSecp256k1Signature2019",
         "created": "20201101T180000+0900",
         "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "verificationMethod": "did:unid:test:issuer1234#signingKey",
         "jws": "eyJhbGc..."
     }
 }
@@ -64,18 +64,18 @@ Phone number of an organization.
     ],
     "id": "https://sds.getunid.io/api/v1/credentials/",
     "type": ["VerifiableCredential", "PhoneCredentialV1"],
-    "issuer": "did:unid:test:issuer1234#keys-1",
+    "issuer": "did:unid:test:issuer1234",
     "issuanceDate": "20201101T180000+0900",
     "credentialSubject": {
         "@type": "PhoneOrganization",
-        "@id": "did:unid:test:example1234#keys-1",
+        "@id": "did:unid:test:example1234",
         "telephone": "0312345678"
     },
     "proof": {
         "type": "EcdsaSecp256k1Signature2019",
         "created": "20201101T180000+0900",
         "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:unid:test:example1234#keys-1",
+        "verificationMethod": "did:unid:test:issuer1234#signingKey",
         "jws": "eyJhbGc..."
     }
 }

@@ -48,6 +48,7 @@ Our platform is composed of a collection of micro services, allowing developers 
 * Insurance
 * Human Resource
 * Education
+* Tele Communication
 * Healthcare
 * Gig Economy
 * B2B transaction
