@@ -4,8 +4,6 @@
 
 UNiD SDKs offer convenient and easy-to-use javascript module for DID operations, VC operations, and DID Comm through the underlying Core APIs and Drivers. We are currently providing React Native SDK for embedding **digital wallet** \(provide storage of keys, credentials, and secrets, often facilitated or controlled by an agent\) capabilities into a mobile agent.
 
-{% page-ref page="../mobile-wallet/" %}
-
 ## Server Wallet SDKs
 
 We are currently providing Node SDK for embedding digital wallet capabilities into an existing application server as a verifier or issuer. 

@@ -1,4 +1,4 @@
-# Server Wallet
+# Server Kits
 
 ## Introduction
 
