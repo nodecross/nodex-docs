@@ -10,6 +10,10 @@ UNiD is an easy to implement, flexible solution to integrate **a decentralized i
 
 {% page-ref page="unid-platform/" %}
 
+## To build a mobile wallet
+
+{% page-ref page="mobile-wallet/" %}
+
 ## To integrate into an existing server
 
 {% page-ref page="server/" %}
