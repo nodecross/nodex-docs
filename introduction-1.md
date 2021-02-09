@@ -22,7 +22,7 @@ The roles of the core actors and the relationships between them in an ecosystem 
 
 ![DID Ecosystem Overview](.gitbook/assets/did-map%20%283%29.png)
 
-UNiD Platform provides the fundamental capabilities for operating DIDs, verifiable credentials, and store and exchange encrypted data in a privacy-preserving way.
+In order to take full advantage of the capabilities of DIDs and verifiable credentials, it is necessary to minimize the cost of communication between the applications composed of the DIDs and existing services. UNiD provides the fundamental capabilities of DIDs and verifiable credentials, and SDKs for easy integration with existing services.
 
 {% page-ref page="unid-platform/" %}
 
