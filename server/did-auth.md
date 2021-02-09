@@ -16,7 +16,7 @@ The below diagram illustrate the sign-in flow and steps taken to verify a user t
 
 ![](../.gitbook/assets/siop.svg)
 
-## Generate DID AuthN Request
+## Generate SIOP Request
 
 In step \#1 of the diagram, the web server creates a SIOP request signed by the application's DID. The web server can specify the credential type as the information required for authentication.
 
@@ -47,7 +47,7 @@ import { UNiD } from '@unid/node-wallet-sdk'
 
 ## Validate AuthN Response
 
-In step \#6 of the diagram, the web server receives an authN response from the identity wallet. The web server queries for the wallet's DID document using a Universal Resolver and verifies the signature with the wallet's public key.
+In step \#6 of the diagram, the web server receives an SIOP response from the mobile wallet. The web server queries for the wallet's DID document using DID Resolver and verifies the signature with the wallet's public key.
 
 **UNiD.validateAuthenticationResponse\(\)**
 
@@ -56,9 +56,8 @@ import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
     try {
-        // DID AuthN Response with walletDid
+        // Verify SIOP Response with walletDid
         const result = await UNiD.validateAuthenticationRequest(walletDid)
-        
         console.log('Complete validating DID AuthN Request', result)
     } catch err(err){
         console.err(err)
