@@ -2,7 +2,7 @@
 
 ## Intro to UNiD Platform
 
-UNiD platform provides the fundamental capabilities for DID operations, VC operations, and DID communications in a secure and privacy-preserving manner. UNiD implementation is composed of a collection of micro services, allowing developers to combine pluggable and extensible modular for flexibility and freedom of choice without compromising security.
+UNiD is an easy to implement, flexible solution to integrate a decentralized identity capabilities into your applications. UNiD is composed of a collection of micro services, allowing developers to combine pluggable and extensible modular for flexibility and freedom of choice without compromising security. We are here to give developers and companies the building blocks they need to secure their applications without having to become security experts.
 
 As in the diagram below, our platform consists of four components: **UNiD SDKs**, **UNiD Core**, **UNiD Drivers**, and **UNiD Network**.
 

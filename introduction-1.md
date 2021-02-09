@@ -2,11 +2,13 @@
 
 ## Digital Identity
 
-Digital Identity is the front door of every user interactions in digital world. As digital transformation accelerates in all industries, it is necessary to build solutions on common standards for security and privacy in order to communicate smoothly online.
+Digital Identity is the front door of every user interactions in digital society. As digital transformation accelerates in all industries, it is necessary to build solutions on common standards for security and privacy in order to communicate smoothly online.
 
 The traditional identity systems today are fragmented, insecure, and do not have sufficient functionality to verify whether the data transferred is reliable in human social activity. For example, when using digital services, we are always required to create accounts and store a small part of our digital identity in the databases of these service providers. Consequently, digital identities become fragmented and locked into numerous different databases controlled by multiple external third parties.
 
-Therefore, the service providers are suffering from high operating costs such as processing, verifying, and sharing data. Additionally, as long as they retain personal identifiable information are incredibly appealing to hackers, they must continue to pay for security and privacy protection, which have become increasingly responsible in recent year.
+The model of centralized identity systems increases the security and privacy risks for the business and makes it difficult to share data across services. As long as business holds a vast amount of personal information, security risks such as unauthorized access, internal leaks, and data tampering will occur. In addition, sharing data across services requires not only the time and effort of data collection, verification, and collation, but also the significant cost of data processing and handling to ensure privacy protection which have become increasingly responsible in recent year.
+
+Although these issues have been recognized as common business challenges and risks across the world and various industries, they were difficult to solve fundamentally. This is due to technical challenges at the protocol level, a lack of security experts, and delays in responding to changes in the business environment due to the complex and legacy system structure of digital identity.
 
 At UNiD, we are focused on building solutions for connect the world with digital trust in a decentralized manner. To achieve this goal, it's important first step to establish a globally unique identity that can be controlled directly by a user without the need for centralized authorities or trusted third parties.
 
