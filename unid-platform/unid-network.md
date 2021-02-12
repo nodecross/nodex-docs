@@ -10,7 +10,7 @@ UNiD network consists of primary components of a DID overlay network:
 2. The nodes in below figure, which interact with the ledger system to anchor operations, fetch and replicate data from the CAS network, and process operations in accordance with the protocol deterministic rule set.
 3. An integrated CAS network layer the nodes use to distribute and replicate DID operation files.
 
-![](../.gitbook/assets/screen-shot-2021-01-04-at-3.02.18.png)
+![](../.gitbook/assets/sidetree-network-topology.svg)
 
 If you want to see how to operate and resolve DIDs on UNiD network, please [click here for more info](https://www.notion.so/collabogate/UNiD-Network-1113de045f2547bfb134757ce505361c).
 
