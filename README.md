@@ -4,7 +4,7 @@
 
 UNiD is a composable human-centric & privacy preserving computing network where distributed users and machines are able to interact with data, values and other counter parties without the need for 3rd parties.
 
-UNiD solutions provides a full set of protocols for operating decentralized identities, decentralized public key infrastructure, mobile wallets, encrypted data storage, verifiable credential, and SDKs for easy integration with existing services.
+UNiD solutions provides a full set of protocols and SDKs for DIDs and VC operations, decentralized public key infrastructure, SIOP,  and encrypted data storage. Let's plug your systems into UNiD network!!
 
 ![](.gitbook/assets/screen-shot-2021-01-04-at-2.55.00.png)
 
