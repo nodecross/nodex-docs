@@ -2,7 +2,9 @@
 
 ## ✨ Welcome to the UNiD Documentation!
 
-UNiD is a decentralized identity solution that allows individuals to manage their own digital identity and selectively disclose information to other parties. It provides a full set of protocols for operating decentralized identities, decentralized public key infrastructure, mobile wallets, encrypted data storage, verifiable credential, and SDKs for easy integration with existing services. By deploying UNiD, businesses can distribute their security and privacy risks, improve the value of the customer experience.
+UNiD is a composable human-centric & privacy preserving computing network where distributed users and machines are able to interact with data, values and other counter parties without the need for 3rd parties.
+
+UNiD solutions provides a full set of protocols for operating decentralized identities, decentralized public key infrastructure, mobile wallets, encrypted data storage, verifiable credential, and SDKs for easy integration with existing services.
 
 ![](.gitbook/assets/screen-shot-2021-01-04-at-2.55.00.png)
 
