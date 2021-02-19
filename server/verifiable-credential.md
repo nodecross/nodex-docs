@@ -58,7 +58,6 @@ import { UNiD } from '@unid/node-wallet-sdk'
                 expirationDate: new Date()
             })
         )
-        
         console.log('Complete creating a credential:', JSON.stringfy(AddressCredentialV1, null, 2))
     } catch (err) {
         console.error('ERROR:', err)
@@ -86,9 +85,7 @@ import { UNiD } from '@unid/node-wallet-sdk'
         const DID = await UNiD.loadDid({
             did: 'did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg'
         })
-        
         const result = await DID.postCredential(AddressCredentialV1)
-        
         console.log('Complete storing the credential to SDS:', result)
     } catch (err) {
         console.error('ERROR:', err)

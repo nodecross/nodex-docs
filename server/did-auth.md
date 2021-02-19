@@ -22,7 +22,9 @@ In step \#1 of the diagram, the web server creates a SIOP request signed by the 
 
 **DID.generateAuthenticationRequest\(\)**
 
-```javascript
+{% tabs %}
+{% tab title="TypeScript" %}
+```typescript
 import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
@@ -44,6 +46,8 @@ import { UNiD } from '@unid/node-wallet-sdk'
     };
 })()
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Validate AuthN Response
 
@@ -51,7 +55,9 @@ In step \#6 of the diagram, the web server receives an SIOP response from the mo
 
 **UNiD.validateAuthenticationResponse\(\)**
 
-```javascript
+{% tabs %}
+{% tab title="TypeScript" %}
+```typescript
 import { UNiD } from '@unid/node-wallet-sdk'
 
 (async () => {
@@ -64,6 +70,8 @@ import { UNiD } from '@unid/node-wallet-sdk'
     }
 })()
 ```
+{% endtab %}
+{% endtabs %}
 
 If the required parameter or authorization code is not included in the response, an error will occur and the authentication process will be interrupted.
 
