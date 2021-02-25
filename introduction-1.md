@@ -10,11 +10,11 @@ The model of centralized identity systems increases the security and privacy ris
 
 Although these issues have been recognized as common business challenges and risks across the world and various industries, they were difficult to solve fundamentally. At the core of these issues is the fact that the current structure of the Internet is not equipped with digital identity and data verification mechanisms to build digital trust.
 
-At UNiD, we are focused on building decentralized identity platform as the future of the Web where distributed users and machines are able to interact with verifiable data without the need for third parties. To achieve this goal, it's important first step to establish a globally unique identity that can be controlled directly by a user without the need for centralized authorities or trusted third parties.
+At UNiD, we are focused on building a full-stack decentralized identity platform to solve the issues. To achieve this goal, it's important first step to establish a globally unique identity that can be controlled directly by a user without the need for centralized authorities or trusted third parties.
 
 ## Decentralized Identity
 
-Decentralized identity, also know as self-sovereign identity \(SSI\), is a digital movement that evolves digital identity on the Internet based on open web standards at organizations such as the [W3C](https://www.w3.org/), [Decentralized Identity Foundation](https://identity.foundation/), [IETF](https://ietf.org/), and [the Hyper ledger Project at the Linux Foundation](https://www.hyperledger.org/). A central part of the movement is the emerging standardization around Decentralized Identifiers \(DIDs\) which is a new type of identifier to allow individuals to create and control their own unique identifiers.
+Decentralized identity, also know as self-sovereign identity \(SSI\), is the new stack for the future web where distributed users and machines are able to interact with verifiable data without the need for third parties. It's a digital movement that evolves digital identity on the Internet based on open web standards at organizations such as the [W3C](https://www.w3.org/), [Decentralized Identity Foundation](https://identity.foundation/), [IETF](https://ietf.org/), and [the Hyper ledger Project at the Linux Foundation](https://www.hyperledger.org/). A central part of the movement is the emerging standardization around Decentralized Identifiers \(DIDs\) which is a new type of identifier to allow individuals to create and control their own unique identifiers.
 
 In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Any subject \(e.g., a person, organization, thing, data model, abstract entity, etc.\) can use these identifiers to obtain verifiable credential \(VC\) from trusted organizations and present these credentials as proof of claims about themselves.
 
@@ -22,7 +22,7 @@ The roles of the core actors and the relationships between them in an ecosystem 
 
 ![DID Ecosystem Overview](.gitbook/assets/did-map%20%283%29.png)
 
-In order to take full advantage of the capabilities of DIDs and verifiable credentials, it is necessary to minimize the cost of communication between the applications composed of the DIDs and existing services. UNiD provides the fundamental capabilities of DIDs and verifiable credentials, and SDKs for easy integration with existing services.
+As can be seen from the diagram above, in order to take full advantage of the capabilities of DIDs and verifiable credentials, it is most important to minimize the implementation cost for existing services. UNiD provides toolkits for easy integration with existing services.
 
 {% page-ref page="unid-platform/" %}
 
