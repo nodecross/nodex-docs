@@ -8,9 +8,9 @@ The traditional identity systems today are fragmented, insecure, and do not have
 
 The model of centralized identity systems increases the security and privacy risks for the business and makes it difficult to share data across services. As long as business holds a vast amount of personal information, security risks such as unauthorized access, internal leaks, and data tampering will occur. In addition, sharing data across services requires not only the time and effort of data collection, verification, and collation, but also the significant cost of data processing and handling to ensure privacy protection which have become increasingly responsible in recent year.
 
-Although these issues have been recognized as common business challenges and risks across the world and various industries, they were difficult to solve fundamentally. This is due to technical challenges at the protocol level, a lack of security experts, and delays in responding to changes in the business environment due to the complex and legacy system structure of digital identity.
+Although these issues have been recognized as common business challenges and risks across the world and various industries, they were difficult to solve fundamentally. At the core of these issues is the fact that the current structure of the Internet is not equipped with digital identity and data verification mechanisms to build digital trust.
 
-At UNiD, we are focused on building solutions for connect the world with digital trust in a decentralized manner. To achieve this goal, it's important first step to establish a globally unique identity that can be controlled directly by a user without the need for centralized authorities or trusted third parties.
+At UNiD, we are focused on building decentralized identity platform as the future of the Web where distributed users and machines are able to interact with verifiable data without the need for third parties. To achieve this goal, it's important first step to establish a globally unique identity that can be controlled directly by a user without the need for centralized authorities or trusted third parties.
 
 ## Decentralized Identity
 

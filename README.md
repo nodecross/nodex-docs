@@ -1,10 +1,10 @@
 # Welcome
 
-## ✨ Welcome to the UNiD Documentation!
+## 🌟 Welcome to the UNiD Documentation!
 
-UNiD is a composable human-centric & privacy preserving computing network where distributed users and machines are able to interact with data, values and other counter parties without the need for 3rd parties.
+UNiD is a decentralized identity platform as the future of the Web where distributed users and machines are able to interact with verifiable data without the need for third parties.
 
-UNiD solutions provides a full set of protocols and SDKs for DIDs and VC operations, decentralized public key infrastructure, SIOP,  and encrypted data storage. Let's plug your systems into UNiD network!!
+Our platform provides a full set of protocol to manage decentralized identifiers, verifiable credentials, digital wallets, encrypted storage, and SDKs to facilitate integration with existing services. We make our platform accessible, flexible, and easy to use to help any developers to successfully create seamless customer experiences, secure data utilization, and strengthen customer relationship in a privacy preserving manner.
 
 ![](.gitbook/assets/screen-shot-2021-01-04-at-2.55.00.png)
 
