@@ -2,7 +2,7 @@
 
 ## 🌟 Welcome to the UNiD Documentation!
 
-UNiD is a decentralized identity platform as the future of the Web where distributed users and machines are able to interact with verifiable data without the need for third parties.
+UNiD is a decentralized identity platform as the new stack for the future web where distributed users and machines are able to interact with verifiable data without the need for third parties.
 
 Our platform provides a full set of protocol to manage decentralized identifiers, verifiable credentials, digital wallets, encrypted storage, and SDKs to facilitate integration with existing services. We make our platform accessible, flexible, and easy to use to help any developers to successfully create seamless customer experiences, secure data utilization, and strengthen customer relationship in a privacy preserving manner.
 
