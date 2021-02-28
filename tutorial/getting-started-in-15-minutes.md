@@ -695,8 +695,8 @@ const verifierGetHandler = (): Array<express.RequestHandler> => {
 const verifierPostHandler = (): Array<express.RequestHandler> => {
     return [
         validator([
-            body('vc').optional().isString(),
-            body('vp').optional().isString(),
+            body('vc').optional().isString().isJSON().isLength({ min: 1 }),
+            body('vp').optional().isString().isJSON().isLength({ min: 1 }),
         ]),
         async (req, res, next) => {
             const textVc = (req.body['vc'] !== undefined) ? String(req.body['vc']) : undefined
