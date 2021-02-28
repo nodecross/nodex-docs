@@ -86,12 +86,6 @@ yarn add helmet
 yarn add handlebars
 yarn add express-handlebars
 
-# Debug
-yarn add debug
-
-# Environment variables
-yarn add dotenv
-
 # MongoDB client
 yarn add mongodb
 
@@ -107,7 +101,6 @@ yarn add -D @types/morgan
 yarn add -D @types/helmet
 yarn add -D @types/express-handlebars
 yarn add -D @types/mongodb
-yarn add -D @types/debug
 yarn add -D @types/node
 ```
 {% endtab %}
@@ -158,7 +151,7 @@ The package.json file contains the minimum configuration required to run a TypeS
 Before implementing the server functions, let's understand how to run the application.
 
 {% tabs %}
-{% tab title="Bash" %}
+{% tab title="Shell" %}
 ```bash
 yarn start
 ```
@@ -192,10 +185,10 @@ Let's implement the basic server functions. In this section, we will implement t
 
 | URI | Description |
 | :--- | :--- |
-| `GET` `/issuer` | Display the input form for the data to be put into VC/VP on the screen. |
-| `POST` `/issuer` | Create VC/VP and display them on the screen. |
-| `GET` `/verifier` | Display the input form for the VC/VP to be verified on the screen. |
-| `POST` `/verifier` | Verify the VC/VP and display verification results and payload. |
+| `GET /issuer` | Display the input form for the data to be put into VC/VP on the screen. |
+| `POST /issuer` | Create VC/VP and display them on the screen. |
+| `GET /verifier` | Display the input form for the VC/VP to be verified on the screen. |
+| `POST /verifier` | Verify the VC/VP and display verification results and payload. |
 
 Sample skeleton of basic server functions as follow: 
 
@@ -424,16 +417,16 @@ Let's continue to implement each endpoint such as VC/VP creation and validation.
 # Views directory
 mkdir -p ../views/{issuer,verifier}
 
-# [GET] /issuer
+# GET /issuer
 touch ../views/issuer/get.handlebars
 
-# [POST] /issuer
+# POST /issuer
 touch ../views/issuer/post.handlebars
 
-# [GET] /verifier
+# GET /verifier
 touch ../views/verifier/get.handlebars
 
-# [POST] /verifier
+# POST /verifier
 touch ../views/verifier/post.handlebars
 ```
 {% endtab %}
@@ -509,11 +502,12 @@ Replace the `issuerGetHandler` and `issuerPostHandler` in `server.ts`, which are
 {% tabs %}
 {% tab title="src/server.ts" %}
 ```typescript
-// [Required] import the following class and method:
-// 
-// express-validator    : `body` method
-// @unid/node-wallet-sdk: `NameCredentialV1` class
-//
+/**
+ * [Required] import the following class and method:
+ *
+ * express-validator    : `body` method
+ * @unid/node-wallet-sdk: `NameCredentialV1` class
+ */
 import { validationResult, ValidationChain, body } from 'express-validator'
 import { KeyRingType, NameCredentialV1, UNiD } from '@unid/node-wallet-sdk'
 
@@ -664,11 +658,12 @@ Similarly, let's replace `verifierGetHandler` and `verifierPostHandler`, which a
 {% tabs %}
 {% tab title="src/server.ts" %}
 ```typescript
-// [Required] import the following class and method:
-// 
-// express-validator    : `body` method
-// @unid/node-wallet-sdk: `NameCredentialV1` class
-//
+/**
+ * [Required] import the following class and method:
+ *
+ * express-validator    : `body` method
+ * @unid/node-wallet-sdk: `NameCredentialV1` class
+ */
 import { validationResult, ValidationChain, body } from 'express-validator'
 import { KeyRingType, NameCredentialV1, UNiD } from '@unid/node-wallet-sdk'
 
