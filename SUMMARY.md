@@ -23,4 +23,6 @@
   * [phone](schemas/phone.md)
   * [qualification](schemas/qualification.md)
   * [worksFor](schemas/worksfor.md)
+* [Tutorial](tutorial/README.md)
+  * [Getting started in 15 minutes](tutorial/getting-started-in-15-minutes.md)
 
