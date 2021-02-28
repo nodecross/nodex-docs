@@ -450,8 +450,8 @@ The following is a snippet of HTML and TypeScript to implement the Issuer functi
         <article>
             <form action="/issuer" method="POST">
                 <p>
-                    <label for="surName" style="display: block; font-weight: bold;">familyName:</label>
-                    <input type="text" name="familyName" id="surName" />
+                    <label for="familyName" style="display: block; font-weight: bold;">familyName:</label>
+                    <input type="text" name="familyName" id="familyName" />
                 </p>
                 <p>
                     <label for="givenName" style="display: block; font-weight: bold;">givenName:</label>
