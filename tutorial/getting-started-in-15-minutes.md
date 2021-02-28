@@ -379,10 +379,10 @@ server.on('listening', () => {
             useUnifiedTopology: true,
         })
 
-        // MongoDB 接続
+        // connect to mongodb
         await storage.connect()
 
-        // UNiD 初期化
+        // initialize UNiD sdk
         UNiD.init({
             clientId     : clientId,
             clientSecret : clientSecret,
@@ -390,7 +390,7 @@ server.on('listening', () => {
             localStorage : storage,
         })
 
-        // DID の作成
+        // create new DID (wallet)
         DID = await UNiD.createDid(KeyRingType.Mnemonic)
 
         server.listen(18080, '127.0.0.1')
@@ -404,7 +404,7 @@ server.on('listening', () => {
 {% endtabs %}
 
 {% hint style="warning" %}
-スニペットに含まれる `${MONGODB_URI}`, `${CLIENT_ID}`, `${CLIENT_SECRET}`, `${ENCRYPTION_KEY}` の変数につきましては以下のテーブルを参照してください。
+See the table below for the`${MONGODB_URI}`,`${CLIENT_ID}`,`${CLIENT_SECRET}`,`${ENCRYPTION_KEY}`variables included in the snippet.
 {% endhint %}
 
 | Variable | Description |
@@ -424,16 +424,16 @@ Let's continue to implement each endpoint such as VC/VP creation and validation.
 # Views directory
 mkdir -p ../views/{issuer,verifier}
 
-# GET: Issuer page
+# [GET] /issuer
 touch ../views/issuer/get.handlebars
 
-# POST: Issuer page
+# [POST] /issuer
 touch ../views/issuer/post.handlebars
 
-# GET: Verifier page
+# [GET] /verifier
 touch ../views/verifier/get.handlebars
 
-# POST: Verifier page
+# [POST] /verifier
 touch ../views/verifier/post.handlebars
 ```
 {% endtab %}
@@ -511,11 +511,9 @@ Replace the `issuerGetHandler` and `issuerPostHandler` in `server.ts`, which are
 ```typescript
 // [Required] import the following class and method:
 // 
-// `express-validator`
-//     + `body` method
+// express-validator    : `body` method
+// @unid/node-wallet-sdk: `NameCredentialV1` class
 //
-// `@unid/node-wallet-sdk`
-//     + `NameCredentialV1` class
 import { validationResult, ValidationChain, body } from 'express-validator'
 import { KeyRingType, NameCredentialV1, UNiD } from '@unid/node-wallet-sdk'
 
@@ -668,11 +666,9 @@ Similarly, let's replace `verifierGetHandler` and `verifierPostHandler`, which a
 ```typescript
 // [Required] import the following class and method:
 // 
-// `express-validator`
-//     + `body` method
+// express-validator    : `body` method
+// @unid/node-wallet-sdk: `NameCredentialV1` class
 //
-// `@unid/node-wallet-sdk`
-//     + `NameCredentialV1` class
 import { validationResult, ValidationChain, body } from 'express-validator'
 import { KeyRingType, NameCredentialV1, UNiD } from '@unid/node-wallet-sdk'
 
@@ -748,13 +744,13 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
 
                     const verifiedVP = await UNiD.verifyPresentation(vp)
 
-                    const vc = NameCredentialV1.select(verifiedVP.payload)
+                    const selectedVC = NameCredentialV1.select(verifiedVP.payload)
 
-                    if (vc === undefined) {
+                    if (selectedVC === undefined) {
                         throw new Error()
                     }
 
-                    const verifiedVC = await UNiD.verifyCredential(vc)
+                    const verifiedVC = await UNiD.verifyCredential(selectedVC)
 
                     // get payload from VP
                     if (! NameCredentialV1.isCompatible(verifiedVC.payload)) {
