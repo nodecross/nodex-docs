@@ -712,6 +712,7 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
                     if (! NameCredentialV1.isCompatible(verifiedVC.payload)) {
                         throw new Error()
                     }
+                    
                     const subject = verifiedVC.payload.credentialSubject
 
                     return res.status(HttpStatus.OK).render('verifier/post', {
