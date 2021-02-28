@@ -386,6 +386,7 @@ server.on('listening', () => {
         // create new DID (wallet)
         DID = await UNiD.createDid(KeyRingType.Mnemonic)
 
+        // start application server
         server.listen(18080, '127.0.0.1')
     } catch (err) {
         console.error(`ERROR: ${ err.stack || err }`)
