@@ -13,7 +13,7 @@ The issuer/verifier service to be implemented have the following functions:
 
 ### Prerequisites
 
-In the server kits, the digital wallet \(private keys, etc.\) created by the SDK is stored in the MongoDB connected to the SDK in an encrypted form. You need to prepare MongoDB either in the cloud or in a local environment.
+In our server kits, a digital wallet \(private keys, etc.\) created by our Nodejs SDK will be stored in the MongoDB in an encrypted form. So, you need to prepare MongoDB either in the cloud or in a local environment.
 
 | Key | Value |
 | :--- | :--- |
