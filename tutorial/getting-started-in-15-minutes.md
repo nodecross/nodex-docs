@@ -511,7 +511,6 @@ Replace the `issuerGetHandler` and `issuerPostHandler` in `server.ts`, which are
 import { body } from 'express-validator'
 import { NameCredentialV1 } from '@unid/node-wallet-sdk'
 
-
 // GET /issuer
 const issuerGetHandler = (): Array<express.RequestHandler> => {
     return [
@@ -528,7 +527,6 @@ const issuerGetHandler = (): Array<express.RequestHandler> => {
         }
     ]
 }
-
 
 // POST /issuer
 const issuerPostHandler = (): Array<express.RequestHandler> => {
@@ -667,7 +665,6 @@ Similarly, let's replace `verifierGetHandler` and `verifierPostHandler`, which a
 import { body } from 'express-validator'
 import { NameCredentialV1 } from '@unid/node-wallet-sdk'
 
-
 // GET /verifier
 const verifierGetHandler = (): Array<express.RequestHandler> => {
     return [
@@ -684,7 +681,6 @@ const verifierGetHandler = (): Array<express.RequestHandler> => {
         }
     ]
 }
-
 
 // POST /verifier
 const verifierPostHandler = (): Array<express.RequestHandler> => {
