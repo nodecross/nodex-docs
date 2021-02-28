@@ -694,8 +694,8 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
             body('vp').optional().isString().isJSON().isLength({ min: 1 }),
         ]),
         async (req, res, next) => {
-            const textVc = (req.body['vc'] !== undefined) ? String(req.body['vc']) : undefined
-            const textVp = (req.body['vp'] !== undefined) ? String(req.body['vp']) : undefined
+            const textVC = (req.body['vc'] !== undefined) ? String(req.body['vc']) : undefined
+            const textVP = (req.body['vp'] !== undefined) ? String(req.body['vp']) : undefined
 
             try {
                 if (DID === undefined) {
@@ -703,8 +703,8 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
                 }
 
                 // verify VC
-                if (textVc !== undefined) {
-                    const vc = JSON.parse(textVc)
+                if (textVC !== undefined) {
+                    const vc = JSON.parse(textVC)
 
                     if (! UNiD.isVerifiableCredential(vc)) {
                         throw new Error()
@@ -720,7 +720,7 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
 
                     return res.status(HttpStatus.OK).render('verifier/post', {
                         title: 'Verifier',
-                        input: textVc,
+                        input: textVC,
                         result: verifiedVC.isValid,
                         payload: JSON.stringify({
                             familyName: `${ subject.familyName }`,
@@ -730,8 +730,8 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
                 }
 
                 // verify VP
-                if (textVp !== undefined){
-                    const vp = JSON.parse(textVp)
+                if (textVP !== undefined){
+                    const vp = JSON.parse(textVP)
 
                     if (! UNiD.isVerifiablePresentation(vp)) {
                         throw new Error()
@@ -756,7 +756,7 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
 
                     return res.status(HttpStatus.OK).render('verifier/post', {
                         title: 'Verifier',
-                        input: textVp,
+                        input: textVP,
                         result: verifiedVP.isValid,
                         payload: JSON.stringify({
                             familyName: `${ subject.familyName }`,
