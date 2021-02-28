@@ -392,7 +392,6 @@ server.on('listening', () => {
         console.error(`ERROR: ${ err.stack || err }`)
     }
 })()
-
 ```
 {% endtab %}
 {% endtabs %}
