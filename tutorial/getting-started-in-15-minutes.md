@@ -777,5 +777,21 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
 {% endtab %}
 {% endtabs %}
 
-Great work 👍 . With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let's run the application startup command yarn start and access `127.0.0.1:18080/issuer` with a web browser.
+Great work 👍 . With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let's run the application startup command `yarn start` and access `127.0.0.1:18080/issuer` with a web browser. The final directory structure and file layout are as follows.
+
+```text
+.
+├── package.json
+├── src
+│   └── server.ts
+├── tsconfig.json
+├── views
+│   ├── issuer
+│   │   ├── get.handlebars
+│   │   └── post.handlebars
+│   └── verifier
+│       ├── get.handlebars
+│       └── post.handlebars
+└── yarn.lock
+```
 
