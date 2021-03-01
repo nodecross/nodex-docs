@@ -65,8 +65,8 @@ Install the dependency libraries required to implement and run the project, in o
 
 # UNiD SDK
 # ===
-# At this time, registration is required to use node-wallet-sdk.
-# Please contact to us from here:
+# Registration is required
+# Please contact us from here:
 # https://www.getunid.io
 yarn add @unid/node-wallet-sdk
 
@@ -774,7 +774,7 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
 {% endtab %}
 {% endtabs %}
 
-Great work 👍 . With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let's run the application startup command `yarn start` and access `127.0.0.1:18080/issuer` with a web browser. The final directory structure and file layout are as follows.
+ 👍 Great work!! With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let's run the application startup command `yarn start` and access `127.0.0.1:18080/issuer` with a web browser. The final directory structure and file layout are as follows.
 
 ```text
 .
