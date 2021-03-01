@@ -2,11 +2,9 @@
 
 ## 🌟 Welcome to the UNiD Documentation!
 
-Decentralized identity is the new stack for the future web where distributed users and machines are able to interact with verifiable data without the need for third parties.
+UNiD is a full-stack decentralized identity platform that provides underlying protocols, decentralized identifiers \(DIDs\), verifiable credentials \(VC\), digital wallets, encrypted storage, and SDKs. We make it easy for any developers to integrate UNiD core functions into existing services.
 
-UNiD is a full-stack decentralized identity platform that provides a protocol to manage decentralized identifiers and verifiable credentials, digital wallets, encrypted storage, and SDKs to facilitate integration with existing services. We make our platform accessible, composable and easy to use to help any developers to successfully create seamless customer experiences, secure data utilization, and strengthen customer relationship in a privacy preserving manner.
-
-![](.gitbook/assets/unid-tisasaito-13png.png)
+![](.gitbook/assets/unid-tisasaito-12svg.svg)
 
 ## To learn UNiD Platform
 
