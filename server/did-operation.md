@@ -11,7 +11,7 @@ UNiD Core supports a variety of DID operations, all of which require the DID own
 
 ## Generate New DID
 
-With our Node SDK, you can easily generate key pairs and register a DID on UNiD network. First, you can select a `KeyRingType` which supports several methods for managing key pairs. Here, we introduce the method of generating a binary seed from a seed phrase with BIP39, and generating multiple key pairs using ecc-secp256k1 with BIP32. Finally, the method computes hash from the public keys and objects and register the hash on UNiD network. Click here for more info.
+With our server kits, you can easily generate key pairs and register a decentralized identifier on UNiD network. First, you can select a `KeyRingType` which supports several methods for managing key pairs. Here, we introduce the method of generating a binary seed from a seed phrase with BIP39, and generating multiple key pairs using ecc-secp256k1 with BIP32. Finally, the method computes hash from the public keys and objects and register the hash on UNiD network.
 
 {% tabs %}
 {% tab title="TypeScript" %}
