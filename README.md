@@ -2,7 +2,7 @@
 
 ## 🌟 Welcome to the UNiD Documentation!
 
-UNiD is an easy to integrate, adaptable decentralized identity platform. Decentralized identifiers \(DIDs\) are a new type of identifier that enables verifiable, decentralized digital identity that allow us to own personal information and selectively disclose it across platforms and services in a privacy preserving manner.
+UNiD is an easy to integrate, adaptable decentralized identity platform. Decentralized identifiers \(DIDs\) are a new type of identifier that allow us to own personal information and selectively disclose it across platforms and services in a privacy preserving manner.
 
 ![](.gitbook/assets/unid-tisasaito-12svg.svg)
 
