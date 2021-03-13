@@ -1,4 +1,4 @@
-# Identifier
+# identifier
 
 Identifier for any kind of thing, such as ISBNs, GTIN codes, UUIDs etc.
 
