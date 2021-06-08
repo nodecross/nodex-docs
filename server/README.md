@@ -2,15 +2,15 @@
 
 ## Introduction
 
-On this page, we get you up and running with UNiD SDK, so that it will build a wallet which provides storage of cryptographic keys, credentials, and secrets on a cloud server. It is often implemented on an existing server to communicate with an identity wallet, such as authenticating or issuing credentials.
+On this page, we get you up and running with UNiD SDK, so that it will build a digital wallet which provides storage of cryptographic keys, credentials, and secrets on a cloud server. It is often implemented on an existing server to communicate with an identity wallet, such as authenticating or issuing credentials.
 
 {% hint style="info" %}
-At the moment, we support Nodejs SDK for integrating into an existing server.
+At the moment, we support NodeJS SDK for integrating into an existing server.
 {% endhint %}
 
-## Getting Started with Nodejs SDK
+## Getting Started with NodeJS SDK
 
-UNiD Nodejs SDK offers easy-to-use javascript modules for embedding identity wallet capabilities such as DID operations, VC operations, and DID communications through the underlying UNiD Core APIs and Drivers.
+UNiD NodeJS SDK offers easy-to-use javascript modules for embedding identity wallet capabilities such as DID operations, VC operations, and DID communications through the underlying UNiD Core APIs and Drivers.
 
 **Prerequisites**
 

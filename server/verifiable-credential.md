@@ -22,7 +22,7 @@ In UNiD, there are two main methods to submit VP to a wallet holder. The first o
 
 ## Create New VC
 
-Here, we introduce how to create VC. When you create and issue a VC, you need to explicitly specify the credential subject's DID. As a simple example, let's create an [AddressCredentialV1](https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/schemas/address/README.md) through the Node SDK.
+Here, we introduce how to create VC. When you create and issue a VC, you need to explicitly specify the credential subject's DID. As a simple example, let's create an [AddressCredentialV1](https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/schemas/address/README.md) through the NodeJS SDK.
 
 {% tabs %}
 {% tab title="TypeScript" %}
