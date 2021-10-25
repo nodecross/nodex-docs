@@ -1,8 +1,3 @@
----
-title: AlumniOf
-description: description
----
-
 # alumniOf
 
 Alumni of an organization.
@@ -13,42 +8,42 @@ Alumni of an organization.
 
 ### AlumniOfOrganization
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `AlumniOfOrganization` | true |  |
-| alumniOf | `Organization` | ture |  |
+| Attribute | Type                   | Required | Notes |
+| --------- | ---------------------- | -------- | ----- |
+| "@type"   | `AlumniOfOrganization` | true     |       |
+| alumniOf  | `Organization`         | ture     |       |
 
 ### Organization
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Organization` | true |  |
-| name | `string` | ture |  |
-| employee | `Person` | true |  |
+| Attribute | Type           | Required | Notes |
+| --------- | -------------- | -------- | ----- |
+| "@type"   | `Organization` | true     |       |
+| name      | `string`       | ture     |       |
+| employee  | `Person`       | true     |       |
 
 ### Person
 
 `hasOccupation`: The Person's occupation. For past professions, use Role for expressing dates.
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Person` | true |  |
-| hasOccupation | `Role`, `Occupation` | true |  |
+| Attribute     | Type                 | Required | Notes |
+| ------------- | -------------------- | -------- | ----- |
+| "@type"       | `Person`             | true     |       |
+| hasOccupation | `Role`, `Occupation` | true     |       |
 
 ### Occupation
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Occupation` | true |  |
-| name | `string` | ture |  |
+| Attribute | Type         | Required | Notes |
+| --------- | ------------ | -------- | ----- |
+| "@type"   | `Occupation` | true     |       |
+| name      | `string`     | ture     |       |
 
 ### Role
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Role` | true |  |
-| startDate | `date` | true |  |
-| endDate | `date` | false |  |
+| Attribute | Type   | Required | Notes |
+| --------- | ------ | -------- | ----- |
+| "@type"   | `Role` | true     |       |
+| startDate | `date` | true     |       |
+| endDate   | `date` | false    |       |
 
 ### Example of `AlumniOfCredentialV1`
 
@@ -179,4 +174,3 @@ Alumni of an organization.
     }
 }
 ```
-

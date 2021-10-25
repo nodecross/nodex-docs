@@ -46,14 +46,13 @@ For example, the data schema for `AddressCredentialV1` is defined as follows: yo
 
 Other properties such as `@context` are defined as shown in the table below.
 
-| Property | description |
-| :--- | :--- |
-| @context | Specify data schema file URIs |
-| id | URI of the credential |
-| type | Specify the data schema of the object |
-| issuer | DID of the issuer of the credential |
-| issuanceDate | Date and time of credential issuance |
-| credentialSubject | Subject of the credential |
-|     id | DID of the subject of the credential |
-| proof | Issuer's digital signature |
-
+| Property          | description                           |
+| ----------------- | ------------------------------------- |
+| @context          | Specify data schema file URIs         |
+| id                | URI of the credential                 |
+| type              | Specify the data schema of the object |
+| issuer            | DID of the issuer of the credential   |
+| issuanceDate      | Date and time of credential issuance  |
+| credentialSubject | Subject of the credential             |
+|     id            | DID of the subject of the credential  |
+| proof             | Issuer's digital signature            |

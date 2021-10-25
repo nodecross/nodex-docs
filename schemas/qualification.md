@@ -1,8 +1,3 @@
----
-title: Qualification
-description: description
----
-
 # qualification
 
 ## QualificationCredentialV1
@@ -13,35 +8,35 @@ description: description
 
 Educational and occupational qualifications of a person.
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `QualificationPerson` | true |  |
-| hasCredential | `EducationalOccupationalCredential` | ture |  |
+| Property      | Type                                | Required | Notes |
+| ------------- | ----------------------------------- | -------- | ----- |
+| "@type"       | `QualificationPerson`               | true     |       |
+| hasCredential | `EducationalOccupationalCredential` | ture     |       |
 
 ### EducationalOccupationalCredential
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `EducationalOccupationalCredential` | true |  |
-| credentialCategory | `string` | ture | "degree", "certificate" |
-| educationalLevel | `string` | ture |  |
-| dateCreated | `date` | ture |  |
-| about | `EducationalOccupationalProgram` | ture |  |
-| recognizedBy | `CollegeOrUniversity` | ture |  |
+| Property           | Type                                | Required | Notes                   |
+| ------------------ | ----------------------------------- | -------- | ----------------------- |
+| "@type"            | `EducationalOccupationalCredential` | true     |                         |
+| credentialCategory | `string`                            | ture     | "degree", "certificate" |
+| educationalLevel   | `string`                            | ture     |                         |
+| dateCreated        | `date`                              | ture     |                         |
+| about              | `EducationalOccupationalProgram`    | ture     |                         |
+| recognizedBy       | `CollegeOrUniversity`               | ture     |                         |
 
 ### EducationalOccupationalProgram
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `EducationalOccupationalProgram` | true |  |
-| name | `string` | ture | "University", "Driver's License" |
+| Property | Type                             | Required | Notes                            |
+| -------- | -------------------------------- | -------- | -------------------------------- |
+| "@type"  | `EducationalOccupationalProgram` | true     |                                  |
+| name     | `string`                         | ture     | "University", "Driver's License" |
 
 ### CollegeOrUniversity
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `CollegeOrUniversity` | true |  |
-| name | `string` | ture |  |
+| Property | Type                  | Required | Notes |
+| -------- | --------------------- | -------- | ----- |
+| "@type"  | `CollegeOrUniversity` | true     |       |
+| name     | `string`              | ture     |       |
 
 ### Example of QualificationCredentialV1
 
@@ -161,4 +156,3 @@ Educational and occupational qualifications of a person.
     }
 }
 ```
-

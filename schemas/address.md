@@ -1,8 +1,3 @@
----
-title: Address
-description: description
----
-
 # address
 
 Address of a person or organization.
@@ -15,21 +10,21 @@ Address of a person or organization.
 
 Address of a person.
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `AddressPerson` | true |  |
-| address | `PostalAddress` | ture |  |
+| Attribute | Type            | Required | Notes |
+| --------- | --------------- | -------- | ----- |
+| "@type"   | `AddressPerson` | true     |       |
+| address   | `PostalAddress` | ture     |       |
 
 ### PostalAddress
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `PostalAddress` | true |  |
-| addressCountry | `string` | ture |  |
-| addressLocality | `string` | true |  |
-| addressRegion | `string` | true |  |
-| postalCode | `string` | true |  |
-| streetAddress | `string` | true |  |
+| Attribute       | Type            | Required | Notes |
+| --------------- | --------------- | -------- | ----- |
+| "@type"         | `PostalAddress` | true     |       |
+| addressCountry  | `string`        | ture     |       |
+| addressLocality | `string`        | true     |       |
+| addressRegion   | `string`        | true     |       |
+| postalCode      | `string`        | true     |       |
+| streetAddress   | `string`        | true     |       |
 
 ### Example of AddressCredentialV1
 
@@ -75,10 +70,10 @@ Address of a person.
 
 Address of an organization.
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `AddressOrganization` | true |  |
-| address | `PostalAddress` | ture |  |
+| Attribute | Type                  | Required | Notes |
+| --------- | --------------------- | -------- | ----- |
+| "@type"   | `AddressOrganization` | true     |       |
+| address   | `PostalAddress`       | ture     |       |
 
 ### Example of AddressCredentialV1
 
@@ -164,4 +159,3 @@ Address of an organization.
     }
 }
 ```
-

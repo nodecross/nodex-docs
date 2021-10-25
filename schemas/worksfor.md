@@ -8,41 +8,41 @@ Organizations that the person works for.
 
 ### WorksForOrganization
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `WorksForOrganization` | true |  |
-| worksFor | `Organization` | true |  |
+| Attribute | Type                   | Required | Notes |
+| --------- | ---------------------- | -------- | ----- |
+| "@type"   | `WorksForOrganization` | true     |       |
+| worksFor  | `Organization`         | true     |       |
 
 ### Organization
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Organization` | true |  |
-| name | `string` | true |  |
-| employee | `Person` | true |  |
+| Attribute | Type           | Required | Notes |
+| --------- | -------------- | -------- | ----- |
+| "@type"   | `Organization` | true     |       |
+| name      | `string`       | true     |       |
+| employee  | `Person`       | true     |       |
 
 ### Person
 
 `Person` has a property of `hasOccupation` which is the person's occupation.
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Person` | true |  |
-| hasOccupation | `Occupation`, `Role` | true |  |
+| Attribute     | Type                 | Required | Notes |
+| ------------- | -------------------- | -------- | ----- |
+| "@type"       | `Person`             | true     |       |
+| hasOccupation | `Occupation`, `Role` | true     |       |
 
 ### Occupation
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Occupation` | true |  |
-| name | `string` | true |  |
+| Attribute | Type         | Required | Notes |
+| --------- | ------------ | -------- | ----- |
+| "@type"   | `Occupation` | true     |       |
+| name      | `string`     | true     |       |
 
 ### Role
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `Role` | true |  |
-| startDate | `date` | true |  |
+| Attribute | Type   | Required | Notes |
+| --------- | ------ | -------- | ----- |
+| "@type"   | `Role` | true     |       |
+| startDate | `date` | true     |       |
 
 ### Example of `WorksForCredentialV1`
 
@@ -155,4 +155,3 @@ Organizations that the person works for.
     }
 }
 ```
-

@@ -1,8 +1,3 @@
----
-title: Phone
-description: description
----
-
 # phone
 
 ## PhoneCredentialV1
@@ -13,10 +8,10 @@ description: description
 
 Phone number of a person.
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `PhonePerson` | true |  |
-| telephone | `string` | ture |  |
+| Property  | Type          | Required | Notes |
+| --------- | ------------- | -------- | ----- |
+| "@type"   | `PhonePerson` | true     |       |
+| telephone | `string`      | ture     |       |
 
 ### Example of PhoneCredentialV1
 
@@ -49,10 +44,10 @@ Phone number of a person.
 
 Phone number of an organization.
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `PhoneOrganization` | true |  |
-| telephone | `string` | ture |  |
+| Property  | Type                | Required | Notes |
+| --------- | ------------------- | -------- | ----- |
+| "@type"   | `PhoneOrganization` | true     |       |
+| telephone | `string`            | ture     |       |
 
 ### Example of PhoneCredentialV1
 
@@ -109,4 +104,3 @@ Phone number of an organization.
     }
 }
 ```
-

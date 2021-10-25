@@ -1,8 +1,3 @@
----
-title: DID AuthN
-description: description
----
-
 # DID AuthN
 
 ## Introduction
@@ -14,18 +9,18 @@ For the web server to communicate with identity wallet on secure authenticated c
 
 The below diagram illustrate the sign-in flow and steps taken to verify a user through their user agent from the wallet side of the webpage to the server side of a RP. If you want to see more details of DID AuthN, please head over [here](../unid-platform/#unid-core).
 
-![](../.gitbook/assets/siop.svg)
+![](../.gitbook/assets/SIOP.svg)
 
 ## Generate SIOP Request
 
-In step \#1 of the diagram, the web server creates a SIOP request signed by the application's DID. The web server can specify the credential type as the information required for authentication.
+In step #1 of the diagram, the web server creates a SIOP request signed by the application's DID. The web server can specify the credential type as the information required for authentication.
 
-**DID.generateAuthenticationRequest\(\)**
+**DID.generateAuthenticationRequest()**
 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try {
@@ -51,14 +46,14 @@ import { UNiD } from '@unid/node-wallet-sdk'
 
 ## Validate AuthN Response
 
-In step \#6 of the diagram, the web server receives an SIOP response from the mobile wallet. The web server queries for the wallet's DID document using DID Resolver and verifies the signature with the wallet's public key.
+In step #6 of the diagram, the web server receives an SIOP response from the mobile wallet. The web server queries for the wallet's DID document using DID Resolver and verifies the signature with the wallet's public key.
 
-**UNiD.validateAuthenticationResponse\(\)**
+**UNiD.validateAuthenticationResponse()**
 
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try {
@@ -74,4 +69,3 @@ import { UNiD } from '@unid/node-wallet-sdk'
 {% endtabs %}
 
 If the required parameter or authorization code is not included in the response, an error will occur and the authentication process will be interrupted.
-

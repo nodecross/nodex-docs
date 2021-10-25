@@ -38,11 +38,11 @@ yarn add @unid/node-wallet-sdk
 {% endtab %}
 {% endtabs %}
 
-In UNiD, MongoDB is used as local repository \(keyRings, secrets, etc\) by default. Please install and setup MongoDB in your server environment.
+In UNiD, MongoDB is used as local repository (keyRings, secrets, etc) by default. Please install and setup MongoDB in your server environment.
 
 ## Configure
 
-Configuration should happen as early as possible in your application's lifecycle. Once you have set up a cloud agent in [UNiD Studio](https://www.getunid.io/), you will get values required for configuration.
+Configuration should happen as early as possible in your application's lifecycle. Once you have set up a cloud agent in [UNiD Studio](https://www.getunid.io), you will get values required for configuration.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -72,15 +72,16 @@ const mongoClient = new MongoClient(uri, {
 {% endtab %}
 {% endtabs %}
 
-| Values | Description |
-| :--- | :--- |
-| `clientId` | It is associated with each cloud agent for a tenant. A string consisting of 64 characters that can be retrieved from UNiD Studio. |
-| `clientSecret` | A string consisting of 64 characters that can be retrieved from UNiD Studio. It is paired with the `clientId`. |
-| `encryptionKey` | A string used to encrypt keyRings \(digital wallet\) with AES-256-CBC algorithm and store them in MongoDB. |
-| `envNetwork` | The DPKI network to which the DID refers. |
-| `localStorage` | A connection instance to MongoDB that must be initialized and instantiated outside of the UNiD libraries to MongoDB. |
+| Values          | Description                                                                                                                       |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `clientId`      | It is associated with each cloud agent for a tenant. A string consisting of 64 characters that can be retrieved from UNiD Studio. |
+| `clientSecret`  | A string consisting of 64 characters that can be retrieved from UNiD Studio. It is paired with the `clientId`.                    |
+| `encryptionKey` | A string used to encrypt keyRings (digital wallet) with AES-256-CBC algorithm and store them in MongoDB.                          |
+| `envNetwork`    | The DPKI network to which the DID refers.                                                                                         |
+| `localStorage`  | A connection instance to MongoDB that must be initialized and instantiated outside of the UNiD libraries to MongoDB.              |
 
 Great! Now you've completed setting up the NodeJS SDK. You can step forward to Generate New DID.
 
-{% page-ref page="did-operation.md" %}
-
+{% content-ref url="did-operation.md" %}
+[did-operation.md](did-operation.md)
+{% endcontent-ref %}

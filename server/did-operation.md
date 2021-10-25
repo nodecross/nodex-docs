@@ -1,8 +1,3 @@
----
-title: DID Operations
-description: description
----
-
 # DID Operations
 
 ## Introduction
@@ -16,7 +11,7 @@ With our server kits, you can easily generate key pairs and register a decentral
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD, KeyRingType } from '@unid/node-wallet-sdk'
+import { UNiD, KeyRingType } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -38,7 +33,7 @@ After generating a binary seed, you can get a seed phrase which enables to recov
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -73,7 +68,7 @@ After generating a DID, you can resolve it to get a DID Document. UNiD Node SDKs
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -100,7 +95,7 @@ Update DID document when adding, changing, and deleting public keys or service e
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -128,7 +123,7 @@ import { UNiD } from '@unid/node-wallet-sdk'
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -151,7 +146,7 @@ import { UNiD } from '@unid/node-wallet-sdk'
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -184,7 +179,7 @@ import { UNiD } from '@unid/node-wallet-sdk'
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -207,7 +202,7 @@ import { UNiD } from '@unid/node-wallet-sdk'
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-import { UNiD } from '@unid/node-wallet-sdk'
+import { UNiD } from '@getunid/node-wallet-sdk'
 
 (async () => {
     try{
@@ -235,4 +230,3 @@ import { UNiD } from '@unid/node-wallet-sdk'
 ```
 {% endtab %}
 {% endtabs %}
-

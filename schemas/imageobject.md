@@ -4,19 +4,19 @@
 
 ### ImagePerson
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `ImagePerson` | true |  |
-| image | `ImageObject` | true |  |
+| Attribute | Type          | Required | Notes |
+| --------- | ------------- | -------- | ----- |
+| "@type"   | `ImagePerson` | true     |       |
+| image     | `ImageObject` | true     |       |
 
 ### ImageObject
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `ImageObject` | true |  |
-| contentUrl | `URL` | true |  |
-| name | `string` | false |  |
-| uploadDate | `Date` | false |  |
+| Attribute  | Type          | Required | Notes |
+| ---------- | ------------- | -------- | ----- |
+| "@type"    | `ImageObject` | true     |       |
+| contentUrl | `URL`         | true     |       |
+| name       | `string`      | false    |       |
+| uploadDate | `Date`        | false    |       |
 
 ### Example of ImageCredentialV1
 
@@ -91,4 +91,3 @@
     }
 }
 ```
-

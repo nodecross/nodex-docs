@@ -6,25 +6,25 @@ The tutorial is to help you understand the basic usage of our server kits and ho
 
 The issuer/verifier service to be implemented have the following functions:
 
-* Issue VCs and VPs with name information \([`NameCredentialV1`](../schemas/name.md#namecredentialv1)\) as a data type and display them on the screen.
+* Issue VCs and VPs with name information ([`NameCredentialV1`](../schemas/name.md#namecredentialv1)) as a data type and display them on the screen.
 * Verify the VCs and VPs and display the verification result on screen.
 
-![Issue and Verify the VCs and VPs with name information](../.gitbook/assets/kapture-2021-02-28-at-17.34.34.gif)
+![Issue and Verify the VCs and VPs with name information](<../.gitbook/assets/Kapture 2021-02-28 at 17.34.34.gif>)
 
 ### Prerequisites
 
-In our server kits, a digital wallet \(private keys, etc.\) created by our Nodejs SDK will be stored in the MongoDB in an encrypted form. So, you need to prepare MongoDB either in the cloud or in a local environment.
+In our server kits, a digital wallet (private keys, etc.) created by our Nodejs SDK will be stored in the MongoDB in an encrypted form. So, you need to prepare MongoDB either in the cloud or in a local environment.
 
-| Key | Value |
-| :--- | :--- |
+| Key         | Value       |
+| ----------- | ----------- |
 | Destination | `127.0.0.1` |
-| Port | `27701` |
-| User Name | `username` |
-| Password | `password` |
+| Port        | `27701`     |
+| User Name   | `username`  |
+| Password    | `password`  |
 
 The connect string to MongoDB for the above conditions is as follows:
 
-```text
+```
 mongodb://username:password@127.0.0.1:27017
 ```
 
@@ -177,20 +177,20 @@ touch server.ts
 {% endtab %}
 {% endtabs %}
 
-Open the `server.ts` file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using [VSCode](https://code.visualstudio.com/).
+Open the `server.ts` file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using [VSCode](https://code.visualstudio.com).
 
-![Open server.ts file with VSCode](../.gitbook/assets/image-6-.png)
+![Open server.ts file with VSCode](<../.gitbook/assets/image (6).png>)
 
 Let's implement the basic server functions. In this section, we will implement two URLs to handle the `GET` method and two URLs to handle the `POST` method. Specifically, we will implement the Issuer function and the Verifier function in the following URLs.
 
-| URI | Description |
-| :--- | :--- |
-| `GET /issuer` | Display the input form for the data to be put into VC/VP on the screen. |
-| `POST /issuer` | Create VC/VP and display them on the screen. |
-| `GET /verifier` | Display the input form for the VC/VP to be verified on the screen. |
-| `POST /verifier` | Verify the VC/VP and display verification results and payload. |
+| URI              | Description                                                             |
+| ---------------- | ----------------------------------------------------------------------- |
+| `GET /issuer`    | Display the input form for the data to be put into VC/VP on the screen. |
+| `POST /issuer`   | Create VC/VP and display them on the screen.                            |
+| `GET /verifier`  | Display the input form for the VC/VP to be verified on the screen.      |
+| `POST /verifier` | Verify the VC/VP and display verification results and payload.          |
 
-Sample skeleton of basic server functions as follow: 
+Sample skeleton of basic server functions as follow:&#x20;
 
 {% tabs %}
 {% tab title="src/server.ts" %}
@@ -400,11 +400,11 @@ server.on('listening', () => {
 See the table below for the`${MONGODB_URI}`,`${CLIENT_ID}`,`${CLIENT_SECRET}`,`${ENCRYPTION_KEY}`variables included in the snippet.
 {% endhint %}
 
-| Variable | Description |
-| :--- | :--- |
-| `${MONGODB_URI}` | Connection string to MongoDB `mongodb://username:password@127.0.0.1:27017` |
-| `${CLIENT_ID}` | Set the `Client ID` provided by the UNiD Network |
-| `${CLIENT_SECRET}` | Set the `Client Secret` provided by the UNiD Network |
+| Variable            | Description                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `${MONGODB_URI}`    | <p>Connection string to MongoDB<br><code>mongodb://username:password@127.0.0.1:27017</code></p>                              |
+| `${CLIENT_ID}`      | Set the `Client ID` provided by the UNiD Network                                                                             |
+| `${CLIENT_SECRET}`  | Set the `Client Secret` provided by the UNiD Network                                                                         |
 | `${ENCRYPTION_KEY}` | Sets the key used to encrypt the data in MongoDB. Can be any randomly generated **64-digit string in hexadecimal notation**. |
 
 Let's continue to implement each endpoint such as VC/VP creation and validation. Before moving on to the next step, let's prepare a directory to store the HTML template for the page display and its template.
@@ -434,7 +434,7 @@ touch ../views/verifier/post.handlebars
 
 ### 5. Implementation Issuer functions
 
-The following is a snippet of HTML and TypeScript to implement the Issuer function. Note that this project uses a template engine called [Handlebars](https://handlebarsjs.com/) as the HTML for displaying pages. For more details on the notation and decorators available in the template, we recommend you refer to the official Handlebars website.
+The following is a snippet of HTML and TypeScript to implement the Issuer function. Note that this project uses a template engine called [Handlebars](https://handlebarsjs.com) as the HTML for displaying pages. For more details on the notation and decorators available in the template, we recommend you refer to the official Handlebars website.
 
 {% tabs %}
 {% tab title="views/issuer/get.handlebars" %}
@@ -774,9 +774,9 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
 {% endtab %}
 {% endtabs %}
 
- 👍 Great work!! With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let's run the application startup command `yarn start` and access `127.0.0.1:18080/issuer` with a web browser. The final directory structure and file layout are as follows.
+&#x20;:thumbsup: Great work!! With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let's run the application startup command `yarn start` and access `127.0.0.1:18080/issuer` with a web browser. The final directory structure and file layout are as follows.
 
-```text
+```
 .
 ├── package.json
 ├── src
@@ -791,4 +791,3 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
 │       └── post.handlebars
 └── yarn.lock
 ```
-

@@ -1,5 +1,4 @@
 ---
-title: Name
 description: description
 ---
 
@@ -13,12 +12,12 @@ description: description
 
 Name of a person.
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `NamePerson` | true |  |
-| name | `string` | ture |  |
-| givenName | `string` | true |  |
-| familyName | `string` | true |  |
+| Property   | Type         | Required | Notes |
+| ---------- | ------------ | -------- | ----- |
+| "@type"    | `NamePerson` | true     |       |
+| name       | `string`     | ture     |       |
+| givenName  | `string`     | true     |       |
+| familyName | `string`     | true     |       |
 
 ### Example of NameCredentialV1
 
@@ -53,10 +52,10 @@ Name of a person.
 
 Name of an organization.
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `NameOrganization` | true |  |
-| name | `string` | ture |  |
+| Property | Type               | Required | Notes |
+| -------- | ------------------ | -------- | ----- |
+| "@type"  | `NameOrganization` | true     |       |
+| name     | `string`           | ture     |       |
 
 ### Example of NameCredentialV1
 
@@ -115,4 +114,3 @@ Name of an organization.
     }
 }
 ```
-

@@ -1,8 +1,3 @@
----
-title: ContactPoint
-description: description
----
-
 # contactPoint
 
 Contact Point of a person or organization.
@@ -15,19 +10,19 @@ Contact Point of a person or organization.
 
 Contact Point of a person.
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `ContactPointPerson` | true |  |
-| contactPoint | `ContactPoint` | ture |  |
+| Attribute    | Type                 | Required | Notes |
+| ------------ | -------------------- | -------- | ----- |
+| "@type"      | `ContactPointPerson` | true     |       |
+| contactPoint | `ContactPoint`       | ture     |       |
 
 ### ContactPoint
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `ContactPoint` | true |  |
-| contactType | `string` | ture | "Email", "Phone" |
-| email | `string` | true |  |
-| telephone | `string` | true |  |
+| Attribute   | Type           | Required | Notes            |
+| ----------- | -------------- | -------- | ---------------- |
+| "@type"     | `ContactPoint` | true     |                  |
+| contactType | `string`       | ture     | "Email", "Phone" |
+| email       | `string`       | true     |                  |
+| telephone   | `string`       | true     |                  |
 
 ### Example of ContactPointCredentialV1
 
@@ -59,10 +54,10 @@ Contact Point of a person.
 
 ### ContactPointOrganization
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `ContactPointOrganization` | true |  |
-| contactPoint | `ContactPoint` | ture |  |
+| Attribute    | Type                       | Required | Notes |
+| ------------ | -------------------------- | -------- | ----- |
+| "@type"      | `ContactPointOrganization` | true     |       |
+| contactPoint | `ContactPoint`             | ture     |       |
 
 ### Example of ContactPointCredentialV1
 
@@ -133,4 +128,3 @@ Contact Point of a person.
     }
 }
 ```
-

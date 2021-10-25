@@ -1,8 +1,3 @@
----
-title: Email
-description: description
----
-
 # email
 
 Email of a person or organization.
@@ -15,10 +10,10 @@ Email of a person or organization.
 
 Email of a person.
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `EmailPerson` | true |  |
-| email | `string` | ture |  |
+| Attribute | Type          | Required | Notes |
+| --------- | ------------- | -------- | ----- |
+| "@type"   | `EmailPerson` | true     |       |
+| email     | `string`      | ture     |       |
 
 ### Example of EmailCredentialV1
 
@@ -51,10 +46,10 @@ Email of a person.
 
 Email of an organization.
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `EmailOrganization` | true |  |
-| email | `string` | ture |  |
+| Attribute | Type                | Required | Notes |
+| --------- | ------------------- | -------- | ----- |
+| "@type"   | `EmailOrganization` | true     |       |
+| email     | `string`            | ture     |       |
 
 ### Example of AddressCredentialV1
 
@@ -111,4 +106,3 @@ Email of an organization.
     }
 }
 ```
-

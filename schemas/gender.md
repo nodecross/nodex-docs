@@ -1,8 +1,3 @@
----
-title: Gender
-description: description
----
-
 # gender
 
 ## GenderCredentialV1
@@ -13,10 +8,10 @@ description: description
 
 Gender of a person.
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `GenderPerson` | true |  |
-| gender | `string` | ture |  |
+| Property | Type           | Required | Notes |
+| -------- | -------------- | -------- | ----- |
+| "@type"  | `GenderPerson` | true     |       |
+| gender   | `string`       | ture     |       |
 
 ### Example of GenderCredentialV1
 
@@ -72,4 +67,3 @@ Gender of a person.
     }
 }
 ```
-

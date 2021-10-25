@@ -4,12 +4,12 @@ Identifier for any kind of thing, such as ISBNs, GTIN codes, UUIDs etc.
 
 ## IdentifierCredentialV1
 
-| Attribute | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `PropertyValue` | true |  |
-| propertyID | `string` or `URL` | true |  |
-| value | `boolean` or n`umber` or `string` | true | The value of the quantitative value or property value node. |
-| valueReference | `number` or `string` | optional | A secondary value that provides additional information on the original value, e.g. a reference temperature or a type of measurement. |
+| Attribute      | Type                              | Required | Notes                                                                                                                                |
+| -------------- | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| "@type"        | `PropertyValue`                   | true     |                                                                                                                                      |
+| propertyID     | `string` or `URL`                 | true     |                                                                                                                                      |
+| value          | `boolean` or n`umber` or `string` | true     | The value of the quantitative value or property value node.                                                                          |
+| valueReference | `number` or `string`              | optional | A secondary value that provides additional information on the original value, e.g. a reference temperature or a type of measurement. |
 
 ### Example of IdentifierCredentialV1
 
@@ -69,4 +69,3 @@ Identifier for any kind of thing, such as ISBNs, GTIN codes, UUIDs etc.
     }
 }
 ```
-

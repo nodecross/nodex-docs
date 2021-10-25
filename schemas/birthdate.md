@@ -1,8 +1,3 @@
----
-title: BirthDate
-description: description
----
-
 # birthDate
 
 BirthDate of a person.
@@ -15,10 +10,10 @@ BirthDate of a person.
 
 BirthDate of a person.
 
-| Property | Type | Required | Notes |
-| :--- | :--- | :--- | :--- |
-| "@type" | `BirthDatePerson` | true |  |
-| birthDate | `datetime` | ture |  |
+| Property  | Type              | Required | Notes |
+| --------- | ----------------- | -------- | ----- |
+| "@type"   | `BirthDatePerson` | true     |       |
+| birthDate | `datetime`        | ture     |       |
 
 ### Example of BirthDateCredentialV1
 
@@ -74,4 +69,3 @@ BirthDate of a person.
     }
 }
 ```
-
