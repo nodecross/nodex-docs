@@ -64,11 +64,8 @@ Install the dependency libraries required to implement and run the project, in o
 ### I. Libraries for implementing
 
 # UNiD SDK
-# ===
-# Registration is required
-# Please contact us from here:
-# https://www.getunid.io
 yarn add @getunid/node-wallet-sdk
+yarn add @getunid/wallet-sdk-mongo-connector
 
 # Server
 yarn add express
@@ -206,6 +203,7 @@ import { KeyRingType, UNiD } from '@getunid/node-wallet-sdk'
 import { MongoClient } from 'mongodb'
 import HttpStatus from 'http-status-codes'
 import { UNiDDid } from '@getunid/node-wallet-sdk/libs/did-unid/did'
+import { MongoDBConnector } from '@getunid/wallet-sdk-mongo-connector'
 
 const app = express()
 
@@ -367,20 +365,25 @@ server.on('listening', () => {
         const clientId      = '${CLIENT_ID}'
         const clientSecret  = '${CLIENT_SECRET}'
         const encryptionKey = '${ENCRYPTION_KEY}'
+        
+        # connect to mongo server
+        const client = new MongoClient(mongoUri)
 
-        const storage = new MongoClient(mongoUri, {
-            useUnifiedTopology: true,
+        await client.connect()
+        
+        # make connector (wrap mongo db connection)
+        const connector = new MongoDBConnector({
+            client       : client,
+            encrypter    : Cipher.encrypt,
+            decrypter    : Cipher.decrypt,
+            encryptionKey: encryptionKey,
         })
-
-        // connect to mongodb
-        await storage.connect()
 
         // initialize UNiD sdk
         UNiD.init({
             clientId     : clientId,
             clientSecret : clientSecret,
-            encryptionKey: encryptionKey,
-            localStorage : storage,
+            connector    : connector,
         })
 
         // create new DID (wallet)
@@ -388,7 +391,7 @@ server.on('listening', () => {
 
         // start application server
         server.listen(18080, '127.0.0.1')
-    } catch (err) {
+    } catch (err: any) {
         console.error(`ERROR: ${ err.stack || err }`)
     }
 })()
@@ -400,12 +403,12 @@ server.on('listening', () => {
 See the table below for the`${MONGODB_URI}`,`${CLIENT_ID}`,`${CLIENT_SECRET}`,`${ENCRYPTION_KEY}`variables included in the snippet.
 {% endhint %}
 
-| Variable            | Description                                                                                                                  |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `${MONGODB_URI}`    | <p>Connection string to MongoDB<br><code>mongodb://username:password@127.0.0.1:27017</code></p>                              |
-| `${CLIENT_ID}`      | Set the `Client ID` provided by the UNiD Network                                                                             |
-| `${CLIENT_SECRET}`  | Set the `Client Secret` provided by the UNiD Network                                                                         |
-| `${ENCRYPTION_KEY}` | Sets the key used to encrypt the data in MongoDB. Can be any randomly generated **64-digit string in hexadecimal notation**. |
+| Variable            | Description                                                                                                                                                                                          |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `${MONGODB_URI}`    | <p>Connection string to MongoDB<br><code>mongodb://username:password@127.0.0.1:27017</code></p>                                                                                                      |
+| `${CLIENT_ID}`      | Set the `Client ID` provided by the UNiD Network                                                                                                                                                     |
+| `${CLIENT_SECRET}`  | Set the `Client Secret` provided by the UNiD Network                                                                                                                                                 |
+| `${ENCRYPTION_KEY}` | <p>Sets the key used to encrypt the data in MongoDB. Can be any randomly generated <strong>64-digit string in hexadecimal notation</strong>.</p><p></p><p>e.g. <code>openssl rand -hex 32</code></p> |
 
 Let's continue to implement each endpoint such as VC/VP creation and validation. Before moving on to the next step, let's prepare a directory to store the HTML template for the page display and its template.
 
