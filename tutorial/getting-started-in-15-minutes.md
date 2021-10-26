@@ -68,7 +68,7 @@ Install the dependency libraries required to implement and run the project, in o
 # Registration is required
 # Please contact us from here:
 # https://www.getunid.io
-yarn add @unid/node-wallet-sdk
+yarn add @getunid/node-wallet-sdk
 
 # Server
 yarn add express
@@ -202,10 +202,10 @@ import express from 'express'
 import handlebars from 'express-handlebars'
 import { validationResult, ValidationChain } from 'express-validator'
 import { AddressInfo } from 'net'
-import { KeyRingType, UNiD } from '@unid/node-wallet-sdk'
+import { KeyRingType, UNiD } from '@getunid/node-wallet-sdk'
 import { MongoClient } from 'mongodb'
 import HttpStatus from 'http-status-codes'
-import { UNiDDid } from '@unid/node-wallet-sdk/libs/did-unid/did'
+import { UNiDDid } from '@getunid/node-wallet-sdk/libs/did-unid/did'
 
 const app = express()
 
@@ -505,11 +505,11 @@ Replace the `issuerGetHandler` and `issuerPostHandler` in `server.ts`, which are
 /**
  * [Required] import the following class and method:
  *
- * express-validator    : `body` method
- * @unid/node-wallet-sdk: `NameCredentialV1` class
+ * express-validator       : `body` method
+ * @getunid/node-wallet-sdk: `NameCredentialV1` class
  */
 import { body } from 'express-validator'
-import { NameCredentialV1 } from '@unid/node-wallet-sdk'
+import { NameCredentialV1 } from '@getunid/node-wallet-sdk'
 
 // GET /issuer
 const issuerGetHandler = (): Array<express.RequestHandler> => {
@@ -659,11 +659,11 @@ Similarly, let's replace `verifierGetHandler` and `verifierPostHandler`, which a
 /**
  * [Required] import the following class and method:
  *
- * express-validator    : `body` method
- * @unid/node-wallet-sdk: `NameCredentialV1` class
+ * express-validator       : `body` method
+ * @getunid/node-wallet-sdk: `NameCredentialV1` class
  */
 import { body } from 'express-validator'
-import { NameCredentialV1 } from '@unid/node-wallet-sdk'
+import { NameCredentialV1 } from '@geunid/node-wallet-sdk'
 
 // GET /verifier
 const verifierGetHandler = (): Array<express.RequestHandler> => {
