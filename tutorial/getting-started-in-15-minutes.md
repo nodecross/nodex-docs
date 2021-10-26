@@ -366,12 +366,12 @@ server.on('listening', () => {
         const clientSecret  = '${CLIENT_SECRET}'
         const encryptionKey = '${ENCRYPTION_KEY}'
         
-        # connect to mongo server
+        // connect to mongodb
         const client = new MongoClient(mongoUri)
 
         await client.connect()
         
-        # make connector (wrap mongo db connection)
+        // make connector (wrap mongodb connection)
         const connector = new MongoDBConnector({
             client       : client,
             encrypter    : Cipher.encrypt,
