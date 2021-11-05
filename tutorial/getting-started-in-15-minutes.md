@@ -18,7 +18,7 @@ In our server kits, a digital wallet (private keys, etc.) created by our Nodejs 
 | Key         | Value       |
 | ----------- | ----------- |
 | Destination | `127.0.0.1` |
-| Port        | `27701`     |
+| Port        | `27017`     |
 | User Name   | `username`  |
 | Password    | `password`  |
 
