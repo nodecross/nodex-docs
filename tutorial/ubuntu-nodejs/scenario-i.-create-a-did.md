@@ -11,7 +11,7 @@ In Scenario I, you will learn how to use the UNiD EDGE SDK to create a DID on yo
 This tutorial will proceed in the order defined below.
 
 1. Creating a NodeJS project
-2. Install dependencies
+2. Install dependencies and project settings
 3. Using UNiD EDGE SDK
 4. Add DID creation process
 

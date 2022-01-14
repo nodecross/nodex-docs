@@ -16,12 +16,6 @@ In Scenario I, you will learn how to use the UNiD EDGE SDK to create a DID on yo
 [scenario-ii.-sign-credentials.md](scenario-ii.-sign-credentials.md)
 {% endcontent-ref %}
 
-In Scenario I, you will learn how to use the UNiD EDGE SDK to create a DID on your terminal.
-
-{% content-ref url="scenario-ii.-sign-credentials.md" %}
-[scenario-ii.-sign-credentials.md](scenario-ii.-sign-credentials.md)
-{% endcontent-ref %}
-
 In Scenario II, you will learn how to apply digital signature to JSON-LD based structured data using UNiD EDGE SDK.
 
 {% content-ref url="scenario-iii.-verify-credentials.md" %}
