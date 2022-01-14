@@ -134,7 +134,15 @@ import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
 ```
 
 {% hint style="info" %}
-Among the attributes passed when initializing the `SqliteConnector`, `encryptionKey` must be set to a randomly generated 32-byte binary in hexadecimal representation.
+Among the attributes passed when initializing the `SqliteConnector`, `encryptionKey` must be set to a randomly generated 32-byte binary in hexadecimal representation. For example, it could be a string that you get by opening your terminal and running the following command.
+
+{% tabs %}
+{% tab title="SHELL" %}
+```bash
+openssl rand -hex 32
+```
+{% endtab %}
+{% endtabs %}
 {% endhint %}
 {% endtab %}
 {% endtabs %}
