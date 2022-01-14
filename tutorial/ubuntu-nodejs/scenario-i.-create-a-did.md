@@ -132,6 +132,10 @@ import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
 
 })()
 ```
+
+{% hint style="info" %}
+Among the attributes passed when initializing the `SqliteConnector`, `encryptionKey` must be set to a randomly generated 32-byte binary in hexadecimal representation.
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 

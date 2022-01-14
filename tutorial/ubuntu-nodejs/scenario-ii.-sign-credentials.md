@@ -150,7 +150,9 @@ signed credential:
 {% endtab %}
 {% endtabs %}
 
-Did you see the data (JSON block) shown above in your terminal? Data that has been signed for structured data is called Verifiable Credential in the DID specification, and in the standard output above, the JSON block output below the label signed credential corresponds to Verifiable Credential. This chapter may be boring because we did the digital signature as a console application. However, when combined with a web application such as Express or Fastify, it may be possible to easily issue digitally signed copies of verified data stored on the server application side (e.g., resident data if you are in charge of a government agency). If you were in charge of a government agency, you might be able to easily issue digitally signed versions of verified data (e.g., resident data). How would you like to use the signed structured data?
+Did you see the data (JSON block) shown above in your terminal? Data that has been signed for structured data is called Verifiable Credential in the DID specification, and in the standard output above, the JSON block output below the label signed credential corresponds to Verifiable Credential. This chapter may be boring because we did the digital signature as a console application.
+
+However, when combined with a web framework such as Express or Fastify, it may be possible to easily issue digitally signed copies of verified data stored on the server application side (e.g., resident data if you are in charge of a government agency). How would you like to use the signed structured data?
 
 
 
