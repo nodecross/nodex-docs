@@ -25,5 +25,9 @@
   * [qualification](schemas/qualification.md)
   * [worksFor](schemas/worksfor.md)
 * [Tutorial](tutorial/README.md)
+  * [Ubuntu (NodeJS)](tutorial/ubuntu-nodejs/README.md)
+    * [Scenario I. Create a DID](tutorial/ubuntu-nodejs/scenario-i.-create-a-did.md)
+    * [Scenario II. Sign Credentials](tutorial/ubuntu-nodejs/scenario-ii.-sign-credentials.md)
+    * [Scenario III. Verify Credentials](tutorial/ubuntu-nodejs/scenario-iii.-verify-credentials.md)
+    * [Scenario IV. Connect with Secure Channel](tutorial/ubuntu-nodejs/scenario-iv.-connect-with-secure-channel.md)
   * [Getting started in 15 minutes](tutorial/getting-started-in-15-minutes.md)
-
