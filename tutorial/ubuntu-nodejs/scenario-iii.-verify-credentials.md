@@ -129,7 +129,7 @@ payload:
 {% endtab %}
 {% endtabs %}
 
-Do you see the output like this? First, let's make sure that the value of isValid is true. The value of payload represents the Verifiable Credentials excluding the signature part (the value of credentialSubject represents the original structured data, in this case the data structure used to represent the email address). The value of payload represents the Verifiable Credentials excluding the signature part (the value of credentialSubject represents the original structured data, or in this case, the data structure used to represent the email address). By leveraging the signature data validation process in conjunction with web frameworks such as Express and Fastify, as we do when signing structured data, we can address a variety of use cases!
+Do you see the output like this? First, let's make sure that the value of isValid is true. The value of payload represents the Verifiable Credentials excluding the signature part (the value of credentialSubject represents the original structured data, in this case the data structure used to represent the email address). By leveraging the signature data validation process in conjunction with web frameworks such as Express and Fastify, as we do when signing structured data, we can address a variety of use cases!
 
 
 
