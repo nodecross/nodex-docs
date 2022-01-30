@@ -4,11 +4,11 @@ In Scenario I, you will learn how to use the UNiD EDGE SDK to create a DID on yo
 
 ### Goals
 
-* By tracing this tutorial, you will learn the steps to create a DID by using Ubuntu environment (NodeJS) in combination with UNiD EDGE SDK.
+* By following this tutorial, you will learn the steps to create a DID in the Ubuntu environment (NodeJS) in combination with UNiD EDGE SDK.
 
 ### Tutorial flow
 
-This tutorial will proceed in the order defined below.
+This tutorial will proceed in the order defined as follows:
 
 1. Creating a NodeJS project
 2. Install dependencies and project settings
@@ -101,7 +101,7 @@ touch index.ts
 {% endtab %}
 {% endtabs %}
 
-Open the `index.ts` file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using [VSCode](https://code.visualstudio.com). Once you have opened the `index.ts` file in your favorite text editor, you can enter the skeleton for the tutorial. The skeleton is what we will define next.
+Open the `index.ts` file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using [VSCode](https://code.visualstudio.com). Once you open the `index.ts` file in your favorite text editor, you can enter the skeleton for the tutorial. You can see the skeleton provided in the codes as follows.
 
 {% tabs %}
 {% tab title="NodeJS" %}
@@ -165,7 +165,7 @@ $ npx ts-node index.ts
 {% endtab %}
 {% endtabs %}
 
-Oh, you don't see anything as a result of running it? Actually, that's how it works. Instead of displaying nothing, you should see a `unid-edge-sdk.sqlite` file created in the NodeJS project directory as proof that the initialization of the UNiD EDGE SDK was executed successfully. unid-edge-sdk.sqlite file is a keyring where the private key data handled by the UNiD The `unid-edge-sdk.sqlite` file is the keyring where the private key data handled by the UNiD EDGE SDK is stored in encrypted form.
+Oh, you don't see anything as a result of running it? Actually, that's how it works. Instead of displaying nothing, you should find a `unid-edge-sdk.sqlite` file created in the NodeJS project directory as proof that the initialization of the UNiD EDGE SDK was executed successfully. unid-edge-sdk.sqlite file is a keyring where the private key data handled by the UNiD The `unid-edge-sdk.sqlite` file is the keyring where the private key data handled by the UNiD EDGE SDK is stored in encrypted form.
 
 Let's move on to the next step, which is to add the DID creation process.
 
