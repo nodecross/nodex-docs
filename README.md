@@ -3,7 +3,7 @@
 ```bash
 git clone https://github.com/getunid/unid-docs.git
 cd unid-docs
-git switch sphinx origin/sphinx
+git switch -c sphinx origin/sphinx
 ```
 
 ```bash
