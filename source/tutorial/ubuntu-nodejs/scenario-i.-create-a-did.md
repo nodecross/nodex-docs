@@ -17,8 +17,6 @@ This tutorial will proceed in the order defined as follows:
 
 ### 1. Creating a NodeJS project
 
-{% tabs %}
-{% tab title="SHELL" %}
 ```
 # Create a project directory
 mkdir awesome-project
@@ -27,15 +25,11 @@ cd awesome-project
 # Create NodeJS project
 yarn init -y
 ```
-{% endtab %}
-{% endtabs %}
 
 ### 2. Install dependencies and project settings
 
 Install the dependency libraries required to implement and run the project, in order.
 
-{% tabs %}
-{% tab title="SHELL" %}
 ```bash
 # UNiD SDK
 yarn add @getunid/node-wallet-sdk
@@ -46,31 +40,21 @@ yarn add -D ts-node
 yarn add -D typescript
 yarn add -D @types/node
 ```
-{% endtab %}
-{% endtabs %}
 
 In this project, we will use TypeScript to implement the application.
 
-{% hint style="info" %}
+```{note}
 The project itself can be implemented in pure JavaScript without using TypeScript, but since UNiD nodejs SDK provides type definition information, so you can have a more intuitive programming experience by using TypeScript.
-{% endhint %}
+```
 
 Configure the initial settings for TypeScript.
 
-{% tabs %}
-{% tab title="SHELL" %}
 ```bash
 npx tsc --init
 ```
-{% endtab %}
-{% endtabs %}
 
 The package.json file contains the minimum configuration required to run a TypeScript-based project.
 
-
-
-{% tabs %}
-{% tab title="package.json" %}
 ```diff
 --- package.json.orig	2022-01-14 14:41:05.000000000 +0900
 +++ package.json	2022-01-14 14:43:59.000000000 +0900
@@ -85,26 +69,18 @@ The package.json file contains the minimum configuration required to run a TypeS
    "dependencies": {
      "@getunid/node-wallet-sdk": "^1.3.13",
 ```
-{% endtab %}
-{% endtabs %}
 
 ### 3. Using UNiD EDGE SDK
 
 First of all, let's create a file that will be the entry point for this tutorial.
 
-{% tabs %}
-{% tab title="SHELL" %}
 ```bash
 # entry point
 touch index.ts
 ```
-{% endtab %}
-{% endtabs %}
 
 Open the `index.ts` file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using [VSCode](https://code.visualstudio.com). Once you open the `index.ts` file in your favorite text editor, you can enter the skeleton for the tutorial. You can see the skeleton provided in the codes as follows.
 
-{% tabs %}
-{% tab title="NodeJS" %}
 ```typescript
 import { UNiD, Cipher } from '@getunid/node-wallet-sdk'
 import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
@@ -133,24 +109,16 @@ import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
 })()
 ```
 
-{% hint style="info" %}
+```{note}
 Among the attributes passed when initializing the `SqliteConnector`, `encryptionKey` must be set to a randomly generated 32-byte binary in hexadecimal representation. For example, it could be a string that you get by opening your terminal and running the following command.
+```
 
-{% tabs %}
-{% tab title="SHELL" %}
 ```bash
 openssl rand -hex 32
 ```
-{% endtab %}
-{% endtabs %}
-{% endhint %}
-{% endtab %}
-{% endtabs %}
 
 Now that you have completed the coding, let's make sure your code runs well. Type the following command into the terminal and run it.
 
-{% tabs %}
-{% tab title="SHELL" %}
 ```bash
 yarn run start
 ```
@@ -162,8 +130,6 @@ $ yarn run node index.ts
 $ npx ts-node index.ts
 ✨  Done in 4.98s.
 ```
-{% endtab %}
-{% endtabs %}
 
 Oh, you don't see anything as a result of running it? Actually, that's how it works. Instead of displaying nothing, you should find a `unid-edge-sdk.sqlite` file created in the NodeJS project directory as proof that the initialization of the UNiD EDGE SDK was executed successfully. unid-edge-sdk.sqlite file is a keyring where the private key data handled by the UNiD The `unid-edge-sdk.sqlite` file is the keyring where the private key data handled by the UNiD EDGE SDK is stored in encrypted form.
 
@@ -173,11 +139,9 @@ Let's move on to the next step, which is to add the DID creation process.
 
 It is very easy to create a DID using the UNiD EDGE SDK. Just incorporate the following statement into your code!
 
-{% tabs %}
-{% tab title="TypeScript" %}
-{% hint style="info" %}
+```{note}
 You will need to import the KeyRingType Enum in order to run the function to create the DID. Don't forget to import it!
-{% endhint %}
+```
 
 ```typescript
 import { KeyRingType } from '@getunid/node-wallet-sdk'
@@ -189,13 +153,9 @@ import { KeyRingType } from '@getunid/node-wallet-sdk'
     const DID = await UNiD.createDid(KeyRingType.Mnemonic)
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
 The `DID` instance created by the `createDid` function provided by UNiD EDGE SDK provides several useful functions for working with DIDs. Let's take a look at the entire code block along with the process of printing your newly created DID on the terminal.
 
-{% tabs %}
-{% tab title="NodeJS" %}
 ```typescript
 import { UNiD, Cipher } from '@getunid/node-wallet-sdk'
 import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
@@ -228,13 +188,9 @@ import { KeyRingType } from '@getunid/node-wallet-sdk'
     console.log((await DID.getDidDocument()).document)
 })()
 ```
-{% endtab %}
-{% endtabs %}
 
 Let's run the program in the same way as before.
 
-{% tabs %}
-{% tab title="SHELL" %}
 ```bash
 yarn run start
 ```
@@ -265,8 +221,6 @@ your did document:
   authentication: [ '#signingKey' ]
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 You should see this output in your terminal. You can create a private key, generate a public key from the private key, and register the generated public key to the UNiD Network as a DID Document by simply incorporating the code described in this tutorial into your program. In the next chapter, we will show you how to digitally sign JSON-LD based structured data using the secret key you have created.
 
@@ -274,7 +228,7 @@ You should see this output in your terminal. You can create a private key, gener
 
 **Index of UNiD EDGE SDK / Ubuntu (NodeJS) tutorials:**
 
-* ****[Scenario I. Create a DID](scenario-i.-create-a-did.md)
+* [Scenario I. Create a DID](scenario-i.-create-a-did.md)
 * [Scenario II. Sign Credentials](scenario-ii.-sign-credentials.md)
 * [Scenario III. Verify Credentials](scenario-iii.-verify-credentials.md)
 * [Scenario IV. Connect with Secure Channel](scenario-iv.-connect-with-secure-channel.md)
