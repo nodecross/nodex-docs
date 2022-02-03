@@ -30,6 +30,7 @@ author    = 'UNiD Team'
 extensions = [
   'myst_parser',
   'sphinx_rtd_theme',
+  'sphinx_external_toc',
 ]
 
 myst_enable_extensions = [
