@@ -43,6 +43,7 @@ extensions = [
 #     '.md': 'recommonmark.parser.CommonMarkParser',
 # }
 
+myst_heading_anchors   = 2
 myst_enable_extensions = [
   'html_image',
   'colon_fence',
