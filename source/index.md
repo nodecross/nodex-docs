@@ -4,6 +4,6 @@
 * [Overview](./overview/index.md)
 * [UNiD EDGE (v1.0.0)](./unid_edge/index.md)
 * [API Reference](./api_reference/index.md)
-* [Integration Guide](./build/index.md)
-    * [RA6M5](./build/renesas/index.md)
+* [Integration Guide](./integration/index.md)
+    * [RA6M5](./integration/renesas/index.md)
 * [Glossary of terms and abbreviations](./glossary/index.md)
