@@ -25,7 +25,7 @@ make watch
 
 ## Contributing
 
-[TBD]
+[Click here](https://github.com/getunid/unid-docs/issues/new/choose) for `bug report` and `feature request` regarding the contents of this document. Thanks for your feedback to help us to improve.
 
 ## License
 

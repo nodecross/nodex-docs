@@ -34,14 +34,14 @@ extensions = [
   'sphinx_external_toc',
   'sphinx_copybutton',
   'sphinxemoji.sphinxemoji',
-  'recommonmark',
-  'sphinx-markdown-tables',
+  # 'recommonmark',
+  # 'sphinx-markdown-tables',
 ]
 
-source_suffix = ['.rst', '.md']
-source_parsers = {
-    '.md': 'recommonmark.parser.CommonMarkParser',
-}
+# source_suffix = ['.rst', '.md']
+# source_parsers = {
+#     '.md': 'recommonmark.parser.CommonMarkParser',
+# }
 
 myst_enable_extensions = [
   'colon_fence',
