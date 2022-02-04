@@ -4,6 +4,7 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -31,11 +32,15 @@ extensions = [
   'myst_parser',
   'sphinx_rtd_theme',
   'sphinx_external_toc',
+  'sphinx_copybutton',
+  'sphinxemoji.sphinxemoji',
 ]
 
 myst_enable_extensions = [
   'colon_fence',
 ]
+
+sphinxemoji_style = 'twemoji'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

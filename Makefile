@@ -24,7 +24,7 @@ install: venv
 	@$(PYTHON) -m pip install -r "requirements.txt"
 
 watch: venv
-	@$(SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
 
 .PHONY: help Makefile
 
