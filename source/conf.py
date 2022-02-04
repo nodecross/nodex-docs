@@ -35,7 +35,7 @@ extensions = [
   'sphinx_copybutton',
   'sphinxemoji.sphinxemoji',
   # 'recommonmark',
-  # 'sphinx-markdown-tables',
+  # 'sphinx_markdown_tables',
 ]
 
 # source_suffix = ['.rst', '.md']

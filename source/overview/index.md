@@ -3,7 +3,13 @@ This section describes the overview of UNiD platform, architecture of each block
 
 ## UNiD platform
 
-![Figure.1](../_assets/figure1.svg)
+```{image} ../_assets/figure1.svg
+:alt: figure.1
+:class: bg-primary
+:width: 350px
+:align: center
+```
+<!-- ![Figure.1](../_assets/figure1.svg) -->
 
 As shown in Figure.1, UNiD platform consists of the UNiD EDGE, which is an open-source embedded middleware in devices, UNiD HUB, which is a message handler, and UNiD Studio, which is a device management system.
 UNiD EDGE is provided as an [open-source SDK](https://github.com/getunid/unid), while UNiD HUB and Studio are hosted and provided in a cloud environment.
