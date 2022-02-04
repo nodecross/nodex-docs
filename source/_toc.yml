@@ -1,6 +1,7 @@
 root: index
 subtrees:
-- caption: User Guide
-  numbered: true
-  entries:
-  - file: tutorial/ubuntu-nodejs/scenario-i.-create-a-did
+- entries:
+  - file: tutorial/ubuntu-nodejs/README
+    subtrees:
+    - entries:
+      - file: tutorial/ubuntu-nodejs/scenario-i.-create-a-did

@@ -6,6 +6,9 @@
 SPHINXOPTS      ?=
 SPHINXBUILD     ?= sphinx-build
 SPHINXAUTOBUILD ?= sphinx-autobuild
+PYTHON          ?= python
+SOURCE          ?= source
+VENVDIR          = .venv
 SOURCEDIR        = source
 BUILDDIR         = build
 
@@ -13,7 +16,14 @@ BUILDDIR         = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-watch:
+venv:
+	@$(PYTHON) -m venv "$(VENVDIR)"
+	@$(SOURCE) "$(VENVDIR)/bin/activate"
+
+install: venv
+	@$(PYTHON) -m pip install -r "requirements.txt"
+
+watch: venv
 	@$(SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 .PHONY: help Makefile
