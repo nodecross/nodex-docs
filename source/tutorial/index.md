@@ -1,8 +1,4 @@
 # Tutorial
 
-
-
-{% content-ref url="getting-started-in-15-minutes.md" %}
-[getting-started-in-15-minutes.md](getting-started-in-15-minutes.md)
-{% endcontent-ref %}
-
+- [Getting started in 15 minutes](15minutes.md)
+- [Ubuntu (nodeJS)](./ubuntu-nodejs/index.md)
