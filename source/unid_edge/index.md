@@ -3,6 +3,13 @@
 As shown in Figure 10, UNiD EDGE SDK consists of micro components and extensions that can support various hardware RoTs, transports and clouds. The components are written in Rust language and can be compiled into static libraries which can be handled in C language.
 This section introduces the core features, API reference, and how to build the SDK on your device.
 
+:::{figure-md}
+
+<img src="../_assets/figure10.svg" alt="figure10">
+
+**Figure 10.** UNiD EDGE SDK Architecture
+:::
+
 ## UNiD EDGE Features
 
 ### DID as device identifier

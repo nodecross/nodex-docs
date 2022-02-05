@@ -44,6 +44,7 @@ extensions = [
 # }
 
 myst_enable_extensions = [
+  'html_image',
   'colon_fence',
 ]
 
