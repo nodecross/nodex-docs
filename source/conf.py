@@ -18,9 +18,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project   = 'UNiD Docs'
-copyright = '2022, UNiD Team'
-author    = 'UNiD Team'
+project   = 'UNiD'
+copyright = '2022 -, UNiD Project'
+author    = 'UNiD Project'
 
 
 # -- General configuration ---------------------------------------------------
@@ -34,14 +34,7 @@ extensions = [
   'sphinx_external_toc',
   'sphinx_copybutton',
   'sphinxemoji.sphinxemoji',
-  # 'recommonmark',
-  # 'sphinx_markdown_tables',
 ]
-
-# source_suffix = ['.rst', '.md']
-# source_parsers = {
-#     '.md': 'recommonmark.parser.CommonMarkParser',
-# }
 
 myst_heading_anchors   = 2
 myst_enable_extensions = [
@@ -50,6 +43,8 @@ myst_enable_extensions = [
 ]
 
 sphinxemoji_style = 'twemoji'
+external_toc_path = '_toc.yml'
+external_toc_exclude_missing = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

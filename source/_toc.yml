@@ -1,7 +1,12 @@
 root: index
-subtrees:
-- entries:
-  - file: tutorial/ubuntu-nodejs/README
-    subtrees:
-    - entries:
-      - file: tutorial/ubuntu-nodejs/scenario-i.-create-a-did
+entries:
+- file: introduction/index.md
+- file: overview/index.md
+- file: unid_edge/index.md
+- file: api_reference/index.md
+- file: integration/index.md
+  subtrees:
+  - entries:
+    - file: integration/renesas/index.md
+- file: tutorial/index.md
+- file: glossary/index.md

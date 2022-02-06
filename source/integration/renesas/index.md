@@ -14,7 +14,7 @@ This section describes the steps to integrate UNiD EDGE SDK into your e2studio p
 The procedures described in this section are based on the assumption that the system is operated in the above or equivalent environment.
 
 ## Integration for UNiD EDGE SDK
----
+
 - **Open the C/C++ project settings**
 From the Project Explorer, right-click on the project where you want to integrate the SDK and select the [C/C++ Project Settings] menu.
 

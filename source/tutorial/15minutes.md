@@ -1,17 +1,15 @@
 # Getting started in 15 minutes
 
-### Introduction
+## Introduction
 
 The tutorial is to help you understand the basic usage of our server kits and how to integrate it into your software by implementing a simple issuer/verifier service.
 
 The issuer/verifier service to be implemented have the following functions:
 
-* Issue VCs and VPs with name information ([`NameCredentialV1`](../schemas/name.md#namecredentialv1)) as a data type and display them on the screen.
+* Issue VCs and VPs with name information (`NameCredentialV1`) as a data type and display them on the screen.
 * Verify the VCs and VPs and display the verification result on screen.
 
-![Issue and Verify the VCs and VPs with name information](<../.gitbook/assets/Kapture 2021-02-28 at 17.34.34.gif>)
-
-### Prerequisites
+## Prerequisites
 
 In our server kits, a digital wallet (private keys, etc.) created by our Nodejs SDK will be stored in the MongoDB in an encrypted form. So, you need to prepare MongoDB either in the cloud or in a local environment.
 
@@ -28,7 +26,7 @@ The connect string to MongoDB for the above conditions is as follows:
 mongodb://username:password@127.0.0.1:27017
 ```
 
-### Tutorial Flow
+## Tutorial Flow
 
 In this tutorial, we will work through the following steps.
 
@@ -39,7 +37,7 @@ In this tutorial, we will work through the following steps.
 5. Implementing the Issuer function
 6. Implementing the Verifier function
 
-### 1. Creating NodeJS project
+## 1. Creating NodeJS project
 
 {% tabs %}
 {% tab title="Shell" %}
@@ -54,7 +52,7 @@ yarn init -y
 {% endtab %}
 {% endtabs %}
 
-### 2. Install dependencies
+## 2. Install dependencies
 
 Install the dependency libraries required to implement and run the project, in order.
 
@@ -103,7 +101,7 @@ yarn add -D @types/node
 {% endtab %}
 {% endtabs %}
 
-### 3. Application implementation and execution settings
+## 3. Application implementation and execution settings
 
 In this project, we will use TypeScript to implement the application.
 
@@ -143,7 +141,7 @@ The package.json file contains the minimum configuration required to run a TypeS
 {% endtab %}
 {% endtabs %}
 
-### 4. Implementation of basic server functions
+## 4. Implementation of basic server functions
 
 Before implementing the server functions, let's understand how to run the application.
 
@@ -189,8 +187,6 @@ Let's implement the basic server functions. In this section, we will implement t
 
 Sample skeleton of basic server functions as follow:&#x20;
 
-{% tabs %}
-{% tab title="src/server.ts" %}
 ```typescript
 import http from 'http'
 import helmet from 'helmet'
@@ -439,9 +435,7 @@ touch ../views/verifier/post.handlebars
 
 The following is a snippet of HTML and TypeScript to implement the Issuer function. Note that this project uses a template engine called [Handlebars](https://handlebarsjs.com) as the HTML for displaying pages. For more details on the notation and decorators available in the template, we recommend you refer to the official Handlebars website.
 
-{% tabs %}
-{% tab title="views/issuer/get.handlebars" %}
-```markup
+```
 <html>
     <head>
         <title>{{title}}</title>
@@ -468,12 +462,8 @@ The following is a snippet of HTML and TypeScript to implement the Issuer functi
     </body>
 </html>
 ```
-{% endtab %}
-{% endtabs %}
 
-{% tabs %}
-{% tab title="views/issuer/post.handlebars" %}
-```markup
+```
 <html>
     <head>
         <title>{{title}}</title>
@@ -571,16 +561,12 @@ const issuerPostHandler = (): Array<express.RequestHandler> => {
     ]
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 ### 6. Implementation Verifier functions
 
 The following are HTML and TypeScript snippets to implement the Verifier functions.
 
-{% tabs %}
-{% tab title="views/verifier/get.handlebars" %}
-```markup
+```
 <html>
     <head>
         <title>{{title}}</title>
@@ -616,12 +602,8 @@ The following are HTML and TypeScript snippets to implement the Verifier functio
     </body>
 </html>
 ```
-{% endtab %}
-{% endtabs %}
 
-{% tabs %}
-{% tab title="views/verifier/post.handlebars" %}
-```markup
+```
 <html>
     <head>
         <title>{{title}}</title>
@@ -651,13 +633,9 @@ The following are HTML and TypeScript snippets to implement the Verifier functio
     </body>
 </html>
 ```
-{% endtab %}
-{% endtabs %}
 
 Similarly, let's replace `verifierGetHandler` and `verifierPostHandler`, which are responsible for verifier functions, with the following snippet
 
-{% tabs %}
-{% tab title="src/server.ts" %}
 ```typescript
 /**
  * [Required] import the following class and method:
@@ -774,8 +752,6 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
     ]
 }
 ```
-{% endtab %}
-{% endtabs %}
 
 &#x20;:thumbsup: Great work!! With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let's run the application startup command `yarn start` and access `127.0.0.1:18080/issuer` with a web browser. The final directory structure and file layout are as follows.
 
