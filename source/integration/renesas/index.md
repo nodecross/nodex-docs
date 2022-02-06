@@ -19,8 +19,9 @@ The procedures described in this section are based on the assumption that the sy
 From the Project Explorer, right-click on the project where you want to integrate the SDK and select the [C/C++ Project Settings] menu.
 
 :::{figure-md}
+:align: center
 
-<img src="../_assets/figure11.png" alt="figure11">
+<img src="_assets/figure11.png" height="300" alt="figure11">
 
 **Figure 11.** [C/C++ Project Settings] menu
 :::
@@ -34,8 +35,9 @@ Make sure that the [Settings] menu in the left pane of the [C/C++ Project Settin
 | "${workspace_loc:/${ProjName}/unid}" |
 
 :::{figure-md}
+:align: center
 
-<img src="../_assets/figure12.png" alt="figure12">
+<img src="_assets/figure12.png" height="350" alt="figure12">
 
 **Figure 12.** [Includes] tree on [C/C++ Project Settings] window
 :::
@@ -48,7 +50,6 @@ Make sure that the [Settings] menu in the left pane of the [C/C++ Project Settin
 | --- |
 | unid |
 
-
 **Table 8.** Library directory path
 | Library directory path |
 | --- |
@@ -56,8 +57,9 @@ Make sure that the [Settings] menu in the left pane of the [C/C++ Project Settin
 
 
 :::{figure-md}
+:align: center
 
-<img src="../_assets/figure13.png" alt="figure13">
+<img src="_assets/figure13.png" height="350" alt="figure13">
 
 **Figure 13.** [Libraries] tree on [C/C++ Project Settings] window
 :::
@@ -88,8 +90,9 @@ It will contain libunid.h file which is included in GitHub repository of UNiD ED
 | https://github.com/getunid/unid/blob/main/bindings/renesas/ra/ra6m5/libunid.h |
 
 :::{figure-md}
+:align: center
 
-<img src="../_assets/figure14.png" alt="figure14">
+<img src="_assets/figure14.png" height="300" alt="figure14">
 
 **Figure 14.** [unid] directory into your project
 :::
@@ -99,8 +102,9 @@ It will contain libunid.h file which is included in GitHub repository of UNiD ED
 Click the [FSP Configuration] button near the top right of the e2studio main window.
 
 :::{figure-md}
+:align: center
 
-<img src="../_assets/figure15.png" alt="figure15">
+<img src="_assets/figure15.png" height="100" alt="figure15">
 
 **Figure 15.** [FSP Configuration] button
 :::
@@ -109,8 +113,9 @@ Click the [FSP Configuration] button near the top right of the e2studio main win
 In the left pane of the e2studio main window, go to [Project Explorer] and double click on the [configuration.xml] file included in the project where you want to embed UNiD EDGE SDK.
 
 :::{figure-md}
+:align: center
 
-<img src="../_assets/figure16.png" alt="figure16">
+<img src="_assets/figure16.png" height="250" alt="figure16">
 
 **Figure 16.** [configuration.xml] file in your project
 :::
@@ -125,7 +130,9 @@ This procedure may vary depending on the project configuration to be embedded wi
 Make sure the Stacks Configuration screen is displayed and add the [Heap 4] stack to the main thread defined in the [Threads] group. The [Heap 4] stack can be added by selecting [FreeRTOS] > [Memory Management] > [Heap 4] from the [New Stack] menu in the right pane of the [Stacks Configuration] screen.
 
 :::{figure-md}
-<img src="../_assets/figure17.png" alt="figure17">
+:align: center
+
+<img src="_assets/figure17.png" height="300" alt="figure17">
 
 **Figure 17.** [Stack Configuration] screen
 :::
@@ -148,7 +155,9 @@ On the same Stacks Configuration screen, make sure that the main thread defined 
 On the Properties tab, in the [Common] tree > [Memory Allocation] tree > [Total Heap Size] key, enter the setting value [0x96000].
 
 :::{figure-md}
-<img src="../_assets/figure18.png" alt="figure18">
+:align: center
+
+<img src="_assets/figure18.png" height="300" alt="figure18">
 
 **Figure 18.** [Memory Allocation] and [Total Heap Size] settings
 :::
