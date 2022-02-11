@@ -1,0 +1,49 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches:    
+      - main
+      - sphinx
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: unfor19/install-aws-cli-action@v1
+
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Build
+        uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "."
+          build-command: "sphinx-build -b html source build/html"
+
+      - name: Deploy
+        run: |
+          # memo: --delete (boolean) Files that exist in the destination but not in the source are deleted during sync.
+          aws s3 sync --delete build/html s3://${{ secrets.AWS_S3_BUCKET }}
+
+      - if: success()
+        uses: voxmedia/github-action-slack-notify-build@v1
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: 'C01C9NKCXMF' # '#01_unid'
+          status: SUCCESS
+          color: good
+
+      - if: failure()
+        uses: voxmedia/github-action-slack-notify-build@v1
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: 'C01C9NKCXMF' # '#01_unid'
+          status: FAILED
+          color: danger
