@@ -16,7 +16,7 @@ UNiD EDGE is provided as an [open-source middleware](https://github.com/getunid/
 
 :::{figure-md}
 
-<img src="../_assets/figure1-4.svg" alt="figure1">
+<img src="../_assets/figure1-2.svg" alt="figure1">
 
 **Figure 1.** Overview of UNiD platform
 :::

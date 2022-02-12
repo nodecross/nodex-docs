@@ -1,33 +1,32 @@
-# Welcome
+# UNiD Official Documentation
 
-## :star2: Welcome to the UNiD Documentation!
+The UNiD Official Documentation is designed to organize and disseminate all publicly available information that makes up the UNiD platform. The documentation will be updated as needed, but if you find a bug in the documentation, please follow the contributor guide below to submit a pull request.
 
-UNiD is an easy to integrate, adaptable decentralized identity platform. Decentralized identifiers (DIDs) are a new type of identifier that allow us to own personal information and selectively disclose it across platforms and services in a privacy preserving manner.
+## Getting started
 
-![](<.gitbook/assets/UNiD ティザーサイト (12).svg>)
+This document follows the [Sphinx](https://www.sphinx-doc.org) documentation framework. This document follows the Sphinx documentation framework, so you can easily build the documentation in your own environment. Note that you need to have Python 3.x version installed to build the documentation.
 
-UNiD platform is built on the top of an open, public, and permissionless 2nd layer protocol as decentralized PKI and composed of pluggable and extensible building blocks such as core APIs, drivers, and toolkits. It can be scaling to billions identifiers and interoperable based on open web standards at organizations such as the [W3C](https://www.w3.org), [Decentralized Identity Foundation](https://identity.foundation), [IETF](https://ietf.org), and [the Hyper ledger Project at the Linux Foundation](https://www.hyperledger.org).&#x20;
+**Clone the repository**
+```bash
+git clone https://github.com/getunid/unid-docs.git
+cd unid-docs
+git switch -c sphinx origin/sphinx
+```
 
-We are excited to build the new identity stack for the future web where distributed users and machines are able to interact with verifiable data without the need for the third party.&#x20;
+**Install dependencies**
+```bash
+make install
+```
 
-## To learn UNiD Platform
+**Build document (auto-reload)**
+```bash
+make watch
+```
 
-{% content-ref url="unid-platform/" %}
-[unid-platform](unid-platform/)
-{% endcontent-ref %}
+## Contributing
 
-## To integrate into an existing server
+[Click here](https://github.com/getunid/unid-docs/issues/new/choose) for `bug report` and `feature request` regarding the contents of this document. Thanks for your feedback to help us to improve.
 
-{% content-ref url="server/" %}
-[server](server/)
-{% endcontent-ref %}
+## License
 
-## To create VC schema
-
-{% content-ref url="schemas/" %}
-[schemas](schemas/)
-{% endcontent-ref %}
-
-## Contribution
-
-* [Click here](https://github.com/getunid/unid-docs/issues/new/choose) for `bug report` and `feature request` regarding the contents of this document. Thanks for your feedback to help us to improve.
+[Apache License 2.0](LICENSE)

@@ -2,11 +2,19 @@
 
 In Scenario I, you will learn how to use the UNiD EDGE SDK to create a DID on your terminal.
 
+<<<<<<< HEAD
 ## Goals
 
 * By following this tutorial, you will learn the steps to create a DID in the Ubuntu environment (NodeJS) in combination with UNiD EDGE SDK.
 
 ## Tutorial flow
+=======
+### Goals
+
+* By following this tutorial, you will learn the steps to create a DID in the Ubuntu environment (NodeJS) in combination with UNiD EDGE SDK.
+
+### Tutorial flow
+>>>>>>> d40cfec6bb8f0b90ccef56eed189f9b25df79cef
 
 This tutorial will proceed in the order defined as follows:
 
@@ -15,7 +23,11 @@ This tutorial will proceed in the order defined as follows:
 3. Using UNiD EDGE SDK
 4. Add DID creation process
 
+<<<<<<< HEAD
 ## 1. Creating a NodeJS project
+=======
+### 1. Creating a NodeJS project
+>>>>>>> d40cfec6bb8f0b90ccef56eed189f9b25df79cef
 
 ```
 # Create a project directory
@@ -26,7 +38,11 @@ cd awesome-project
 yarn init -y
 ```
 
+<<<<<<< HEAD
 ## 2. Install dependencies and project settings
+=======
+### 2. Install dependencies and project settings
+>>>>>>> d40cfec6bb8f0b90ccef56eed189f9b25df79cef
 
 Install the dependency libraries required to implement and run the project, in order.
 
@@ -70,7 +86,11 @@ The package.json file contains the minimum configuration required to run a TypeS
      "@getunid/node-wallet-sdk": "^1.3.13",
 ```
 
+<<<<<<< HEAD
 ## 3. Using UNiD EDGE SDK
+=======
+### 3. Using UNiD EDGE SDK
+>>>>>>> d40cfec6bb8f0b90ccef56eed189f9b25df79cef
 
 First of all, let's create a file that will be the entry point for this tutorial.
 
@@ -135,7 +155,11 @@ Oh, you don't see anything as a result of running it? Actually, that's how it wo
 
 Let's move on to the next step, which is to add the DID creation process.
 
+<<<<<<< HEAD
 ## 4. Add DID creation process
+=======
+### 4. Add DID creation process
+>>>>>>> d40cfec6bb8f0b90ccef56eed189f9b25df79cef
 
 It is very easy to create a DID using the UNiD EDGE SDK. Just incorporate the following statement into your code!
 
@@ -148,7 +172,11 @@ import { KeyRingType } from '@getunid/node-wallet-sdk'
 
 (async () => {
     // ..
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> d40cfec6bb8f0b90ccef56eed189f9b25df79cef
     // Insert your great code below this line
     const DID = await UNiD.createDid(KeyRingType.Mnemonic)
 })()
@@ -231,4 +259,8 @@ You should see this output in your terminal. You can create a private key, gener
 * [Scenario I. Create a DID](scenario-i.-create-a-did.md)
 * [Scenario II. Sign Credentials](scenario-ii.-sign-credentials.md)
 * [Scenario III. Verify Credentials](scenario-iii.-verify-credentials.md)
+<<<<<<< HEAD
 * [Scenario IV. Connect with E2E Secure Channel](scenario-iv.-connect-with-secure-channel.md)
+=======
+* [Scenario IV. Connect with Secure Channel](scenario-iv.-connect-with-secure-channel.md)
+>>>>>>> d40cfec6bb8f0b90ccef56eed189f9b25df79cef
