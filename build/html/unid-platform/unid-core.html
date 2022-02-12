@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNiD Core &mdash; UNiD Docs  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/twemoji.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+        <script src="../_static/twemoji.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> UNiD Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/ubuntu-nodejs/README.html">Ubuntu (NodeJS)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UNiD Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>UNiD Core</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/unid-platform/unid-core.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="tex2jax_ignore mathjax_ignore section" id="unid-core">
+<h1>UNiD Core<a class="headerlink" href="#unid-core" title="Permalink to this headline"></a></h1>
+<div class="section" id="did-operations">
+<h2>DID Operations<a class="headerlink" href="#did-operations" title="Permalink to this headline"></a></h2>
+<p>Regardless of the DID method supported by UNiD Drivers, all DID methods support the following DID Operations. All of operations require the DID owner to generate specific data values and cryptographic material. </p>
+<div class="section" id="method-summary">
+<h3>Method Summary<a class="headerlink" href="#method-summary" title="Permalink to this headline"></a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.createDidDocument(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+        Create key pairs for registering new DID on UNiD network.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.loadDid(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+        Get a wallet information including a decentralized identifier and key pairs.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.getIdentifier(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+        Get the decentralized identifier.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.getSeedPhrase(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+        Get a master seed phrase.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.verifySeedPhrase(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Verify a master seed phrase.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.updateDidDocument(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Send action patches such as <em>add-public-keys</em>, <em>remove-public-keys</em>, <em>add-services</em>, <em>remove-services</em>, and <em>replace.</em></p>
+</div>
+</div>
+<div class="section" id="vc-operations">
+<h2>VC Operations<a class="headerlink" href="#vc-operations" title="Permalink to this headline"></a></h2>
+<p>Credentials are a part of our daily lives; driver’s licenses are used to claim that we are capable of operating a motor vehicle, university degrees can be used to assert our level of education, and government-issued passports enable us to travel between countries. This sort of credentials can be expressed on the Web in a way that is cryptographically secure, privacy respecting, and machine-verifiable. We call it as a VC or Verifiable Credential.</p>
+<p>In the physical world, a credential might consist of:</p>
+<ul class="simple">
+<li><p>Information related to identifying the subject of the credential (for example, a photo, name, or identification number)</p></li>
+<li><p>Information related to the issuing authority (for example, a city government, national agency, or certification body)</p></li>
+<li><p>Information related to the type of credential this is (for example, a Dutch passport, an American driving license, or a health insurance card)</p></li>
+<li><p>Information related to specific attributes or properties being asserted by the issuing authority about the subject (for example, nationality, the classes of vehicle entitled to drive, or date of birth)</p></li>
+<li><p>Evidence related to how the credential was derived</p></li>
+<li><p>Information related to constraints on the credential (for example, expiration date, or terms of use).</p></li>
+</ul>
+<p>A verifiable credential can represent all of the same information that a physical credential represents. The addition of technologies, such as digital signatures, makes verifiable credentials more tamper-evident and more trustworthy than their physical counterparts. </p>
+<div class="section" id="id1">
+<h3>Method Summary<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.createCredential(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+        Create a verifiable credential following UNiD VC data schema class.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.postCredential(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+        Store a verifiable credential in a secure data storage.</p>
+<p>**<code class="docutils literal notranslate"><span class="pre">DID.getCredential(params</span> <span class="pre">=</span> <span class="pre">{})</span></code> **<br />
+****        Get a verifiable credential from a secure data storage.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.getCredentials(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Get verifiable credentials from a secure data storage.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.createPresentation(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Wrap verifiable credentials into a verifiable presentation.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.isVerifiableCredential(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Verify the data format of the verifiable credential.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.isVerifiablePresentation(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Verify the data format of the verifiable presentation.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.verifyCredential(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Verify the signature of the verifiable credential.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.verifyPresentation(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Verify the signature of the verifiable presentation.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">(schema_type).select(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Retrieve the verifiable credential wrapped in the verifiable presentation. </p>
+</div>
+</div>
+<div class="section" id="didcomm">
+<h2>DIDComm<a class="headerlink" href="#didcomm" title="Permalink to this headline"></a></h2>
+<p>DIDComm is a cross-community standard that creates libraries and design patterns for two or more DID-controlling entities from diverse DID-based systems to communicate directly with one another. It creates a secure communication channel between software controlled by each of these entities, which can be people, organizations or things. This constitutes an “authenticated channel” in that control of a given DID’s private keys is, barring a failure of design or operational security, proof of authenticity of the party represented by that DID.</p>
+<div class="section" id="did-authn">
+<h3><strong>DID AuthN</strong><a class="headerlink" href="#did-authn" title="Permalink to this headline"></a></h3>
+<p>For the wallet to communicate with relying parties (RP) on secure authenticated channel. The below diagram illustrate the sign-in flow and steps taken to verify a user through their user agent from the wallet side of the webpage to the server side of a RP.</p>
+<p><img alt="" src=".gitbook/assets/SIOP.svg" /></p>
+</div>
+<div class="section" id="id2">
+<h3>Method Summary<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.generateAuthenticationRequest(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Create an authentication request with <em>requiredCredentialTypes.</em></p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.validateAuthenticationRequest(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Validate an authentication request.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DID.generateAuthenticationResponse(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Create an authentication response with <em>requestedPresentation</em>.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">UNiD.validateAuthenticationResponse(params</span> <span class="pre">=</span> <span class="pre">{})</span></code></strong><br />
+****        Validate an authentication response.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, UNiD Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

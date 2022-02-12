@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to implement UNiD EDGE SDK to RA6M5 &mdash; UNiD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/twemoji.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+        <script src="../../_static/twemoji.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial" href="../../tutorial/index.html" />
+    <link rel="prev" title="Integration Guide" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> UNiD
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unid_edge/index.html">UNiD EDGE (v1.0.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Integration Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#how-to-build-environment-rust">How to build environment (Rust)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#how-to-build-environment-build-related-tools">How to build environment (build-related tools)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#building-unid-edge-sdk">Building UNiD EDGE SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#checking-the-build-artifacts">Checking the build artifacts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to implement UNiD EDGE SDK to RA6M5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-for-unid-edge-sdk">Integration for UNiD EDGE SDK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-usage-settings">Memory usage settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/index.html">Glossary of terms and abbreviations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UNiD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Integration Guide</a> &raquo;</li>
+      <li>How to implement UNiD EDGE SDK to RA6M5</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/renesas/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-implement-unid-edge-sdk-to-ra6m5">
+<h1>How to implement UNiD EDGE SDK to RA6M5<a class="headerlink" href="#how-to-implement-unid-edge-sdk-to-ra6m5" title="Permalink to this headline"></a></h1>
+<p>This section describes the steps to integrate UNiD EDGE SDK into your e2studio project. You can exclusively choose to compile the e2studio project as a C language implementation or as a C++ language implementation, but in this document we will assume that it is compiled as a C language implementation.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Operating System</p>
+<ul>
+<li><p>An environment that can run e2studio (Linux, Windows, etc.)</p></li>
+</ul>
+</li>
+<li><p>IDE</p>
+<ul>
+<li><p>Renesas e2studio 2021-10 (21.10.0) [Build Id: R20210916-1304]</p></li>
+<li><p>SEGGER J-Link 7.54</p></li>
+</ul>
+</li>
+<li><p>RTOS select for e2studio project</p>
+<ul>
+<li><p>FreeRTOS</p></li>
+</ul>
+</li>
+</ul>
+<p>The procedures described in this section are based on the assumption that the system is operated in the above or equivalent environment.</p>
+</div>
+<div class="section" id="integration-for-unid-edge-sdk">
+<h2>Integration for UNiD EDGE SDK<a class="headerlink" href="#integration-for-unid-edge-sdk" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><strong>Open the C/C++ project settings</strong>
+From the Project Explorer, right-click on the project where you want to integrate the SDK and select the [C/C++ Project Settings] menu.</p></li>
+</ul>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/figure11.png"><img alt="figure11" src="../../_images/figure11.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 11.</strong> [C/C++ Project Settings] menu</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Add a Includes definition</strong>
+Make sure that the [Settings] menu in the left pane of the [C/C++ Project Settings] window is selected. From the [Tool Settings] tab in the middle of the [Settings] window, click the [Includes] menu in the [GNU Arm Cross C Compiler] tree. [In the Include Paths (-l) list, specify the directory path where the UNiD EDGE SDK header files are stored.</p></li>
+</ul>
+<p><strong>Table 6.</strong> Header file directory path</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Header file directory path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“${workspace_loc:/${ProjName}/unid}”</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/figure12.png"><img alt="figure12" src="../../_images/figure12.png" style="height: 350px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 12.</strong> [Includes] tree on [C/C++ Project Settings] window</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Add a Libraries definition</strong>
+Make sure that the [Settings] menu in the left pane of the [C/C++ Project Settings] window is selected. From the [Tool Settings] tab in the [Settings] window, click the [Libraries] menu included in the [GNU Arm Cross C Linker] tree. Specify the library identification letter of UNiD EDGE SDK in [Libraries (-l)] list and the directory path where UNiD EDGE SDK libraries are stored in [Library search path (-L)] list.</p></li>
+</ul>
+<p><strong>Table 7.</strong> Library identifier</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>unid</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 8.</strong> Library directory path</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library directory path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“${workspace_loc:/${ProjName}/unid}”</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/figure13.png"><img alt="figure13" src="../../_images/figure13.png" style="height: 350px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 13.</strong> [Libraries] tree on [C/C++ Project Settings] window</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</div>
+<p>After completing the above settings, click the [Apply and Close] button at the bottom of the [C/C++ Project Settings] screen to close the window.</p>
+<ul class="simple">
+<li><p><strong>Deploying the UNiD EDGE SDK</strong>
+Create a new [unid] directory for the e2studio project. In the [unid] directory, store the three files defined below.</p></li>
+<li><p><strong>unid/libunid.a</strong>
+Store the libunid.a file generated by the build procedure in the previous section.</p></li>
+<li><p><strong>unid/libunid.c</strong>
+It will contain libunid.c file which is included in GitHub repository of UNiD EDGE SDK. The file path in the repository is as described below.</p></li>
+</ul>
+<p><strong>Table 9.</strong> Repository path for libunid.c</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Repository path: libunid.c</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>https://github.com/getunid/unid/blob/main/bindings/renesas/ra/ra6m5/libunid.c</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>unid/libunid.h</strong>
+It will contain libunid.h file which is included in GitHub repository of UNiD EDGE SDK. The file path in the repository is as described below.</p></li>
+</ul>
+<p><strong>Table 10.</strong> Repository path for libunid.h</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Repository path: libunid.h</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>https://github.com/getunid/unid/blob/main/bindings/renesas/ra/ra6m5/libunid.h</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/figure14.png"><img alt="figure14" src="../../_images/figure14.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 14.</strong> [unid] directory into your project</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="memory-usage-settings">
+<h2>Memory usage settings<a class="headerlink" href="#memory-usage-settings" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><strong>Open the [FSP Configuration] screen.</strong>
+Click the [FSP Configuration] button near the top right of the e2studio main window.</p></li>
+</ul>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../../_images/figure15.png"><img alt="figure15" src="../../_images/figure15.png" style="height: 100px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 15.</strong> [FSP Configuration] button</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Open the FSP configuration window.</strong>
+In the left pane of the e2studio main window, go to [Project Explorer] and double click on the [configuration.xml] file included in the project where you want to embed UNiD EDGE SDK.</p></li>
+</ul>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../../_images/figure16.png"><img alt="figure16" src="../../_images/figure16.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 16.</strong> [configuration.xml] file in your project</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Add a stack of heap memory</strong></p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Note</p>
+<p>This procedure may vary depending on the project configuration to be embedded with UNiD EDGE SDK.</p>
+</div>
+<p>Make sure the Stacks Configuration screen is displayed and add the [Heap 4] stack to the main thread defined in the [Threads] group. The [Heap 4] stack can be added by selecting [FreeRTOS] &gt; [Memory Management] &gt; [Heap 4] from the [New Stack] menu in the right pane of the [Stacks Configuration] screen.</p>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../../_images/figure17.png"><img alt="figure17" src="../../_images/figure17.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 17.</strong> [Stack Configuration] screen</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</div>
+<p>There are 5 implementations of heap area available in FreeRTOS, Heap 1, Heap 2, Heap 3, Heap 4, and Heap 5, and UNiD EDGE SDK is designed to use [Heap 4]. The differences between these heap implementations are described in detail on the FreeRTOS official page.</p>
+<ul class="simple">
+<li><p>FreeRTOS - Memory management options for the FreeRTOS small footprint, professional grade, real time kernel (scheduler) https://www.freertos.org/a00111.html</p></li>
+<li><p><strong>Enable dynamic memory allocation and set the maximum available heap memory</strong></p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Note</p>
+<p>This procedure may vary depending on the project configuration to be embedded with UNiD EDGE SDK.</p>
+</div>
+<p>On the same Stacks Configuration screen, make sure that the main thread defined in the Threads group is selected, and that the Properties tab is visible in the e2studio main window. (The position of the [Properties] tab varies depending on the window settings of e2studio. In the following screenshot, it is displayed on the lower left side of the screen.)</p>
+<p>On the Properties tab, in the [Common] tree &gt; [Memory Allocation] tree &gt; [Total Heap Size] key, enter the setting value [0x96000].</p>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../../_images/figure18.png"><img alt="figure18" src="../../_images/figure18.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 18.</strong> [Memory Allocation] and [Total Heap Size] settings</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</div>
+<p>[0x96000] is 614,400 in decimal, which means that 600KB is available as heap memory. Please note that the maximum heap memory of 600KB is not the minimum requirement for using UNiD EDGE SDK, but it is the maximum amount of memory available for the RA6M5 chip.</p>
+<p>This completes the process of embedding UNiD EDGE SDK into e2studio.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Integration Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../tutorial/index.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 -, UNiD Project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

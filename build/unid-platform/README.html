@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNiD Platform &mdash; UNiD Docs  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> UNiD Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/ubuntu-nodejs/README.html">Ubuntu (NodeJS)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UNiD Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>UNiD Platform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/unid-platform/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="unid-platform">
+<h1>UNiD Platform<a class="headerlink" href="#unid-platform" title="Permalink to this headline"></a></h1>
+<section id="intro-to-unid-platform">
+<h2>Intro to UNiD Platform<a class="headerlink" href="#intro-to-unid-platform" title="Permalink to this headline"></a></h2>
+<p>UNiD is an easy to implement, flexible solution to integrate a decentralized identity capabilities into your applications. UNiD is composed of a collection of micro services, allowing developers to combine pluggable and extensible modular for flexibility and freedom of choice without compromising security. We are here to give developers and companies the building blocks they need to secure their applications without having to become security experts.</p>
+<p>As in the diagram below, our platform consists of four components: <strong>UNiD SDKs</strong>, <strong>UNiD Core</strong>, <strong>UNiD Drivers</strong>, and <strong>UNiD Network</strong>.</p>
+<p><img alt="" src=".gitbook/assets/CG%20-%20Company%20Deck%20(2).svg" /></p>
+<p><strong>UNiD Network</strong> is built on the top of <a class="reference external" href="https://identity.foundation/sidetree/spec/">Sidetree</a> that is a 2nd layer blockchain-agnostic protocol and has multiple reference implementations for various decentralized ledger systems, such as Bitcoin, Ethereum, etc.</p>
+<p><strong>UNiD Drivers</strong> pre-configured integrations to our platform that support fundamental capabilities. <strong>UNiD Core</strong> are designed as a set of APIs for communicating with UNiD network and drivers and used through <strong>UNiD SDKs</strong> to easily incorporate these capabilities into your application.</p>
+</section>
+<section id="unid-core">
+<h2>UNiD Core<a class="headerlink" href="#unid-core" title="Permalink to this headline"></a></h2>
+<p>UNiD Core consists of a set of modules and APIs that support core functions such as DID operations, VC operations, and DID communications. UNiD SDKs and extension tools are built on the top of it.</p>
+<p>{% content-ref url=”unid-core.md” %}
+<a class="reference internal" href="unid-core.html"><span class="doc std std-doc">unid-core.md</span></a>
+{% endcontent-ref %}</p>
+</section>
+<section id="unid-drivers">
+<h2>UNiD Drivers<a class="headerlink" href="#unid-drivers" title="Permalink to this headline"></a></h2>
+<p>The UNiD Drivers are pre-configured integrations to our platform that support DID methods, key management, crypto primitives, and tenant model. The drivers are pluggable for preventing vendor lock-in and enabling users choices without compromising security.</p>
+<p>{% content-ref url=”unid-driver.md” %}
+<a class="reference internal" href="unid-driver.html"><span class="doc std std-doc">unid-driver.md</span></a>
+{% endcontent-ref %}</p>
+</section>
+<section id="unid-sdks">
+<h2>UNiD SDKs<a class="headerlink" href="#unid-sdks" title="Permalink to this headline"></a></h2>
+<p>The UNiD SDKs offer convenient and easy-to-access application logic to build solutions and integrate with digital services that exist out of our platform. UNiD extension tools support the features such as DID AuthN and VC Data Schema that are strongly dependent on each use case and are outside scope of UNiD Core and Drivers.</p>
+<p>{% content-ref url=”unid-sdk.md” %}
+<a class="reference internal" href="unid-sdk.html"><span class="doc std std-doc">unid-sdk.md</span></a>
+{% endcontent-ref %}</p>
+</section>
+<section id="unid-network">
+<h2>UNiD Network<a class="headerlink" href="#unid-network" title="Permalink to this headline"></a></h2>
+<p>UNiD Network is built on the top of Sidetree that is a 2nd layer blockchain-agnostic protocol and has multiple reference implementations for various decentralized ledger systems, such as Bitcoin, Ethereum, etc.</p>
+<p>{% content-ref url=”unid-network.md” %}
+<a class="reference internal" href="unid-network.html"><span class="doc std std-doc">unid-network.md</span></a>
+{% endcontent-ref %}</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, UNiD Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

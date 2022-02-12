@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started in 15 minutes &mdash; UNiD Docs  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/twemoji.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+        <script src="../_static/twemoji.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> UNiD Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Getting started in 15 minutes</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#tutorial-flow">Tutorial Flow</a></li>
+<li><a class="reference internal" href="#creating-nodejs-project">1. Creating NodeJS project</a></li>
+<li><a class="reference internal" href="#install-dependencies">2. Install dependencies</a></li>
+<li><a class="reference internal" href="#application-implementation-and-execution-settings">3. Application implementation and execution settings</a></li>
+<li><a class="reference internal" href="#implementation-of-basic-server-functions">4. Implementation of basic server functions</a></li>
+<li><a class="reference internal" href="#implementation-issuer-functions">5. Implementation Issuer functions</a></li>
+<li><a class="reference internal" href="#implementation-verifier-functions">6. Implementation Verifier functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UNiD Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting started in 15 minutes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/15minutes.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="tex2jax_ignore mathjax_ignore section" id="getting-started-in-15-minutes">
+<h1>Getting started in 15 minutes<a class="headerlink" href="#getting-started-in-15-minutes" title="Permalink to this headline"></a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>The tutorial is to help you understand the basic usage of our server kits and how to integrate it into your software by implementing a simple issuer/verifier service.</p>
+<p>The issuer/verifier service to be implemented have the following functions:</p>
+<ul class="simple">
+<li><p>Issue VCs and VPs with name information (<span class="xref myst"><code class="docutils literal notranslate"><span class="pre">NameCredentialV1</span></code></span>) as a data type and display them on the screen.</p></li>
+<li><p>Verify the VCs and VPs and display the verification result on screen.</p></li>
+</ul>
+<p><img alt="Issue and Verify the VCs and VPs with name information" src=".gitbook/assets/Kapture%202021-02-28%20at%2017.34.34.gif" /></p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<p>In our server kits, a digital wallet (private keys, etc.) created by our Nodejs SDK will be stored in the MongoDB in an encrypted form. So, you need to prepare MongoDB either in the cloud or in a local environment.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Destination</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Port</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">27017</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>User Name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">username</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">password</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The connect string to MongoDB for the above conditions is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mongodb</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="p">:</span><span class="n">password</span><span class="o">@</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">27017</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tutorial-flow">
+<h2>Tutorial Flow<a class="headerlink" href="#tutorial-flow" title="Permalink to this headline"></a></h2>
+<p>In this tutorial, we will work through the following steps.</p>
+<ol class="arabic simple">
+<li><p>Creating a NodeJS project</p></li>
+<li><p>Install dependencies</p></li>
+<li><p>Application implementation and execution settings</p></li>
+<li><p>Implementation of basic server functions</p></li>
+<li><p>Implementing the Issuer function</p></li>
+<li><p>Implementing the Verifier function</p></li>
+</ol>
+</div>
+<div class="section" id="creating-nodejs-project">
+<h2>1. Creating NodeJS project<a class="headerlink" href="#creating-nodejs-project" title="Permalink to this headline"></a></h2>
+<p>{% tabs %}
+{% tab title=”Shell” %}</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a project directory</span>
+mkdir awesome-project
+<span class="nb">cd</span> awesome-project
+
+<span class="c1"># create NodeJS project</span>
+yarn init -y
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+</div>
+<div class="section" id="install-dependencies">
+<h2>2. Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline"></a></h2>
+<p>Install the dependency libraries required to implement and run the project, in order.</p>
+<p>{% tabs %}
+{% tab title=”Shell” %}</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">### I. Libraries for implementing</span>
+
+<span class="c1"># UNiD SDK</span>
+yarn add @getunid/node-wallet-sdk
+yarn add @getunid/wallet-sdk-mongo-connector
+
+<span class="c1"># Server</span>
+yarn add express
+
+<span class="c1"># Validation</span>
+yarn add express-validator
+
+<span class="c1"># Access log</span>
+yarn add morgan
+
+<span class="c1"># Web security</span>
+yarn add helmet
+
+<span class="c1"># Handler templates</span>
+yarn add handlebars
+yarn add express-handlebars
+
+<span class="c1"># MongoDB client</span>
+yarn add mongodb
+
+<span class="c1"># HTTP status code</span>
+yarn add http-status-codes
+
+<span class="c1">### II. Libraries for running</span>
+
+yarn add -D ts-node
+yarn add -D typescript
+yarn add -D @types/express
+yarn add -D @types/morgan
+yarn add -D @types/helmet
+yarn add -D @types/express-handlebars
+yarn add -D @types/mongodb
+yarn add -D @types/node
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+</div>
+<div class="section" id="application-implementation-and-execution-settings">
+<h2>3. Application implementation and execution settings<a class="headerlink" href="#application-implementation-and-execution-settings" title="Permalink to this headline"></a></h2>
+<p>In this project, we will use TypeScript to implement the application.</p>
+<p>{% hint style=”info” %}
+The project itself can be implemented in pure JavaScript without using TypeScript, but since UNiD nodejs SDK provides type definition information, so you can have a more intuitive programming experience by using TypeScript.
+{% endhint %}</p>
+<p>Configure the initial settings for TypeScript.</p>
+<p>{% tabs %}
+{% tab title=”Shell” %}</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx tsc --init
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>The package.json file contains the minimum configuration required to run a TypeScript-based project.</p>
+<p>{% tabs %}
+{% tab title=”package.json” %}</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">--- a/package.json	2021-02-27 13:07:03.000000000 +0900</span><span class="w"></span>
+<span class="gi">+++ b/package.json	2021-02-27 13:08:54.000000000 +0900</span><span class="w"></span>
+<span class="gu">@@ -3,6 +3,10 @@</span><span class="w"></span>
+<span class="w"> </span>  &quot;version&quot;: &quot;1.0.0&quot;,<span class="w"></span>
+<span class="w"> </span>  &quot;main&quot;: &quot;index.js&quot;,<span class="w"></span>
+<span class="w"> </span>  &quot;license&quot;: &quot;MIT&quot;,<span class="w"></span>
+<span class="gi">+  &quot;scripts&quot;: {</span><span class="w"></span>
+<span class="gi">+    &quot;ts-node&quot;: &quot;npx ts-node&quot;,</span><span class="w"></span>
+<span class="gi">+    &quot;start&quot;: &quot;npx ts-node src/server.ts&quot;</span><span class="w"></span>
+<span class="gi">+  },</span><span class="w"></span>
+<span class="w"> </span>  &quot;dependencies&quot;: {<span class="w"></span>
+<span class="w"> </span>    &quot;debug&quot;: &quot;^4.3.1&quot;,<span class="w"></span>
+<span class="w"> </span>    &quot;dotenv&quot;: &quot;^8.2.0&quot;,<span class="w"></span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+</div>
+<div class="section" id="implementation-of-basic-server-functions">
+<h2>4. Implementation of basic server functions<a class="headerlink" href="#implementation-of-basic-server-functions" title="Permalink to this headline"></a></h2>
+<p>Before implementing the server functions, let’s understand how to run the application.</p>
+<p>{% tabs %}
+{% tab title=”Shell” %}</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yarn start
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>{% hint style=”info” %}
+When you run the yarn start command at this time, you will get a runtime error. The reason for the error is that the file required for execution, which will be created in the next step, does not exist yet, so do not worry about it and proceed to the next step.
+{% endhint %}</p>
+<p>Let’s create a source code directory and a file that will serve as an entry point and implement basic server functions.</p>
+<p>{% tabs %}
+{% tab title=”Shell” %}</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a source code directory</span>
+mkdir src
+<span class="nb">cd</span> src
+
+<span class="c1"># entry point</span>
+touch server.ts
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">server.ts</span></code> file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using <a class="reference external" href="https://code.visualstudio.com">VSCode</a>.</p>
+<p><img alt="Open server.ts file with VSCode" src=".gitbook/assets/image%20(6).png" /></p>
+<p>Let’s implement the basic server functions. In this section, we will implement two URLs to handle the <code class="docutils literal notranslate"><span class="pre">GET</span></code> method and two URLs to handle the <code class="docutils literal notranslate"><span class="pre">POST</span></code> method. Specifically, we will implement the Issuer function and the Verifier function in the following URLs.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>URI</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/issuer</span></code></p></td>
+<td><p>Display the input form for the data to be put into VC/VP on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/issuer</span></code></p></td>
+<td><p>Create VC/VP and display them on the screen.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/verifier</span></code></p></td>
+<td><p>Display the input form for the VC/VP to be verified on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/verifier</span></code></p></td>
+<td><p>Verify the VC/VP and display verification results and payload.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Sample skeleton of basic server functions as follow: </p>
+<p>{% tabs %}
+{% tab title=”src/server.ts” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nx">http</span> <span class="kr">from</span> <span class="s1">&#39;http&#39;</span>
+<span class="k">import</span> <span class="nx">helmet</span> <span class="kr">from</span> <span class="s1">&#39;helmet&#39;</span>
+<span class="k">import</span> <span class="nx">morgan</span> <span class="kr">from</span> <span class="s1">&#39;morgan&#39;</span>
+<span class="k">import</span> <span class="nx">express</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span>
+<span class="k">import</span> <span class="nx">handlebars</span> <span class="kr">from</span> <span class="s1">&#39;express-handlebars&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">validationResult</span><span class="p">,</span> <span class="nx">ValidationChain</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express-validator&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AddressInfo</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;net&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">KeyRingType</span><span class="p">,</span> <span class="nx">UNiD</span><span class="p">,</span> <span class="nx">Cipher</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MongoClient</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;mongodb&#39;</span>
+<span class="k">import</span> <span class="nx">HttpStatus</span> <span class="kr">from</span> <span class="s1">&#39;http-status-codes&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">UNiDDid</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk/libs/did-unid/did&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MongoDBConnector</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/wallet-sdk-mongo-connector&#39;</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="c1">// setting up basic middleware</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">morgan</span><span class="p">(</span><span class="s1">&#39;combined&#39;</span><span class="p">))</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">())</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="nx">extended</span>: <span class="kt">false</span> <span class="p">}))</span>
+
+<span class="c1">// setting up rendering engine</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">engine</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">,</span> <span class="nx">handlebars</span><span class="p">({</span> <span class="nx">defaultLayout</span>: <span class="kt">undefined</span> <span class="p">}))</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;view engine&#39;</span><span class="p">,</span> <span class="s1">&#39;handlebars&#39;</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span>
+
+<span class="c1">// creates and sets the DID when the application starts</span>
+<span class="kd">let</span> <span class="nx">DID</span>: <span class="kt">UNiDDid</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span>
+
+<span class="c1">// define validators</span>
+<span class="kd">const</span> <span class="nx">validator</span> <span class="o">=</span> <span class="p">(</span><span class="nx">chains</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">ValidationChain</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">async</span> <span class="p">(</span><span class="nx">req</span>: <span class="kt">express.Request</span><span class="p">,</span> <span class="nx">res</span>: <span class="kt">express.Response</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">express.NextFunction</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">chains</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">chain</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">chain</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">}))</span>
+
+        <span class="kd">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">validationResult</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">next</span><span class="p">()</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">BAD_REQUEST</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                <span class="nx">errors</span>: <span class="kt">errors.array</span><span class="p">({</span> <span class="nx">onlyFirstError</span>: <span class="kt">true</span> <span class="p">})</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// define request handlers</span>
+
+<span class="c1">// GET /issuer</span>
+<span class="kd">const</span> <span class="nx">issuerGetHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;issuer/get&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Issuer&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// POST /issuer</span>
+<span class="kd">const</span> <span class="nx">issuerPostHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;issuer/post&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Issuer&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// GET /verifier</span>
+<span class="kd">const</span> <span class="nx">verifierGetHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;verifier/get&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Verifier&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// POST /verifier</span>
+<span class="kd">const</span> <span class="nx">verifierPostHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;verifier/post&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Verifier&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// regist the request handlers</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/issuer&#39;</span><span class="p">,</span> <span class="nx">issuerGetHandler</span><span class="p">())</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/issuer&#39;</span><span class="p">,</span> <span class="nx">issuerPostHandler</span><span class="p">())</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/verifier&#39;</span><span class="p">,</span> <span class="nx">verifierGetHandler</span><span class="p">())</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/verifier&#39;</span><span class="p">,</span> <span class="nx">verifierPostHandler</span><span class="p">())</span>
+
+<span class="c1">// define error handler</span>
+<span class="kd">const</span> <span class="nx">notFoundErrorHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 404</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">NOT_FOUND</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+            <span class="nx">message</span>: <span class="kt">HttpStatus.getStatusText</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">NOT_FOUND</span><span class="p">),</span>
+        <span class="p">}).</span><span class="nx">end</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">defaultErrorHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nx">express</span><span class="p">.</span><span class="nx">ErrorRequestHandler</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 500</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`ERROR: </span><span class="si">${</span> <span class="nx">err</span><span class="p">.</span><span class="nx">stack</span> <span class="o">||</span> <span class="nx">err</span> <span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">INTERNAL_SERVER_ERROR</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+            <span class="nx">message</span>: <span class="kt">HttpStatus.getStatusText</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">INTERNAL_SERVER_ERROR</span><span class="p">)</span>
+        <span class="p">}).</span><span class="nx">end</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// register the error handler</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">notFoundErrorHandler</span><span class="p">())</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">defaultErrorHandler</span><span class="p">())</span>
+
+<span class="c1">// server: event handler</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span>: <span class="kt">Error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`ERROR: </span><span class="si">${</span> <span class="nx">err</span><span class="p">.</span><span class="nx">stack</span> <span class="o">||</span> <span class="nx">err</span> <span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;listening&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">isAddressInfo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">object</span>: <span class="kt">any</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span> <span class="nx">is</span> <span class="nx">AddressInfo</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">object</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">server</span><span class="p">.</span><span class="nx">address</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isAddressInfo</span><span class="p">(</span><span class="nx">address</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Listening on </span><span class="si">${</span> <span class="p">[</span> <span class="nx">address</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span> <span class="nx">address</span><span class="p">.</span><span class="nx">port</span> <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// server: run</span>
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">mongoUri</span>      <span class="o">=</span> <span class="s1">&#39;${MONGODB_URI}&#39;</span>
+        <span class="kd">const</span> <span class="nx">clientId</span>      <span class="o">=</span> <span class="s1">&#39;${CLIENT_ID}&#39;</span>
+        <span class="kd">const</span> <span class="nx">clientSecret</span>  <span class="o">=</span> <span class="s1">&#39;${CLIENT_SECRET}&#39;</span>
+        <span class="kd">const</span> <span class="nx">encryptionKey</span> <span class="o">=</span> <span class="s1">&#39;${ENCRYPTION_KEY}&#39;</span>
+
+        <span class="c1">// connect to mongodb</span>
+        <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">MongoClient</span><span class="p">(</span><span class="nx">mongoUri</span><span class="p">)</span>
+
+        <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+
+        <span class="c1">// make connector (wrap mongodb connection)</span>
+        <span class="kd">const</span> <span class="nx">connector</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">MongoDBConnector</span><span class="p">({</span>
+            <span class="nx">client</span>       : <span class="kt">client</span><span class="p">,</span>
+            <span class="nx">encrypter</span>    : <span class="kt">Cipher.encrypt</span><span class="p">,</span>
+            <span class="nx">decrypter</span>    : <span class="kt">Cipher.decrypt</span><span class="p">,</span>
+            <span class="nx">encryptionKey</span>: <span class="kt">encryptionKey</span><span class="p">,</span>
+        <span class="p">})</span>
+
+        <span class="c1">// initialize UNiD sdk</span>
+        <span class="nx">UNiD</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+            <span class="nx">clientId</span>     : <span class="kt">clientId</span><span class="p">,</span>
+            <span class="nx">clientSecret</span> : <span class="kt">clientSecret</span><span class="p">,</span>
+            <span class="nx">connector</span>    : <span class="kt">connector</span><span class="p">,</span>
+        <span class="p">})</span>
+
+        <span class="c1">// create new DID (wallet)</span>
+        <span class="nx">DID</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">createDid</span><span class="p">(</span><span class="nx">KeyRingType</span><span class="p">.</span><span class="nx">Mnemonic</span><span class="p">)</span>
+
+        <span class="c1">// start application server</span>
+        <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">18080</span><span class="p">,</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`ERROR: </span><span class="si">${</span> <span class="nx">err</span><span class="p">.</span><span class="nx">stack</span> <span class="o">||</span> <span class="nx">err</span> <span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>{% hint style=”warning” %}
+See the table below for the<code class="docutils literal notranslate"><span class="pre">${MONGODB_URI}</span></code>,<code class="docutils literal notranslate"><span class="pre">${CLIENT_ID}</span></code>,<code class="docutils literal notranslate"><span class="pre">${CLIENT_SECRET}</span></code>,<code class="docutils literal notranslate"><span class="pre">${ENCRYPTION_KEY}</span></code>variables included in the snippet.
+{% endhint %}</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">${MONGODB_URI}</span></code></p></td>
+<td><p><p>Connection string to MongoDB<br><code>mongodb://username:password&#64;127.0.0.1:27017</code></p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">${CLIENT_ID}</span></code></p></td>
+<td><p>Set the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">ID</span></code> provided by the UNiD Network</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">${CLIENT_SECRET}</span></code></p></td>
+<td><p>Set the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">Secret</span></code> provided by the UNiD Network</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">${ENCRYPTION_KEY}</span></code></p></td>
+<td><p><p>Sets the key used to encrypt the data in MongoDB. Can be any randomly generated <strong>64-digit string in hexadecimal notation</strong>.</p><p></p><p>e.g. <code>openssl rand -hex 32</code></p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s continue to implement each endpoint such as VC/VP creation and validation. Before moving on to the next step, let’s prepare a directory to store the HTML template for the page display and its template.</p>
+<p>{% tabs %}
+{% tab title=”Shell” %}</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># MEMO: CWD is awesome-project/src</span>
+
+<span class="c1"># Views directory</span>
+mkdir -p ../views/<span class="o">{</span>issuer,verifier<span class="o">}</span>
+
+<span class="c1"># GET /issuer</span>
+touch ../views/issuer/get.handlebars
+
+<span class="c1"># POST /issuer</span>
+touch ../views/issuer/post.handlebars
+
+<span class="c1"># GET /verifier</span>
+touch ../views/verifier/get.handlebars
+
+<span class="c1"># POST /verifier</span>
+touch ../views/verifier/post.handlebars
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+</div>
+<div class="section" id="implementation-issuer-functions">
+<h2>5. Implementation Issuer functions<a class="headerlink" href="#implementation-issuer-functions" title="Permalink to this headline"></a></h2>
+<p>The following is a snippet of HTML and TypeScript to implement the Issuer function. Note that this project uses a template engine called <a class="reference external" href="https://handlebarsjs.com">Handlebars</a> as the HTML for displaying pages. For more details on the notation and decorators available in the template, we recommend you refer to the official Handlebars website.</p>
+<p>{% tabs %}
+{% tab title=”views/issuer/get.handlebars” %}</p>
+<div class="highlight-markup notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{title}}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;h2&gt;{{title}}&lt;/h2&gt;
+        &lt;/header&gt;
+        &lt;article&gt;
+            &lt;form action=&quot;/issuer&quot; method=&quot;POST&quot;&gt;
+                &lt;p&gt;
+                    &lt;label for=&quot;familyName&quot; style=&quot;display: block; font-weight: bold;&quot;&gt;familyName:&lt;/label&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;familyName&quot; id=&quot;familyName&quot; /&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;label for=&quot;givenName&quot; style=&quot;display: block; font-weight: bold;&quot;&gt;givenName:&lt;/label&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;givenName&quot; id=&quot;givenName&quot; /&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;input type=&quot;submit&quot; name=&quot;send&quot; id=&quot;send&quot; value=&quot;Submit&quot; /&gt;
+                &lt;/p&gt;
+            &lt;/form&gt;
+        &lt;/article&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>{% tabs %}
+{% tab title=”views/issuer/post.handlebars” %}</p>
+<div class="highlight-markup notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{title}}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;h2&gt;{{title}}&lt;/h2&gt;
+        &lt;/header&gt;
+        &lt;article&gt;
+            &lt;h3&gt;VC&lt;/h3&gt;
+            &lt;p&gt;
+                {{vc}}
+            &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;VP&lt;/h3&gt;
+            &lt;p&gt;
+                {{vp}}
+            &lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>Replace the <code class="docutils literal notranslate"><span class="pre">issuerGetHandler</span></code> and <code class="docutils literal notranslate"><span class="pre">issuerPostHandler</span></code> in <code class="docutils literal notranslate"><span class="pre">server.ts</span></code>, which are responsible for issuer functions, with the following snippet.</p>
+<p>{% tabs %}
+{% tab title=”src/server.ts” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * [Required] import the following class and method:</span>
+<span class="cm"> *</span>
+<span class="cm"> * express-validator       : `body` method</span>
+<span class="cm"> * @getunid/node-wallet-sdk: `NameCredentialV1` class</span>
+<span class="cm"> */</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">body</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express-validator&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NameCredentialV1</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="c1">// GET /issuer</span>
+<span class="kd">const</span> <span class="nx">issuerGetHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;issuer/get&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Issuer&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// POST /issuer</span>
+<span class="kd">const</span> <span class="nx">issuerPostHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+            <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;familyName&#39;</span><span class="p">).</span><span class="nx">exists</span><span class="p">().</span><span class="nx">isString</span><span class="p">().</span><span class="nx">isLength</span><span class="p">({</span> <span class="nx">min</span>: <span class="kt">1</span> <span class="p">}),</span>
+            <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;givenName&#39;</span><span class="p">).</span><span class="nx">exists</span><span class="p">().</span><span class="nx">isString</span><span class="p">().</span><span class="nx">isLength</span><span class="p">({</span> <span class="nx">min</span>: <span class="kt">1</span> <span class="p">}),</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">familyName</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="s1">&#39;familyName&#39;</span><span class="p">])</span>
+            <span class="kd">const</span> <span class="nx">givenName</span>  <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="s1">&#39;givenName&#39;</span><span class="p">])</span>
+
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">DID</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+                <span class="p">}</span>
+
+                <span class="kd">const</span> <span class="nx">vc</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">DID</span><span class="p">.</span><span class="nx">createCredential</span><span class="p">(</span>
+                    <span class="ow">new</span> <span class="nx">NameCredentialV1</span><span class="p">({</span>
+                        <span class="s1">&#39;@type&#39;</span>   <span class="o">:</span> <span class="s1">&#39;NamePerson&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;@id&#39;</span>     <span class="o">:</span> <span class="nx">DID</span><span class="p">.</span><span class="nx">getIdentifier</span><span class="p">(),</span>
+                        <span class="nx">name</span>      <span class="o">:</span> <span class="sb">`</span><span class="si">${</span> <span class="nx">givenName</span> <span class="si">}</span><span class="sb"> </span><span class="si">${</span> <span class="nx">familyName</span> <span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+                        <span class="nx">familyName</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span> <span class="nx">familyName</span> <span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+                        <span class="nx">givenName</span> <span class="o">:</span> <span class="sb">`</span><span class="si">${</span> <span class="nx">givenName</span> <span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+                    <span class="p">})</span>
+                <span class="p">)</span>
+
+                <span class="kd">const</span> <span class="nx">vp</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">DID</span><span class="p">.</span><span class="nx">createPresentation</span><span class="p">([</span> <span class="nx">vc</span> <span class="p">])</span>
+
+                <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;issuer/post&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Issuer&#39;</span><span class="p">,</span>
+                    <span class="nx">vc</span>: <span class="kt">JSON.stringify</span><span class="p">(</span><span class="nx">vc</span><span class="p">),</span>
+                    <span class="nx">vp</span>: <span class="kt">JSON.stringify</span><span class="p">(</span><span class="nx">vp</span><span class="p">),</span>
+                <span class="p">})</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+</div>
+<div class="section" id="implementation-verifier-functions">
+<h2>6. Implementation Verifier functions<a class="headerlink" href="#implementation-verifier-functions" title="Permalink to this headline"></a></h2>
+<p>The following are HTML and TypeScript snippets to implement the Verifier functions.</p>
+<p>{% tabs %}
+{% tab title=”views/verifier/get.handlebars” %}</p>
+<div class="highlight-markup notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{title}}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;h2&gt;{{title}}&lt;/h2&gt;
+        &lt;/header&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Verify VC&lt;/h3&gt;
+            &lt;form action=&quot;/verifier&quot; method=&quot;POST&quot;&gt;
+                &lt;p&gt;
+                    &lt;label for=&quot;vc&quot; style=&quot;display: block; font-weight: bold;&quot;&gt;VC:&lt;/label&gt;
+                    &lt;textarea name=&quot;vc&quot; id=&quot;vc&quot; rows=&quot;10&quot; cols=&quot;80&quot;&gt;&lt;/textarea&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;input type=&quot;submit&quot; name=&quot;send&quot; id=&quot;send&quot; value=&quot;Submit&quot; /&gt;
+                &lt;/p&gt;
+            &lt;/form&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Verify VP&lt;/h3&gt;
+            &lt;form action=&quot;/verifier&quot; method=&quot;POST&quot;&gt;
+                &lt;p&gt;
+                    &lt;label for=&quot;vp&quot; style=&quot;display: block; font-weight: bold;&quot;&gt;VP:&lt;/label&gt;
+                    &lt;textarea name=&quot;vp&quot; id=&quot;vp&quot; rows=&quot;10&quot; cols=&quot;80&quot;&gt;&lt;/textarea&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;input type=&quot;submit&quot; name=&quot;send&quot; id=&quot;send&quot; value=&quot;Submit&quot; /&gt;
+                &lt;/p&gt;
+            &lt;/form&gt;
+        &lt;/article&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>{% tabs %}
+{% tab title=”views/verifier/post.handlebars” %}</p>
+<div class="highlight-markup notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{title}}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;h2&gt;{{title}}&lt;/h2&gt;
+        &lt;/header&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Input&lt;/h3&gt;
+            &lt;p&gt;
+                {{input}}
+            &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Result&lt;/h3&gt;
+            &lt;p&gt;
+                {{result}}
+            &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Payload&lt;/h3&gt;
+            &lt;p&gt;
+                {{payload}}
+            &lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>Similarly, let’s replace <code class="docutils literal notranslate"><span class="pre">verifierGetHandler</span></code> and <code class="docutils literal notranslate"><span class="pre">verifierPostHandler</span></code>, which are responsible for verifier functions, with the following snippet</p>
+<p>{% tabs %}
+{% tab title=”src/server.ts” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * [Required] import the following class and method:</span>
+<span class="cm"> *</span>
+<span class="cm"> * express-validator       : `body` method</span>
+<span class="cm"> * @getunid/node-wallet-sdk: `NameCredentialV1` class</span>
+<span class="cm"> */</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">body</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express-validator&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NameCredentialV1</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@geunid/node-wallet-sdk&#39;</span>
+
+<span class="c1">// GET /verifier</span>
+<span class="kd">const</span> <span class="nx">verifierGetHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;verifier/get&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Verifier&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// POST /verifier</span>
+<span class="kd">const</span> <span class="nx">verifierPostHandler</span> <span class="o">=</span> <span class="p">()</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">express</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="nx">validator</span><span class="p">([</span>
+            <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;vc&#39;</span><span class="p">).</span><span class="nx">optional</span><span class="p">().</span><span class="nx">isString</span><span class="p">().</span><span class="nx">isJSON</span><span class="p">().</span><span class="nx">isLength</span><span class="p">({</span> <span class="nx">min</span>: <span class="kt">1</span> <span class="p">}),</span>
+            <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;vp&#39;</span><span class="p">).</span><span class="nx">optional</span><span class="p">().</span><span class="nx">isString</span><span class="p">().</span><span class="nx">isJSON</span><span class="p">().</span><span class="nx">isLength</span><span class="p">({</span> <span class="nx">min</span>: <span class="kt">1</span> <span class="p">}),</span>
+        <span class="p">]),</span>
+        <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">textVC</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="s1">&#39;vc&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="o">?</span> <span class="nb">String</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="s1">&#39;vc&#39;</span><span class="p">])</span> <span class="o">:</span> <span class="kc">undefined</span>
+            <span class="kd">const</span> <span class="nx">textVP</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="s1">&#39;vp&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="o">?</span> <span class="nb">String</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="s1">&#39;vp&#39;</span><span class="p">])</span> <span class="o">:</span> <span class="kc">undefined</span>
+
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">DID</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+                <span class="p">}</span>
+
+                <span class="c1">// verify VC</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">textVC</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">const</span> <span class="nx">vc</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">textVC</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">isVerifiableCredential</span><span class="p">(</span><span class="nx">vc</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+                    <span class="p">}</span>
+
+                    <span class="kd">const</span> <span class="nx">verifiedVC</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">verifyCredential</span><span class="p">(</span><span class="nx">vc</span><span class="p">)</span>
+
+                    <span class="c1">// Get payload from VC</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">NameCredentialV1</span><span class="p">.</span><span class="nx">isCompatible</span><span class="p">(</span><span class="nx">verifiedVC</span><span class="p">.</span><span class="nx">payload</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+                    <span class="p">}</span>
+
+                    <span class="kd">const</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">verifiedVC</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">credentialSubject</span>
+
+                    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;verifier/post&#39;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Verifier&#39;</span><span class="p">,</span>
+                        <span class="nx">input</span>: <span class="kt">textVC</span><span class="p">,</span>
+                        <span class="nx">result</span>: <span class="kt">verifiedVC.isValid</span><span class="p">,</span>
+                        <span class="nx">payload</span>: <span class="kt">JSON.stringify</span><span class="p">({</span>
+                            <span class="nx">familyName</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span> <span class="nx">subject</span><span class="p">.</span><span class="nx">familyName</span> <span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+                            <span class="nx">givenName</span> <span class="o">:</span> <span class="sb">`</span><span class="si">${</span> <span class="nx">subject</span><span class="p">.</span><span class="nx">givenName</span> <span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+                        <span class="p">}),</span>
+                    <span class="p">})</span>
+                <span class="p">}</span>
+
+                <span class="c1">// verify VP</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">textVP</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">){</span>
+                    <span class="kd">const</span> <span class="nx">vp</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">textVP</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">isVerifiablePresentation</span><span class="p">(</span><span class="nx">vp</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+                    <span class="p">}</span>
+
+                    <span class="kd">const</span> <span class="nx">verifiedVP</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">verifyPresentation</span><span class="p">(</span><span class="nx">vp</span><span class="p">)</span>
+
+                    <span class="kd">const</span> <span class="nx">selectedVC</span> <span class="o">=</span> <span class="nx">NameCredentialV1</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">verifiedVP</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">selectedVC</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+                    <span class="p">}</span>
+
+                    <span class="kd">const</span> <span class="nx">verifiedVC</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">verifyCredential</span><span class="p">(</span><span class="nx">selectedVC</span><span class="p">)</span>
+
+                    <span class="c1">// get payload from VP</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">NameCredentialV1</span><span class="p">.</span><span class="nx">isCompatible</span><span class="p">(</span><span class="nx">verifiedVC</span><span class="p">.</span><span class="nx">payload</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+                    <span class="p">}</span>
+
+                    <span class="kd">const</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">verifiedVC</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">credentialSubject</span>
+
+                    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;verifier/post&#39;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Verifier&#39;</span><span class="p">,</span>
+                        <span class="nx">input</span>: <span class="kt">textVP</span><span class="p">,</span>
+                        <span class="nx">result</span>: <span class="kt">verifiedVP.isValid</span><span class="p">,</span>
+                        <span class="nx">payload</span>: <span class="kt">JSON.stringify</span><span class="p">({</span>
+                            <span class="nx">familyName</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span> <span class="nx">subject</span><span class="p">.</span><span class="nx">familyName</span> <span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+                            <span class="nx">givenName</span> <span class="o">:</span> <span class="sb">`</span><span class="si">${</span> <span class="nx">subject</span><span class="p">.</span><span class="nx">givenName</span> <span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+                        <span class="p">}),</span>
+                    <span class="p">})</span>
+                <span class="p">}</span>
+
+                <span class="c1">// No VC/VP</span>
+                <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">()</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p> :thumbsup: Great work!! With these steps, the basic implementation of the Issuer and Verifier functions is complete. Let’s run the application startup command <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">start</span></code> and access <code class="docutils literal notranslate"><span class="pre">127.0.0.1:18080/issuer</span></code> with a web browser. The final directory structure and file layout are as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── package.json
+├── src
+│   └── server.ts
+├── tsconfig.json
+├── views
+│   ├── issuer
+│   │   ├── get.handlebars
+│   │   └── post.handlebars
+│   └── verifier
+│       ├── get.handlebars
+│       └── post.handlebars
+└── yarn.lock
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, UNiD Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

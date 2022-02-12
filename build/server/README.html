@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server Kits &mdash; UNiD Docs  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> UNiD Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/ubuntu-nodejs/README.html">Ubuntu (NodeJS)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UNiD Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Server Kits</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="server-kits">
+<h1>Server Kits<a class="headerlink" href="#server-kits" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>On this page, we get you up and running with UNiD SDK, so that it will build a digital wallet which provides storage of cryptographic keys, credentials, and secrets on a cloud server. It is often implemented on an existing server to communicate with an identity wallet, such as authenticating or issuing credentials.</p>
+<p>{% hint style=”info” %}
+At the moment, we support NodeJS SDK for integrating into an existing server.
+{% endhint %}</p>
+</section>
+<section id="getting-started-with-nodejs-sdk">
+<h2>Getting Started with NodeJS SDK<a class="headerlink" href="#getting-started-with-nodejs-sdk" title="Permalink to this headline"></a></h2>
+<p>UNiD NodeJS SDK offers easy-to-use javascript modules for embedding identity wallet capabilities such as DID operations, VC operations, and DID communications through the underlying UNiD Core APIs and Drivers.</p>
+<p><strong>Prerequisites</strong></p>
+<p>Before we begin, make sure you have the following installed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">v13.x.x</span> <span class="pre">or</span> <span class="pre">later</span></code></p></li>
+</ul>
+<p>{% hint style=”warning” %}
+If you don’t already have an account and UNiD tenant established, head over <a class="reference external" href="https://docs.getunid.io">here</a>, then return to this page.
+{% endhint %}</p>
+</section>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h2>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">&#64;unid/node-wallet-sdk</span></code> dependency:</p>
+<p>{% tabs %}
+{% tab title=”Bash” %}</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm install --save @unid/node-wallet-sdk
+
+<span class="c1"># OR</span>
+
+yarn add @unid/node-wallet-sdk
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>In UNiD, MongoDB is used as local repository (keyRings, secrets, etc) by default. Please install and setup MongoDB in your server environment.</p>
+</section>
+<section id="configure">
+<h2>Configure<a class="headerlink" href="#configure" title="Permalink to this headline"></a></h2>
+<p>Configuration should happen as early as possible in your application’s lifecycle. Once you have set up a cloud agent in <a class="reference external" href="https://www.getunid.io">UNiD Studio</a>, you will get values required for configuration.</p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@unid/node-wallet-sdk&#39;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MongoClient</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;mongodb&#39;</span>
+
+<span class="kd">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s1">&#39;mongodb://username:password@localhost:27017&#39;</span>
+<span class="kd">const</span> <span class="nx">mongoClient</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">MongoClient</span><span class="p">(</span><span class="nx">uri</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">useUnifiedTopology</span>: <span class="kt">true</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Connect to your mongodb</span>
+    <span class="k">await</span> <span class="nx">mongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+    
+    <span class="c1">// Initialize UNiD instance</span>
+    <span class="nx">UNiD</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+        <span class="nx">clientId</span>     <span class="o">:</span> <span class="s1">&#39;client_id&#39;</span><span class="p">,</span>
+        <span class="nx">clientSecret</span> <span class="o">:</span> <span class="s1">&#39;client_secret&#39;</span><span class="p">,</span>
+        <span class="nx">encryptionKey</span><span class="o">:</span> <span class="s1">&#39;encryption_key&#39;</span><span class="p">,</span>
+        <span class="nx">envNetwork</span>   <span class="o">:</span> <span class="s1">&#39;testnet&#39;</span><span class="p">,</span>
+        <span class="nx">localStorage</span> : <span class="kt">mongoClient</span>
+    <span class="p">})</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clientId</span></code></p></td>
+<td><p>It is associated with each cloud agent for a tenant. A string consisting of 64 characters that can be retrieved from UNiD Studio.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clientSecret</span></code></p></td>
+<td><p>A string consisting of 64 characters that can be retrieved from UNiD Studio. It is paired with the <code class="docutils literal notranslate"><span class="pre">clientId</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">encryptionKey</span></code></p></td>
+<td><p>A string used to encrypt keyRings (digital wallet) with AES-256-CBC algorithm and store them in MongoDB.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">envNetwork</span></code></p></td>
+<td><p>The DPKI network to which the DID refers.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">localStorage</span></code></p></td>
+<td><p>A connection instance to MongoDB that must be initialized and instantiated outside of the UNiD libraries to MongoDB.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Great! Now you’ve completed setting up the NodeJS SDK. You can step forward to Generate New DID.</p>
+<p>{% content-ref url=”did-operation.md” %}
+<a class="reference internal" href="did-operation.html"><span class="doc std std-doc">did-operation.md</span></a>
+{% endcontent-ref %}</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, UNiD Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DID Operations &mdash; UNiD Docs  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/twemoji.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+        <script src="../_static/twemoji.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> UNiD Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/ubuntu-nodejs/README.html">Ubuntu (NodeJS)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UNiD Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>DID Operations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server/did-operation.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="tex2jax_ignore mathjax_ignore section" id="did-operations">
+<h1>DID Operations<a class="headerlink" href="#did-operations" title="Permalink to this headline"></a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>UNiD Core supports a variety of DID operations, all of which require the DID owner to generate specific data values and cryptographic material. This page below describe how to perform each type of operation.</p>
+</div>
+<div class="section" id="generate-new-did">
+<h2>Generate New DID<a class="headerlink" href="#generate-new-did" title="Permalink to this headline"></a></h2>
+<p>With our server kits, you can easily generate key pairs and register a decentralized identifier on UNiD network. First, you can select a <code class="docutils literal notranslate"><span class="pre">KeyRingType</span></code> which supports several methods for managing key pairs. Here, we introduce the method of generating a binary seed from a seed phrase with BIP39, and generating multiple key pairs using ecc-secp256k1 with BIP32. Finally, the method computes hash from the public keys and objects and register the hash on UNiD network.</p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span><span class="p">,</span> <span class="nx">KeyRingType</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">DID</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">createDidDocument</span><span class="p">(</span>
+            <span class="nx">KeyRingType</span><span class="p">.</span><span class="nx">Mnemonic</span><span class="p">,</span>
+            <span class="p">{</span> <span class="nx">length</span>: <span class="kt">24</span> <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;complete generating a DID:&#39;</span><span class="p">,</span> <span class="nx">DID</span><span class="p">.</span><span class="nx">getIdentifier</span><span class="p">())</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>After generating a binary seed, you can get a seed phrase which enables to recover a binary seed and key pairs. Once you have verified a seed phrase, you will never be able to get it again. When verifying a seed phrase, it must be placed correctly in the same order as when the phrase was obtained.</p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="c1">// Get a DID Object</span>
+        <span class="kd">const</span> <span class="nx">DID</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">loadDid</span><span class="p">({</span>
+            <span class="nx">did</span><span class="o">:</span> <span class="s1">&#39;did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg&#39;</span>
+        <span class="p">})</span>
+        
+        <span class="c1">// Get a seed phrase of the DID</span>
+        <span class="kd">const</span> <span class="nx">seedPhrase</span> <span class="o">=</span> <span class="nx">DID</span><span class="p">.</span><span class="nx">getSeedPhrase</span><span class="p">()</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;complete getting a seed phrase:&#39;</span><span class="p">,</span> <span class="nx">seedPhrase</span><span class="p">)</span>
+        
+        <span class="c1">// Verify the seed phrase</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">DID</span><span class="p">.</span><span class="nx">verifySeedPhrase</span><span class="p">([</span>
+            <span class="s1">&#39;word_1&#39;</span><span class="p">,</span> <span class="s1">&#39;word_2&#39;</span><span class="p">,</span> <span class="p">...,</span> <span class="s1">&#39;word_24&#39;</span>
+        <span class="p">])</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;complete verifying the seed phrase:&#39;</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>After a while, the queued operation will be periodically extracted and executed by sidetree batch scheduler in UNiD node and is submitted into the underlying ledger system. If you want to know more detailed the operating principle, please move to <a class="reference external" href="https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/unid/README.md#unid-network">UNiD Network</a> or <a class="reference external" href="https://identity.foundation/sidetree/spec/">sidetree specification</a>.</p>
+</div>
+<div class="section" id="resolve-did">
+<h2>Resolve DID<a class="headerlink" href="#resolve-did" title="Permalink to this headline"></a></h2>
+<p>After generating a DID, you can resolve it to get a DID Document. UNiD Node SDKs allow you to resolve a DID while verifying the authenticity of the response.</p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">didDocument</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">getDidDocument</span><span class="p">({</span>
+            <span class="nx">did</span><span class="o">:</span> <span class="s1">&#39;did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg&#39;</span>
+        <span class="p">})</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Complete getting a DID Document:&#39;</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">didDocument</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p>Great! Now that you’ve completed to create and register new DID. Next is to issue and verify a verifiable credential. <a class="reference external" href="https://github.com/getunid/unid-docs/tree/8515a1dcda076b9bea8d6e6e6b7eed90e22ae0d3/2-verifiable-credential/README.md">VC Operations</a>.</p>
+</div>
+<div class="section" id="update-did">
+<h2>Update DID<a class="headerlink" href="#update-did" title="Permalink to this headline"></a></h2>
+<p>Update DID document when adding, changing, and deleting public keys or service endpoints.</p>
+<p><strong>To add public keys</strong></p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">didDocument</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">updateDidDocument</span><span class="p">({</span>
+            <span class="nx">did</span><span class="o">:</span> <span class="s1">&#39;did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg&#39;</span><span class="p">,</span>
+            <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;add-public-keys&#39;</span><span class="p">,</span>
+            <span class="nx">publicKeys</span><span class="o">:</span> <span class="p">[{</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;key1&#39;</span><span class="p">,</span>
+                <span class="nx">purposes</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;authentication&#39;</span> <span class="p">],</span>
+                <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;EcdsaSecp256k1VerificationKey2019&#39;</span><span class="p">,</span>
+                <span class="nx">publicKeyJwk</span><span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+            <span class="p">}]</span>
+        <span class="p">})</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Complete adding public keys:&#39;</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">didDocument</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p><strong>To remove public keys</strong></p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">didDocument</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">updateDidDocument</span><span class="p">({</span>
+            <span class="nx">did</span><span class="o">:</span> <span class="s1">&#39;did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg&#39;</span><span class="p">,</span>
+            <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;remove-public-keys&#39;</span><span class="p">,</span>
+            <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span> <span class="p">]</span>
+        <span class="p">})</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Complete removing public keys:&#39;</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">didDocument</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p><strong>To add services</strong></p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">didDocument</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">updateDidDocument</span><span class="p">({</span>
+            <span class="nx">did</span><span class="o">:</span> <span class="s1">&#39;did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg&#39;</span><span class="p">,</span>
+            <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;add-services&#39;</span><span class="p">,</span>
+            <span class="nx">services</span><span class="o">:</span> <span class="p">[{</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;sds2&#39;</span><span class="p">,</span>
+                <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;SecureDataStore&#39;</span><span class="p">,</span>
+                <span class="nx">serviceEndpoint</span><span class="o">:</span> <span class="s1">&#39;https://examplePublicKey@o0.ingest.sds.unid.plus/&#39;</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;did-config&#39;</span><span class="p">,</span>
+                <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;LinkedDomains&#39;</span><span class="p">,</span>
+                <span class="nx">serviceEndpoint</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">origins</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;https://foo.com&#39;</span><span class="p">,</span> <span class="s1">&#39;https://bar.com&#39;</span> <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}]</span>
+        <span class="p">})</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Complete adding service endpoints:&#39;</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">didDocument</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p><strong>To remove services</strong></p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">didDocument</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">updateDidDocument</span><span class="p">({</span>
+            <span class="nx">did</span><span class="o">:</span> <span class="s1">&#39;did:unid:test:EiCsnBO7XrB9hL96xvQ2R846j_Ebuyg3HO5o4BOSoU7ffg&#39;</span><span class="p">,</span>
+            <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;remove-services&#39;</span><span class="p">,</span>
+            <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;sds1&#39;</span><span class="p">,</span> <span class="s1">&#39;sds2&#39;</span> <span class="p">]</span>
+        <span class="p">})</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Complete removing service endpoints:&#39;</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">didDocument</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+<p><strong>To replace</strong></p>
+<p>{% tabs %}
+{% tab title=”TypeScript” %}</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="p">{</span> <span class="nx">UNiD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@getunid/node-wallet-sdk&#39;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">didDocument</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">UNiD</span><span class="p">.</span><span class="nx">updateDidDocument</span><span class="p">({</span>
+            <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;replace&#39;</span><span class="p">,</span>
+            <span class="nb">document</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">publicKeys</span><span class="o">:</span> <span class="p">[{</span>
+                    <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;key2&#39;</span><span class="p">,</span>
+                    <span class="nx">purposes</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;authentication&#39;</span> <span class="p">],</span>
+                    <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;EcdsaSecp256k1VerificationKey2019&#39;</span><span class="p">,</span>
+                    <span class="nx">publicKeyJwk</span><span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+                <span class="p">}],</span>
+                <span class="nx">services</span><span class="o">:</span> <span class="p">[{</span>
+                    <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;sds3&#39;</span><span class="p">,</span>
+                    <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;SecureDataStore&#39;</span><span class="p">,</span>
+                    <span class="nx">serviceEndpoint</span><span class="o">:</span> <span class="s1">&#39;http://hub.my-personal-server.com&#39;</span>
+                <span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Complete replacing a DID Document:&#39;</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">didDocument</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})()</span>
+</pre></div>
+</div>
+<p>{% endtab %}
+{% endtabs %}</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, UNiD Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
