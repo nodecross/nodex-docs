@@ -94,11 +94,11 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
 <hr class="docutils" />
-<p>This section introduces the overview, architecture of each components, and the core features of UNiD platform.</p>
+<p>This section introduces the overview, architecture of each blocks, and the core features of UNiD platform.</p>
 <div class="section" id="unid-platform">
 <h2>UNiD platform<a class="headerlink" href="#unid-platform" title="Permalink to this headline"></a></h2>
 <hr class="docutils" />
-<p>As shown in figure 1, UNiD platform consists of three components;</p>
+<p>As shown in figure 1, UNiD platform mainly consists of three blocks;</p>
 <ul class="simple">
 <li><p><strong>UNiD EDGE</strong> is a security middleware embedded in endpoint devices</p></li>
 <li><p><strong>UNiD HUB</strong> is a message broker between endpoint devices and the cloud</p></li>
@@ -107,28 +107,29 @@
 <p>UNiD EDGE makes it simple to develop secure devices and establish secure bi-directional communications with the cloud.
 UNiD EDGE is provided as an <a class="reference external" href="https://github.com/getunid/unid">open-source middleware</a>, while UNiD HUB and Studio are provided as a proprietary software and hosted in a cloud environment.</p>
 <div class="figure align-default" id="id1">
-<img alt="figure1" src="../_images/figure1-2.svg" /><p class="caption"><span class="caption-text"><strong>Figure 1.</strong> Overview of UNiD platform</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<a class="reference internal image-reference" href="../_images/figure1-2.svg"><img alt="figure1" class="align-center" src="../_images/figure1-2.svg" width="90%" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 1.</strong> Overview of UNiD platform</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
-<p>Our main concept is to abstract every device and the cloud as a globally unique endpoint, and an endpoint can securely and privately interact with other endpoints regardless of the network topology or routing hops (as shown in Figure.2). This identity-first approach can provide more flexible and scalable endpoint security without the traditional complex network configurations and the best efforts in the field. In realizing this concept, we are utilizing decentralized identity and root of trust technologies for device’s cryptographic key management.</p>
+<p>Our main concept is to abstract every device and the cloud as a globally unique endpoint, and an endpoint can securely and privately interact with other endpoints regardless of the network topology or routing hops as shown in figure 2.</p>
 <div class="figure align-default" id="id2">
 <img alt="figure2" src="../_images/figure2-2.svg" /><p class="caption"><span class="caption-text"><strong>Figure 2.</strong> Scalable E2E Security Stack</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </div>
+<p>This identity-first approach can provide more flexible and scalable security infrastructure without the traditional complex network configurations and the best efforts in the field. In realizing this concept, we are utilizing decentralized identity and root of trust technologies for device’s cryptographic key management.</p>
 </div>
 <div class="section" id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline"></a></h2>
 <hr class="docutils" />
 <div class="section" id="unid-edge">
 <h3>UNiD EDGE<a class="headerlink" href="#unid-edge" title="Permalink to this headline"></a></h3>
-<p>UNiD EDGE is an embedded middleware. As shown in Figure.3, UNiD EDGE consists of 4 major components: RoT Wrapper, Key Management, IAM, and E2E Secure Socket.</p>
+<p>As shown in figure 3, UNiD EDGE consists of 4 major components:</p>
 <ul class="simple">
-<li><p>RoT Wrapper has extensions for various TEEs, TPMs, HSMs, and Secure Enclave.</p></li>
-<li><p>Device keys, security parameters, and cryptographic processing are all performed in the RoT secure storage and execution area.</p></li>
-<li><p>Device IAM manages device ID and credential, registers public keys with the decentralized PKI, and performs device authentication and authorization.</p></li>
-<li><p>E2E Secure Socket establishes an end-to-end authenticated channel with UNiD HUB for secure bi-directional communication regardless of the network topology or routing hops.</p></li>
+<li><p><strong>RoT Wrapper</strong> is an extension that supports Arm TrustZone and hardware security modules of various MCU.</p></li>
+<li><p><strong>Key Management</strong> refers to management of device’s cryptographic keys in the RoT secure processing environment.</p></li>
+<li><p><strong>Device IAM</strong> manages device’s identifier, credentials, and policies to perform device authentication and authorization.</p></li>
+<li><p><strong>E2E Secure Socket</strong> establishes an end-to-end authenticated channel with UNiD HUB for secure bi-directional communication regardless of the network topology or routing hops.</p></li>
 </ul>
 <div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="../_images/figure3.svg"><img alt="figure3" src="../_images/figure3.svg" width="50%" /></a>
-<p class="caption"><span class="caption-text"><strong>Figure 3.</strong> UNiD EDGE Architecture</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<img alt="figure3" src="../_images/figure3-3.svg" /><p class="caption"><span class="caption-text"><strong>Figure 3.</strong> UNiD EDGE Architecture</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="unid-hub">
