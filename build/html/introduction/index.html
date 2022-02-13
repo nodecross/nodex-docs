@@ -43,10 +43,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#decentralized-identity">Decentralized Identity</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unid_edge/index.html">UNiD EDGE (v1.0.0)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_reference/index.html">API Reference</a></li>
@@ -81,15 +78,9 @@
              
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h1>
-<p>Internet of Thing (IoT) brings DX opportunities to all industries and fields, but it also introduces cybersecurity risks. In recent years, there has been a surge in cyber attacks targeting IoT devices, including ransomware attacks, password list attacks, and supply chain attacks. It is difficult to counter these threats with traditional perimeter defenses alone, and it is essential to implement endpoint security for modern IoT devices.</p>
-<p>When implementing endpoint security for IoT devices, a large initial investment and the operational burden on administrators are major challenges. From the development stage, developers need to understand the unique security requirements of the IoT and consider mechanisms for crypto key management, authentication and authorization, secure two-way communication with the cloud, and device management throughout the product lifecycle. Building such a complex security stack from scratch and creating a mechanism to constantly monitor a large number of endpoints requires a huge budget and a dedicated team. This is a major barrier to endpoint security implementation.</p>
-<p>UNiD is a platform that enables any developers to easily implement advanced endpoint security by embedding the middleware, “UNiD EDGE”, into devices. This document describes the overview and architecture of UNiD platform and how to integrate “UNiD EDGE” into your devices.</p>
-<div class="section" id="decentralized-identity">
-<h2>Decentralized Identity<a class="headerlink" href="#decentralized-identity" title="Permalink to this headline"></a></h2>
-<p>Decentralized identity, also know as self-sovereign identity (SSI), is the new identity stack where distributed users and machines are able to interact with verifiable data without the need for third parties. It’s a digital movement that evolves digital identity on the Internet based on open web standards at organizations such as the <a class="reference external" href="https://www.w3.org">W3C</a>, <a class="reference external" href="https://identity.foundation">Decentralized Identity Foundation</a>, <a class="reference external" href="https://ietf.org">IETF</a>, and <a class="reference external" href="https://www.hyperledger.org">the Hyper ledger Project at the Linux Foundation</a>. A central part of the movement is the emerging standardization around Decentralized Identifiers (DIDs) which is a new type of identifier to allow endpoints to create and control their own unique identifiers.</p>
-<p>In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) can use these identifiers to obtain verifiable credential (VC) from trusted organizations and present these credentials as proof of claims about themselves.</p>
-<p>UNiD utilizes this decentralized identity to ensure the authenticity of endpoint devices and data integrity between every device and the cloud. “UNiD EDGE” generates multiple key pairs from a hardware-derived genuine random number generator within the RoT secure area of the hardware, and generates a payload for registering with a blockchain-based decentralized PKI to obtain a globally unique identifier. The communicating party can obtain the corresponding device’s public key from the DPKI and verify the digitally signed data. This mechanism eliminates the need for manual key injection process in your manufacturing line and abstracts the complex infrastructure for crypto key management.</p>
-</div>
+<p>Internet of Thing (IoT) brings DX opportunities to all industries and fields, but it also introduces cybersecurity risks. In recent years, there has been a surge in cyber attacks targeting IoT devices, including ransomware, password list, and supply chain attacks. It is difficult to counter these threats with traditional perimeter defenses alone, and it is essential to implement endpoint security for modern IoT devices.</p>
+<p>When implementing endpoint security in IoT devices, the huge initial investment and the operational burden on administrators are major challenges. From the development stage, developers have to consider the unique IoT security requirements and build mechanisms for crypto key management, authentication and authorization, secure two-way communication with the cloud, and device management throughout the product lifecycle. Scratch building such a complex security infrastructure from edge to cloud and constantly monitor a large number of endpoint devices requires a huge budget and a dedicated team. This is a major barrier to introduce endpoint security for IoT devices.</p>
+<p>UNiD is a platform that enables any developers to easily implement advanced endpoint security in IoT devices. This documentation describes the overview and architecture of UNiD platform and how to integrate it with your systems.</p>
 </div>
 
 

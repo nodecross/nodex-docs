@@ -14,7 +14,12 @@ UNiD Studio is an application for device management. You can manage and control 
 
 
 **DID**  
-A Decentralized Identifier, or DID, is a URI composed of three parts: the scheme did:, a method identifier, and a unique, method-specific identifier specified by the DID method. DIDs are resolvable to DID documents. A DID URL extends the syntax of a basic DID to incorporate other standard URI components such as path, query, and fragment in order to locate a particular resource —for example, a cryptographic public key inside a DID document, or a resource external to the DID document.
+Decentralized identity, also know as self-sovereign identity (SSI), is the new identity stack where distributed users and machines are able to interact with verifiable data without the need for third parties. It's a digital movement that evolves digital identity on the Internet based on open web standards at organizations such as the [W3C](https://www.w3.org), [Decentralized Identity Foundation](https://identity.foundation), [IETF](https://ietf.org), and [the Hyper ledger Project at the Linux Foundation](https://www.hyperledger.org). A central part of the movement is the emerging standardization around decentralized identifiers (DIDs) which is a new type of identifier to allow any subjects to create and control their own unique identifiers.
+
+Technically, decentralized identifier is a URI composed of three parts: the scheme did:, a method identifier, and a unique, method-specific identifier specified by the DID method. DIDs are resolvable to DID documents. A DID URL extends the syntax of a basic DID to incorporate other standard URI components such as path, query, and fragment in order to locate a particular resource —for example, a cryptographic public key inside a DID document, or a resource external to the DID document.
+
+In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) can use these identifiers to obtain verifiable credential (VC) from trusted organizations and present these credentials as proof of claims about themselves.
+
 
 **DID Document**  
 DID documents contain information associated with a DID. They typically express verification methods, such as cryptographic public keys, and services relevant to interactions with the DID subject.

@@ -100,64 +100,59 @@
 <hr class="docutils" />
 <p>As shown in figure 1, UNiD platform mainly consists of three blocks;</p>
 <ul class="simple">
-<li><p><strong>UNiD EDGE</strong> is a security middleware embedded in endpoint devices</p></li>
+<li><p><strong>UNiD EDGE</strong> is a middleware embedded in endpoint devices</p></li>
 <li><p><strong>UNiD HUB</strong> is a message broker between endpoint devices and the cloud</p></li>
 <li><p><strong>UNiD Studio</strong> is a device management dashboard</p></li>
 </ul>
-<p>UNiD EDGE makes it simple to develop secure devices and establish secure bi-directional communications with the cloud.
-UNiD EDGE is provided as an <a class="reference external" href="https://github.com/getunid/unid">open-source middleware</a>, while UNiD HUB and Studio are provided as a proprietary software and hosted in a cloud environment.</p>
+<p>UNiD EDGE is an <a class="reference external" href="https://github.com/getunid/unid">open-source middleware</a>, while UNiD HUB and Studio are proprietary software hosted in a cloud environment.</p>
 <div class="figure align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/figure1-2.svg"><img alt="figure1" class="align-center" src="../_images/figure1-2.svg" width="90%" /></a>
 <p class="caption"><span class="caption-text"><strong>Figure 1.</strong> Overview of UNiD platform</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
-<p>Our main concept is to abstract every device and the cloud as a globally unique endpoint, and an endpoint can securely and privately interact with other endpoints regardless of the network topology or routing hops as shown in figure 2.</p>
+<p>Our main concept is to build end-to-end security infrastructure that abstracts every device and the cloud as a global unique endpoint, allowing a device to interact with other endpoints securely and privately regardless of the network topology or routing hops as shown in figure 2.</p>
 <div class="figure align-default" id="id2">
-<img alt="figure2" src="../_images/figure2-2.svg" /><p class="caption"><span class="caption-text"><strong>Figure 2.</strong> Scalable E2E Security Stack</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<img alt="figure2" src="../_images/figure2-2.svg" /><p class="caption"><span class="caption-text"><strong>Figure 2.</strong> E2E security infrastructure</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </div>
-<p>This identity-first approach can provide more flexible and scalable security infrastructure without the traditional complex network configurations and the best efforts in the field. In realizing this concept, we are utilizing decentralized identity and root of trust technologies for device’s cryptographic key management.</p>
+<p>To achieve this concept, UNiD platform utilizes decentralized identifiers (DIDs) and Root of Trust (RoT) technologies. Specifically, UNiD EDGE generates multiple key pairs from a hardware-derived genuine random number generator within the RoT secure processing environment, and generates a payload for registering with a blockchain-based decentralized PKI (DPKI) to create a DID document including the public key information. Anyone can obtain the corresponding device’s public key from the DPKI to verify the digitally signed data. The mechanism abstracts the complexity of security infrastructure to ensure device authenticity, data integrity, and privacy between every device and the cloud.</p>
+<p>The identity-first, end-to-end approach is highly flexible and scalable. It frees all developers from the heavy burden of building the complex security infrastructure for each product.</p>
 </div>
 <div class="section" id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline"></a></h2>
 <hr class="docutils" />
 <div class="section" id="unid-edge">
 <h3>UNiD EDGE<a class="headerlink" href="#unid-edge" title="Permalink to this headline"></a></h3>
-<p>As shown in figure 3, UNiD EDGE consists of 4 major components:</p>
+<p>UNiD EDGE is an open-source middleware embedded in endpoint devices. As shown in figure 3, it mainly consists of 4 components:</p>
 <ul class="simple">
-<li><p><strong>RoT Wrapper</strong> is an extension that supports Arm TrustZone and hardware security modules of various MCU.</p></li>
-<li><p><strong>Key Management</strong> refers to management of device’s cryptographic keys in the RoT secure processing environment.</p></li>
-<li><p><strong>Device IAM</strong> manages device’s identifier, credentials, and policies to perform device authentication and authorization.</p></li>
-<li><p><strong>E2E Secure Socket</strong> establishes an end-to-end authenticated channel with UNiD HUB for secure bi-directional communication regardless of the network topology or routing hops.</p></li>
+<li><p><strong>RoT Wrapper</strong>: This component supports TrustZone (for Arm Cortex-M) and hardware security modules (for supported MCUs), making it easier for developers to build FOTA, IAM, and crypto processing in the RoT secure processing environment (SPE).</p></li>
+<li><p><strong>Key Management</strong>: This component supports the device’s cryptographic key operations (create, read, update, delete) in the SPE.</p></li>
+<li><p><strong>Device IAM</strong>: This component supports management of device identities, credentials, and security policies for device’s authentication and authorization.</p></li>
+<li><p><strong>E2E Secure Socket</strong>: This component supports to establish end-to-end authenticated channels with UNiD HUB for secure bi-directional communications.</p></li>
 </ul>
 <div class="figure align-default" id="id3">
-<img alt="figure3" src="../_images/figure3-3.svg" /><p class="caption"><span class="caption-text"><strong>Figure 3.</strong> UNiD EDGE Architecture</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<img alt="figure3" src="../_images/figure3-4.svg" /><p class="caption"><span class="caption-text"><strong>Figure 3.</strong> UNiD EDGE Architecture</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="unid-hub">
 <h3>UNiD HUB<a class="headerlink" href="#unid-hub" title="Permalink to this headline"></a></h3>
-<p>UNiD HUB is a message handler between devices and the cloud. As shown in figure.4, UNiD HUB consists of 4 major components: E2E Secure Socket, IAM, Message Handling, and API that can be referenced by cloud services.</p>
+<p>UNiD HUB is a message handler between endpoint devices and the cloud. As shown in figure 4, it mainly consists of 5 components:</p>
 <ul class="simple">
-<li><p>E2E Secure Socket establishes end-to-end authenticated channels with the devices embedded with UNiD EDGE.</p></li>
-<li><p>Message Handler processes and brokes data between devices and the cloud.</p></li>
-<li><p>IAM authenticates and authorizes users including cloud applications through API.</p></li>
-<li><p>APIs and webhooks that allow developers to easily connect to existing cloud services and IoT platforms.</p></li>
+<li><p><strong>E2E Secure Socket</strong>: This component establishes end-to-end authenticated channels with the endpoint devices.</p></li>
+<li><p><strong>IAM</strong>: This component supports to authenticate and authorize users and applications.</p></li>
+<li><p><strong>Message Handler</strong>: This component carries out messaging using a publish/subscribe model between endpoint devices and the cloud.</p></li>
+<li><p><strong>Device Knowledge Base</strong>: This component supports real-time tracking device’s behavior for vital, healthcare check, threat detection, etc.</p></li>
+<li><p><strong>API/Webhook</strong>: This component allows all developers to easily connect with existing systems and IoT platforms.</p></li>
 </ul>
 <div class="figure align-default" id="id4">
-<a class="reference internal image-reference" href="../_images/figure4.svg"><img alt="figure4" src="../_images/figure4.svg" width="50%" /></a>
-<p class="caption"><span class="caption-text"><strong>Figure 4.</strong> UNiD HUB Architecture</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<img alt="figure4" src="../_images/figure4-3.svg" /><p class="caption"><span class="caption-text"><strong>Figure 4.</strong> UNiD HUB Architecture</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="unid-studio">
 <h3>UNiD Studio<a class="headerlink" href="#unid-studio" title="Permalink to this headline"></a></h3>
-<p>UNiD Studio is a device management system based on UNiD HUB’s API (as shown in Figure.6).<br />
-As shown in Figure.5, UNiD Studio provides common features needed to manage devices: visualize device status, update firmware and security parameters, and detect unauthorized access and connections.<br />
-Developers can build their own management tools or connect existing IoT platforms through UNiD HUB’s APIs.</p>
+<p>UNiD Studio is a device management dashboard based on UNiD HUB’s API.
+As shown in figure 5, UNiD Studio provides generic features needed to manage devices: inventory management, configuration management, visualizing device’s status, update firmware and security parameters, and detect unauthorized access and connections.</p>
 <div class="figure align-default" id="id5">
-<a class="reference internal image-reference" href="../_images/figure5.svg"><img alt="figure5" src="../_images/figure5.svg" width="60%" /></a>
-<p class="caption"><span class="caption-text"><strong>Figure 5.</strong> UNiD HUB API and UNiD Studio</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
-</div>
-<div class="figure align-default" id="id6">
-<img alt="figure6" src="../_images/figure6.png" />
-<p class="caption"><span class="caption-text"><strong>Figure 6.</strong> UNiD Studio IF</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<img alt="figure5" src="../_images/figure5-1.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 5.</strong> UNiD Studio, device management dashboard</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </div>
 </div>
 </div>
@@ -168,27 +163,27 @@ Developers can build their own management tools or connect existing IoT platform
 <h3>Easy to Use<a class="headerlink" href="#easy-to-use" title="Permalink to this headline"></a></h3>
 <p>In order to utilize IoT data or update firmware from the cloud securely, a system to identify, authenticate, and authorize devices is required. To identify the devices from the cloud, developers need to build a key management system on devices that cannot be tampered with. RoT can be used to achieve this goal, however it requires a high level of expertise and a lot of effort to understand the functionality and learn how to use the low level API of RoT.
 Furthermore, manual operations for key injection at the manufacturing stage and the cloud system for key management throughout the entire product lifecycle are required. Thus, even if we look at just the key management, there are so many things that need to be considered from the development stage.
-As shown in Figure.7, UNiD EDGE SDK is wrapping RoT low level APIs, making it easy for developers to build key management systems. Thus, UNiD abstracts the complexity of the security stack by providing simple and easy-to-use SDKs, allowing developers to focus on developing applications.</p>
-<div class="figure align-default" id="id7">
-<img alt="figure7" src="../_images/figure7.svg" /><p class="caption"><span class="caption-text"><strong>Figure 7.</strong> The middleware abstracts the complexity of security stack</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+As shown in figure 6, UNiD EDGE SDK is wrapping RoT low level APIs, making it easy for developers to build key management systems. Thus, UNiD abstracts the complexity of the security stack by providing simple and easy-to-use SDKs, allowing developers to focus on developing applications.</p>
+<div class="figure align-default" id="id6">
+<img alt="figure6" src="../_images/figure6-1.svg" /><p class="caption"><span class="caption-text"><strong>Figure 6.</strong> The middleware abstracts the complexity of security stack</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="automate-device-provisioning">
 <h3>Automate Device Provisioning<a class="headerlink" href="#automate-device-provisioning" title="Permalink to this headline"></a></h3>
 <p>By leveraging decentralized identity technology, UNiD allows devices to autonomously generate key pairs, provisioning, and establish end-to-end secure channels with pre-configured remote servers.
 In the typical provisioning flow, the provisioner manually generates and injects private keys into the devices, and registers the corresponding public keys and device ID with the intermediate PKI and device management system. This manual operation comes at a high cost, plus you need to invest in a physical security environment and employee background checks to reduce the vulnerability in the manufacturing line. Typically, key injection costs between $0.5 and $2.0 USD per device. When you are going to build your own private PKI, you also need to manage the private keys of intermediate CAs with HSMs, which can be costly.
-UNiD allows devices to autonomously generate key pairs with RoT, computes the hash from the key pairs to create the payload, and registers the payload with the DPKI network based on blockchain. In the flow, you don’t need to trust any intermediaries such as the provisioners and intermediate CAs. UNiD can fully automate the provisioning process to eliminate the manual operation costs and vulnerabilities in your manufacturing line (as shown in Figure.8).</p>
-<div class="figure align-default" id="id8">
-<img alt="figure8" src="../_images/figure8.svg" /><p class="caption"><span class="caption-text"><strong>Figure 8.</strong> Comparison of conventional and automated provisioning flow</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+UNiD allows devices to autonomously generate key pairs with RoT, computes the hash from the key pairs to create the payload, and registers the payload with the DPKI network based on blockchain. In the flow, you don’t need to trust any intermediaries such as the provisioners and intermediate CAs. UNiD can fully automate the provisioning process to eliminate the manual operation costs and vulnerabilities in your manufacturing line (as shown in figure 7).</p>
+<div class="figure align-default" id="id7">
+<img alt="figure7" src="../_images/figure7-1.svg" /><p class="caption"><span class="caption-text"><strong>Figure 7.</strong> Comparison of conventional and automated provisioning flow</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="security-lifecycle-management">
 <h3>Security Lifecycle Management<a class="headerlink" href="#security-lifecycle-management" title="Permalink to this headline"></a></h3>
-<p>UNiD defines the security lifecycle that is shown in Figure.9 as intended to capture the minimum set of lifecycle status and transitions in compliance with a PSA (platform security architecture) framework.
+<p>UNiD defines the security lifecycle that is shown in figure 8 as intended to capture the minimum set of lifecycle status and transitions in compliance with a PSA (platform security architecture) framework.
 The security lifecycle status is always stored in RoT secure storage as the device instance information. In development mode, UNiD EDGE SDK sets the security lifecycle status as “test”. In production mode, the status starts with “provisioning” and changes to “secured” when an end-to-end secure channel with UNiD HUB is established. UNiD platform allows only authorized users to change the status from “secured” to “PRoT debug” and “decommissioned”. When the status is changed to “decommissioned”, UNiD EDGE SDK revokes the DID Document and removes the sensitive information such as device key pairs and instance information.
 Based on the framework, UNiD provides features such as device management, fraud detection, security updates, and over-the-air to realize more scalable and efficient device maintenance and operation, which have been done manually in the past.</p>
-<div class="figure align-default" id="id9">
-<img alt="figure9" src="../_images/figure9.svg" /><p class="caption"><span class="caption-text"><strong>Figure 9.</strong> UNiD Security Lifecycle Management Framework</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+<div class="figure align-default" id="id8">
+<img alt="figure8" src="../_images/figure8-1.svg" /><p class="caption"><span class="caption-text"><strong>Figure 8.</strong> UNiD Security Lifecycle Management Framework</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 </div>
 </div>
 </div>
