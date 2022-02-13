@@ -1,34 +1,41 @@
 # Minimal makefile for Sphinx documentation
 #
 
+SHELL=/bin/bash
+
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-SPHINXOPTS      ?=
-SPHINXBUILD     ?= sphinx-build
-SPHINXAUTOBUILD ?= sphinx-autobuild
-PYTHON          ?= python
-SOURCE          ?= source
-VENVDIR          = .venv
-SOURCEDIR        = source
-BUILDDIR         = build
+SPHINXOPTS       ?=
+
+_SPHINXBUILD     ?= sphinx-build
+_SPHINXAUTOBUILD ?= sphinx-autobuild
+_PYTHON          ?= python
+_SOURCE          ?= source
+
+VENVDIR           = .venv
+SOURCEDIR         = source
+BUILDDIR          = build
 
 # Put it first so that "make" without argument is like "make help".
 help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(_SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 venv:
-	@$(PYTHON) -m venv "$(VENVDIR)"
-	@$(SOURCE) "$(VENVDIR)/bin/activate"
+	@$(_PYTHON) -m venv "$(VENVDIR)"
+	@$(_SOURCE) "$(VENVDIR)/bin/activate"
 
 install: venv
-	@$(PYTHON) -m pip install -r "requirements.txt"
+	@$(_PYTHON) -m pip install -r "requirements.txt"
+
+build: venv
+	@$(_SPHINXBUILD) -W --keep-going -v -a "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
 
 watch: venv
-	@$(SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
+	@$(_SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
 
 .PHONY: help Makefile
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(_SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

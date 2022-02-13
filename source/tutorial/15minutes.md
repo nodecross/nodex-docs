@@ -174,8 +174,6 @@ touch server.ts
 
 Open the `server.ts` file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using [VSCode](https://code.visualstudio.com).
 
-![Open server.ts file with VSCode](<../.gitbook/assets/image (6).png>)
-
 Let's implement the basic server functions. In this section, we will implement two URLs to handle the `GET` method and two URLs to handle the `POST` method. Specifically, we will implement the Issuer function and the Verifier function in the following URLs.
 
 | URI              | Description                                                             |

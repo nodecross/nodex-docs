@@ -1,9 +1,8 @@
 # Overview
----
+
 This section introduces the overview, architecture of each blocks, and the core features of UNiD platform.
 
 ## UNiD platform
----
 
 As shown in figure 1, UNiD platform mainly consists of three blocks;
 
@@ -34,7 +33,6 @@ To achieve this concept, UNiD platform utilizes decentralized identifiers (DIDs)
 The identity-first, end-to-end approach is highly flexible and scalable. It frees all developers from the heavy burden of building the complex security infrastructure for each product.
 
 ## Architecture
----
 
 ### UNiD EDGE
 
@@ -81,7 +79,6 @@ As shown in figure 5, UNiD Studio provides generic features needed to manage dev
 :::
 
 ## Core features
----
 
 ### Easy to Use
 In order to utilize IoT data or update firmware from the cloud securely, a system to identify, authenticate, and authorize devices is required. To identify the devices from the cloud, developers need to build a key management system on devices that cannot be tampered with. RoT can be used to achieve this goal, however it requires a high level of expertise and a lot of effort to understand the functionality and learn how to use the low level API of RoT.

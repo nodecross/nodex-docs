@@ -146,3 +146,8 @@ The build artifact (libunid.a, hereafter referred to as "build artifact") behave
 
 - The environment where the build deliverables exist is assumed to be Linux OS, and the environment where e2studio is installed is assumed to be Windows OS. Please move the build deliverables to the environment where e2studio is running (Windows OS) beforehand.
 - The method of moving build artifacts from Linux OS to Windows OS is out of the scope of this document; if you are using WSL2, you can move them via the mounted volume. If you are not using WSL2 and are using Linux OS directly, you can use SCP or other tools to move the files.
+
+```{toctree}
+:hidden:
+renesas/index.md
+```
