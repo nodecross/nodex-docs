@@ -31,13 +31,13 @@ author    = 'UNiD Project'
 extensions = [
   'myst_parser',
   'sphinx_rtd_theme',
-  'sphinx_external_toc',
   'sphinx_copybutton',
   'sphinxemoji.sphinxemoji',
 ]
 
-myst_heading_anchors   = 2
+myst_heading_anchors   = 1
 myst_enable_extensions = [
+  'deflist',
   'html_image',
   'colon_fence',
 ]

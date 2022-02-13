@@ -1,9 +1,8 @@
 # Overview
----
+
 This section introduces the overview, architecture of each blocks, and the core features of UNiD platform.
 
 ## UNiD platform
----
 
 As shown in figure 1, UNiD platform mainly consists of three blocks;
 
@@ -33,7 +32,6 @@ Our main concept is to abstract every device and the cloud as a globally unique 
 This identity-first approach can provide more flexible and scalable security infrastructure without the traditional complex network configurations and the best efforts in the field. In realizing this concept, we are utilizing decentralized identity and root of trust technologies for device's cryptographic key management.
 
 ## Architecture
----
 
 ### UNiD EDGE
 
@@ -87,7 +85,6 @@ Developers can build their own management tools or connect existing IoT platform
 :::
 
 ## Core features
----
 
 ### Easy to Use
 In order to utilize IoT data or update firmware from the cloud securely, a system to identify, authenticate, and authorize devices is required. To identify the devices from the cloud, developers need to build a key management system on devices that cannot be tampered with. RoT can be used to achieve this goal, however it requires a high level of expertise and a lot of effort to understand the functionality and learn how to use the low level API of RoT.
