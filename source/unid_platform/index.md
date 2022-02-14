@@ -1,5 +1,4 @@
 # UNiD Platform
----
 
 ## Overview
 
@@ -20,6 +19,7 @@ All you have to do is to integrate _UNiD EDGE_ into your device, and _UNiD EDGE_
 
 _UNiD EDGE_ is an [open-source middleware](https://github.com/getunid/unid), while _UNiD HUB_ and _UNiD Studio_ are proprietary software hosted in a cloud environment.
 
+---
 ## Design Concept
 
 Our main concept is to build end-to-end security infrastructure that abstracts every device and the cloud as a global unique endpoint, allowing a device to interact with other endpoints securely and privately regardless of the network topology or routing hops.
@@ -35,13 +35,14 @@ To achieve this concept, we utilize decentralized identifiers (DIDs) and Root of
 
 This identity-first, end-to-end approach can abstract the complexity of security infrastructure and enables advanced, scalable endpoint security for connected systems. UNiD platform is designed to make the security infrastructure easily available to all developers, freeing you from the heavy burden of building the complex security infrastructure for each product.
 
+---
 ## Architecture
 
 ### UNiD EDGE
 
 _UNiD EDGE_ consists of;
 
-- **RoT Wrapper**: This component supports TrustZone (Arm Cortex-M) and hardware security modules (supported MCUs), making it easier for developers to build FOTA, IAM, and crypto processing in the RoT secure processing environment (SPE).
+- **RoT Wrapper**: This component supports TrustZone (Arm Cortex-M) and hardware security modules (supported MCUs), making it easier to build FOTA, IAM, and crypto processing in the RoT secure processing environment (SPE).
 - **Key Management**: This component supports the device's cryptographic key operations (create, read, update, delete) in the SPE.
 - **Device IAM**: This component supports management of device identities, credentials, and security policies for device's authentication and authorization.
 - **E2E Secure Socket**: This component supports to establish end-to-end authenticated channels with UNiD HUB for secure bi-directional communications.
