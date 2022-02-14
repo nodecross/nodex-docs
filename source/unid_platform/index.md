@@ -1,16 +1,15 @@
-# Overview
+# UNiD Platform
+---
 
-This section introduces the overview, architecture of each blocks, and the core features of UNiD platform.
+## Overview
 
-## UNiD platform
+UNiD platform consists of;
 
-As shown in figure 1, UNiD platform mainly consists of three blocks;
+- _UNiD EDGE_ is a middleware embedded in endpoint devices
+- _UNiD HUB_ is a message broker between endpoint devices and the cloud
+- _UNiD Studio_ is a device management dashboard
 
-- **UNiD EDGE** is a middleware embedded in endpoint devices
-- **UNiD HUB** is a message broker between endpoint devices and the cloud
-- **UNiD Studio** is a device management dashboard
-
-UNiD EDGE is an [open-source middleware](https://github.com/getunid/unid), while UNiD HUB and Studio are proprietary software hosted in a cloud environment.
+All you have to do is to integrate _UNiD EDGE_ into your device, and _UNiD EDGE_ will establish an end-to-end authenticated channel with UNiD HUB and realize bi-directional communication with various cloud services while ensuring device authenticity, data integrity, and privacy.
 
 :::{figure-md}
 
@@ -19,7 +18,11 @@ UNiD EDGE is an [open-source middleware](https://github.com/getunid/unid), while
 **Figure 1.** Overview of UNiD platform
 :::
 
-Our main concept is to build end-to-end security infrastructure that abstracts every device and the cloud as a global unique endpoint, allowing a device to interact with other endpoints securely and privately regardless of the network topology or routing hops as shown in figure 2.
+_UNiD EDGE_ is an [open-source middleware](https://github.com/getunid/unid), while _UNiD HUB_ and _UNiD Studio_ are proprietary software hosted in a cloud environment.
+
+## Design Concept
+
+Our main concept is to build end-to-end security infrastructure that abstracts every device and the cloud as a global unique endpoint, allowing a device to interact with other endpoints securely and privately regardless of the network topology or routing hops.
 
 :::{figure-md}
 
@@ -28,17 +31,17 @@ Our main concept is to build end-to-end security infrastructure that abstracts e
 **Figure 2.** E2E security infrastructure
 :::
 
-To achieve this concept, UNiD platform utilizes decentralized identifiers (DIDs) and Root of Trust (RoT) technologies. Specifically, UNiD EDGE generates multiple key pairs from a hardware-derived genuine random number generator within the RoT secure processing environment, and generates a payload for registering with a blockchain-based decentralized PKI (DPKI) to create a DID document including the public key information. Anyone can obtain the corresponding device's public key from the DPKI to verify the digitally signed data. The mechanism abstracts the complexity of security infrastructure to ensure device authenticity, data integrity, and privacy between every device and the cloud.
+To achieve this concept, we utilize decentralized identifiers (DIDs) and Root of Trust (RoT) technologies. Specifically, _UNiD EDGE_ generates multiple key pairs from a hardware-derived genuine random number generator within the RoT secure processing environment, and generates a payload for registering with a blockchain-based decentralized PKI (DPKI) to create a DID document including the public key information. Anyone can obtain the corresponding device's public key from the network to authenticate the device and verify the digitally signed data.
 
-The identity-first, end-to-end approach is highly flexible and scalable. It frees all developers from the heavy burden of building the complex security infrastructure for each product.
+This identity-first, end-to-end approach can abstract the complexity of security infrastructure and enables advanced, scalable endpoint security for connected systems. UNiD platform is designed to make the security infrastructure easily available to all developers, freeing you from the heavy burden of building the complex security infrastructure for each product.
 
 ## Architecture
 
 ### UNiD EDGE
 
-UNiD EDGE is an open-source middleware embedded in endpoint devices. As shown in figure 3, it mainly consists of 4 components:
+_UNiD EDGE_ consists of;
 
-- **RoT Wrapper**: This component supports TrustZone (for Arm Cortex-M) and hardware security modules (for supported MCUs), making it easier for developers to build FOTA, IAM, and crypto processing in the RoT secure processing environment (SPE).
+- **RoT Wrapper**: This component supports TrustZone (Arm Cortex-M) and hardware security modules (supported MCUs), making it easier for developers to build FOTA, IAM, and crypto processing in the RoT secure processing environment (SPE).
 - **Key Management**: This component supports the device's cryptographic key operations (create, read, update, delete) in the SPE.
 - **Device IAM**: This component supports management of device identities, credentials, and security policies for device's authentication and authorization.
 - **E2E Secure Socket**: This component supports to establish end-to-end authenticated channels with UNiD HUB for secure bi-directional communications.
