@@ -12,7 +12,6 @@ UNiD EDGE consists of micro components and extensions support various RoTs, tran
 :::
 
 ## Features
----
 
 ## Device Identifier
 

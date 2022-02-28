@@ -73,12 +73,11 @@ UNiD HUB consists of;
 
 ### UNiD Studio
 
-UNiD Studio is a device management dashboard based on UNiD HUB’s API.
-As shown in figure 5, UNiD Studio provides generic features needed to manage devices: inventory management, configuration management, visualizing device's status, update firmware and security parameters, and detect unauthorized access and connections.  
+UNiD Studio is a device management dashboard that provides generic features required to manage devices: inventory management, configuration management, visualizing device's status, update firmware and security parameters, and detect unauthorized access and connections.  
 
 :::{figure-md}
 
-<img src="../_assets/figure5-1.png" alt="figure5">
+<img src="../_assets/unid_studio.gif" alt="unid studio gif">
 
 **Figure 5.** UNiD Studio, device management dashboard
 :::
