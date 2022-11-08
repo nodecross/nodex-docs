@@ -5,5 +5,5 @@
 
 ```{toctree}
 :hidden:
-build_guide/for_free_rtos/index.md
+build_guide/free_rtos/index.md
 ```
