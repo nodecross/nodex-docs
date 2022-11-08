@@ -1,7 +1,7 @@
 # Welcome to UNiD Documentation!
 
 <p style="text-align: center !important;">
-<img src="_images/unid_u_logo.svg" alt="UNiD Logo" />
+<img src="_assets/unid_u_logo.svg" alt="UNiD Logo" />
 </p>
 
 <h1 style="text-align: center;">
