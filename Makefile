@@ -9,7 +9,7 @@ SPHINXOPTS       ?=
 
 _SPHINXBUILD     ?= sphinx-build
 _SPHINXAUTOBUILD ?= sphinx-autobuild
-_PYTHON          ?= python
+_PYTHON          ?= python3
 _SOURCE          ?= source
 
 VENVDIR           = .venv

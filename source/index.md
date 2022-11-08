@@ -2,10 +2,11 @@
 
 ```{toctree}
 introduction/index.md
-unid_platform/index.md
+unid/index.md
 unid_edge/index.md
-integration/index.md
-tutorial/index.md
+build_guide_for_linux/index.md
 api_reference/index.md
+rpc_reference/index.md
+interface_definitions/index.md
 glossary/index.md
 ```
