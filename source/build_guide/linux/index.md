@@ -1,4 +1,4 @@
-# Build Guide for Linux OS
+# Build Guide for Linux
 
 This section describes how to build UNiD EDGE which is implemented in Rust language (hereinafter referred to as "Rust").  By following the steps in this section, you can build a UNiD EDGE that can run on top of any popular Linux OS.
 
