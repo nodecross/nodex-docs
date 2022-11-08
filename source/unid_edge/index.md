@@ -1,6 +1,6 @@
 # UNiD EDGE
 
-In this chapter, we introduce the core features of UNiD EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found here.
+In this chapter, we introduce the core features of UNiD EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found [here](https://github.com/getunid/unid).
 
 UNiD EDGE consists of micro components and extensions that support various RoTs, transports and clouds. By integrating UNiD EDGE into your device, you can securely implement the necessary security features such as FOTA, remote monitoring, and device certificate management.
 
@@ -8,14 +8,14 @@ UNiD EDGE consists of micro components and extensions that support various RoTs,
 
 <img src="../_assets/figure10.svg" alt="figure6">
 
-**Figure 6.** UNiD EDGE SDK Architecture
+**Figure 6.** UNiD EDGE Architecture
 :::
 
 ## Features
 
 ### Device Identifier
 
-UNiD EDGE uses decentralized identifier (DID) as a device identifier based on the W3C DID Core 1.0 specification. In the secure processing environment (hereinafter referred to as SPE), it generates multiple key pairs from a hardware-derived true random number generator (TRNG), and generates the payload by hashing the object containing this public key information. This payload can be registered with blockchain-based DPKI (Decentralized Public Key Infrastructure) to generate a DID, which can be treated as a globally unique identifier independent of any third party. This DID is a URI that associates the device with a DID document that allows trustable interactions.
+UNiD EDGE uses decentralized identifier (DID) as a device identifier based on the [W3C DID Core 1.0 specification](https://www.w3.org/TR/did-core/). In the secure processing environment (hereinafter referred to as SPE), it generates multiple key pairs from a hardware-derived true random number generator (TRNG), and generates the payload by hashing the object containing this public key information. This payload can be registered with blockchain-based DPKI (Decentralized Public Key Infrastructure) to generate a DID, which can be treated as a globally unique identifier independent of any third party. This DID is a URI that associates the device with a DID document that allows trustable interactions.
 
 ## Root of Trust (RoT)
 
@@ -25,15 +25,15 @@ Placing the root of trust in the hardware is a fundamental requirement of IEC 62
 
 ### Device Authenticity
 
-Entities that communicate with the device can validate the device’s authenticity by verifying the digital signature and pre-defined client_secret. Specifically, the entity obtains the corresponding device’s public key from DPKI to verify the digital signature. The client_secret is issued for each product and is set in the device in advance. This mechanism makes it possible to detect and exclude unauthorized devices from the network, thus preventing virus intrusion and information leakage.
+Entities that communicate with the device can validate the device's authenticity by verifying the digital signature and pre-defined client_secret. Specifically, the entity obtains the corresponding device's public key from DPKI to verify the digital signature. The client_secret is issued for each product and is set in the device in advance. This mechanism makes it possible to detect and exclude unauthorized devices from the network, thus preventing virus intrusion and information leakage.
 
 ### Fully Automated Provisioning
 
 By leveraging decentralized identity technology, UNiD EDGE enables fully automated provisioning.
 
-In the typical provisioning flow, the provisioners manually generate key pairs and certificate signing requests (CSRs) and register CSRs to a certificate authority to get the device’s public key certificates. Then, the provisioner manually injects private keys and certificates into devices. This manual operation comes at a high cost because you need to invest in physical security environments and employee background checks to reduce security risks in your manufacturing line. This key injection usually costs between $0.5 and $2.0 USD per device.
+In the typical provisioning flow, the provisioners manually generate key pairs and certificate signing requests (CSRs) and register CSRs to a certificate authority to get the device's public key certificates. Then, the provisioner manually injects private keys and certificates into devices. This manual operation comes at a high cost because you need to invest in physical security environments and employee background checks to reduce security risks in your manufacturing line. This key injection usually costs between $0.5 and $2.0 USD per device.
 
-UNiD EDGE enables devices to autonomously register the public key to the decentralized PKI. In UNiD flow, you don’t need to trust any intermediaries; provisioners and intermediate CAs, it means you can completely eliminate the manual operation costs and vulnerabilities in your manufacturing line.
+UNiD EDGE enables devices to autonomously register the public key to the decentralized PKI. In UNiD flow, you don't need to trust any intermediaries; provisioners and intermediate CAs, it means you can completely eliminate the manual operation costs and vulnerabilities in your manufacturing line.
 
 :::{figure-md}
 
@@ -44,7 +44,7 @@ UNiD EDGE enables devices to autonomously register the public key to the decentr
 
 ### E2E Secure Channel
 
-Two-way communication (device-cloud, device- device) happens via a message handler, called by the customer, UNiD HUB. UNiD EDGE stores UNiD HUB’s DID in RoT SPE as pre-configuration. The device performs handshakes with the UNiD HUB to establish an end-to-end secure channel. In the handshake process, the system sends the public key (for encryption) and encrypted and signed message including client_id and client_secret to the server as client hello. The server generates a common key with a received public key, and decrypts the message to verify the device’s signature and client_secret, and responds with an encrypted and signed message to the device. The device then verifies the server’s signature and compares the server’s DID with the pre-configured DID to authenticate the server, and completes the handshake process.
+Two-way communication (device-cloud, device- device) happens via a message handler, called by the customer, UNiD HUB. UNiD EDGE stores UNiD HUB's DID in RoT SPE as pre-configuration. The device performs handshakes with the UNiD HUB to establish an end-to-end secure channel. In the handshake process, the system sends the public key (for encryption) and encrypted and signed message including client_id and client_secret to the server as client hello. The server generates a common key with a received public key, and decrypts the message to verify the device's signature and client_secret, and responds with an encrypted and signed message to the device. The device then verifies the server's signature and compares the server's DID with the pre-configured DID to authenticate the server, and completes the handshake process.
 
 ### Access Control
 
@@ -52,7 +52,7 @@ The system software stores in PSA-RoT secure storage a security policy regarding
 
 ## OTA Update
 
-The system software supports updates from authorized remote servers. Integrity and authenticity are checked prior to execution and installation of the new image: The new firmware image (ECDSA signed) is downloaded from the authorized remote server. The decryption (AES-GCM) and signature verification (using the corresponding public key obtained from the remote server through a DID resolver) is then conducted in RoT secure storage. After validation of integrity and authenticity of the firmware image, the executable code can be stored in Slot1 of the bootloader (being Slot0 the active firmware) and flagged for update. At the next boot, the bootloader verifies the update and executes the update by swapping Slot0 and Slot1. The scope of the software system is to provide the validated executable code or the corresponding public key to the bootloader. The device obtains the corresponding DID Document (including public key) from the DID resolver using the authorized remote server’s DID. The DID resolver receives the did_suffix (did:method:did_suffix) and gets the DID Document from the mongoDB of the DID resolver with did_suffix and returns it to the device. The data in mongoDB is a conflict-free replicated data type (CRDT) and the data integrity is ensured by the sidetree protocol which is a blockchain-agnostic 2nd layer protocol.
+The system software supports updates from authorized remote servers. Integrity and authenticity are checked prior to execution and installation of the new image: The new firmware image (ECDSA signed) is downloaded from the authorized remote server. The decryption (AES-GCM) and signature verification (using the corresponding public key obtained from the remote server through a DID resolver) is then conducted in RoT secure storage. After validation of integrity and authenticity of the firmware image, the executable code can be stored in Slot1 of the bootloader (being Slot0 the active firmware) and flagged for update. At the next boot, the bootloader verifies the update and executes the update by swapping Slot0 and Slot1. The scope of the software system is to provide the validated executable code or the corresponding public key to the bootloader. The device obtains the corresponding DID Document (including public key) from the DID resolver using the authorized remote server's DID. The DID resolver receives the did_suffix (did:method:did_suffix) and gets the DID Document from the mongoDB of the DID resolver with did_suffix and returns it to the device. The data in mongoDB is a conflict-free replicated data type (CRDT) and the data integrity is ensured by the sidetree protocol which is a blockchain-agnostic 2nd layer protocol.
 
 ### Logging
 
@@ -68,10 +68,10 @@ HUB has privately a DID configuration file to ensure device authenticity through
 
 ### Security Configuration
 
-The system software allows users to change security parameters after authenticating privileged users according to predefined policies. Specifically, access policies (e.g., authorized entity’s DID and IP), security policy (e.g., configuration of cryptography), and update policies (e.g., HeartBeat frequency, logging transmission frequency, automatic installation of updated software) can be changed after user authentication. Security-relevant configuration changes are allowed by the system software, just after authentication of privileged users (such authentication is in accordance with predefined policies). The security parameters that can be changed after user authentication include:
+The system software allows users to change security parameters after authenticating privileged users according to predefined policies. Specifically, access policies (e.g., authorized entity's DID and IP), security policy (e.g., configuration of cryptography), and update policies (e.g., HeartBeat frequency, logging transmission frequency, automatic installation of updated software) can be changed after user authentication. Security-relevant configuration changes are allowed by the system software, just after authentication of privileged users (such authentication is in accordance with predefined policies). The security parameters that can be changed after user authentication include:
 
-- Access policies (i.e. authorized entity's DID and IP),
-- Security policy (i.e. configuration of used cryptography), 
+- Access policies (i.e. authorized entity's DID and IP)
+- Security policy (i.e. configuration of used cryptography)
 - Update policies (i.e. logging transmission frequency or automatic installation of updated software)
 
 ### Security Lifecycle Management
