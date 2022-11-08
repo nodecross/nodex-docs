@@ -37,7 +37,7 @@ UNiD EDGE enables devices to autonomously register the public key to the decentr
 
 :::{figure-md}
 
-<img src="../_assets/" alt="figure7">
+<img src="../_assets/figure7-1.svg" alt="figure7">
 
 **Figure 7.** Comparison of conventional and automated provisioning flow
 :::
@@ -80,7 +80,7 @@ UNiD defines the security lifecycle that is shown in figure 8 as intended to cap
 
 :::{figure-md}
 
-<img src="../_assets/" alt="figure8">
+<img src="../_assets/figure8-1.svg" alt="figure8">
 
 **Figure 8.** UNiD Security Lifecycle Management Framework
 :::
