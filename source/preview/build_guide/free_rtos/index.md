@@ -1,4 +1,4 @@
-# Integration Guide
+# Build Guide for FreeRTOS
 
 This section describes how to build UNiD EDGE SDK which is implemented in Rust language (hereinafter referred to as "Rust"). By following the steps in this section, you will be able to generate a static library that can be referenced from C language.
 
@@ -150,4 +150,5 @@ The build artifact (libunid.a, hereafter referred to as "build artifact") behave
 ```{toctree}
 :hidden:
 renesas/index.md
+tutorial/index.md
 ```
