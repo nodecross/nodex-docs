@@ -1,4 +1,4 @@
-# UNiD EDGE
+# UNiD Features
 
 In this chapter, we introduce the core features of UNiD EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found [here](https://github.com/getunid/unid).
 
