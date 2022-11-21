@@ -40,8 +40,9 @@ POST /transfer
 Transmits data using the DIDComm protocol.
 
 - Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `destinations` (`Array<String>`) : Specifies the destination DID.
   - `messages` (`Array<Map<String, Any>>`) : Specifies data to be sent through the DIDComm protocol.
+  - `metadata` (`Map<String, Any>`) : Specifies the metadata for sending messages.
 
 **Example**
 
@@ -53,8 +54,15 @@ Transmits data using the DIDComm protocol.
     number: 1,
     boolean: true,
     array: [],
-    map: {},
-  } ]
+    map: {}
+  } ],
+  metadata: {
+    string: 'value',
+    number: 1,
+    boolean: true,
+    array: [],
+    map: {}
+  }
 }
 ```
 
@@ -79,7 +87,7 @@ Generate and return a Verifiable Credential in accordance with W3C standards.
     number: 1,
     boolean: true,
     array: [],
-    map: {},
+    map: {}
   }
 }
 ```
@@ -103,7 +111,7 @@ POST /internal/didcomm/plaintext-messages
 Generates and returns a DIDComm plaintext message in accordance with W3C standards.
 
 - Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `destinations` (`Array<String>`) : Specifies the destination DID.
   - `message` (`Map<String, Any>`) : Specifies the payload to wrap as a DIDComm plaintext message.
 
 **Example**
@@ -115,7 +123,7 @@ Generates and returns a DIDComm plaintext message in accordance with W3C standar
     number: 1,
     boolean: true,
     array: [],
-    map: {},
+    map: {}
   }
 }
 ```
@@ -140,7 +148,7 @@ POST /internal/didcomm/signed-messages
 Generate and return a DIDComm signed message in accordance with W3C standards.
 
 - Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `destinations` (`Array<String>`) : Specifies the destination DID.
   - `message` (`Map<String, Any>`) : Specifies the payload to be wrapped as a DIDComm signed message.
 
 **Example**
@@ -152,7 +160,7 @@ Generate and return a DIDComm signed message in accordance with W3C standards.
     number: 1,
     boolean: true,
     array: [],
-    map: {},
+    map: {}
   }
 }
 ```
@@ -177,7 +185,7 @@ POST /internal/didcomm/encrypted-messages
 Generate and return a DIDComm encrypted message according to W3C standards.
 
 - Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `destinations` (`Array<String>`) : Specifies the destination DID.
   - `message` (`Map<String, Any>`) : Specifies the payload to wrap as a DIDComm encrypted message.
 
 **Example**
@@ -189,8 +197,8 @@ Generate and return a DIDComm encrypted message according to W3C standards.
     number: 1,
     boolean: true,
     array: [],
-    map: {},
-  }
+    map: {}
+  },
 }
 ```
 
