@@ -1,22 +1,22 @@
-# UNiD
+# What's UNiD?
 
-## Overview
+UNiD is an open-source toolkit that enables any developers to connect all devices and clouds, using features of decentralized identifiers as a basis of security and privacy. At a high level, the core components in UNiD are as follows;
 
-UNiD is an end-to-end security platform which consists of the following blocks;
+- **UNiD EDGE**: An open-source agent that integrates into devices.
+- **UNiD HUB**: A cloud access security broker that acts as an intermediary between devices and clouds.
+- **UNiD Network**: A distributed network that operates public key certificates (DID Documents) of EDGEs.
 
-- **UNiD EDGE (hereinafter called "EDGE")** is an open source library that integrates into endpoint devices
-- **UNiD HUB (hereinafter called "HUB")** is a control plane for message routing and dynamic access control of EDGEs.
-- **UNiD Network** is a distributed network that operates public key certificates (DID Documents) of EDGEs.
-
-Simply launch a HUB for each project, integrate EDGE into IoT devices and cloud servers, and connect the EDGEs to the HUB to initiate secure end-to-end communication between EDGEs while ensuring device authenticity, data integrity, and privacy. 
 
 :::{figure-md}
 
-<img src="../_assets/UNiD_Overview.svg" alt="figure1" width="90%" align="center">
+<img src="../_assets/unid_overview_2022.svg" alt="figure1" width="80%" align="center">
 
-**Figure 1.** UNiD Overview
+**Figure 1.** The core components in UNiD
 :::
 
+As figure 1, you can launch your UNiD HUB and set up access policy, and integrate UNiD EDGE into your devices or clouds. You can easily build a security infrastructure that connects all your devices to the cloud with UNiD.
+
+<!--
 ## Design Concept
 
 Our main concept is to build a scalable, end-to-end security infrastructure that abstracts every device and the cloud as a global unique node, allowing a node to interact with other nodes securely and privately regardless of the network topology or routing hops.
@@ -31,52 +31,58 @@ Our main concept is to build a scalable, end-to-end security infrastructure that
 To achieve this concept, we utilize decentralized identifiers (DIDs) and Root of Trust (RoT) technologies. Specifically, UNiD EDGE generates multiple key pairs from a hardware-derived true random number generator (TRNG) within the RoT secure processing environment, and generates a payload for registering with a blockchain-based decentralized PKI (DPKI) to create a DID document including the public key information. Anyone can obtain the corresponding device's public key from the network to authenticate the device and verify the digitally signed data. To learn more, click here.
 
 This identity-first, end-to-end approach can abstract the complexity of security infrastructure and enables advanced, scalable endpoint security for connected systems. UNiD platform is designed to make the security infrastructure easily available and free all developers from the heavy burden of building the complex security infrastructure for each product.
+-->
 
-## Architecture
+## Key Featrues
 
 ### UNiD EDGE
 
-UNiD EDGE is an open source Rust library to integrate into embedded Linux OS and RTOS. It consists of the following components;
+An open-source Rust library that is extensible into any type of devices. Currently supported OS is Linux Kernel x86 (32bit), Linux Kernel x86-64 (64 bit), and FreeRTOS. The core components are as follows;
 
-- **Device identifier**: This component supports generating global unique device's identifiers compliant with a W3C standard (Decentralized Identifiers (DIDs) v1.0).
-- **Device key management**: This component supports generating key pairs within the device and operating such as public key certificate (DID Document) generation, resolve, renewal, and revocation.
-- **RoT extension**: This component can be applied to RoTs with proprietary specifications by implementing shared libraries according to the API specification.
-- **Device authentication**: This component supports device authentication based on digital signature scheme (256-bit ECDSA) rather than username and password.
-- **Policy management**: This component allows security-relevant configuration changes through an authorized UNiD HUB. It has access policy file (IPs, DIDs, endpoints), security policy file (security parameter, pre-shared-key) and update policy (logging transmission frequency).
-- **E2E secure socket**: This component supports establishing authenticated channels with the HUB.
-- **Distribution**: It can be distributed as middleware for IPC communication with client applications, also can be distributed as a library integrated into client applications.
+- **Device Identity Management**: This component supports generating a global unique device identifier in compliance with a W3C Decentralized Identifiers Standard ([Decentralized Identifiers v1.0](https://www.w3.org/TR/did-core/)).
+- **Key Management with RoT**: This component supports generating key pairs within the device and protect private keys with hardware security module, such as TPM2.0, TrustZone, Secure Crypto Engine.
+- **Automated Provisioning**: This component supports registering and operating public key certificate (DID Document) generation, resolve, renewal, and revocation on a decentralized PKI without any IdPs, CAs, and intermediators.
+- **Policy Management**: This component allows security-relevant configuration changes through an authorized UNiD HUB. It has access policy file (IPs, DIDs, endpoints), security policy file (security parameter, pre-shared-key) and update policy (logging transmission frequency).
+- **E2E Secure Socket**: This component supports establishing a mutual authenticated channel with the HUB to exchange end-to-end authcrypt messages with clouds.
+- **RoT Extension**: This component can be applied to RoTs with proprietary specifications by implementing shared libraries according to the API specification.
+- **Device Extension**: This library can be distributed as middleware for IPC communication with client applications or as a library to be integrated into client application.
 
+For more information, see <a href="https://github.com/getunid/unid" class="external" target="_blank" rel="noopener noreferrer">github page</a>.
+
+<!--
 :::{figure-md}
 
 <img src="../_assets/figure3-4.svg" alt="figure3">
 
 **Figure 3.** UNiD EDGE Architecture
 :::
+-->
 
-Currently supported OS;
-- Linux Kernel x86 (32 bit)
-- Linux Kernel x86-64 (64 bit)
-- FreeRTOS
 
 ### UNiD HUB
 
-UNiD HUB is a control plane for message routing between EDGEs and dynamic access control of devices. It consists of the following components;
+A cloud access security broker consists of access broker, access control engine, access policy, inventory for secure communications between all devices and clouds. The core components are as follows;
 
-- **E2E secure socket**: This component supports establishing authenticated channels with the EDGEs.
-- **Message routing**: This component supports relaying encrypted messages on a publish/subscribe model between EDGEs.
-- **Device authenticity**:  This component supports verifying the device authenticity by message authentication code generated by the pre-shared-key with EDGEs.
-- **Dynamic access control**: This component supports dynamically changing access policies based on device's identity, location, and behavior to prevent spoofing and unauthorized access
-- **Device knowledge database**: This component supports storing and real-time tracking device communication logs for vital checks and threat detection.
-- **DID configuration file**:  This component supports a DID configuration file which stores authorized device DIDs.
+- **Device IAM**: This component supports device authentication based on digital signature scheme (256-bit ECDSA) rather than username and password.
+- **Device Authenticity**: This component supports verifying the device authenticity by message authentication code generated by the pre-shared secret between EDGE and HUB.
+- **Inventory Management**: This component supports managing a configuration file which stores authorized device DIDs and attributions.
+- **Device Knowledge Database**: This component supports storing and real-time tracking device communication logs for vital checks and threat detection.
+- **E2E Message Routing**: This component supports relaying encrypted messages on a publish/subscribe model between EDGEs.
+- **Data Loss Prevention**: This component prevents devices from sending data or receiving data from unauthorized clouds by enforcing access policies.
+- **Dynamic Access Control**: This component supports dynamically changing access policies based on device's identity, location, and behavior to prevent spoofing and unauthorized access
 - **UNiD Studio**: User interface for operating the HUB supports launching a project and managing access policies and logging data of EDGEs.
 
+<!--
 :::{figure-md}
 
 <img src="../_assets/figure4-3.svg" alt="figure4">
 
 **Figure 4.** UNiD HUB Architecture
 :::
+-->
 
 ### UNiD Network
 
-UNiD Network consists of a sidetree protocol for creating scalable DIDs networks that can run atop any existing decentralized anchoring system and be as open, public, and permissionless as the underlying anchoring systems they utilize. The protocol allows users to create globally unique identifiers and manage their associated PKI metadata, all without the need for centralized authorities or trusted third parties.
+UNiD Network consists of a [sidetree protocol](https://identity.foundation/sidetree/spec/) for creating scalable DIDs networks that can run atop any existing decentralized anchoring system and be as open, public, and permissionless as the underlying anchoring systems they utilize. The protocol allows users to create globally unique identifiers and manage their associated PKI metadata, all without the need for centralized authorities or trusted third parties.
+
+UNiD EDGE generates multiple key pairs from a hardware-derived true random number generator (TRNG) within the RoT secure processing environment, and generates a payload including public keys for registering with UNiD Network to create a DID document binding decentralized identifier and the public key. Anyone can obtain the corresponding device's public key from the distributed network to authenticate the device and verify the digitally signed data.
