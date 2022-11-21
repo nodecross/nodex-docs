@@ -2,9 +2,11 @@
 
 UNiD EDGE is a resident Linux daemon process that provides UNiD EDGE functionality as an HTTP-based API to another application, mainly within the Linux OS. Since this type of UNiD EDGE provides HTTP-based API, it can be used regardless of the implementation language of the application that uses the API, and it can be used with zero learning cost by providing pre-built binaries. The pre-built binaries can be used with zero learning cost for building the API.
 
-## DID Operations
+## DID operations
 
 The following API is provided through the Unix Domain Socket (/var/run/unid.sock) for applications using the UNiD EDGE. ) that can hit the Unix Domain Socket to communicate with UNiD EDGE through the socket.
+
+### Create DID
 
 ```
 POST /identifiers
@@ -14,6 +16,8 @@ Generate a new key ring and register it with DPKI.
 
 - Parameters (Request Body)
   - None
+
+### Find DID
 
 ```
 GET /identifiers/${ did }
@@ -25,25 +29,9 @@ It acts as a Universal Resolver and returns the corresponding DID Document.
 - Parameters (Request Body)
   - None
 
-```
-PUT /identifiers/${ did }/default
-```
+## Data operations
 
-Marks the specified DID as the default key ring.
-
-- Parameters (Request Body)
-  - None
-
-```
-DELETE /identifiers/${ did }
-```
-
-Revokes the specified DID.
-
-- Parameters (Request Body)
-  - None
-
-## Data Operations
+### Transfer
 
 ```
 POST /transfer
@@ -52,11 +40,27 @@ POST /transfer
 Transmits data using the DIDComm protocol.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specifies data to be sent through the DIDComm protocol.
-  - `metadata` (`Null(Map<String, String>)`) : Specifies a dictionary of metadata to be assigned to the data to be sent.
-  - `credentialId` (`Null(String)`) : Specifies the keyring ID to be used when processing the DIDComm protocol.
+  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `messages` (`Array<Map<String, Any>>`) : Specifies data to be sent through the DIDComm protocol.
 
-## Credential Operations
+**Example**
+
+```
+{
+  destinations: [ 'did:unid:test:...' ],
+  messages: [ {
+    string: 'value',
+    number: 1,
+    boolean: true,
+    array: [],
+    map: {},
+  } ]
+}
+```
+
+## Credential operations
+
+### Generate VC
 
 ```
 POST /internal/verifiable-credentials
@@ -65,9 +69,22 @@ POST /internal/verifiable-credentials
 Generate and return a Verifiable Credential in accordance with W3C standards.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specifies the payload to wrap as VC.
-  - `metadata` (`Null(Map<String, String>))`) : Specifies metadata for the payload to be wrapped as a VC.
-  - `credentialId` (`Null(String)`) : Specifies the keyring ID to be used when signing the VC.
+  - `message` (`Map<String, Any>`) : Specifies the payload to wrap as VC.
+
+**Example**
+```
+{
+  message: {
+    string: 'value',
+    number: 1,
+    boolean: true,
+    array: [],
+    map: {},
+  }
+}
+```
+
+### Verify VC
 
 ```
 POST /internal/verifiable-credentials/verify
@@ -76,27 +93,9 @@ POST /internal/verifiable-credentials/verify
 Verifies a Verifiable Credential generated according to W3C standards.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specify the VC to be verified.
+  - `message` (`String`) : Specify the VC to be verified.
 
-```
-POST /internal/verifiable-presentations
-```
-
-Generate and return a Verifiable Presentation in accordance with W3C standards.
-
-- Parameters (Request Body)
-  - `payload` (`String`) : Specifies the payload to wrap as VP.
-  - `credentialId` (`Null(String)`) : Specifies the keyring ID to be used when signing the VP.
-
-```
-POST /internal/verifiable-presentations/verify
-```
-
-Verify Verifiable Presentations generated according to W3C standards.
-
-- Parameters (Request Body)
-  - `payload` (`String`) : Specifies the VP to be verified.
-
+### Generate DIDComm Plaintext Message
 ```
 POST /internal/didcomm/plaintext-messages
 ```
@@ -104,9 +103,24 @@ POST /internal/didcomm/plaintext-messages
 Generates and returns a DIDComm plaintext message in accordance with W3C standards.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specifies the payload to wrap as a DIDComm plaintext message.
-  - `recipients` (`Array<String>`) : DIDComm Specifies the DID of the peer that will receive the plaintext message.
-  - `credentialId` (`Null(String)`) : Specifies the keyring ID to be used when signing DIDComm plaintext messages.
+  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `message` (`Map<String, Any>`) : Specifies the payload to wrap as a DIDComm plaintext message.
+
+**Example**
+```
+{
+  destinations: [ 'did:unid:test:...' ],
+  message: {
+    string: 'value',
+    number: 1,
+    boolean: true,
+    array: [],
+    map: {},
+  }
+}
+```
+
+### Verify DIDComm Plaintext Message
 
 ```
 POST /internal/didcomm/plaintext-messages/verify
@@ -115,7 +129,9 @@ POST /internal/didcomm/plaintext-messages/verify
 Validates DIDComm plaintext messages generated according to W3C standards.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specifies the DIDComm plaintext message to be verified.
+  - `message` (`String`) : Specifies the DIDComm plaintext message to be verified.
+
+### Generate DIDComm Signed Message
 
 ```
 POST /internal/didcomm/signed-messages
@@ -124,9 +140,24 @@ POST /internal/didcomm/signed-messages
 Generate and return a DIDComm signed message in accordance with W3C standards.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specifies the payload to be wrapped as a DIDComm signed message.
-  - `recipients` (`Array<String>`) : Specifies the DID of the peer that will receive the signed message.
-  - `credentialId` (`Null(String)`) : Specifies the keyring ID to be used when signing DIDComm signed messages.
+  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `message` (`Map<String, Any>`) : Specifies the payload to be wrapped as a DIDComm signed message.
+
+**Example**
+```
+{
+  destinations: [ 'did:unid:test:...' ],
+  message: {
+    string: 'value',
+    number: 1,
+    boolean: true,
+    array: [],
+    map: {},
+  }
+}
+```
+
+### Verify DIDComm Signed Message
 
 ```
 POST /internal/didcomm/signed-messages/verify
@@ -135,7 +166,9 @@ POST /internal/didcomm/signed-messages/verify
 Verifies DIDComm signed messages generated according to W3C standards.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specifies the DIDComm signed message to be verified
+  - `message` (`String`) : Specifies the DIDComm signed message to be verified
+
+### Generate DIDComm Encrypted Message
 
 ```
 POST /internal/didcomm/encrypted-messages
@@ -144,9 +177,24 @@ POST /internal/didcomm/encrypted-messages
 Generate and return a DIDComm encrypted message according to W3C standards.
 
 - Parameters (Request Body)
-  - `payload` (`String`) : Specifies the payload to wrap as a DIDComm encrypted message.
-  - `recipients` (`Array<String>`) : DIDComm Specifies the DID of the peer that will receive the encrypted message.
-  - `credentialId` (`Null(String)`) : DIDComm Specifies the keyring ID used to encrypt encrypted messages.
+  - `destinations` (`Array<String>`) : Specifies the destination DID
+  - `message` (`Map<String, Any>`) : Specifies the payload to wrap as a DIDComm encrypted message.
+
+**Example**
+```
+{
+  destinations: [ 'did:unid:test:...' ],
+  message: {
+    string: 'value',
+    number: 1,
+    boolean: true,
+    array: [],
+    map: {},
+  }
+}
+```
+
+### Verify DIDComm Encrypted Message
 
 ```
 POST /internal/didcomm/encrypted-messages/verify
@@ -155,7 +203,7 @@ POST /internal/didcomm/encrypted-messages/verify
 Validates DIDComm encrypted messages generated according to W3C standards.
 
 - Parameters(Request Body)
-  - `payload` (`String`) : Specifies the DIDComm encrypted message to be verified.
+  - `message` (`String`) : Specifies the DIDComm encrypted message to be verified.
 
 ## Events
 
