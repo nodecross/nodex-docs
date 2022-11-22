@@ -48,20 +48,20 @@ Transmits data using the DIDComm protocol.
 
 ```
 {
-  destinations: [ 'did:unid:test:...' ],
-  messages: [ {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
+  'destinations': [ 'did:unid:test:...' ],
+  'messages': [ {
+    'string': 'value',
+    'number': 1,
+    'boolean': true,
+    'array': [],
+    'map': {}
   } ],
-  metadata: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
+  'metadata': {
+    'string': 'value',
+    'number': 1,
+    'boolean': true,
+    'array': [],
+    'map': {}
   }
 }
 ```
@@ -82,12 +82,12 @@ Generate and return a Verifiable Credential in accordance with W3C standards.
 **Example**
 ```
 {
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
+  'message': {
+    'string': 'value',
+    'number': 1,
+    'boolean': true,
+    'array': [],
+    'map': {}
   }
 }
 ```
@@ -104,6 +104,7 @@ Verifies a Verifiable Credential generated according to W3C standards.
   - `message` (`String`) : Specify the VC to be verified.
 
 ### Generate DIDComm Plaintext Message
+
 ```
 POST /internal/didcomm/plaintext-messages
 ```
@@ -117,13 +118,13 @@ Generates and returns a DIDComm plaintext message in accordance with W3C standar
 **Example**
 ```
 {
-  destinations: [ 'did:unid:test:...' ],
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
+  'destinations': [ 'did:unid:test:...' ],
+  'message': {
+    'string': 'value',
+    'number': 1,
+    'boolean': true,
+    'array': [],
+    'map': {}
   }
 }
 ```
@@ -154,13 +155,13 @@ Generate and return a DIDComm signed message in accordance with W3C standards.
 **Example**
 ```
 {
-  destinations: [ 'did:unid:test:...' ],
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
+  'destinations': [ 'did:unid:test:...' ],
+  'message': {
+    'string': 'value',
+    'number': 1,
+    'boolean': true,
+    'array': [],
+    'map': {}
   }
 }
 ```
@@ -191,13 +192,13 @@ Generate and return a DIDComm encrypted message according to W3C standards.
 **Example**
 ```
 {
-  destinations: [ 'did:unid:test:...' ],
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
+  'destinations': [ 'did:unid:test:...' ],
+  'message': {
+    'string': 'value',
+    'number': 1,
+    'boolean': true,
+    'array': [],
+    'map': {}
   },
 }
 ```
