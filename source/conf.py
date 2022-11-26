@@ -33,6 +33,7 @@ extensions = [
   'sphinx_rtd_theme',
   'sphinx_copybutton',
   'sphinxemoji.sphinxemoji',
+  'sphinxcontrib.httpdomain',
 ]
 
 myst_heading_anchors   = 1
@@ -62,8 +63,20 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 
-
-# Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_css_files = [
+    'css/style.css',
+]
+
+from docutils.parsers.rst.roles import code_role
+
+def code(role, rawtext, text, lineno, inliner, options={}, content=[]):
+    # options['class'] = ['highlight']
+    options['classes'] = ['highlight']
+    return code_role(role, rawtext, text, lineno, inliner, options=options, content=content)
+
+def setup(app):
+    app.add_role('code', code)

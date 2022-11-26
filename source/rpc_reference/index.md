@@ -4,214 +4,414 @@ UNiD EDGE is a resident Linux daemon process that provides UNiD EDGE functionali
 
 ## DID operations
 
-The following API is provided through the Unix Domain Socket (/var/run/unid.sock) for applications using the UNiD EDGE. ) that can hit the Unix Domain Socket to communicate with UNiD EDGE through the socket.
+The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.sock`) for applications using the UNiD EDGE. ) that can hit the Unix Domain Socket to communicate with UNiD EDGE through the socket.
 
 ### Create DID
 
-```
-POST /identifiers
-```
+```{eval-rst}
+.. http:post:: /identifiers
 
-Generate a new key ring and register it with DPKI.
+  Generate a new key ring and register it with DPKI.
 
-- Parameters (Request Body)
-  - None
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/identifiers', {}, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
+```
 
 ### Find DID
 
+```{eval-rst}
+.. http:get:: /identifiers/(string:did)
+
+  It acts as a Universal Resolver and returns the corresponding DID Document.
+
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/identifiers/did:unid:test:...', {}, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
 ```
-GET /identifiers/${ did }
-```
-
-It acts as a Universal Resolver and returns the corresponding DID Document.
-
-
-- Parameters (Request Body)
-  - None
 
 ## Data operations
 
 ### Transfer
 
-```
-POST /transfer
-```
+```{eval-rst}
+.. http:post:: /transfer
 
-Transmits data using the DIDComm protocol.
+  Transmits data using the DIDComm protocol.
 
-- Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID.
-  - `messages` (`Array<Map<String, Any>>`) : Specifies data to be sent through the DIDComm protocol.
-  - `metadata` (`Map<String, Any>`) : Specifies the metadata for sending messages.
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json Array<String> destinations: Specifies the destination DID.
+  :<json Array<Map<String, Any>> messages: Specifies data to be sent through the DIDComm protocol.
+  :<json Map<String, Any> metadata: Specifies the metadata for sending messages.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
 
-**Example**
+  **Example**:
 
-```
-{
-  destinations: [ 'did:unid:test:...' ],
-  messages: [ {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
-  } ],
-  metadata: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
-  }
-}
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/transfer', {
+            destinations: [ 'did:unid:test:...' ],
+            messages: [ {
+                string: 'value',
+                number: 1,
+                boolean: true,
+                array: [],
+                map: {}
+            } ],
+            metadata: {
+                string: 'value',
+                number: 1,
+                boolean: true,
+                array: [],
+                map: {}
+            }
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
 ```
 
 ## Credential operations
 
 ### Generate VC
 
-```
-POST /internal/verifiable-credentials
-```
+```{eval-rst}
+.. http:post:: /internal/verifiable-credentials
 
-Generate and return a Verifiable Credential in accordance with W3C standards.
+  Generate and return a Verifiable Credential in accordance with W3C standards.
 
-- Parameters (Request Body)
-  - `message` (`Map<String, Any>`) : Specifies the payload to wrap as VC.
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json Map<String, Any> message: Specifies the payload to wrap as VC.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
 
-**Example**
-```
-{
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
-  }
-}
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/verifiable-credentials', {
+            message: {
+                string: 'value',
+                number: 1,
+                boolean: true,
+                array: [],
+                map: {}
+            }
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
 ```
 
 ### Verify VC
 
-```
-POST /internal/verifiable-credentials/verify
-```
+```{eval-rst}
+.. http:post:: /internal/verifiable-credentials/verify
 
-Verifies a Verifiable Credential generated according to W3C standards.
+  Verifies a Verifiable Credential generated according to W3C standards.
 
-- Parameters (Request Body)
-  - `message` (`String`) : Specify the VC to be verified.
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json String message: Specify the VC to be verified.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/verifiable-credentials/verify', {
+            message: '...'
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
+```
 
 ### Generate DIDComm Plaintext Message
-```
-POST /internal/didcomm/plaintext-messages
-```
 
-Generates and returns a DIDComm plaintext message in accordance with W3C standards.
+```{eval-rst}
+.. http:post:: /internal/didcomm/plaintext-messages
 
-- Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID.
-  - `message` (`Map<String, Any>`) : Specifies the payload to wrap as a DIDComm plaintext message.
+  Generates and returns a DIDComm plaintext message in accordance with W3C standards.
 
-**Example**
-```
-{
-  destinations: [ 'did:unid:test:...' ],
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
-  }
-}
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json Array<String> destinations: Specifies the destination DID.
+  :<json Map<String, Any> message: Specifies the payload to wrap as a DIDComm plaintext message.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/didcomm/plaintext-messages', {
+            destinations: [ 'did:unid:test:...' ],
+            message: {
+                string: 'value',
+                number: 1,
+                boolean: true,
+                array: [],
+                map: {}
+            }
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
 ```
 
 ### Verify DIDComm Plaintext Message
 
-```
-POST /internal/didcomm/plaintext-messages/verify
-```
+```{eval-rst}
+.. http:post:: /internal/didcomm/plaintext-messages/verify
 
-Validates DIDComm plaintext messages generated according to W3C standards.
+  Validates DIDComm plaintext messages generated according to W3C standards.
 
-- Parameters (Request Body)
-  - `message` (`String`) : Specifies the DIDComm plaintext message to be verified.
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json String message: Specifies the DIDComm plaintext message to be verified.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/didcomm/plaintext-messages/verify', {
+            message: '...'
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
+```
 
 ### Generate DIDComm Signed Message
 
-```
-POST /internal/didcomm/signed-messages
-```
+```{eval-rst}
+.. http:post:: /internal/didcomm/signed-messages
 
-Generate and return a DIDComm signed message in accordance with W3C standards.
+  Generate and return a DIDComm signed message in accordance with W3C standards.
 
-- Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID.
-  - `message` (`Map<String, Any>`) : Specifies the payload to be wrapped as a DIDComm signed message.
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json Array<String> destinations: Specifies the destination DID.
+  :<json Map<String, Any> message: Specifies the payload to be wrapped as a DIDComm signed message.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
 
-**Example**
-```
-{
-  destinations: [ 'did:unid:test:...' ],
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
-  }
-}
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/didcomm/signed-messages', {
+            destinations: [ 'did:unid:test:...' ],
+            message: {
+                string: 'value',
+                number: 1,
+                boolean: true,
+                array: [],
+                map: {}
+            }
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
 ```
 
 ### Verify DIDComm Signed Message
 
-```
-POST /internal/didcomm/signed-messages/verify
-```
+```{eval-rst}
+.. http:post:: /internal/didcomm/signed-messages/verify
 
-Verifies DIDComm signed messages generated according to W3C standards.
+  Verifies DIDComm signed messages generated according to W3C standards.
 
-- Parameters (Request Body)
-  - `message` (`String`) : Specifies the DIDComm signed message to be verified
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json String message: Specifies the DIDComm signed message to be verified.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/didcomm/signed-messages/verify', {
+            message: '...'
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
+```
 
 ### Generate DIDComm Encrypted Message
 
-```
-POST /internal/didcomm/encrypted-messages
-```
+```{eval-rst}
+.. http:post:: /internal/didcomm/encrypted-messages
 
-Generate and return a DIDComm encrypted message according to W3C standards.
+  Generate and return a DIDComm encrypted message according to W3C standards.
 
-- Parameters (Request Body)
-  - `destinations` (`Array<String>`) : Specifies the destination DID.
-  - `message` (`Map<String, Any>`) : Specifies the payload to wrap as a DIDComm encrypted message.
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json Array<String> destinations: Specifies the destination DID.
+  :<json Map<String, Any> message: Specifies the payload to wrap as a DIDComm encrypted message.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
 
-**Example**
-```
-{
-  destinations: [ 'did:unid:test:...' ],
-  message: {
-    string: 'value',
-    number: 1,
-    boolean: true,
-    array: [],
-    map: {}
-  },
-}
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/didcomm/encrypted-messages', {
+            destinations: [ 'did:unid:test:...' ],
+            message: {
+                string: 'value',
+                number: 1,
+                boolean: true,
+                array: [],
+                map: {}
+            }
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
 ```
 
 ### Verify DIDComm Encrypted Message
 
-```
-POST /internal/didcomm/encrypted-messages/verify
-```
+```{eval-rst}
+.. http:post:: /internal/didcomm/encrypted-messages/verify
 
-Validates DIDComm encrypted messages generated according to W3C standards.
+  Validates DIDComm encrypted messages generated according to W3C standards.
 
-- Parameters(Request Body)
-  - `message` (`String`) : Specifies the DIDComm encrypted message to be verified.
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json String message: Specifies the DIDComm encrypted message to be verified.
+  :status 200: Success.
+  :status 400: Bad request.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: js
+    :linenos:
+    :caption: NodeJS
+
+    import axios from 'axios'
+
+    (async () => {
+        const response = await axios.post('http:/localhost/internal/didcomm/encrypted-messages/verify', {
+            message: '...'
+        }, {
+            socketPath: '~/.unid/run/unid.sock',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    })()
+```
 
 ## Events
 

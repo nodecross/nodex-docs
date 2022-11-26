@@ -1,0 +1,32 @@
+.http .field-list {
+    margin-bottom: 0;
+}
+
+.http .field-list > dt {
+    padding-left: 0 !important;
+}
+
+.http .code-block-caption {
+    text-align: left;
+    padding: .5em 1em;
+    border: 1px solid #e1e4e5;
+    margin-bottom: -2px;
+    background: #f8f8f8;
+    display: inline-block;
+    font-style: normal;
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+    font-size: 12px;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace;;
+    font-weight: normal;
+}
+
+.http div.highlight-js {
+    border-top-right-radius: .3em;
+    border-bottom-left-radius: .3em;
+    border-bottom-right-radius: .3em;
+}
+
+code.docutils {
+    border-radius: 0.3em;
+}
