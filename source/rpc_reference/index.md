@@ -160,10 +160,11 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
   :<json Array<Map<String, Any>> messages: Specifies data to be sent through the DIDComm protocol.
   :<json Map<String, Any> metadata: Specifies the metadata for sending messages.
 
-  :>json Array<Object> results: value
-  :>json String results.[number].destination: value
-  :>json Boolean results.[number].success: value
-  :>json Array<String> results.[number].errors: value
+  :>json Array<Object> results: The result of processing for each destination is represented as an array.
+  :>json String results.[number].destination: Represents the destination.
+  :>json Boolean results.[number].success: Represents the state of success or failure.
+  :>json Array<Object> results.[number].errors: If an error occurs, the error information is represented as an array.
+  :>json String results.[number].errors.[number].error: Represents an error message.
 
   :status 200: Success.
   :status 400: Bad request.
@@ -216,7 +217,11 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
             {
                 "destination": "did:unid:test:...",
                 "success": false,
-                "errors": [ "ERROR_MESSAGE" ]
+                "errors": [
+                    {
+                        "error": "ERROR_MESSAGE"
+                    }
+                ]
             }
         ]
     }
