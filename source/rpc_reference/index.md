@@ -14,6 +14,12 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
   Generate a new key ring and register it with DPKI.
 
   :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :>json String @context: Represents the context of this object.
+  :>json Object didDocument: Represents a DID Document. See the `Decentralized Identifiers (DIDs) <https://www.w3.org/TR/did-core/>`_ specification for more information on this object.
+  :>json String didDocument.id: Represents a DID.
+  :>json Array<Object> didDocument.publicKey: The public keys associated with the DID are enumerated.
+  :>json Object didDocument.publicKey.[number]: Represents a public key. Please refer to the `Ecdsa Secp256k1 Signature 2019 <https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/>`_ specification for more information on this object.
+  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. See the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
   :status 200: Success.
   :status 400: Bad request.
   :status 500: Internal server error.
@@ -34,6 +40,40 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
             }
         })
     })()
+
+  .. code-block:: json
+    :linenos:
+    :caption: Response (JSON)
+
+    {
+        "@context": "https://www.w3.org/ns/did-resolution/v1",
+        "didDocument": {
+            "id": "did:unid:test:EiCwab0dfdUP1Ka9oZEBb7hVj3ZBPZ-tUGCM7nmceQjtOQ",
+            "publicKey": [
+                {
+                    "id": "#signingKey",
+                    "controller": "",
+                    "type": "EcdsaSecp256k1VerificationKey2019",
+                    "publicKeyJwk": {
+                        "kty": "EC",
+                        "crv": "secp256k1",
+                        "x": "K6UbEvg_ZZGAYOLdqssmQNzY1Lj1eQrYebLiZ_4LQD4",
+                        "y": "3JBpeezYsF0eF7aoOdIY7F4eHWfarZUyn7qnjQOpIvA"
+                    }
+                }
+            ],
+            "service": [
+            ],
+            "authentication": [
+                "#signingKey"
+            ]
+        },
+        "methodMetadata": {
+            "published": false,
+            "recoveryCommitment": "EiD-toxRcqSk6-FIpIr6fIrPwyJJhva-lW-EV4uSnm1BvA",
+            "updateCommitment": "EiCSqEXRpfom3o7DwBTlIOvw2jPUMb2HWE6OTUtNzHuTgQ"
+        }
+    }
 ```
 
 ### Find DID
@@ -44,6 +84,12 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
   It acts as a Universal Resolver and returns the corresponding DID Document.
 
   :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :>json String @context: Represents the context of this object.
+  :>json Object didDocument: Represents a DID Document. See the `Decentralized Identifiers (DIDs) <https://www.w3.org/TR/did-core/>`_ specification for more information on this object.
+  :>json String didDocument.id: Represents a DID.
+  :>json Array<Object> didDocument.publicKey: The public keys associated with the DID are enumerated.
+  :>json Object didDocument.publicKey.[number]: Represents a public key. Please refer to the `Ecdsa Secp256k1 Signature 2019 <https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/>`_ specification for more information on this object.
+  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. See the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
   :status 200: Success.
   :status 400: Bad request.
   :status 500: Internal server error.
@@ -64,6 +110,40 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
             }
         })
     })()
+
+  .. code-block:: json
+    :linenos:
+    :caption: Response (JSON)
+
+    {
+        "@context": "https://www.w3.org/ns/did-resolution/v1",
+        "didDocument": {
+            "id": "did:unid:test:EiCwab0dfdUP1Ka9oZEBb7hVj3ZBPZ-tUGCM7nmceQjtOQ",
+            "publicKey": [
+                {
+                    "id": "#signingKey",
+                    "controller": "",
+                    "type": "EcdsaSecp256k1VerificationKey2019",
+                    "publicKeyJwk": {
+                        "kty": "EC",
+                        "crv": "secp256k1",
+                        "x": "K6UbEvg_ZZGAYOLdqssmQNzY1Lj1eQrYebLiZ_4LQD4",
+                        "y": "3JBpeezYsF0eF7aoOdIY7F4eHWfarZUyn7qnjQOpIvA"
+                    }
+                }
+            ],
+            "service":[
+            ],
+            "authentication": [
+                "#signingKey"
+            ]
+        },
+        "methodMetadata": {
+            "published": false,
+            "recoveryCommitment": "EiD-toxRcqSk6-FIpIr6fIrPwyJJhva-lW-EV4uSnm1BvA",
+            "updateCommitment": "EiCSqEXRpfom3o7DwBTlIOvw2jPUMb2HWE6OTUtNzHuTgQ"
+        }
+    }
 ```
 
 ## Data operations
@@ -76,9 +156,15 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
   Transmits data using the DIDComm protocol.
 
   :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
-  :<json Array<String> destinations: Specifies the destination DID.
+  :<json Array<String> destinations: Specifies the destination DID. For now, the number of destinations that can be specified is limited to 1 - 4.
   :<json Array<Map<String, Any>> messages: Specifies data to be sent through the DIDComm protocol.
   :<json Map<String, Any> metadata: Specifies the metadata for sending messages.
+
+  :>json Array<Object> results: value
+  :>json String results.[number].destination: value
+  :>json Boolean results.[number].success: value
+  :>json Array<String> results.[number].errors: value
+
   :status 200: Success.
   :status 400: Bad request.
   :status 500: Internal server error.
@@ -115,6 +201,25 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
             }
         })
     })()
+
+  .. code-block:: json
+    :linenos:
+    :caption: Response (JSON)
+
+    {
+        "results": [
+            {
+                "destination": "did:unid:test:...",
+                "success": true,
+                "errors": []
+            },
+            {
+                "destination": "did:unid:test:...",
+                "success": false,
+                "errors": [ "ERROR_MESSAGE" ]
+            }
+        ]
+    }
 ```
 
 ## Credential operations
