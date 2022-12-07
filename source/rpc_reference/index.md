@@ -15,11 +15,11 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
 
   :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
   :>json String @context: Represents the context of this object.
-  :>json Object didDocument: Represents a DID Document. See the `Decentralized Identifiers (DIDs) <https://www.w3.org/TR/did-core/>`_ specification for more information on this object.
+  :>json Object didDocument: Represents a DID Document. Please refer to the `Decentralized Identifiers (DIDs) <https://www.w3.org/TR/did-core/>`_ specification for more information on this object.
   :>json String didDocument.id: Represents a DID.
   :>json Array<Object> didDocument.publicKey: The public keys associated with the DID are enumerated.
   :>json Object didDocument.publicKey.[number]: Represents a public key. Please refer to the `Ecdsa Secp256k1 Signature 2019 <https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/>`_ specification for more information on this object.
-  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. See the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
+  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. Please refer to the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
   :status 200: Success.
   :status 400: Bad request.
   :status 500: Internal server error.
@@ -85,11 +85,11 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
 
   :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
   :>json String @context: Represents the context of this object.
-  :>json Object didDocument: Represents a DID Document. See the `Decentralized Identifiers (DIDs) <https://www.w3.org/TR/did-core/>`_ specification for more information on this object.
+  :>json Object didDocument: Represents a DID Document. Please refer to the `Decentralized Identifiers (DIDs) <https://www.w3.org/TR/did-core/>`_ specification for more information on this object.
   :>json String didDocument.id: Represents a DID.
   :>json Array<Object> didDocument.publicKey: The public keys associated with the DID are enumerated.
   :>json Object didDocument.publicKey.[number]: Represents a public key. Please refer to the `Ecdsa Secp256k1 Signature 2019 <https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/>`_ specification for more information on this object.
-  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. See the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
+  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. Please refer to the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
   :status 200: Success.
   :status 400: Bad request.
   :status 500: Internal server error.
