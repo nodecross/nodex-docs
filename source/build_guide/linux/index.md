@@ -98,13 +98,13 @@ Execute the above command and make sure that the version of Rust is 1.65.0 or la
 - **NodeX EDGE: Getting the GitHub repository (clone)**
 
 ```
-[user@linux]$ git clone https://github.com/getunid/unid.git
+[user@linux]$ git clone https://github.com/getnodex/nodex.git
 ```
 
 - **Go to NodeX EDGE directory**
 
 ```
-[user@linux]$ cd unid/
+[user@linux]$ cd nodex/
 ```
 
 - **Commit head start (checkout)**
@@ -134,7 +134,7 @@ warning: `panic` setting is ignored for `test` profile
 
 (SNIP)
 
-warning: `unid` (bin "unid-agent") generated 78 warnings
+warning: `nodex` (bin "nodex-agent") generated 78 warnings
     Finished release [optimized] target(s) in 4m 31s
 ```
 
@@ -149,34 +149,34 @@ drwxrwxr-x 134 parallels parallels    12288 Nov  4 16:25 build/
 drwxrwxr-x   2 parallels parallels   126976 Nov  4 16:33 deps/
 drwxrwxr-x   2 parallels parallels     4096 Nov  4 15:57 examples/
 drwxrwxr-x   2 parallels parallels     4096 Nov  4 15:57 incremental/
--rwxrwxr-x   2 parallels parallels 12499616 Nov  4 16:33 unid-agent*
--rw-rw-r--   1 parallels parallels     2688 Nov  4 16:33 unid-agent.d
+-rwxrwxr-x   2 parallels parallels 12499616 Nov  4 16:33 nodex-agent*
+-rw-rw-r--   1 parallels parallels     2688 Nov  4 16:33 nodex-agent.d
 ```
 
 These steps will complete the build of NodeX EDGE. Verify that the build artifacts exist in the following path
 
-- **target/x86_64-unknown-linux-musl/release/unid-agent**
+- **target/x86_64-unknown-linux-musl/release/nodex-agent**
 
-The build artifact (unid-agent) can be executed by properly deploying it on the execution environment specified at build time; the API reference provided by NodeX EDGE is described in subsequent chapters.
+The build artifact (nodex-agent) can be executed by properly deploying it on the execution environment specified at build time; the API reference provided by NodeX EDGE is described in subsequent chapters.
 
 ## First time starting up
 
 The NodeX EDGE built in the previous steps should be moved to any directory on the LinuxOS (generally /usr/local/bin is a good place to put it).
 
 ```
-[user@linux]$ sudo mv target/x86_64-unknown-linux-musl/release/unid-agent /usr/local/bin
+[user@linux]$ sudo mv target/x86_64-unknown-linux-musl/release/nodex-agent /usr/local/bin
 ```
 
 NodeX EDGE has a daemon startup function in the binary itself and can be started in a daemon state by specifying options. The following snippet shows how to start NodeX EDGE in a non-daemon state.
 
 ```
-[user@linux]$ unid-agent
+[user@linux]$ nodex-agent
 ```
 
 The following snippet shows how to start NodeX EDGE in daemon state.
 
 ```
-[user@linux]$ unid-agent --daemonize
+[user@linux]$ nodex-agent --daemonize
 ```
 
 There is no difference in the functionality provided by NodeX EDGE in either method, and other applications capable of IPC (Unix Domain Socket) communication can still make requests to the NodeX EDGE Agent.
@@ -187,8 +187,8 @@ To verify that it was installed correctly, run the following snippet. If the res
 
 ```
 curl -X GET H 'content-type: application/json' \
-    --unix-socket /usr/local/bin/unid-agent.sock \
-    'http:/local/identifiers/did:unid:test:ey………'
+    --unix-socket /usr/local/bin/nodex-agent.sock \
+    'http:/local/identifiers/did:nodex:test:ey………'
 ```
 
 Please refer to the API Reference page for more information on how to use NodeX EDGE.

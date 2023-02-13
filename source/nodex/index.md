@@ -9,7 +9,7 @@ NodeX is an open-source toolkit that enables any developers to connect all devic
 
 :::{figure-md}
 
-<img src="../_assets/unid_overview_2022.svg" alt="figure1" width="80%" align="center">
+<img src="../_assets/nodex_overview_2022.svg" alt="figure1" width="80%" align="center">
 
 **Figure 1.** The core components in NodeX
 :::
@@ -47,7 +47,7 @@ An open-source Rust library that is extensible into any type of devices. Current
 - **RoT Extension**: This component can be applied to RoTs with proprietary specifications by implementing shared libraries according to the API specification.
 - **Device Extension**: This library can be distributed as middleware for IPC communication with client applications or as a library to be integrated into client application.
 
-For more information, see <a href="https://github.com/getunid/unid" class="external" target="_blank" rel="noopener noreferrer">github page</a>.
+For more information, see <a href="https://github.com/nodecross/nodex-agent" class="external" target="_blank" rel="noopener noreferrer">GitHub page</a>.
 
 <!--
 :::{figure-md}

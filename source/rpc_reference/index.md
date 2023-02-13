@@ -4,7 +4,7 @@ NodeX EDGE is a resident Linux daemon process that provides NodeX EDGE functiona
 
 ## DID operations
 
-The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.sock`) for applications using the NodeX EDGE. ) that can hit the Unix Domain Socket to communicate with NodeX EDGE through the socket.
+The following API is provided through the Unix Domain Socket (`~/.nodex/run/nodex.sock`) for applications using the NodeX EDGE. ) that can hit the Unix Domain Socket to communicate with NodeX EDGE through the socket.
 
 ### Create DID
 
@@ -19,7 +19,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
   :>json String didDocument.id: Represents a DID.
   :>json Array<Object> didDocument.publicKey: The public keys associated with the DID are enumerated.
   :>json Object didDocument.publicKey.[number]: Represents a public key. Please refer to the `Ecdsa Secp256k1 Signature 2019 <https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/>`_ specification for more information on this object.
-  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. Please refer to the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
+  :>json Object methodMetadata: Represents metadata for the :code:`did:nodex` method. Please refer to the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
   :status 200: Success.
   :status 400: Bad request.
   :status 500: Internal server error.
@@ -34,7 +34,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
 
     (async () => {
         const response = await axios.post('http:/localhost/identifiers', {}, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -48,7 +48,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
     {
         "@context": "https://www.w3.org/ns/did-resolution/v1",
         "didDocument": {
-            "id": "did:unid:test:EiCwab0dfdUP1Ka9oZEBb7hVj3ZBPZ-tUGCM7nmceQjtOQ",
+            "id": "did:nodex:test:EiCwab0dfdUP1Ka9oZEBb7hVj3ZBPZ-tUGCM7nmceQjtOQ",
             "publicKey": [
                 {
                     "id": "#signingKey",
@@ -89,7 +89,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
   :>json String didDocument.id: Represents a DID.
   :>json Array<Object> didDocument.publicKey: The public keys associated with the DID are enumerated.
   :>json Object didDocument.publicKey.[number]: Represents a public key. Please refer to the `Ecdsa Secp256k1 Signature 2019 <https://w3c-ccg.github.io/lds-ecdsa-secp256k1-2019/>`_ specification for more information on this object.
-  :>json Object methodMetadata: Represents metadata for the :code:`did:unid` method. Please refer to the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
+  :>json Object methodMetadata: Represents metadata for the :code:`did:nodex` method. Please refer to the `Sidetree <https://identity.foundation/sidetree/spec/>`_ specification for more information on this object.
   :status 200: Success.
   :status 400: Bad request.
   :status 500: Internal server error.
@@ -103,8 +103,8 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
     import axios from 'axios'
 
     (async () => {
-        const response = await axios.post('http:/localhost/identifiers/did:unid:test:...', {}, {
-            socketPath: '~/.unid/run/unid.sock',
+        const response = await axios.post('http:/localhost/identifiers/did:nodex:test:...', {}, {
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -118,7 +118,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
     {
         "@context": "https://www.w3.org/ns/did-resolution/v1",
         "didDocument": {
-            "id": "did:unid:test:EiCwab0dfdUP1Ka9oZEBb7hVj3ZBPZ-tUGCM7nmceQjtOQ",
+            "id": "did:nodex:test:EiCwab0dfdUP1Ka9oZEBb7hVj3ZBPZ-tUGCM7nmceQjtOQ",
             "publicKey": [
                 {
                     "id": "#signingKey",
@@ -180,7 +180,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
 
     (async () => {
         const response = await axios.post('http:/localhost/transfer', {
-            destinations: [ 'did:unid:test:...' ],
+            destinations: [ 'did:nodex:test:...' ],
             messages: [ {
                 string: 'value',
                 number: 1,
@@ -196,7 +196,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
                 map: {}
             }
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -210,12 +210,12 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
     {
         "results": [
             {
-                "destination": "did:unid:test:...",
+                "destination": "did:nodex:test:...",
                 "success": true,
                 "errors": []
             },
             {
-                "destination": "did:unid:test:...",
+                "destination": "did:nodex:test:...",
                 "success": false,
                 "errors": [
                     {
@@ -260,7 +260,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
                 map: {}
             }
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -293,7 +293,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
         const response = await axios.post('http:/localhost/internal/verifiable-credentials/verify', {
             message: '...'
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -325,7 +325,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
 
     (async () => {
         const response = await axios.post('http:/localhost/internal/didcomm/plaintext-messages', {
-            destinations: [ 'did:unid:test:...' ],
+            destinations: [ 'did:nodex:test:...' ],
             message: {
                 string: 'value',
                 number: 1,
@@ -334,7 +334,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
                 map: {}
             }
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -367,7 +367,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
         const response = await axios.post('http:/localhost/internal/didcomm/plaintext-messages/verify', {
             message: '...'
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -399,7 +399,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
 
     (async () => {
         const response = await axios.post('http:/localhost/internal/didcomm/signed-messages', {
-            destinations: [ 'did:unid:test:...' ],
+            destinations: [ 'did:nodex:test:...' ],
             message: {
                 string: 'value',
                 number: 1,
@@ -408,7 +408,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
                 map: {}
             }
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -441,7 +441,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
         const response = await axios.post('http:/localhost/internal/didcomm/signed-messages/verify', {
             message: '...'
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -473,7 +473,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
 
     (async () => {
         const response = await axios.post('http:/localhost/internal/didcomm/encrypted-messages', {
-            destinations: [ 'did:unid:test:...' ],
+            destinations: [ 'did:nodex:test:...' ],
             message: {
                 string: 'value',
                 number: 1,
@@ -482,7 +482,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
                 map: {}
             }
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -515,7 +515,7 @@ The following API is provided through the Unix Domain Socket (`~/.unid/run/unid.
         const response = await axios.post('http:/localhost/internal/didcomm/encrypted-messages/verify', {
             message: '...'
         }, {
-            socketPath: '~/.unid/run/unid.sock',
+            socketPath: '~/.nodex/run/nodex.sock',
             headers: {
                 'Content-Type': 'application/json'
             }

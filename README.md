@@ -8,8 +8,8 @@ This document follows the [Sphinx](https://www.sphinx-doc.org) documentation fra
 
 **Clone the repository**
 ```bash
-git clone https://github.com/getunid/unid-docs.git
-cd unid-docs
+git clone https://github.com/getnodex/nodex-docs.git
+cd nodex-docs
 git switch -c sphinx origin/sphinx
 ```
 
@@ -25,7 +25,7 @@ make watch
 
 ## Contributing
 
-[Click here](https://github.com/getunid/unid-docs/issues/new/choose) for `bug report` and `feature request` regarding the contents of this document. Thanks for your feedback to help us to improve.
+[Click here](https://github.com/getnodex/nodex-docs/issues/new/choose) for `bug report` and `feature request` regarding the contents of this document. Thanks for your feedback to help us to improve.
 
 ## License
 

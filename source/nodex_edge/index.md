@@ -1,6 +1,6 @@
 # NodeX Features
 
-In this chapter, we introduce the core features of NodeX EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found [here](https://github.com/getunid/unid).
+In this chapter, we introduce the core features of NodeX EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found [here](https://github.com/nodecross/nodex-agent).
 
 NodeX EDGE consists of micro components and extensions that support various RoTs, transports and clouds. By integrating NodeX EDGE into your device, you can securely implement the necessary security features such as FOTA, remote monitoring, and device certificate management.
 
