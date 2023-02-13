@@ -1,18 +1,18 @@
-# Welcome to UNiD Documentation!
+# Welcome to NodeX Documentation!
 
 ```{image} _assets/unid_u_logo.svg
 :align: center
 ```
 
 <h1 style="text-align: center;">
-UNiD
+NodeX
     
 [![Release Pipeline](https://github.com/getunid/unid/actions/workflows/release-pipeline.yml/badge.svg?branch=main)](https://github.com/getunid/unid/actions/workflows/release-pipeline.yml) [![Coverage Status](https://coveralls.io/repos/github/getunid/unid/badge.svg)](https://coveralls.io/github/getunid/unid) [![Crates](https://img.shields.io/crates/v/unid.svg)](https://crates.io/crates/unid) [![Semantic Release](https://img.shields.io/badge/semantic--release-rust-B7410E?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 </h1>
 
 <hr />
 
-UNiD is an open-source toolkit for building end-to-end secure messaging between all devices including IoT, micro services, and on-premise servers, using features of [decentralized identifiers (DIDs)](https://www.w3.org/TR/did-core/) as a basis of security and privacy. Build atop [DIDComm messaging protocol](https://github.com/decentralized-identity/didcomm-messaging) which works over any transports, it makes end-to-end messaging reliable, secure, and easy.
+NodeX is an open-source toolkit for building end-to-end secure messaging between all devices including IoT, micro services, and on-premise servers, using features of [decentralized identifiers (DIDs)](https://www.w3.org/TR/did-core/) as a basis of security and privacy. Build atop [DIDComm messaging protocol](https://github.com/decentralized-identity/didcomm-messaging) which works over any transports, it makes end-to-end messaging reliable, secure, and easy.
 
 ```{toctree}
 :hidden:

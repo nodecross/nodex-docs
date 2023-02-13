@@ -18,9 +18,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project   = 'UNiD'
-copyright = '2022 -, UNiD Project'
-author    = 'UNiD Project'
+project   = 'NodeX'
+copyright = '2022 -, NodeX Project'
+author    = 'NodeX Project'
 
 
 # -- General configuration ---------------------------------------------------

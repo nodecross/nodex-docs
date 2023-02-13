@@ -1,23 +1,23 @@
 # Scenario II. Sign Credentials
 
-In Scenario II, you will learn how to apply digital signature to JSON-LD based structured data using UNiD EDGE SDK.
+In Scenario II, you will learn how to apply digital signature to JSON-LD based structured data using NodeX EDGE SDK.
 
 ## Goals
 
-* By following this tutorial, you will learn how to digitally sign JSON-LD based structured data using UNiD EDGE SDK.
+* By following this tutorial, you will learn how to digitally sign JSON-LD based structured data using NodeX EDGE SDK.
 
 ## Tutorial flow
 
-This tutorial will proceed in the order defined below. The steps from "1. Creating a NodeJS project" to "3. Using UNiD EDGE SDK" in the tutorial are exactly the same as [Scenario I](i.-create-a-did.md). Please refer to Scenario I page for the details.
+This tutorial will proceed in the order defined below. The steps from "1. Creating a NodeJS project" to "3. Using NodeX EDGE SDK" in the tutorial are exactly the same as [Scenario I](i.-create-a-did.md). Please refer to Scenario I page for the details.
 
 1. Creating a NodeJS project
 2. Install dependencies and project settings
-3. Using UNiD EDGE SDK
+3. Using NodeX EDGE SDK
 4. Digitally sign structured data
 
 ## 4. Digitally sign structured data
 
-Digitally signing structured data is also easy with the UNiD EDGE SDK! You only need to include the following few statements in your code to benefit from digital signatures.
+Digitally signing structured data is also easy with the NodeX EDGE SDK! You only need to include the following few statements in your code to benefit from digital signatures.
 
 ```typescript
 (async () => {
@@ -32,10 +32,10 @@ Digitally signing structured data is also easy with the UNiD EDGE SDK! You only 
 The `DID` instance in the code fragment can be generated using the `createDid()` function, etc., which is handled in [Scenario I](i.-create-a-did.md).
 :::
 
-The object that can be passed to the `createCredential()` function must be an object that inherits from the `UNiDVerifiableCredentialBase` class. UNiD EDGE SDK predefines several data types to represent structured data and binds them to the SDK. In this chapter, we will try to express the code using the `EmailCredentialV1` class, which can be used to represent email data from among its data types.
+The object that can be passed to the `createCredential()` function must be an object that inherits from the `NodeXVerifiableCredentialBase` class. NodeX EDGE SDK predefines several data types to represent structured data and binds them to the SDK. In this chapter, we will try to express the code using the `EmailCredentialV1` class, which can be used to represent email data from among its data types.
 
 :::{admonition} Info
-`EmailCredentialV1` class is included in UNiD EDGE SDK, but it will not be imported automatically. Don't forget to import it!
+`EmailCredentialV1` class is included in NodeX EDGE SDK, but it will not be imported automatically. Don't forget to import it!
 :::
 
 A snippet of code combining the `EmailCredentialV1` class, which represents the data structure, and the `createCredential()` function, which is used to apply a digital signature, is shown below.
@@ -58,7 +58,7 @@ The `DID` instance in the code fragment can be generated using the `createDid()`
 The following is a series of code fragments, including the method of digitally signing structured data and the process of displaying the results.
 
 ```typescript
-import { UNiD, Cipher } from '@getunid/node-wallet-sdk'
+import { NodeX, Cipher } from '@getunid/node-wallet-sdk'
 import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
 import { KeyRingType } from '@getunid/node-wallet-sdk'
 
@@ -74,15 +74,15 @@ import { KeyRingType } from '@getunid/node-wallet-sdk'
     // Initializing the connector (database creation and migration)
     await connector.init()
 
-    // Initializing the UNiD EDGE SDK
-    UNiD.init({
+    // Initializing the NodeX EDGE SDK
+    NodeX.init({
         clientId    : '<UNUSED_FIELD>',
         clientSecret: '<UNUSED_FIELD>',
         connector   : connector,
     })
 
     // Insert your great code below this line
-    const DID = await UNiD.createDid(KeyRingType.Mnemonic)
+    const DID = await NodeX.createDid(KeyRingType.Mnemonic)
 
     // Build
     const structuredData = new EmailCredentialV1({
@@ -136,9 +136,9 @@ signed credential:
 
 Did you see the data (JSON block) shown above in your terminal? Data that has been signed for structured data is called Verifiable Credential in the DID specification, and in the standard output above, the JSON block output below the label signed credential corresponds to Verifiable Credential. This chapter may be boring because we did the digital signature as a console application. However, when combined with a web framework such as Express or Fastify, it may be possible to easily issue digitally signed copies of verified data stored on the server application side (e.g., resident data if you are in charge of a government agency). How would you like to use the signed structured data?
 
-In the next chapter, you will learn how to use UNiD EDGE SDK to verify the correctness of signed structured data.
+In the next chapter, you will learn how to use NodeX EDGE SDK to verify the correctness of signed structured data.
 
-**Index of UNiD EDGE SDK / Ubuntu (NodeJS) tutorials:**
+**Index of NodeX EDGE SDK / Ubuntu (NodeJS) tutorials:**
 
 * [Scenario I. Create a DID](i.-create-a-did.md)
 * [Scenario II. Sign Credentials](ii.-sign-credentials.md)

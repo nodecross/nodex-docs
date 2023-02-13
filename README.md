@@ -1,6 +1,6 @@
-# UNiD Official Documentation
+# NodeX Official Documentation
 
-The UNiD Official Documentation is designed to organize and disseminate all publicly available information that makes up the UNiD platform. The documentation will be updated as needed, but if you find a bug in the documentation, please follow the contributor guide below to submit a pull request.
+The NodeX Official Documentation is designed to organize and disseminate all publicly available information that makes up the NodeX platform. The documentation will be updated as needed, but if you find a bug in the documentation, please follow the contributor guide below to submit a pull request.
 
 ## Getting started
 

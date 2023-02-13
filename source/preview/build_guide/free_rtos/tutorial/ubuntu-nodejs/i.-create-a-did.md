@@ -1,10 +1,10 @@
 # Scenario I. Create a DID
 
-In Scenario I, you will learn how to use the UNiD EDGE SDK to create a DID on your terminal.
+In Scenario I, you will learn how to use the NodeX EDGE SDK to create a DID on your terminal.
 
 ## Goals
 
-* By following this tutorial, you will learn the steps to create a DID in the Ubuntu environment (NodeJS) in combination with UNiD EDGE SDK.
+* By following this tutorial, you will learn the steps to create a DID in the Ubuntu environment (NodeJS) in combination with NodeX EDGE SDK.
 
 ## Tutorial flow
 
@@ -12,7 +12,7 @@ This tutorial will proceed in the order defined as follows:
 
 1. Creating a NodeJS project
 2. Install dependencies and project settings
-3. Using UNiD EDGE SDK
+3. Using NodeX EDGE SDK
 4. Add DID creation process
 
 ## 1. Creating a NodeJS project
@@ -31,7 +31,7 @@ yarn init -y
 Install the dependency libraries required to implement and run the project, in order.
 
 ```bash
-# UNiD SDK
+# NodeX SDK
 yarn add @getunid/node-wallet-sdk
 yarn add @getunid/wallet-sdk-sqlite-connector
 
@@ -44,7 +44,7 @@ yarn add -D @types/node
 In this project, we will use TypeScript to implement the application.
 
 ```{note}
-The project itself can be implemented in pure JavaScript without using TypeScript, but since UNiD nodejs SDK provides type definition information, so you can have a more intuitive programming experience by using TypeScript.
+The project itself can be implemented in pure JavaScript without using TypeScript, but since NodeX nodejs SDK provides type definition information, so you can have a more intuitive programming experience by using TypeScript.
 ```
 
 Configure the initial settings for TypeScript.
@@ -70,7 +70,7 @@ The package.json file contains the minimum configuration required to run a TypeS
      "@getunid/node-wallet-sdk": "^1.3.13",
 ```
 
-## 3. Using UNiD EDGE SDK
+## 3. Using NodeX EDGE SDK
 
 First of all, let's create a file that will be the entry point for this tutorial.
 
@@ -82,7 +82,7 @@ touch index.ts
 Open the `index.ts` file in your preferred IDE or text editor and proceed with the implementation. For this tutorial, we recommend using [VSCode](https://code.visualstudio.com). Once you open the `index.ts` file in your favorite text editor, you can enter the skeleton for the tutorial. You can see the skeleton provided in the codes as follows.
 
 ```typescript
-import { UNiD, Cipher } from '@getunid/node-wallet-sdk'
+import { NodeX, Cipher } from '@getunid/node-wallet-sdk'
 import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
 
 (async () => {
@@ -97,8 +97,8 @@ import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
     // Initializing the connector (database creation and migration)
     await connector.init()
 
-    // Initializing the UNiD EDGE SDK
-    UNiD.init({
+    // Initializing the NodeX EDGE SDK
+    NodeX.init({
         clientId    : '<UNUSED_FIELD>',
         clientSecret: '<UNUSED_FIELD>',
         connector   : connector,
@@ -131,13 +131,13 @@ $ npx ts-node index.ts
 ✨  Done in 4.98s.
 ```
 
-Oh, you don't see anything as a result of running it? Actually, that's how it works. Instead of displaying nothing, you should find a `unid-edge-sdk.sqlite` file created in the NodeJS project directory as proof that the initialization of the UNiD EDGE SDK was executed successfully. unid-edge-sdk.sqlite file is a keyring where the private key data handled by the UNiD The `unid-edge-sdk.sqlite` file is the keyring where the private key data handled by the UNiD EDGE SDK is stored in encrypted form.
+Oh, you don't see anything as a result of running it? Actually, that's how it works. Instead of displaying nothing, you should find a `unid-edge-sdk.sqlite` file created in the NodeJS project directory as proof that the initialization of the NodeX EDGE SDK was executed successfully. unid-edge-sdk.sqlite file is a keyring where the private key data handled by the NodeX The `unid-edge-sdk.sqlite` file is the keyring where the private key data handled by the NodeX EDGE SDK is stored in encrypted form.
 
 Let's move on to the next step, which is to add the DID creation process.
 
 ## 4. Add DID creation process
 
-It is very easy to create a DID using the UNiD EDGE SDK. Just incorporate the following statement into your code!
+It is very easy to create a DID using the NodeX EDGE SDK. Just incorporate the following statement into your code!
 
 ```{note}
 You will need to import the KeyRingType Enum in order to run the function to create the DID. Don't forget to import it!
@@ -150,14 +150,14 @@ import { KeyRingType } from '@getunid/node-wallet-sdk'
     // ..
 
     // Insert your great code below this line
-    const DID = await UNiD.createDid(KeyRingType.Mnemonic)
+    const DID = await NodeX.createDid(KeyRingType.Mnemonic)
 })()
 ```
 
-The `DID` instance created by the `createDid` function provided by UNiD EDGE SDK provides several useful functions for working with DIDs. Let's take a look at the entire code block along with the process of printing your newly created DID on the terminal.
+The `DID` instance created by the `createDid` function provided by NodeX EDGE SDK provides several useful functions for working with DIDs. Let's take a look at the entire code block along with the process of printing your newly created DID on the terminal.
 
 ```typescript
-import { UNiD, Cipher } from '@getunid/node-wallet-sdk'
+import { NodeX, Cipher } from '@getunid/node-wallet-sdk'
 import { SqliteConnector } from '@getunid/wallet-sdk-sqlite-connector'
 import { KeyRingType } from '@getunid/node-wallet-sdk'
 
@@ -173,15 +173,15 @@ import { KeyRingType } from '@getunid/node-wallet-sdk'
     // Initializing the connector (database creation and migration)
     await connector.init()
 
-    // Initializing the UNiD EDGE SDK
-    UNiD.init({
+    // Initializing the NodeX EDGE SDK
+    NodeX.init({
         clientId    : '<UNUSED_FIELD>',
         clientSecret: '<UNUSED_FIELD>',
         connector   : connector,
     })
 
     // Insert your great code below this line
-    const DID = await UNiD.createDid(KeyRingType.Mnemonic)
+    const DID = await NodeX.createDid(KeyRingType.Mnemonic)
 
     console.log(`your did: ${ DID.getIdentifier() }`)
     console.log(`your did document:`)
@@ -222,9 +222,9 @@ your did document:
 }
 ```
 
-You should see this output in your terminal. You can create a private key, generate a public key from the private key, and register the generated public key to the UNiD Network as a DID Document by simply incorporating the code described in this tutorial into your program. In the next chapter, we will show you how to digitally sign JSON-LD based structured data using the secret key you have created.
+You should see this output in your terminal. You can create a private key, generate a public key from the private key, and register the generated public key to the NodeX Network as a DID Document by simply incorporating the code described in this tutorial into your program. In the next chapter, we will show you how to digitally sign JSON-LD based structured data using the secret key you have created.
 
-**Index of UNiD EDGE SDK / Ubuntu (NodeJS) tutorials:**
+**Index of NodeX EDGE SDK / Ubuntu (NodeJS) tutorials:**
 
 * [Scenario I. Create a DID](i.-create-a-did.md)
 * [Scenario II. Sign Credentials](ii.-sign-credentials.md)

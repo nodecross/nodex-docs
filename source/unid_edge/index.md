@@ -1,27 +1,27 @@
-# UNiD EDGE
+# NodeX EDGE
 
-In this chapter, we introduce the core features of UNiD EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found [here](https://github.com/getunid/unid).
+In this chapter, we introduce the core features of NodeX EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found [here](https://github.com/getunid/unid).
 
-UNiD EDGE consists of micro components and extensions that support various RoTs, transports and clouds. By integrating UNiD EDGE into your device, you can securely implement the necessary security features such as FOTA, remote monitoring, and device certificate management.
+NodeX EDGE consists of micro components and extensions that support various RoTs, transports and clouds. By integrating NodeX EDGE into your device, you can securely implement the necessary security features such as FOTA, remote monitoring, and device certificate management.
 
 :::{figure-md}
 
 <img src="../_assets/figure10.svg" alt="figure6">
 
-**Figure 6.** UNiD EDGE Architecture
+**Figure 6.** NodeX EDGE Architecture
 :::
 
 ## Features
 
 ### Device Identifier
 
-UNiD EDGE uses decentralized identifier (DID) as a device identifier based on the [W3C DID Core 1.0 specification](https://www.w3.org/TR/did-core/). In the secure processing environment (hereinafter referred to as SPE), it generates multiple key pairs from a hardware-derived true random number generator (TRNG), and generates the payload by hashing the object containing this public key information. This payload can be registered with blockchain-based DPKI (Decentralized Public Key Infrastructure) to generate a DID, which can be treated as a globally unique identifier independent of any third party. This DID is a URI that associates the device with a DID document that allows trustable interactions.
+NodeX EDGE uses decentralized identifier (DID) as a device identifier based on the [W3C DID Core 1.0 specification](https://www.w3.org/TR/did-core/). In the secure processing environment (hereinafter referred to as SPE), it generates multiple key pairs from a hardware-derived true random number generator (TRNG), and generates the payload by hashing the object containing this public key information. This payload can be registered with blockchain-based DPKI (Decentralized Public Key Infrastructure) to generate a DID, which can be treated as a globally unique identifier independent of any third party. This DID is a URI that associates the device with a DID document that allows trustable interactions.
 
 ## Root of Trust (RoT)
 
-UNiD EDGE always encrypts and stores all sensitive information such as device key pairs, device instance, and pre-configured security policies and performs crypto processing in the secure processing environment. Unauthorized applications and remote servers can not access the SPE to prevent virus intrusion and information leakage.
+NodeX EDGE always encrypts and stores all sensitive information such as device key pairs, device instance, and pre-configured security policies and performs crypto processing in the secure processing environment. Unauthorized applications and remote servers can not access the SPE to prevent virus intrusion and information leakage.
 
-Placing the root of trust in the hardware is a fundamental requirement of IEC 62443, an international standard for OT/IoT systems. To take advantage of this RoT technology, it is necessary to understand the architecture and low-level API, which requires a high level of expertise and a lot of effort. UNiD EDGE RoT Wrapper makes it simple to use RoT technology.
+Placing the root of trust in the hardware is a fundamental requirement of IEC 62443, an international standard for OT/IoT systems. To take advantage of this RoT technology, it is necessary to understand the architecture and low-level API, which requires a high level of expertise and a lot of effort. NodeX EDGE RoT Wrapper makes it simple to use RoT technology.
 
 ### Device Authenticity
 
@@ -29,11 +29,11 @@ Entities that communicate with the device can validate the device's authenticity
 
 ### Fully Automated Provisioning
 
-By leveraging decentralized identity technology, UNiD EDGE enables fully automated provisioning.
+By leveraging decentralized identity technology, NodeX EDGE enables fully automated provisioning.
 
 In the typical provisioning flow, the provisioners manually generate key pairs and certificate signing requests (CSRs) and register CSRs to a certificate authority to get the device's public key certificates. Then, the provisioner manually injects private keys and certificates into devices. This manual operation comes at a high cost because you need to invest in physical security environments and employee background checks to reduce security risks in your manufacturing line. This key injection usually costs between $0.5 and $2.0 USD per device.
 
-UNiD EDGE enables devices to autonomously register the public key to the decentralized PKI. In UNiD flow, you don't need to trust any intermediaries; provisioners and intermediate CAs, it means you can completely eliminate the manual operation costs and vulnerabilities in your manufacturing line.
+NodeX EDGE enables devices to autonomously register the public key to the decentralized PKI. In NodeX flow, you don't need to trust any intermediaries; provisioners and intermediate CAs, it means you can completely eliminate the manual operation costs and vulnerabilities in your manufacturing line.
 
 :::{figure-md}
 
@@ -44,11 +44,11 @@ UNiD EDGE enables devices to autonomously register the public key to the decentr
 
 ### E2E Secure Channel
 
-Two-way communication (device-cloud, device- device) happens via a message handler, called by the customer, UNiD HUB. UNiD EDGE stores UNiD HUB's DID in RoT SPE as pre-configuration. The device performs handshakes with the UNiD HUB to establish an end-to-end secure channel. In the handshake process, the system sends the public key (for encryption) and encrypted and signed message including client_id and client_secret to the server as client hello. The server generates a common key with a received public key, and decrypts the message to verify the device's signature and client_secret, and responds with an encrypted and signed message to the device. The device then verifies the server's signature and compares the server's DID with the pre-configured DID to authenticate the server, and completes the handshake process.
+Two-way communication (device-cloud, device- device) happens via a message handler, called by the customer, NodeX HUB. NodeX EDGE stores NodeX HUB's DID in RoT SPE as pre-configuration. The device performs handshakes with the NodeX HUB to establish an end-to-end secure channel. In the handshake process, the system sends the public key (for encryption) and encrypted and signed message including client_id and client_secret to the server as client hello. The server generates a common key with a received public key, and decrypts the message to verify the device's signature and client_secret, and responds with an encrypted and signed message to the device. The device then verifies the server's signature and compares the server's DID with the pre-configured DID to authenticate the server, and completes the handshake process.
 
 ### Access Control
 
-The system software stores in PSA-RoT secure storage a security policy regarding access privileges. Such a security policy is used by the system software to manage access privileges. Device security parameters can only be updated by privileged users who are allowed to access the UNiD HUB. There are two access privilege levels; Admin and User. Admin and User (including cloud application through API) are authenticated and authorized by HUB. Admin users are allowed to send encrypted and signed data with secret_token to the target device, and the device validates the secret_token using a pre-configured security policy to authenticate the admin user. In the system software, the execution of application functionalities is enabled with the lowest level of privilege necessary for the intended function.
+The system software stores in PSA-RoT secure storage a security policy regarding access privileges. Such a security policy is used by the system software to manage access privileges. Device security parameters can only be updated by privileged users who are allowed to access the NodeX HUB. There are two access privilege levels; Admin and User. Admin and User (including cloud application through API) are authenticated and authorized by HUB. Admin users are allowed to send encrypted and signed data with secret_token to the target device, and the device validates the secret_token using a pre-configured security policy to authenticate the admin user. In the system software, the execution of application functionalities is enabled with the lowest level of privilege necessary for the intended function.
 
 ## OTA Update
 
@@ -56,11 +56,11 @@ The system software supports updates from authorized remote servers. Integrity a
 
 ### Logging
 
-The logging data is buffered with EMERG/ALERT/CRIT/ERR/WARNING/NOTICE/DEBUG log level tags and FROM/TO/MESSAGE data format and will be sent to UNiD HUB. All logging data is digitally signed, encrypted (AES-GCM) in the RoT secure storage. If the network of the device is temporarily interrupted, the logging data will be buffered with the maximum value of the pre-configured capacity, and the cached logging data will be sent to UNiD HUB when the network is reopened. UNiD HUB verifies and decrypts the logging data and stores it in the server. Basically, the logging data is stored in the server for 2 years, but the storage period depends on the service plan users subscribe to. Users can access the logging data via UNiD HUB API. In the initial configuration, only the admin user can access the logging data. Admin users can change the access control of UNiD HUB. All the logging data can be searched by the logging tags.
+The logging data is buffered with EMERG/ALERT/CRIT/ERR/WARNING/NOTICE/DEBUG log level tags and FROM/TO/MESSAGE data format and will be sent to NodeX HUB. All logging data is digitally signed, encrypted (AES-GCM) in the RoT secure storage. If the network of the device is temporarily interrupted, the logging data will be buffered with the maximum value of the pre-configured capacity, and the cached logging data will be sent to NodeX HUB when the network is reopened. NodeX HUB verifies and decrypts the logging data and stores it in the server. Basically, the logging data is stored in the server for 2 years, but the storage period depends on the service plan users subscribe to. Users can access the logging data via NodeX HUB API. In the initial configuration, only the admin user can access the logging data. Admin users can change the access control of NodeX HUB. All the logging data can be searched by the logging tags.
 
 ### RoT Extension
 
-Middleware for storing security configurations or secret keys and for accessing RoT functions may sometimes be configured independently. In order to allow UNiD EDGE to run in more environments and to serve as a security solution for a variety of use cases, we provide the ability to replace some of the functions built into UNiD EDGE with your own. Developers do not need to recompile the entire UNiD EDGE. All they need to do is implement the methods according to a simple API specification and create a shared library that can be loaded by UNiD EDGE.
+Middleware for storing security configurations or secret keys and for accessing RoT functions may sometimes be configured independently. In order to allow NodeX EDGE to run in more environments and to serve as a security solution for a variety of use cases, we provide the ability to replace some of the functions built into NodeX EDGE with your own. Developers do not need to recompile the entire NodeX EDGE. All they need to do is implement the methods according to a simple API specification and create a shared library that can be loaded by NodeX EDGE.
 
 ### DID Configuration File
 
@@ -76,13 +76,13 @@ The system software allows users to change security parameters after authenticat
 
 ### Security Lifecycle Management
 
-UNiD defines the security lifecycle that is shown in figure 8 as intended to capture the minimum set of lifecycle status and transitions in compliance with a PSA (platform security architecture) framework. The security lifecycle status is always stored in RoT secure storage as the device instance information. In development mode, UNiD EDGE sets the security lifecycle status as "test". In production mode, the status starts with "provisioning" and changes to "secured" when an end-to-end secure channel with UNiD HUB is established. UNiD platform allows only authorized users to change the status from "secured" to "PRoT debug" and "decommissioned". When the status is changed to "decommissioned", UNiD EDGE revokes the DID Document and removes the sensitive information such as device key pairs and instance information. Based on the framework, UNiD provides features such as device management, fraud detection, security updates, and over-the-air to realize more scalable and efficient device maintenance and operation, which have been done manually in the past.
+NodeX defines the security lifecycle that is shown in figure 8 as intended to capture the minimum set of lifecycle status and transitions in compliance with a PSA (platform security architecture) framework. The security lifecycle status is always stored in RoT secure storage as the device instance information. In development mode, NodeX EDGE sets the security lifecycle status as "test". In production mode, the status starts with "provisioning" and changes to "secured" when an end-to-end secure channel with NodeX HUB is established. NodeX platform allows only authorized users to change the status from "secured" to "PRoT debug" and "decommissioned". When the status is changed to "decommissioned", NodeX EDGE revokes the DID Document and removes the sensitive information such as device key pairs and instance information. Based on the framework, NodeX provides features such as device management, fraud detection, security updates, and over-the-air to realize more scalable and efficient device maintenance and operation, which have been done manually in the past.
 
 :::{figure-md}
 
 <img src="../_assets/figure8-1.svg" alt="figure8">
 
-**Figure 8.** UNiD Security Lifecycle Management Framework
+**Figure 8.** NodeX Security Lifecycle Management Framework
 :::
 
 ### Dependent Cryptography

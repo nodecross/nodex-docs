@@ -1,10 +1,10 @@
 # Build Guide for FreeRTOS
 
-This section describes how to build UNiD EDGE SDK which is implemented in Rust language (hereinafter referred to as "Rust"). By following the steps in this section, you will be able to generate a static library that can be referenced from C language.
+This section describes how to build NodeX EDGE SDK which is implemented in Rust language (hereinafter referred to as "Rust"). By following the steps in this section, you will be able to generate a static library that can be referenced from C language.
 
 ## Prerequisites
 
-Build environment and other prerequisites for building UNiD EDGE SDK are defined below.
+Build environment and other prerequisites for building NodeX EDGE SDK are defined below.
 
 - Operating System
     - An environment that can run the Rust compiler (macOS, Linux, Windows (WSL2), etc.)
@@ -55,7 +55,7 @@ Execute the above command and make sure that the version of Rust is 1.59.0 or la
               nightly-x86_64-unknown-linux-gnu
 ```
 
-Install the dependencies (Rust Nightly version source code) that will be required during the build process of UNiD EDGE SDK.
+Install the dependencies (Rust Nightly version source code) that will be required during the build process of NodeX EDGE SDK.
 
 ## How to build environment (build-related tools)
 
@@ -79,14 +79,14 @@ Install the dependencies (Rust Nightly version source code) that will be require
 [user@linux]$ apt install -y build-essential
 ```
 
-## Building UNiD EDGE SDK
+## Building NodeX EDGE SDK
 
-- **UNiD EDGE SDK: Getting the GitHub repository (clone)**
+- **NodeX EDGE SDK: Getting the GitHub repository (clone)**
 ```
 [user@linux]$ git clone https://github.com/getunid/unid.git
 ```
 
-- **Go to UNiD EDGE SDK directory**
+- **Go to NodeX EDGE SDK directory**
 ```
 [user@linux]$ cd unid/
 ```
@@ -138,7 +138,7 @@ drwxr-xr-x  2 root root     4096 Dec 16 05:16 incremental
 -rw-r--r--  1 root root      729 Dec 16 05:21 libunid.d
 ```
 
-These steps will complete the build of UNiD EDGE SDK. Verify that the build artifacts exist in the following path
+These steps will complete the build of NodeX EDGE SDK. Verify that the build artifacts exist in the following path
 
 - **target/thumbv8m.main-none-eabihf/release/libunid.a**
 

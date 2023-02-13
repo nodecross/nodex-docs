@@ -61,7 +61,7 @@ Install the dependency libraries required to implement and run the project, in o
 ```bash
 ### I. Libraries for implementing
 
-# UNiD SDK
+# NodeX SDK
 yarn add @getunid/node-wallet-sdk
 yarn add @getunid/wallet-sdk-mongo-connector
 
@@ -106,7 +106,7 @@ yarn add -D @types/node
 In this project, we will use TypeScript to implement the application.
 
 {% hint style="info" %}
-The project itself can be implemented in pure JavaScript without using TypeScript, but since UNiD nodejs SDK provides type definition information, so you can have a more intuitive programming experience by using TypeScript.
+The project itself can be implemented in pure JavaScript without using TypeScript, but since NodeX nodejs SDK provides type definition information, so you can have a more intuitive programming experience by using TypeScript.
 {% endhint %}
 
 Configure the initial settings for TypeScript.
@@ -193,10 +193,10 @@ import express from 'express'
 import handlebars from 'express-handlebars'
 import { validationResult, ValidationChain } from 'express-validator'
 import { AddressInfo } from 'net'
-import { KeyRingType, UNiD, Cipher } from '@getunid/node-wallet-sdk'
+import { KeyRingType, NodeX, Cipher } from '@getunid/node-wallet-sdk'
 import { MongoClient } from 'mongodb'
 import HttpStatus from 'http-status-codes'
-import { UNiDDid } from '@getunid/node-wallet-sdk/libs/did-unid/did'
+import { NodeXDid } from '@getunid/node-wallet-sdk/libs/did-unid/did'
 import { MongoDBConnector } from '@getunid/wallet-sdk-mongo-connector'
 
 const app = express()
@@ -214,7 +214,7 @@ app.set('view engine', 'handlebars')
 const server = http.createServer(app)
 
 // creates and sets the DID when the application starts
-let DID: UNiDDid | undefined = undefined
+let DID: NodeXDid | undefined = undefined
 
 // define validators
 const validator = (chains: Array<ValidationChain>): express.RequestHandler => {
@@ -373,15 +373,15 @@ server.on('listening', () => {
             encryptionKey: encryptionKey,
         })
 
-        // initialize UNiD sdk
-        UNiD.init({
+        // initialize NodeX sdk
+        NodeX.init({
             clientId     : clientId,
             clientSecret : clientSecret,
             connector    : connector,
         })
 
         // create new DID (wallet)
-        DID = await UNiD.createDid(KeyRingType.Mnemonic)
+        DID = await NodeX.createDid(KeyRingType.Mnemonic)
 
         // start application server
         server.listen(18080, '127.0.0.1')
@@ -400,8 +400,8 @@ See the table below for the`${MONGODB_URI}`,`${CLIENT_ID}`,`${CLIENT_SECRET}`,`$
 | Variable            | Description                                                                                                                                                                                          |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `${MONGODB_URI}`    | <p>Connection string to MongoDB<br><code>mongodb://username:password@127.0.0.1:27017</code></p>                                                                                                      |
-| `${CLIENT_ID}`      | Set the `Client ID` provided by the UNiD Network                                                                                                                                                     |
-| `${CLIENT_SECRET}`  | Set the `Client Secret` provided by the UNiD Network                                                                                                                                                 |
+| `${CLIENT_ID}`      | Set the `Client ID` provided by the NodeX Network                                                                                                                                                     |
+| `${CLIENT_SECRET}`  | Set the `Client Secret` provided by the NodeX Network                                                                                                                                                 |
 | `${ENCRYPTION_KEY}` | <p>Sets the key used to encrypt the data in MongoDB. Can be any randomly generated <strong>64-digit string in hexadecimal notation</strong>.</p><p></p><p>e.g. <code>openssl rand -hex 32</code></p> |
 
 Let's continue to implement each endpoint such as VC/VP creation and validation. Before moving on to the next step, let's prepare a directory to store the HTML template for the page display and its template.
@@ -681,11 +681,11 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
                 if (textVC !== undefined) {
                     const vc = JSON.parse(textVC)
 
-                    if (! UNiD.isVerifiableCredential(vc)) {
+                    if (! NodeX.isVerifiableCredential(vc)) {
                         throw new Error()
                     }
 
-                    const verifiedVC = await UNiD.verifyCredential(vc)
+                    const verifiedVC = await NodeX.verifyCredential(vc)
 
                     // Get payload from VC
                     if (! NameCredentialV1.isCompatible(verifiedVC.payload)) {
@@ -709,11 +709,11 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
                 if (textVP !== undefined){
                     const vp = JSON.parse(textVP)
 
-                    if (! UNiD.isVerifiablePresentation(vp)) {
+                    if (! NodeX.isVerifiablePresentation(vp)) {
                         throw new Error()
                     }
 
-                    const verifiedVP = await UNiD.verifyPresentation(vp)
+                    const verifiedVP = await NodeX.verifyPresentation(vp)
 
                     const selectedVC = NameCredentialV1.select(verifiedVP.payload)
 
@@ -721,7 +721,7 @@ const verifierPostHandler = (): Array<express.RequestHandler> => {
                         throw new Error()
                     }
 
-                    const verifiedVC = await UNiD.verifyCredential(selectedVC)
+                    const verifiedVC = await NodeX.verifyCredential(selectedVC)
 
                     // get payload from VP
                     if (! NameCredentialV1.isCompatible(verifiedVC.payload)) {
