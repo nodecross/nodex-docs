@@ -39,7 +39,7 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          channel_id: 'C01C9NKCXMF' # '#01_unid'
+          channel_id: 'C01C9NKCXMF' # '#01_nodex'
           status: SUCCESS
           color: good
 
@@ -48,6 +48,6 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          channel_id: 'C01C9NKCXMF' # '#01_unid'
+          channel_id: 'C01C9NKCXMF' # '#01_nodex'
           status: FAILED
           color: danger

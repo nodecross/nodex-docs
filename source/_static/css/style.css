@@ -45,6 +45,7 @@ code.docutils * {
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
     font-weight: bold;
 }
+.highlight *,
 .highlight-js *,
 .highlight-json * {
     font-size: 12px;
