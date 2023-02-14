@@ -6,7 +6,7 @@ NodeX EDGE consists of micro components and extensions that support various RoTs
 
 :::{figure-md}
 
-<img src="../_assets/figure10.svg" alt="figure6">
+<img src="../_assets/nodex_blocks.svg" alt="nodex blocks">
 
 **Figure 6.** NodeX EDGE Architecture
 :::
@@ -17,7 +17,7 @@ NodeX EDGE consists of micro components and extensions that support various RoTs
 
 NodeX EDGE uses decentralized identifier (DID) as a device identifier based on the [W3C DID Core 1.0 specification](https://www.w3.org/TR/did-core/). In the secure processing environment (hereinafter referred to as SPE), it generates multiple key pairs from a hardware-derived true random number generator (TRNG), and generates the payload by hashing the object containing this public key information. This payload can be registered with blockchain-based DPKI (Decentralized Public Key Infrastructure) to generate a DID, which can be treated as a globally unique identifier independent of any third party. This DID is a URI that associates the device with a DID document that allows trustable interactions.
 
-## Root of Trust (RoT)
+### Root of Trust (RoT)
 
 NodeX EDGE always encrypts and stores all sensitive information such as device key pairs, device instance, and pre-configured security policies and performs crypto processing in the secure processing environment. Unauthorized applications and remote servers can not access the SPE to prevent virus intrusion and information leakage.
 
@@ -50,10 +50,6 @@ Two-way communication (device-cloud, device- device) happens via a message handl
 
 The system software stores in PSA-RoT secure storage a security policy regarding access privileges. Such a security policy is used by the system software to manage access privileges. Device security parameters can only be updated by privileged users who are allowed to access the NodeX HUB. There are two access privilege levels; Admin and User. Admin and User (including cloud application through API) are authenticated and authorized by HUB. Admin users are allowed to send encrypted and signed data with secret_token to the target device, and the device validates the secret_token using a pre-configured security policy to authenticate the admin user. In the system software, the execution of application functionalities is enabled with the lowest level of privilege necessary for the intended function.
 
-## OTA Update
-
-The system software supports updates from authorized remote servers. Integrity and authenticity are checked prior to execution and installation of the new image: The new firmware image (ECDSA signed) is downloaded from the authorized remote server. The decryption (AES-GCM) and signature verification (using the corresponding public key obtained from the remote server through a DID resolver) is then conducted in RoT secure storage. After validation of integrity and authenticity of the firmware image, the executable code can be stored in Slot1 of the bootloader (being Slot0 the active firmware) and flagged for update. At the next boot, the bootloader verifies the update and executes the update by swapping Slot0 and Slot1. The scope of the software system is to provide the validated executable code or the corresponding public key to the bootloader. The device obtains the corresponding DID Document (including public key) from the DID resolver using the authorized remote server's DID. The DID resolver receives the did_suffix (did:method:did_suffix) and gets the DID Document from the mongoDB of the DID resolver with did_suffix and returns it to the device. The data in mongoDB is a conflict-free replicated data type (CRDT) and the data integrity is ensured by the sidetree protocol which is a blockchain-agnostic 2nd layer protocol.
-
 ### Logging
 
 The logging data is buffered with EMERG/ALERT/CRIT/ERR/WARNING/NOTICE/DEBUG log level tags and FROM/TO/MESSAGE data format and will be sent to NodeX HUB. All logging data is digitally signed, encrypted (AES-GCM) in the RoT secure storage. If the network of the device is temporarily interrupted, the logging data will be buffered with the maximum value of the pre-configured capacity, and the cached logging data will be sent to NodeX HUB when the network is reopened. NodeX HUB verifies and decrypts the logging data and stores it in the server. Basically, the logging data is stored in the server for 2 years, but the storage period depends on the service plan users subscribe to. Users can access the logging data via NodeX HUB API. In the initial configuration, only the admin user can access the logging data. Admin users can change the access control of NodeX HUB. All the logging data can be searched by the logging tags.
@@ -73,17 +69,6 @@ The system software allows users to change security parameters after authenticat
 - Access policies (i.e. authorized entity's DID and IP)
 - Security policy (i.e. configuration of used cryptography)
 - Update policies (i.e. logging transmission frequency or automatic installation of updated software)
-
-### Security Lifecycle Management
-
-NodeX defines the security lifecycle that is shown in figure 8 as intended to capture the minimum set of lifecycle status and transitions in compliance with a PSA (platform security architecture) framework. The security lifecycle status is always stored in RoT secure storage as the device instance information. In development mode, NodeX EDGE sets the security lifecycle status as "test". In production mode, the status starts with "provisioning" and changes to "secured" when an end-to-end secure channel with NodeX HUB is established. NodeX platform allows only authorized users to change the status from "secured" to "PRoT debug" and "decommissioned". When the status is changed to "decommissioned", NodeX EDGE revokes the DID Document and removes the sensitive information such as device key pairs and instance information. Based on the framework, NodeX provides features such as device management, fraud detection, security updates, and over-the-air to realize more scalable and efficient device maintenance and operation, which have been done manually in the past.
-
-:::{figure-md}
-
-<img src="../_assets/figure8-1.svg" alt="figure8">
-
-**Figure 8.** NodeX Security Lifecycle Management Framework
-:::
 
 ### Dependent Cryptography
 
