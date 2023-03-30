@@ -1,4 +1,4 @@
-# Glossary of terms and abbreviations
+# Glossary
 
 **NodeX**  
 This is a generic term for the endpoint security platform provided by CG.

@@ -1,5 +1,13 @@
 # Introduction
 
+While Internet of Thing (IoT) brings new business opportunities to all industries and sectors, it also introduces cybersecurity risks. In recent years, cyber attacks targeting endpoint devices and data in motion on IoT systems have increased rapidly. Traditional perimeter defenses alone cannot prevent such threats; identity centric security is essential for modern distributed systems comprised of IoT and microservices.
+
+When building identity first security for IoT systems, the massive upfront cost and operational burden are major challenges. It is often difficult to retrofit security measures on devices, so even before design stage, IoT developers need to consider and build security infrastructure from edge to cloud, such as device’s identity and key management, mutual authentication, end-to-end encryption, dynamic access control, security update after market and so on. It requires a highly expertise and massive budget and is a major barrier to introduce security into all IoT systems.
+
+NodeX is building future where machines own their identity and exchange verifiable data across all digital interactions. Our open-source security infrastructure is standards-compliant, production-ready, and extensible into any type of devices. This documentation offers ways of getting started with NodeX projects.
+
+## What's NodeX?
+
 NodeX is an open-source toolkit that enables any developers to connect all devices and clouds, using features of decentralized identifiers as a basis of security and privacy. At a high level, the core components in NodeX are as follows;
 
 - **NodeX EDGE**: An open-source agent that integrates into devices.
@@ -16,25 +24,6 @@ NodeX is an open-source toolkit that enables any developers to connect all devic
 
 As figure 1, you can launch your NodeX HUB and set up access policy, and integrate NodeX EDGE into your devices or clouds. You can easily build a security infrastructure that connects all your devices to the cloud with NodeX.
 
-<!--
-## Design Concept
-
-Our main concept is to build a scalable, end-to-end security infrastructure that abstracts every device and the cloud as a global unique node, allowing a node to interact with other nodes securely and privately regardless of the network topology or routing hops.
-
-:::{figure-md}
-
-<img src="../_assets/figure2-2.svg" alt="figure2">
-
-**Figure 2.** E2E security infrastructure
-:::
-
-To achieve this concept, we utilize decentralized identifiers (DIDs) and Root of Trust (RoT) technologies. Specifically, NodeX EDGE generates multiple key pairs from a hardware-derived true random number generator (TRNG) within the RoT secure processing environment, and generates a payload for registering with a blockchain-based decentralized PKI (DPKI) to create a DID document including the public key information. Anyone can obtain the corresponding device's public key from the network to authenticate the device and verify the digitally signed data. To learn more, click here.
-
-This identity-first, end-to-end approach can abstract the complexity of security infrastructure and enables advanced, scalable endpoint security for connected systems. NodeX platform is designed to make the security infrastructure easily available and free all developers from the heavy burden of building the complex security infrastructure for each product.
--->
-
-## Key Featrues
-
 ### NodeX EDGE
 
 An open-source Rust library that is extensible into any type of devices. Currently supported OS is Linux Kernel x86 (32bit), Linux Kernel x86-64 (64 bit), and FreeRTOS. The core components are as follows;
@@ -49,16 +38,6 @@ An open-source Rust library that is extensible into any type of devices. Current
 
 For more information, see <a href="https://github.com/nodecross/nodex-agent" class="external" target="_blank" rel="noopener noreferrer">GitHub page</a>.
 
-<!--
-:::{figure-md}
-
-<img src="../_assets/figure3-4.svg" alt="figure3">
-
-**Figure 3.** NodeX EDGE Architecture
-:::
--->
-
-
 ### NodeX HUB
 
 A cloud access security broker consists of access broker, access control engine, access policy, inventory for secure communications between all devices and clouds. The core components are as follows;
@@ -71,15 +50,6 @@ A cloud access security broker consists of access broker, access control engine,
 - **Data Loss Prevention**: This component prevents devices from sending data or receiving data from unauthorized clouds by enforcing access policies.
 - **Dynamic Access Control**: This component supports dynamically changing access policies based on device's identity, location, and behavior to prevent spoofing and unauthorized access
 - **NodeX Studio**: User interface for operating the HUB supports launching a project and managing access policies and logging data of EDGEs.
-
-<!--
-:::{figure-md}
-
-<img src="../_assets/figure4-3.svg" alt="figure4">
-
-**Figure 4.** NodeX HUB Architecture
-:::
--->
 
 ### NodeX Network
 

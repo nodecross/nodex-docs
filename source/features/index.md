@@ -1,4 +1,4 @@
-# NodeX Features
+# Features
 
 In this chapter, we introduce the core features of NodeX EDGE, which is developed in Rust language and can be compiled into a static library that can be referenced in C language. The source code can be found [here](https://github.com/nodecross/nodex-agent).
 
@@ -6,7 +6,7 @@ NodeX EDGE consists of micro components and extensions that support various RoTs
 
 :::{figure-md}
 
-<img src="../../_assets/nodex_blocks.svg" alt="nodex blocks">
+<img src="../_assets/nodex_blocks.svg" alt="nodex blocks">
 
 **Figure 6.** NodeX EDGE Architecture
 :::
