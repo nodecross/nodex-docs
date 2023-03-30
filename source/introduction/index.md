@@ -1,16 +1,88 @@
 # Introduction
 
-While Internet of Thing (IoT) brings new business opportunities to all industries and sectors, it also introduces cybersecurity risks. In recent years, cyber attacks targeting endpoint devices and data in motion on IoT systems have increased rapidly. Traditional perimeter defenses alone cannot prevent such threats; identity centric security is essential for modern distributed systems comprised of IoT and microservices.
+NodeX is an open-source toolkit that enables any developers to connect all devices and clouds, using features of decentralized identifiers as a basis of security and privacy. At a high level, the core components in NodeX are as follows;
 
-When building identity first security for IoT systems, the massive upfront cost and operational burden are major challenges. It is often difficult to retrofit security measures on devices, so even before design stage, IoT developers need to consider and build security infrastructure from edge to cloud, such as device's identity and key management, mutual authentication, end-to-end encryption, dynamic access control, security update after market and so on. It requires a highly expertise and massive budget and is a major barrier to introduce security into all IoT systems.
+- **NodeX EDGE**: An open-source agent that integrates into devices.
+- **NodeX HUB**: A cloud access security broker that acts as an intermediary between devices and clouds.
+- **NodeX Network**: A distributed network that operates public key certificates (DID Documents) of EDGEs.
 
-NodeX is building future where machines own their identity and exchange verifiable data across all digital interactions. Our open-source security infrastructure is standards-compliant, production-ready, and extensible into any type of devices. This documentation offers ways of getting started with NodeX projects. 
 
-## How to contribute?
+:::{figure-md}
 
-First off, thank you for considering making contributions. It's people like you that make NodeX better. There are many ways in which you can participate in the project, for example:
+<img src="../_assets/nodex_overview_2022.svg" alt="figure1" width="80%" align="center">
 
-- File a bug report. Be sure to include information like what version of NodeX you are using, what your operating system and CPU is, and steps to recreate the bug.
-- Suggest a new feature.
+**Figure 1.** The core components in NodeX
+:::
 
-NodeX EDGE is an open source under Apache 2.0; your contribution will also be treated under Apache 2.0. By submitting your contribution, you agree to this policy. If you are interested in the commercial use, contact us at <a href='mailto:contact@collabogate.com'>contact@collabogate.com</a> for more information.
+As figure 1, you can launch your NodeX HUB and set up access policy, and integrate NodeX EDGE into your devices or clouds. You can easily build a security infrastructure that connects all your devices to the cloud with NodeX.
+
+<!--
+## Design Concept
+
+Our main concept is to build a scalable, end-to-end security infrastructure that abstracts every device and the cloud as a global unique node, allowing a node to interact with other nodes securely and privately regardless of the network topology or routing hops.
+
+:::{figure-md}
+
+<img src="../_assets/figure2-2.svg" alt="figure2">
+
+**Figure 2.** E2E security infrastructure
+:::
+
+To achieve this concept, we utilize decentralized identifiers (DIDs) and Root of Trust (RoT) technologies. Specifically, NodeX EDGE generates multiple key pairs from a hardware-derived true random number generator (TRNG) within the RoT secure processing environment, and generates a payload for registering with a blockchain-based decentralized PKI (DPKI) to create a DID document including the public key information. Anyone can obtain the corresponding device's public key from the network to authenticate the device and verify the digitally signed data. To learn more, click here.
+
+This identity-first, end-to-end approach can abstract the complexity of security infrastructure and enables advanced, scalable endpoint security for connected systems. NodeX platform is designed to make the security infrastructure easily available and free all developers from the heavy burden of building the complex security infrastructure for each product.
+-->
+
+## Key Featrues
+
+### NodeX EDGE
+
+An open-source Rust library that is extensible into any type of devices. Currently supported OS is Linux Kernel x86 (32bit), Linux Kernel x86-64 (64 bit), and FreeRTOS. The core components are as follows;
+
+- **Device Identity Management**: This component supports generating a global unique device identifier in compliance with a W3C Decentralized Identifiers Standard ([Decentralized Identifiers v1.0](https://www.w3.org/TR/did-core/)).
+- **Key Management with RoT**: This component supports generating key pairs within the device and protect private keys with hardware security module, such as TPM2.0, TrustZone, Secure Crypto Engine.
+- **Automated Provisioning**: This component supports registering and operating public key certificate (DID Document) generation, resolve, renewal, and revocation on a decentralized PKI without any IdPs, CAs, and intermediators.
+- **Policy Management**: This component allows security-relevant configuration changes through an authorized NodeX HUB. It has access policy file (IPs, DIDs, endpoints), security policy file (security parameter, pre-shared-key) and update policy (logging transmission frequency).
+- **E2E Secure Socket**: This component supports establishing a mutual authenticated channel with the HUB to exchange end-to-end authcrypt messages with clouds.
+- **RoT Extension**: This component can be applied to RoTs with proprietary specifications by implementing shared libraries according to the API specification.
+- **Device Extension**: This library can be distributed as middleware for IPC communication with client applications or as a library to be integrated into client application.
+
+For more information, see <a href="https://github.com/nodecross/nodex-agent" class="external" target="_blank" rel="noopener noreferrer">GitHub page</a>.
+
+<!--
+:::{figure-md}
+
+<img src="../_assets/figure3-4.svg" alt="figure3">
+
+**Figure 3.** NodeX EDGE Architecture
+:::
+-->
+
+
+### NodeX HUB
+
+A cloud access security broker consists of access broker, access control engine, access policy, inventory for secure communications between all devices and clouds. The core components are as follows;
+
+- **Device IAM**: This component supports device authentication based on digital signature scheme (256-bit ECDSA) rather than username and password.
+- **Device Authenticity**: This component supports verifying the device authenticity by message authentication code generated by the pre-shared secret between EDGE and HUB.
+- **Inventory Management**: This component supports managing a configuration file which stores authorized device DIDs and attributions.
+- **Device Knowledge Database**: This component supports storing and real-time tracking device communication logs for vital checks and threat detection.
+- **E2E Message Routing**: This component supports relaying encrypted messages on a publish/subscribe model between EDGEs.
+- **Data Loss Prevention**: This component prevents devices from sending data or receiving data from unauthorized clouds by enforcing access policies.
+- **Dynamic Access Control**: This component supports dynamically changing access policies based on device's identity, location, and behavior to prevent spoofing and unauthorized access
+- **NodeX Studio**: User interface for operating the HUB supports launching a project and managing access policies and logging data of EDGEs.
+
+<!--
+:::{figure-md}
+
+<img src="../_assets/figure4-3.svg" alt="figure4">
+
+**Figure 4.** NodeX HUB Architecture
+:::
+-->
+
+### NodeX Network
+
+NodeX Network consists of a [sidetree protocol](https://identity.foundation/sidetree/spec/) for creating scalable DIDs networks that can run atop any existing decentralized anchoring system and be as open, public, and permissionless as the underlying anchoring systems they utilize. The protocol allows users to create globally unique identifiers and manage their associated PKI metadata, all without the need for centralized authorities or trusted third parties.
+
+NodeX EDGE generates multiple key pairs from a hardware-derived true random number generator (TRNG) within the RoT secure processing environment, and generates a payload including public keys for registering with NodeX Network to create a DID document binding decentralized identifier and the public key. Anyone can obtain the corresponding device's public key from the distributed network to authenticate the device and verify the digitally signed data.
