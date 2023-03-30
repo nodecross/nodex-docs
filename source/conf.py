@@ -29,12 +29,12 @@ author    = 'NodeX Project'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-  'myst_parser',
   'sphinx_rtd_theme',
+  'myst_parser',
   'sphinx_copybutton',
   'sphinxemoji.sphinxemoji',
   'sphinxcontrib.httpdomain',
-  'sphinx-favicon'
+  'sphinx_favicon'
 ]
 
 myst_heading_anchors   = 1
@@ -45,8 +45,6 @@ myst_enable_extensions = [
 ]
 
 sphinxemoji_style = 'twemoji'
-external_toc_path = '_toc.yml'
-external_toc_exclude_missing = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

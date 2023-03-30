@@ -1,4 +1,4 @@
-# RPC Reference for NodeX EDGE
+# RPC Reference
 
 NodeX EDGE is a resident Linux daemon process that provides NodeX EDGE functionality as an HTTP-based API to another application, mainly within the Linux OS. Since this type of NodeX EDGE provides HTTP-based API, it can be used regardless of the implementation language of the application that uses the API, and it can be used with zero learning cost by providing pre-built binaries. The pre-built binaries can be used with zero learning cost for building the API.
 

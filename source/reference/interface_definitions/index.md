@@ -1,4 +1,4 @@
-# Interface Definitions for NodeX EDGE
+# Interface Definitions
 
 This chapter defines the API interface required for development when replacing or extending the RoT functionality of NodeX EDGE to your own specifications. The development procedure is to build a shared library that implements your own processing based on the interface definitions shown below, and place it in a designated location accessible by NodeX EDGE. NodeX EDGE loads shared libraries at startup, overriding some core NodeX EDGE functions with processes provided as shared libraries.
 
