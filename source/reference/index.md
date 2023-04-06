@@ -3,6 +3,7 @@
 ```{toctree}
 :hidden:
 glossary/index.md
-rpc_reference/index.md
-interface_definitions/index.md
+interface-definitions/index.md
+agent-api/index.md
+hub-api/index.md
 ```
