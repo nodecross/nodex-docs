@@ -28,7 +28,7 @@
     border-top-right-radius: .3em;
     border-bottom-left-radius: .3em;
     border-bottom-right-radius: .3em;
-    font-size: 12px;
+    font-size: 1em;
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
 }
 
@@ -37,17 +37,28 @@ code.docutils {
 }
 
 code.docutils * {
-    font-size: 12px;
+    font-size: 1.1em;
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
 }
 .code-block-caption * {
-    font-size: 12px;
+    font-size: 1em;
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
     font-weight: bold;
 }
 .highlight *,
 .highlight-js *,
 .highlight-json * {
-    font-size: 12px;
+    font-size: 1em;
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+}
+.rst-content code.literal {
+    color: #404040;
+    background-color: #f5f5f5;
+    border: none;
+    font-size: .8em;
+    padding: .2em .5em;
+}
+p {
+    line-height: 1.3em;
+    font-size: 1em;
 }
