@@ -2,7 +2,7 @@ name: Build & Deploy
 
 on:
   push:
-    branches:    
+    branches:
       - main
       - sphinx
 
@@ -10,10 +10,11 @@ jobs:
   build-and-upload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
+
       - uses: unfor19/install-aws-cli-action@v1
 
-      - uses: aws-actions/configure-aws-credentials@v1
+      - uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -39,7 +40,7 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          channel_id: 'C01C9NKCXMF' # '#01_nodex'
+          channel_id: "C01C9NKCXMF" # '#01_nodex'
           status: SUCCESS
           color: good
 
@@ -48,6 +49,6 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          channel_id: 'C01C9NKCXMF' # '#01_nodex'
+          channel_id: "C01C9NKCXMF" # '#01_nodex'
           status: FAILED
           color: danger
