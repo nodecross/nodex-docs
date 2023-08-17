@@ -35,7 +35,7 @@ jobs:
           aws s3 sync --delete build/html s3://${{ secrets.AWS_S3_BUCKET }}
 
       - if: success()
-        uses: voxmedia/github-action-slack-notify-build@v1
+        uses: voxmedia/github-action-slack-notify-build@v2
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
@@ -44,7 +44,7 @@ jobs:
           color: good
 
       - if: failure()
-        uses: voxmedia/github-action-slack-notify-build@v1
+        uses: voxmedia/github-action-slack-notify-build@v2
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
