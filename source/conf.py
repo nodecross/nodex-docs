@@ -34,6 +34,7 @@ extensions = [
   'sphinx_copybutton',
   'sphinxemoji.sphinxemoji',
   'sphinxcontrib.httpdomain',
+  'sphinxcontrib.mermaid',
   'sphinx_favicon'
 ]
 
@@ -53,7 +54,6 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 
