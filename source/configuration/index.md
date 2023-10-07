@@ -7,6 +7,7 @@ This section describes the configuration of NodeX, which offers two types of age
 00-overview.md
 10-initial-configuration.md
 20-system-configuration.md
-30-user-configuration.md
+30-network-configuration.md
+40-update-configuration.md
 90-next-step.md
 ```

@@ -7,8 +7,8 @@ Initial configuration items in NodeX include the following:
     - Datastore Settings
     - Configuration Encryption Settings
 - **Authentication Settings**
-    - Client ID
-    - Client Secret
+    - Project DID
+    - Project Secret
 
 These values can be set in command line options or environment variables that can be specified when running the NodeX agent to modify its behavior.
 
@@ -24,36 +24,5 @@ Methods can be injected into the process of storing and retrieving the private k
 When NodeX reads or writes system and user settings, it can inject methods for encryption and decryption processes. If the method is not injected, the NodeX agent reads and writes configuration information in plain text format using the built-in processing in the NodeX agent.
 
 ## Authentication Settings
+Project DID and Project Secret are the NodeX agent needs to communicate with other DID-assigned agents. As mentioned earlier, the NodeX agent works together with the NodeX HUB as a relay node, and Project DID and Project Secret are necessary information when registering the agent with the NodeX HUB. These will be notified by CollaboGate Japan after the contract is signed.
 
-**Client ID and Client Secret**<br />
-This is the ID and secret that the NodeX agent needs to communicate with other DID-assigned agents. As mentioned earlier, the NodeX agent works together with the NodeX HUB as a relay node, and the client ID and client secret are necessary information when registering the agent with the NodeX HUB.
-
-```{note}
-The Client ID and Client Secret can be found after logging into NodeX STUDIO.
-```
-
-## Environment Variables
-
-**`TPM_TRNG_EXTENSION_PATH`** (Optional)<br />
-Specify the path to the shared library that implements the methods related to the TRNG. See the reference for the interface of the methods to be implemented.<br />
-The corresponding command line option is `--tpm-trng-extension-path`.
-
-**`TPM_DATASTORE_EXTENSION_PATH`** (Optional)<br />
-Specify the path to the shared library that implements the methods related to the data store. See the reference for the interface of the methods to be implemented.<br />
-The corresponding command line option is `--tpm-datastore-extension-path`.
-
-**`TPM_ENCRYPTION_EXTENSION_PATH`** (Optional)<br />
-Specify the path to the shared library that implements the methods related to encryption of configuration values. See the reference for the interface of the methods to be implemented.<br />
-The corresponding command line option is `--tpm-encryption-extension-path`.
-
-**`CLIENT_ID`** (Optional)<br />
-Specify the client ID required to register an agent to the NodeX HUB. You can check it after logging into NodeX STUDIO as described above.<br />
-The corresponding command line option is `--client-id`.
-
-**`CLIENT_SECRET`** (Optional)<br />
-Specifies the client secret required to register the agent to the NodeX HUB. You can check it after logging into NodeX STUDIO as described above.<br />
-The corresponding command line option is `--client-secret`.
-
-```{note}
-If you do not define the `CLIENT_ID` and `CLIENT_SECRET` settings, communication through the NodeX HUB is not possible. However, functions that do not require the NodeX HUB to be used, such as the generation and verification of Verifiable Credentials and the generation and verification of DIDComm Enc, can be used.
-```
