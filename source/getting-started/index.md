@@ -52,7 +52,7 @@ sequenceDiagram
     app2-->>agent2: Ack message
     Note left of app2: MessageId
     agent2-->>hub: /ack_message
-    Note left of agent2: MessageID(DIDComm Encrypted)
+    Note left of agent2: MessageId(DIDComm Encrypted)
 
     agent2->>-app2: /receive (WebSocket connection) closed
 
@@ -84,6 +84,7 @@ $ cargo run
 3. Run receive message example. The original code is **[here](https://github.com/nodecross/nodex/blob/develop/examples/nodejs/src/receive.ts)**.
 
 The following is part of the example code.
+
 ```js
 const URL = "ws+" + base + ":/receive";
 console.log("connecting to " + URL);
@@ -91,22 +92,22 @@ const socket = new WebSocket(URL);
 
 console.log("socket connected");
 socket.on("open", () => {
-    console.log("socket opened");
+  console.log("socket opened");
 });
 
 socket.on("message", (data) => {
-    console.log("socket received: " + data);
-    const message = JSON.parse(data.toString());
-    const response = {
+  console.log("socket received: " + data);
+  const message = JSON.parse(data.toString());
+  const response = {
     message_id: message.message_id,
-    };
-    socket.send(JSON.stringify(response));
+  };
+  socket.send(JSON.stringify(response));
 });
 
 // close the socket after 30 seconds
 setTimeout(() => {
-    console.log("closing socket");
-    socket.close();
+  console.log("closing socket");
+  socket.close();
 }, 30000);
 ```
 
@@ -120,36 +121,37 @@ $ yarn receive
 4. Send a message to you via NodeX. This example sends some JSON messages. The original code is [here](https://github.com/nodecross/nodex/blob/develop/examples/nodejs/src/transfer.ts).
 
 The following is part of the example code.
+
 ```js
 (async () => {
-    const json = await post("/transfer", {
+  const json = await post("/transfer", {
     destinations: ["<add your did>"],
     messages: [
-        {
+      {
         string: "value",
         number: 1,
         boolean: true,
         array: [],
         map: {},
-        },
-        {
+      },
+      {
         string: "value",
         number: 1,
         boolean: true,
         array: [],
         map: {},
-        },
+      },
     ],
     metadata: {
-        string: "value",
-        number: 1,
-        boolean: true,
-        array: [],
-        map: {},
+      string: "value",
+      number: 1,
+      boolean: true,
+      array: [],
+      map: {},
     },
-    });
+  });
 
-    console.log(json);
+  console.log(json);
 })();
 ```
 
