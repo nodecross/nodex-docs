@@ -1,1 +1,166 @@
 # Getting Started
+
+Try an example of sending a message via a NodeX agent and receiving it.
+
+## Installing NodeX Agent and set up.
+
+First. We setup nodex agent.
+A tutorial without cloning the NodeX repository is currently in preparation.
+
+Before running following commands, please install [rust](https://www.rust-lang.org/).
+
+In the commands below, use the project secret key and project DID provided by CollaboGate Japan, Inc.
+
+```sh
+$ git clone git@github.com:nodecross/nodex.git
+$ cd /path/to/nodex
+$ cargo run -- --config network set --key secret_key --value <YOUR PROJECT SECRET KEY>
+$ cargo run -- --config network set --key project_did --value <YOUR PROJECT DID>
+```
+
+## Message Send/Receive Flow
+
+This section shows how to send a message to NodeX Hub via NodeX Agent, receive a message from NodeX Hub, and notify that a message is read to NodeX Hub.
+
+This is a simple sequence diagram of sending a message and receiving it.
+
+```{mermaid}
+sequenceDiagram
+    autonumber
+    actor app1 as Your App1
+    participant agent1 as NodeX Agent
+    participant hub as NodeX Hub
+    participant agent2 as NodeX Agent
+    actor app2 as Your App2
+
+    %% Send Message Flow
+		app1->>agent1: /transfer
+    Note left of agent1: Message
+
+    agent1->>hub: /send_message
+    Note left of hub: Message(DIDComm Encrypted)
+
+    %% Receive Message flow
+    app2->>+agent2: /receive (WebSocket connection)
+
+    agent2->>hub: /get_message_list
+    hub-->agent2: /get_message_list response (if exists)
+    Note left of agent2: Message(DIDComm Encrypted)
+    agent2-->>app2: Message
+
+    %% Ack Message flow
+    app2-->>agent2: Ack message
+    Note left of app2: MessageId
+    agent2-->>hub: /ack_message
+    Note left of agent2: MessageId(DIDComm Encrypted)
+
+    agent2->>-app2: /receive (WebSocket connection) closed
+
+```
+
+## How to Send Messages in NodeX
+
+In this section, you will see where you can use NodeX to send and receive messages addressed to you.
+
+### Requirements
+
+- Please set up NodeX Agent before the below action.
+- This section uses node.js. So, please install it.
+
+1. Check your own did.
+
+```sh
+$ cat ~/.config/nodex/config.json | grep did
+```
+
+2. Wake up NodeX Agent.
+
+```sh
+$ cd /path/to/nodex
+# Run nodex agent
+$ cargo run
+```
+
+3. Run receive message example. The original code is **[here](https://github.com/nodecross/nodex/blob/develop/examples/nodejs/src/receive.ts)**.
+
+The following is part of the example code.
+
+```js
+const URL = "ws+" + base + ":/receive";
+console.log("connecting to " + URL);
+const socket = new WebSocket(URL);
+
+console.log("socket connected");
+socket.on("open", () => {
+  console.log("socket opened");
+});
+
+socket.on("message", (data) => {
+  console.log("socket received: " + data);
+  const message = JSON.parse(data.toString());
+  const response = {
+    message_id: message.message_id,
+  };
+  socket.send(JSON.stringify(response));
+});
+
+// close the socket after 30 seconds
+setTimeout(() => {
+  console.log("closing socket");
+  socket.close();
+}, 30000);
+```
+
+Execute the following commands.
+
+```shell
+$ cd /path/to/nodex/examples/nodejs
+$ yarn receive
+```
+
+4. Send a message to you via NodeX. This example sends some JSON messages. The original code is [here](https://github.com/nodecross/nodex/blob/develop/examples/nodejs/src/transfer.ts).
+
+The following is part of the example code.
+
+```js
+(async () => {
+  const json = await post("/transfer", {
+    destinations: ["<add your did>"],
+    messages: [
+      {
+        string: "value",
+        number: 1,
+        boolean: true,
+        array: [],
+        map: {},
+      },
+      {
+        string: "value",
+        number: 1,
+        boolean: true,
+        array: [],
+        map: {},
+      },
+    ],
+    metadata: {
+      string: "value",
+      number: 1,
+      boolean: true,
+      array: [],
+      map: {},
+    },
+  });
+
+  console.log(json);
+})();
+```
+
+Execute the following commands.
+
+```sh
+$ cd /path/to/nodex/examples/nodejs
+$ yarn transfer
+```
+
+5. Check the example application’s log.
+   You will see the following logs.
