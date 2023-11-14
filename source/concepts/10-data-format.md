@@ -1,6 +1,6 @@
 # Data Format
 
-This section describes how the applications surrounding the NodeX platform and the edge devices in which NodeX AGENT is embedded communicate with each other and based on what protocols.
+This section describes how the applications surrounding the NodeX platform and the edge devices in which NodeX Agent is embedded communicate with each other and based on what protocols.
 NodeX is based on the following standards defined by W3C or DIF, and we will take a closer look at how they are utilized within NodeX.
 
 - Decentralized Identifiers (DIDs)<br />
@@ -14,7 +14,7 @@ NodeX is based on the following standards defined by W3C or DIF, and we will tak
 
 ## Private and Public Keys
 
-NodeX, like other distributed identity products, manages private keys within the agent and uses distributed public key resolution nodes to obtain public keys.
+NodeX, like other distributed identity products, manages private keys within the Agent and uses distributed public key resolution nodes to obtain public keys.
 Specifically, it uses a specification called Sidetree, with Bitcoin as the trust anchor behind the public key resolution node using Sidetree, and IPFS running as the public key data store.
 Since NodeX uses Sidetree for public key resolution, the private and public key formats, resolution methods, and key rotation methods are all implemented according to the Sidetree specification, and are inter-compatible at the deep DID level with other products that use Sidetree as their DID method.
 The specifications for Sidetree are available here.
@@ -56,7 +56,7 @@ The figure below shows the form.
 ```
 
 **(A)**: `body`.`credentialSubject`.`payload`<br />
-The entity of the data to be transmitted is embedded in the counterpart passed from the application or system using the NodeX agent.
+The entity of the data to be transmitted is embedded in the counterpart passed from the application or system using the NodeX Agent.
 It is represented as JSON in key-value format.
 When transmitting binary data including images, audio, and video, the application or system must be pre-serialized using algorithms such as Base64.
 The data transmitted using this field is Authenticated Encryption with Authentication (AEAD) data according to the DIDComm Enc specification, which guarantees the confidentiality, authenticity, and integrity of the data.
@@ -79,10 +79,10 @@ Note that data transmitted using this field is Authenticated Encryption with Aut
 Three types of DIDComm are specified: DIDComm Plaintext Messages (dcpm), DIDComm Signed Messages (dcsm), and DIDComm Encrypted Messages (dcem), respectively.
 Of these schemes, NodeX employs DIDComm Encrypted Messages (dcem) to implement the data transport layer.
 The data wrapping by DIDComm is as described above, with DIDComm being the container that wraps the data when NodeX is viewed as a data orchestration tool, and the Verifiable Credentials are stored in the container.
-Containers with DIDComm are utilized in the data transport layer between the NodeX agent and the NodeX agent, and DIDComm is not applied between the application system and the NodeX agent.
+Containers with DIDComm are utilized in the data transport layer between the NodeX Agent and the NodeX Agent, and DIDComm is not applied between the application system and the NodeX Agent.
 
 ```text
-Your System        NodeX AGENT (Sender)                NodeX HUB                   NodeX AGENT (Receiver)       Another System
+Your System        NodeX Agent (Sender)                NodeX Hub                   NodeX Agent (Receiver)       Another System
 +---------+  Send  +-----------------+                 +---------+                 +-----------------+  Notify  +-------------+
 | Payload |  --->  | DIDComm Enc     | -> Transport -> | Routing | -> Transport -> | DIDComm Enc     |  ----->  | VC (*)      |
 +---------+        | +-------------+ |    on X (**)    +---------+    on X (**)    | +-------------+ |  Fetch   | +---------+ |

@@ -15,6 +15,6 @@ System configuration items in NodeX include the following:
 
 As mentioned earlier, these configuration items are maintained internally within NodeX, and access to the configuration values is strictly limited.
 In particular, there is no public API provided for retrieving or changing the settings contained in the Private group.
-Readable group can be referenced from the agent's API or from NodeX STUDIO.
-Writable group can be referenced and changed through the agent's API or through NodeX STUDIO.
+Readable group can be referenced from the Agent's API or from NodeX Studio.
+Writable group can be referenced and changed through the Agent's API or through NodeX Studio.
 By default, this configuration information is stored in a file on the local system, but if NodeX's TPM integration is enabled, each configuration field is stored in encrypted form to protect the configuration values from being viewed or modified by third-party applications.

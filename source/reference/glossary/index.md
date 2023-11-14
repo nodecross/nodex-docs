@@ -3,11 +3,11 @@
 **NodeX**  
 This is a generic term for the endpoint security platform provided by CG.
 
-**NodeX AGENT**  
-NodeX AGENT is an open source middleware to be embedded in devices. It provides general-purpose SDKs designed to support various devices with RoT, operating systems, and transports.
+**NodeX Agent**  
+NodeX Agent is an open source middleware to be embedded in devices. It provides general-purpose SDKs designed to support various devices with RoT, operating systems, and transports.
 
-**NodeX HUB**  
-NodeX HUB has IAM and message handler functions to bridge edge devices and the cloud. It provides end-to-end authentication channels that enables secure bidirectional communication between every device and the cloud. It provides API and webhook to connect edge devices to various cloud services.
+**NodeX Hub**  
+NodeX Hub has IAM and message handler functions to bridge edge devices and the cloud. It provides end-to-end authentication channels that enables secure bidirectional communication between every device and the cloud. It provides API and webhook to connect edge devices to various cloud services.
 
 **NodeX Studio**  
 NodeX Studio is an application for device management. You can manage and control provisioned devices from NodeX Studio.

@@ -1,3 +1,3 @@
-# NodeX HUB API
+# NodeX Hub API
 
 [TBD]
