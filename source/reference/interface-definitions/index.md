@@ -1,6 +1,6 @@
 # Interface Definitions
 
-This chapter defines the API interface required for development when replacing or extending the RoT functionality of NodeX AGENT to your own specifications. The development procedure is to build a shared library that implements your own processing based on the interface definitions shown below, and place it in a designated location accessible by NodeX AGENT. NodeX AGENT loads shared libraries at startup, overriding some core NodeX AGENT functions with processes provided as shared libraries.
+This chapter defines the API interface required for development when replacing or extending the RoT functionality of NodeX Agent to your own specifications. The development procedure is to build a shared library that implements your own processing based on the interface definitions shown below, and place it in a designated location accessible by NodeX Agent. NodeX Agent loads shared libraries at startup, overriding some core NodeX Agent functions with processes provided as shared libraries.
 
 ## True random number generation
 
@@ -8,7 +8,7 @@ This chapter defines the API interface required for development when replacing o
 Method: nodex_err_t nodex_read_trng(void *result_ptr)
 ```
 
-This is implemented when replacing the process of generating true random numbers. Accesses its own TRNG module inside the shared library, and links true random numbers to NodeX AGENT through a pointer. The return value of the method follows the definition of nodex_err_t.
+This is implemented when replacing the process of generating true random numbers. Accesses its own TRNG module inside the shared library, and links true random numbers to NodeX Agent through a pointer. The return value of the method follows the definition of nodex_err_t.
 
 ## Save private keys
 
@@ -24,7 +24,7 @@ Implement this when replacing the private key storage process. The private key i
 Method: nodex_err_t nodex_read_private_key(void *result_ptr)
 ```
 
-This function is implemented when the process of reading out the private key is replaced. The private key is read out using a unique cipher or other device inside the shared library, and the private key is linked to the NodeX AGENT through a pointer. The return value of the method follows the definition of nodex_err_t.
+This function is implemented when the process of reading out the private key is replaced. The private key is read out using a unique cipher or other device inside the shared library, and the private key is linked to the NodeX Agent through a pointer. The return value of the method follows the definition of nodex_err_t.
 
 ## Encryption Data
 

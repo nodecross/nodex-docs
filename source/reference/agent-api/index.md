@@ -1,10 +1,10 @@
-# NodeX AGENT API
+# NodeX Agent API
 
-NodeX AGENT is a resident Linux daemon process that provides NodeX AGENT functionality as an HTTP-based API to another application, mainly within the Linux OS. Since this type of NodeX AGENT provides HTTP-based API, it can be used regardless of the implementation language of the application that uses the API, and it can be used with zero learning cost by providing pre-built binaries. The pre-built binaries can be used with zero learning cost for building the API.
+NodeX Agent is a resident Linux daemon process that provides NodeX Agent functionality as an HTTP-based API to another application, mainly within the Linux OS. Since this type of NodeX Agent provides HTTP-based API, it can be used regardless of the implementation language of the application that uses the API, and it can be used with zero learning cost by providing pre-built binaries. The pre-built binaries can be used with zero learning cost for building the API.
 
 ## DID operations
 
-The following API is provided through the Unix Domain Socket (`~/.nodex/run/nodex.sock`) for applications using the NodeX AGENT. that can hit the Unix Domain Socket to communicate with NodeX AGENT through the socket.
+The following API is provided through the Unix Domain Socket (`~/.nodex/run/nodex.sock`) for applications using the NodeX Agent. that can hit the Unix Domain Socket to communicate with NodeX Agent through the socket.
 
 ### Create DID
 
@@ -525,7 +525,7 @@ The following API is provided through the Unix Domain Socket (`~/.nodex/run/node
 
 ## Events
 
-NodeX AGENT provides a WebSocket interface as a mechanism to notify applications when data is received from the outside. The following events can be detected by connecting to and subscribing to the WebSocket interface from the application.
+NodeX Agent provides a WebSocket interface as a mechanism to notify applications when data is received from the outside. The following events can be detected by connecting to and subscribing to the WebSocket interface from the application.
 
 ```
 EventType = RECEIVED

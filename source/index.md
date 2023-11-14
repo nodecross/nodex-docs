@@ -23,7 +23,6 @@ getting-started/index.md
 installation/index.md
 configuration/index.md
 usage/index.md
-tutorials/index.md
 troubleshooting/index.md
 contributing/index.md
 concepts/index.md

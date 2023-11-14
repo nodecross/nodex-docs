@@ -1,10 +1,10 @@
 # Getting Started
 
-Try an example of sending a message via a NodeX agent and receiving it.
+Try an example of sending a message via a NodeX Agent and receiving it.
 
 ## Installing NodeX Agent and set up.
 
-First. We setup nodex agent.
+First. We setup NodeX Agent.
 A tutorial without cloning the NodeX repository is currently in preparation.
 
 Before running following commands, please install [rust](https://www.rust-lang.org/).
@@ -28,33 +28,33 @@ This is a simple sequence diagram of sending a message and receiving it.
 sequenceDiagram
     autonumber
     actor app1 as Your App1
-    participant agent1 as NodeX Agent
-    participant hub as NodeX Hub
-    participant agent2 as NodeX Agent
+    participant Agent1 as NodeX Agent
+    participant Hub as NodeX Hub
+    participant Agent2 as NodeX Agent
     actor app2 as Your App2
 
     %% Send Message Flow
-		app1->>agent1: /transfer
-    Note left of agent1: Message
+		app1->>Agent1: /transfer
+    Note left of Agent1: Message
 
-    agent1->>hub: /send_message
-    Note left of hub: Message(DIDComm Encrypted)
+    Agent1->>Hub: /send_message
+    Note left of Hub: Message(DIDComm Encrypted)
 
     %% Receive Message flow
-    app2->>+agent2: /receive (WebSocket connection)
+    app2->>+Agent2: /receive (WebSocket connection)
 
-    agent2->>hub: /get_message_list
-    hub-->agent2: /get_message_list response (if exists)
-    Note left of agent2: Message(DIDComm Encrypted)
-    agent2-->>app2: Message
+    Agent2->>Hub: /get_message_list
+    Hub-->Agent2: /get_message_list response (if exists)
+    Note left of Agent2: Message(DIDComm Encrypted)
+    Agent2-->>app2: Message
 
     %% Ack Message flow
-    app2-->>agent2: Ack message
+    app2-->>Agent2: Ack message
     Note left of app2: MessageId
-    agent2-->>hub: /ack_message
-    Note left of agent2: MessageId(DIDComm Encrypted)
+    Agent2-->>Hub: /ack_message
+    Note left of Agent2: MessageId(DIDComm Encrypted)
 
-    agent2->>-app2: /receive (WebSocket connection) closed
+    Agent2->>-app2: /receive (WebSocket connection) closed
 
 ```
 
@@ -77,7 +77,7 @@ $ cat ~/.config/nodex/config.json | grep did
 
 ```sh
 $ cd /path/to/nodex
-# Run nodex agent
+# Run nodex Agent
 $ cargo run
 ```
 
