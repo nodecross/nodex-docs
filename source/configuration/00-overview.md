@@ -9,7 +9,7 @@ The initial settings are those required to use the NodeX Agent. It mainly allows
 The system settings are generated and managed autonomously by the Agent itself, and are necessary for NodeX to work, and cannot be changed by the system or application in which the NodeX Agent is embedded.
 
 **Network configuration**<br />
-Network settings are used to control the direction of communication between Agents and Agent's HeartBeat settings.This is future release.
+Network settings are used to control the direction of communication between agents. It is also planned to allow settings for the frequency of an agent's HeartBeat, but this is for a future release.
 
 **Update configuration**<br />
 Some settings can be updated from NodeX Studio. This is future release.
