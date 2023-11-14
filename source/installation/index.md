@@ -9,7 +9,6 @@ You can register to NodeX Hub/Studio at [https://studio.nodecross.io](https://st
 ```{toctree}
 :hidden:
 00-overview.md
-10-install-on-linux-i686.md
 20-install-on-linux-x86-64.md
 90-next-step.md
 ```
