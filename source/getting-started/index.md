@@ -2,7 +2,7 @@
 
 Try an example of sending a message via a NodeX Agent and receiving it.
 
-## Installing NodeX Agent and set up.
+## Installing NodeX Agent and set up
 
 First. We setup NodeX Agent.
 A tutorial without cloning the NodeX repository is currently in preparation.
@@ -162,5 +162,5 @@ $ cd /path/to/nodex/examples/nodejs
 $ yarn transfer
 ```
 
-5. Check the example application’s log.
+5. Check the example application’s log
    You will see the following logs.
