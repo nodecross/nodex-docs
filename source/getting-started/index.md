@@ -67,7 +67,7 @@ In this section, you will see where you can use NodeX to send and receive messag
 - Please set up NodeX Agent before the below action.
 - This section uses node.js. So, please install it.
 
-1. Check your own did.
+1. Check your own DID.
 
 ```sh
 $ cat ~/.config/nodex/config.json | grep did
