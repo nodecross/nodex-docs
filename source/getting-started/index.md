@@ -85,7 +85,7 @@ $ cd /path/to/nodex
 $ cargo run
 ```
 
-3. Run receive message example. The original code is **[here](https://github.com/nodecross/nodex/blob/develop/examples/nodejs/src/receive.ts)**.
+3. Run receive message example. The original code is **[here](https://github.com/nodecross/nodex/tree/9bbcf0f6bcb6d0b487df7ed8368e347612053f27/examples/nodejs/cli)**.
 
 The following is part of the example code.
 
