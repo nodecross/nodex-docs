@@ -62,6 +62,10 @@ sequenceDiagram
 
 In this section, you will see where you can use NodeX to send and receive messages addressed to you.
 
+```{note}
+It takes about 30 minutes for the DID to be registered in the decentralized anchoring system and for messages to actually be sent and received.
+```
+
 ### Requirements
 
 - Please set up NodeX Agent before the below action.
