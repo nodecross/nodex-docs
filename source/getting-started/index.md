@@ -64,6 +64,7 @@ In this section, you will see where you can use NodeX to send and receive messag
 
 ```{note}
 It takes about 30 minutes for the DID to be registered in the decentralized anchoring system and for messages to actually be sent and received.
+Please stop running `cargo run` once and run it again after 30 minutes.
 ```
 
 ### Requirements
