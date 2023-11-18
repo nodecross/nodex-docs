@@ -18,6 +18,11 @@ $ cargo run -- --config network set --key secret_key --value <YOUR PROJECT SECRE
 $ cargo run -- --config network set --key project_did --value <YOUR PROJECT DID>
 ```
 
+```{note}
+After configuring the agent, it typically takes approximately 30 minutes for the registration to be completed in the decentralized anchoring system. 
+During this time, messages can't be sent and received. Kindly wait for a while and then spin up the agent.
+```
+
 ## Message Send/Receive Flow
 
 This section shows how to send a message to NodeX Hub via NodeX Agent, receive a message from NodeX Hub, and notify that a message is read to NodeX Hub.
@@ -61,11 +66,6 @@ sequenceDiagram
 ## How to Send Messages in NodeX
 
 In this section, you will see where you can use NodeX to send and receive messages addressed to you.
-
-```{note}
-It takes about 30 minutes for the DID to be registered in the decentralized anchoring system and for messages to actually be sent and received.
-Please stop running `cargo run` once and run it again after 30 minutes.
-```
 
 ### Requirements
 
