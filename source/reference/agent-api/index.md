@@ -1,33 +1,215 @@
 # NodeX Agent API
 
-NodeX Agent is a resident Linux daemon process that provides NodeX Agent functionality as an HTTP-based API to another application, mainly within the Linux OS. Since this type of NodeX Agent provides HTTP-based API, it can be used regardless of the implementation language of the application that uses the API, and it can be used with zero learning cost by providing pre-built binaries. The pre-built binaries can be used with zero learning cost for building the API.
+NodeX Agent is a resident Linux daemon process that provides NodeX Agent functionality as an HTTP-based API to another application, mainly within the Linux OS. Since this type of NodeX Agent provides HTTP-based API, it can be used regardless of the implementation language of the application that uses the API, and it can be used with zero learning cost by providing pre-built binaries.
 
 The following API is provided through the Unix Domain Socket (~/.nodex/run/nodex.sock) for applications using the NodeX Agent. that can hit the Unix Domain Socket to communicate with NodeX Agent through the socket.
 
+NodeX provides APIs for encryption and decryption for the messages themselves, which are used to send and receive messages between devices.
+NodeX enables encryption/decryption status checks on communications made between devices.
+This will help administrators monitor devices and the applications embedded in them.
+(Sending and receiving of application data is left to the applications you are using.)
+
 The APIs provided by NodeX Agent are categorized as High-Level API and Low-Level API.
 
-**High-Level API**
+NodeX's **High-Level API** provides a set of APIs that support accountability and reliability in sending and receiving encrypted application data.
 
-- High-Level APIs abstract complex operations or processes and offer developers a simple and intuitive interface. This allows developers to focus on the application's business logic or functionalities without worrying about the underlying complexities.
-- High-Level APIs usually provide easier coding, faster development cycles, and a lower learning curve. However, they may offer limited control over internal operations and less flexibility in customization.
-- If you want to send and receive application data without having to deal with DIDComm messages or Verifiable Credentials directly, please refer to the High-Level API.
+Specifically, it allows the receiving device to verify that the device sending the application data is sending it to the intended device.
+In addition, it logs when application data is encrypted and decrypted during transmission and reception. The administrator can track the status of data encryption and decryption between devices.
 
+NodeX's **Low-Level API** provides more detailed control and greater flexibility than the High Level API.
 
-**Low-Level API**
-
-- Low-Level APIs enable the generation and validation of DIDComm messages, as well as the creation and verification of Verifiable Credentials. They facilitate operations and control over message signing and encryption. This allows for more granular control.
-- Low-Level APIs offer more detailed control and higher flexibility but require a higher level of technical knowledge. The development process can be more complex and time-consuming.
-- If you want to select the type of DIDComm messages or control the signing and verification of Verifiable Credentials on the application side, please refer to the Low-Level API.
+See the Low Level API if you want to select the type of DIDComm messages on the application side, control the signing and verification of verifiable credentials, or require a customized process for encryption and decryption.
 
 
 ## High-Level API
 
-### Data Operations
+### DID Operations
 
-#### Transfer
+#### Create DIDComm Message
 
 ```{eval-rst}
-.. http:post:: /transfer
+.. http:post:: /create-didcomm-message
+
+  Create DIDComm message using the DIDComm protocol.
+
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json String required destination_did: Specifies the destination DID.
+  :<json String required message: Specifies data to be sent through the DIDComm protocol.
+  :<json String required operation_tag: 
+
+  **Response JSON Objects:** Response JSON Objects follow the DIDComm Messageing data model. See `here <https://identity.foundation/didcomm-messaging/spec/#message-formats>`_ for details.
+
+  :status 200: Success.
+  :status 404: Not found.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: python
+    :linenos:
+    :caption: Python
+
+    from sock import post
+
+    def main():
+        # The endpoint and payload you want to send
+        endpoint = "/create-didicomm-message"
+        payload = {
+            "destination_did": "did:nodex:test:EiBprXreMiba4loyl3psXm0RsECdtlCiQIjM8G9BtdQplA",
+            "message": """{"string": "value","number": 1,"boolean": True,"array": [],"map": {}}""",
+            "operation_tag": "test-operation-tag",
+        }
+
+        # Send the POST request and print the response
+        json_response = post(endpoint, payload)
+        print(json_response)
+
+    if __name__ == "__main__":
+        main()
+
+  .. code-block:: json
+    :linenos:
+    :caption: Response (JSON)
+
+    {
+        
+    }
+```
+
+#### Verify DIDComm Message
+
+```{eval-rst}
+.. http:post:: /verify-didcomm-message
+
+  Transmits data using the DIDComm protocol.
+
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json String required message: An application message sent by the sending application, assuming the data structure defined in DIDComm Message.
+
+  :>json String string: 
+  :>json Number number: 
+  :>json Boolean boolean: 
+  :>json Array<Object> array: 
+  :>json Object map: 
+
+  :status 200: Success.
+  :status 401: Unauthorized.
+  :status 404: Not found.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: python
+    :linenos:
+    :caption: Python
+
+    from sock import post
+
+    def main():
+        # The endpoint and payload you want to send
+        endpoint = "/verify-didcomm-message"
+        payload = {}
+
+        # Send the POST request and print the response
+        json_response = post(endpoint, payload)
+        print(json_response)
+
+    if __name__ == "__main__":
+        main()
+
+  .. code-block:: json
+    :linenos:
+    :caption: Response (JSON)
+
+    {
+    }
+```
+
+### Credential Operations
+
+#### Create Verifiable Message
+
+```{eval-rst}
+.. http:post:: /create-didcomm-message
+
+  Create DIDComm message using the DIDComm protocol.
+
+  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
+  :<json String required destination_did: Specifies the destination DID.
+  :<json String required message: Specifies data to be sent through the DIDComm protocol.
+  :<json String required operation_tag: 
+
+  **Response JSON Objects:** Response JSON Objects follow the VerifiableCredentials data model. See `here <https://www.w3.org/TR/vc-data-model/#basic-concepts>`_ for details.
+
+  :status 200: Success.
+  :status 404: Not found.
+  :status 500: Internal server error.
+
+  **Example**:
+
+  .. code-block:: python
+    :linenos:
+    :caption: Python
+
+    from sock import post
+
+    def main():
+        # The endpoint and payload you want to send
+        endpoint = "/create-verifiable-message"
+        payload = {
+            "destination_did": "did:nodex:test:EiBprXreMiba4loyl3psXm0RsECdtlCiQIjM8G9BtdQplA",
+            "message": """{"string": "value","number": 1,"boolean": True,"array": [],"map": {}}""",
+            "operation_tag": "test-operation-tag",
+        }
+
+        # Send the POST request and print the response
+        json_response = post(endpoint, payload)
+        print(json_response)
+
+    if __name__ == "__main__":
+        main()
+
+  .. code-block:: json
+    :linenos:
+    :caption: Response (JSON)
+
+    {
+        "issuer": {
+            "id": "$ISSUER_DID"
+        },  
+        "issuanceDate": "2024-03-10T06:29:41.750407+00:00",
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1"
+        ],
+        "type": [
+            "VerifiableCredential"
+        ],
+        "credentialSubject": {
+            "container": {
+                "created_at": "2024-03-10T06:29:41.750407+00:00",
+                "destination_did": "$DESTINATION_DID",
+                "message_id": "2b30ff6a-fa6e-44cc-9b1e-92aa2f96f3f5",
+                "payload": "{\"string\": \"value\",\"number\": 1,\"boolean\": true,\"array\": [],\"map\": {}}",
+                "project_hmac": "b843ea611f2229cd645fdbe92c247c0887e5b2dcbed5f5fa75895bb553eee5dc"
+            }
+        },
+        "proof": {
+            "type": "EcdsaSecp256k1Signature2019",
+            "proofPurpose": "authentication",
+            "created": "2024-03-10T06:29:41.908757+00:00",
+            "verificationMethod": "",
+            "jws": "",
+            "controller": null,
+            "challenge": null,
+            "domain": null
+        }
+    }
+```
+
+#### Verify Verifiable Message
+
+```{eval-rst}
+.. http:post:: /verify-verifiable-message
 
   Transmits data using the DIDComm protocol.
 
@@ -36,158 +218,49 @@ The APIs provided by NodeX Agent are categorized as High-Level API and Low-Level
   :<json Array<Map<String, Any>> required messages: Specifies data to be sent through the DIDComm protocol.
   :<json Map<String, Any> required metadata: Specifies the metadata for sending messages.
 
-  :>json Array<Object> results: The result of processing for each destination is represented as an array.
-  :>json String results.[number].destination: Represents the destination.
-  :>json Boolean results.[number].success: Represents the state of success or failure.
-  :>json Array<Object> results.[number].errors: If an error occurs, the error information is represented as an array.
-  :>json String results.[number].errors.[number].error: Represents an error message.
+  :>json String string: 
+  :>json Number number: 
+  :>json Boolean boolean: 
+  :>json Array<Object> array: 
+  :>json Object map: 
 
   :status 200: Success.
-  :status 400: Bad request.
+  :status 401: Unauthorized.
+  :status 403: Forbidden.
   :status 500: Internal server error.
 
   **Example**:
 
-  .. code-block:: js
+  .. code-block:: python
     :linenos:
-    :caption: NodeJS
+    :caption: Python
 
-    import axios from 'axios'
+    from sock import post
 
-    (async () => {
-        const response = await axios.post('http:/localhost/transfer', {
-            destinations: [ 'did:nodex:test:...' ],
-            messages: [ {
-                string: 'value',
-                number: 1,
-                boolean: true,
-                array: [],
-                map: {}
-            } ],
-            metadata: {
-                string: 'value',
-                number: 1,
-                boolean: true,
-                array: [],
-                map: {}
-            }
-        }, {
-            socketPath: '~/.nodex/run/nodex.sock',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-    })()
-
-  .. code-block:: json
-    :linenos:
-    :caption: Response (JSON)
-
-    {
-        "results": [
-            {
-                "destination": "did:nodex:test:...",
-                "success": true,
-                "errors": []
-            },
-            {
-                "destination": "did:nodex:test:...",
-                "success": false,
-                "errors": [
-                    {
-                        "error": "ERROR_MESSAGE"
-                    }
-                ]
-            }
-        ]
-    }
-```
-
-#### Receive
-
-**Websocket communication is used for this API.**
-
-```{eval-rst}
-.. http:get:: /receive
-
-  Receive data using the DIDComm protocol.
-  Use websocket to communicate between the applications and the NodeX Agent.
-  Please refer to the `Message Send/Receive Flow <https://docs.nodecross.io/getting-started/index.html#message-send-receive-flow>`_ for a overview of data flow in Receive.
-
-  **API specification for getting messages**
-
-  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
-  :>json String message_id: An ID uniquely assigned to a message between applications.
-  :>json Object message: Represents a verifiable credential. Please refer to the `VC Data Model <https://www.w3.org/TR/vc-data-model/>`_ specification for more information on this object.
-  :status 200: Success.
-  :status 400: Bad request.
-  :status 500: Internal server error.
-
-  **API specification for sending ACK messages**
-
-  After receiving the message, the application sends an ACK message to the NodeX Agent. If the transmission is successful, the NodeX Agent closes the socket.
-
-  :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
-  :<json String required message_id: An ID uniquely assigned to a message between applications. Please refer to **Response JSON Object in API specification for getting messages** for details.
-  :status 200: Success.
-  :status 400: Bad request.
-  :status 500: Internal server error.
-
-  **Example**:
-
-  .. code-block:: js
-    :linenos:
-    :caption: NodeJS
-
-    import WebSocket from 'ws';
-    import { base } from "./sock.js";
-
-    const URL = 'ws+' + base + ':/receive';
-    const socket = new WebSocket(URL);
-
-    socket.on('message', (data) => {
-        const message = JSON.parse(data.toString());
-        const response = {
-            "message_id": message.message_id
-        };
-        socket.send(JSON.stringify(response));
-    })
-
-    setTimeout(() => {
-        socket.close();
-    }, 30000);
-
-  .. code-block:: json
-    :linenos:
-    :caption: Response (JSON)
-
-    {
-        "message_id": "",
-        "message": {
-            "id": "http://example.edu/credentials/1872",
-            "issuer": {
-                "id": "https://example.edu/issuers/565049"
-            },
-            "issuanceDate": "2010-01-01T19:23:24Z",
-            "@context": [
-                "https://www.w3.org/2018/credentials/v1",
-                "https://www.w3.org/2018/credentials/examples/v1"
-            ],
-            "type": ["VerifiableCredential"],
-            "credentialSubject": {
-                "container": "", 
-            },
-            "proof": {
-                "challenge": "",
-                "controller": "",
-                "created": "2017-06-18T21:19:10Z",
-                "domain": "",
-                "type": "RsaSignature2018",
-                "proofPurpose": "assertionMethod",
-                "verificationMethod": "https://example.edu/issuers/565049#key-1",
-                "jws": "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..TCYt5XsITJX1CxPCT8yAV-TVkIEq_PbChOMqsLfRoPsnsgw5WEuts01mq-pQy7UJiN5mgRxD-WUcX16dUEMGlv50aqzpqh4Qktb3rk-BuQy72IFLOqV0G_zS245-kronKb78cPN25DGlcTwLtjPAYuNzVBAh4vGHSrQyHUdBBPM"
-            }
+    def main():
+        # The endpoint and payload you want to send
+        endpoint = "/verify-verifiable-message"
+        payload = {
+            "message": """{"issuer":{"id":"did:nodex:test:EiDWAZgabmwyviEUcvPMssS_kJT1MUyhDO9iPdfx5dw5Xg"},"issuanceDate":"2024-03-04T17:05:39.042635+00:00","@context":["https://www.w3.org/2018/credentials/v1"],"type":["VerifiableCredential"],"credentialSubject":{"container":{"created_at":"2024-03-04T17:05:39.042635+00:00","destination_did":"did:nodex:test:EiBprXreMiba4loyl3psXm0RsECdtlCiQIjM8G9BtdQplA","message_id":"7cca38ee-77a6-4cfe-b7b4-5c0987fa1627","payload":"{\\"string\\": \\"value\\",\\"number\\": 1,\\"boolean\\": True,\\"array\\": [],\\"map\\": {}}","project_hmac":"b843ea611f2229cd645fdbe92c247c0887e5b2dcbed5f5fa75895bb553eee5dc"}},"proof":{"type":"EcdsaSecp256k1Signature2019","proofPurpose":"authentication","created":"2024-03-04T17:05:39.068522+00:00","verificationMethod":"did:nodex:test:EiDWAZgabmwyviEUcvPMssS_kJT1MUyhDO9iPdfx5dw5Xg#signingKey","jws":"eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ.._iTjTfHLg78lJzGxwdFq5aT_b3xfNLaLBYybwD6ck8d34IN2a7gXuHIj-eJtUYzuTowNFAl5DGny8yKQMra7qA","controller":null,"challenge":null,"domain":null}}"""
         }
+
+        # Send the POST request and print the response
+        json_response = post(endpoint, payload)
+        print(json_response)
+
+    if __name__ == "__main__":
+        main()
+
+  .. code-block:: json
+    :linenos:
+    :caption: Response (JSON)
+
+    {
+        "string": "value",
+        "number": 1,
+        "boolean": true,
+        "array": [],
+        "map": {}
     }
 ```
 
@@ -631,12 +704,3 @@ The APIs provided by NodeX Agent are categorized as High-Level API and Low-Level
     })()
 ```
 
-## Events
-
-NodeX Agent provides a WebSocket interface as a mechanism to notify applications when data is received from the outside. The following events can be detected by connecting to and subscribing to the WebSocket interface from the application.
-
-```
-EventType = RECEIVED
-```
-
-Event type when data is received from other edges.
