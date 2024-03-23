@@ -18,6 +18,7 @@ NodeX is an open-source toolkit for building end-to-end secure messaging between
 ```{toctree}
 :hidden:
 introduction/index.md
+concepts/index.md
 features/index.md
 getting-started/index.md
 installation/index.md
@@ -25,6 +26,5 @@ configuration/index.md
 usage/index.md
 troubleshooting/index.md
 contributing/index.md
-concepts/index.md
 reference/index.md
 ```

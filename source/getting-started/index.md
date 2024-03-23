@@ -23,46 +23,6 @@ After configuring the agent, it typically takes approximately 30 minutes for the
 During this time, messages can't be sent and received. Kindly wait for a while and then spin up the agent.
 ```
 
-## Message Send/Receive Flow
-
-This section shows how to send a message to NodeX Hub via NodeX Agent, receive a message from NodeX Hub, and notify that a message is read to NodeX Hub.
-
-This is a simple sequence diagram of sending a message and receiving it.
-
-```{mermaid}
-sequenceDiagram
-    autonumber
-    actor app1 as Your App1
-    participant Agent1 as NodeX Agent
-    participant Hub as NodeX Hub
-    participant Agent2 as NodeX Agent
-    actor app2 as Your App2
-
-    %% Send Message Flow
-		app1->>Agent1: /transfer
-    Note left of Agent1: Message
-
-    Agent1->>Hub: /send_message
-    Note left of Hub: Message(DIDComm Encrypted)
-
-    %% Receive Message flow
-    app2->>+Agent2: /receive (WebSocket connection)
-
-    Agent2->>Hub: /get_message_list
-    Hub-->Agent2: /get_message_list response (if exists)
-    Note left of Agent2: Message(DIDComm Encrypted)
-    Agent2-->>app2: Message
-
-    %% Ack Message flow
-    app2-->>Agent2: Ack message
-    Note left of app2: MessageId
-    Agent2-->>Hub: /ack_message
-    Note left of Agent2: MessageId(DIDComm Encrypted)
-
-    Agent2->>-app2: /receive (WebSocket connection) closed
-
-```
-
 ## How to Send Messages in NodeX
 
 In this section, you will see where you can use NodeX to send and receive messages addressed to you.
