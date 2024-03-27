@@ -42,7 +42,7 @@ sequenceDiagram
 
 #### E2E Encrypted (VM)
 
-NodeX Agent sends and receives E2E Ecrypted messages between devices.
+NodeX Agent sends and receives E2E Ecrypted verifiable messages between devices.
 Below is a sequence diagram of the message from transmission to reception.
 
 ```{mermaid}
@@ -55,11 +55,11 @@ sequenceDiagram
 	participant studio as NodeX Studio
   
 	app1->>+agent1: /create-didcomm-message
-	agent1->>agent1: create encrypted message
+	agent1->>agent1: create encrypted verifiable message
 	agent1->>+studio: /save-create-event(message-activity)
 	studio->>studio: store message-activity
 	studio-->>-agent1: response
-	agent1-->>-app1: response(encrypted message)
+	agent1-->>-app1: response(encrypted verifiable message)
 
   app1->>app2: send(app message)
 	app2->>+agent2: /verify-didcomm-message
