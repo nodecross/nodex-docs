@@ -1,6 +1,6 @@
-# Install on Mac OS (x86_64)
+# Install on macOS (x86_64)
 
-NodeX officially provides pre-built binaries for the x86_64 architecture Mac OS.
+NodeX officially provides pre-built binaries for the x86_64 architecture macOS.
 
 ```bash
 % curl -OL https://github.com/nodecross/nodex/releases/latest/download/nodex-agent-mac.zip
