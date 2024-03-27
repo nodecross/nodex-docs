@@ -40,25 +40,14 @@ NodeX Agent enables devices to autonomously register the public key to the decen
 **Figure 7.** Comparison of conventional and automated provisioning flow
 :::
 
-## E2E Secure Channel
-
-Two-way communication (device-cloud, device- device) happens via a message handler, called by the customer, NodeX Hub. NodeX Agent stores NodeX Hub's DID in RoT SPE as pre-configuration. The device performs handshakes with the NodeX Hub to establish an end-to-end secure channel. In the handshake process, the system sends the public key (for encryption) and encrypted and signed message including client_id and client_secret to the server as client hello. The server generates a common key with a received public key, and decrypts the message to verify the device's signature and client_secret, and responds with an encrypted and signed message to the device. The device then verifies the server's signature and compares the server's DID with the pre-configured DID to authenticate the server, and completes the handshake process.
-
-## Access Control
-
-The system software stores in PSA-RoT secure storage a security policy regarding access privileges. Such a security policy is used by the system software to manage access privileges. Device security parameters can only be updated by privileged users who are allowed to access the NodeX Hub. There are two access privilege levels; Admin and User. Admin and User (including cloud application through API) are authenticated and authorized by Hub. Admin users are allowed to send encrypted and signed data with secret_token to the target device, and the device validates the secret_token using a pre-configured security policy to authenticate the admin user. In the system software, the execution of application functionalities is enabled with the lowest level of privilege necessary for the intended function.
-
 ## Logging
 
-The logging data is buffered with EMERG/ALERT/CRIT/ERR/WARNING/NOTICE/DEBUG log level tags and FROM/TO/MESSAGE data format and will be sent to NodeX Hub. All logging data is digitally signed, encrypted (AES-GCM) in the RoT secure storage. If the network of the device is temporarily interrupted, the logging data will be buffered with the maximum value of the pre-configured capacity, and the cached logging data will be sent to NodeX Hub when the network is reopened. NodeX Hub verifies and decrypts the logging data and stores it in the server. Basically, the logging data is stored in the server for 2 years, but the storage period depends on the service plan users subscribe to. Users can access the logging data via NodeX Hub API. In the initial configuration, only the admin user can access the logging data. Admin users can change the access control of NodeX Hub. All the logging data can be searched by the logging tags.
+Logging data tracks the encryption and decryption status of messaging between devices.
+The data is buffered and sent to NodeX Studio in data format using source ID, destination ID, unique ID for the message, and verification status. If the network of the device is temporarily interrupted, the logging data will be buffered with the maximum value of the pre-configured capacity, and the cached logging data will be sent to NodeX Studio when the network is reopened. NodeX Studio stores the logging data in the server. Basically, the logging data is stored in the server for 2 years, but the storage period depends on the service plan users subscribe to. Users can access the logging data via NodeX Studio API. In the initial configuration, only the admin user can access the logging data. Admin users can change the access control of NodeX Studio. All the logging data can be searched by the logging tags.
 
 ## RoT Extension
 
 Middleware for storing security configurations or secret keys and for accessing RoT functions may sometimes be configured independently. In order to allow NodeX Agent to run in more environments and to serve as a security solution for a variety of use cases, we provide the ability to replace some of the functions built into NodeX Agent with your own. Developers do not need to recompile the entire NodeX Agent. All they need to do is implement the methods according to a simple API specification and create a shared library that can be loaded by NodeX Agent.
-
-## DID Configuration File
-
-Hub has privately a DID configuration file to ensure device authenticity through message authentication codes by pre-sharing confidential information with the Agent. The DID configuration file in the Hub can be reflected in the json file under the root domain managed by the customer as <a href='https://identity.foundation/.well-known/resources/did-configuration/'>Well Known DID Configuration File</a>.
 
 ## Security Configuration
 
