@@ -76,7 +76,27 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
     :caption: Response (JSON)
 
     {
-        
+        "ciphertext": "Kl3qKzuRblaTH9371vabsTo0hFVCMrG2OIevNvDg_WwIME7MEUqwNIlaMuj-U4ym9ri4WT74AsfkigkUBiBFYPhz9LwjW6tpmBNfrDNvhCClGMqApT8ostS-s2ML4uDbWdEtQSBX2yOlDb1LnI8uDsk02QNvE9AHaJJk6M22859VvxvCzaguZzltjOmQJOcntC2b4Rerup9-Qx8dijGE4dP6pkTAJ4NRJ2cl4r9n4NQeZcJCx43T95lTlEyGoNsEajHAOJJyexHtASycgewNC817ypodIb3Do-iiuJ0LuQ-v8tqe6tg8jmuZpQ-vL0_TjVlY4tI6djo3TmXk3iWua_pz6aj2VDu5T_Bt-YhgbZKfKwSw2p9zOugjPhfNdDNG0FpmYRCtnrvK0E2KAbcjDpNz2SUZqvS-RII44NVNc22tBC4SqSJEIYVKzT2oUuPAWCkukCi_NFmAfot6gcAO9zxddfLV-hUuu6nbjyDTs06IRQQnZGy-qydr-7jYcSDvPOdfMmoXkRME6iXhtaLRuKP0w_liZuLm0yWJn4dKvq5kHuqybBcklt_CZmNUI0VUe-ipUdfH8yrW_7WYROQCLbg2AI7bxA9zpLXn2HrJJQTDOZRKZanadSqRVnEPKbRazGMPywQenx817AzbqKYN9h-FnqPoi5ToLJO8x6egqT5UBz6H-YvYqvtXTCpkw4_d34cIwG8NY8CNqBASteE6V0qgj7iu2qIUemtuOtEesaFRVirlcyZ1k3T__mxtNwhm9wUxtYpGY9FXA1j_6hUpmwmmWhQ7UGJOubvRDdqgnP8Q7cgM7atUboJmJOhiBvgJhp4IKh9U_kje2ryNwXTWDsRT4z1GcAR3xTo-fuSEozIlElb0dLWPjb3yxDChA0NdNEmPB36LXKFmMn3muE_ETv14vcK34-46T9qPvvIALth8uUIgcxcon6tFrJ2iycJZ1CfTbZa3FTTW10fk0IKuevW0PMWcr13v6oZiQV0xbW9sRpqbESncyk9m845HdEsz5Jl4mHdg3WTi0MdDPSb4l2Uj3Qb74zy8J8lL7YLcBp_HTnbHIVXVcEg1tE3rMF4RCCaDg2WVUzfcthK0WyIW_bB3JeLNa0CNN5VTeyyqjcI4xk9I_kQBuIbnpbglefMYtHKB7DD28Dl78xY8J9toKVdcR5EzOg5UYMDO3GgztCbpGzGujwkLu2H7UI5mLeouu8dVhYvve43VPCtNNRki22Ku953ZYAHqOX-JZJDnx02pVa4_k5ZNTszR34vUf0KVlmyHBFYRhDtuUsLFr1a5yd2mQdRNQvuOIYdknTTRkyvQTk_CpfiF6nw_NNZCH554J3kMCuq7oDyvs0nbah82eKAnGsLCojAQWsNUmzzKBg463ru--w_tI5U419wNqHpNzU36QKfDlfhOIhm96DVhhx3w4Kh9nrAfxMeHm6JHflO4KgWQOjc-iRem9sKKTuAQP_dXybosCOT4WgnBiiw1pd1q5QlORlt-hKzkkn_4uw6QKm6VPfv2NtLfnms9esb7-TND7Fu_5wXkgr8SFTtCld5Gty1d15orkEo3VfhgKVi62HrjqNF0X8DKva-XnJLpjvet7_aUkKfGpGwHyy9Y32onp2P_lKNCOe2ZQfjd8rA2B1mhSKbVStSt_YBMogJGxuaR81QL6Amm065xJp56KDbkMZXn97WEqZn8XwwXJ2Zr6ynQn11IOBdOlih3T768m0rPcXaClO0yOqioPK2BgJEjTQ_THmvQ3Ol5xgXWWjjFGGvd60gM2B-9zI9SAc0M3jfXS3Mj56IVVzE-7BhjtSYuiv8JsCY5eXj1DiKFvr9naW0CCS-J-776wXflee9qQTFu3sIu9c3iPe2t6acbLDgJlbU3chHqktbM1Knpha7ECUsWfEOn0YJuu1hF8AQsz9_OD2Vw271Q8O2lv7JfBCc5DsS5QkIrYRB7VTOtVhT6wm1cDIbwgJFKSdRgjpfVndjc8EW0UxW55h4sjTmVrO47hWbo1WLYVkAr-NaQlKyf6qN3M64OVTnLVOr-WgQOzw_lp7j3ViQeFqpLWL-5ZMZyZOnEtxEpU4SIYPCFmxdmaPY_6RL7RZsSMBc3tNg-2De5LdXz9l1CiS-mZwXCcfZqwSNStUHEWhyTGnKM4DhvLjJgC7YGSlMthiqs4k8hXyPo54u52CL9IMS-0VjHm556nM_y93wXqI076yHxOexvcQXywCe4gzaAqahqEIeM2bZikFb_f8uZyEOCazNRQQAQky4oHLYmQbCVeviVvAZLc1SnuGiJY0kZUuw3ooxpB006GN00ZMjj1dsgsy7GG3IeEGZuDNqEaffI96JGFzuTxAcxhPblR_kPMYDMPOy35eu3TNKHuIAIrmFnWVMhR2IZMYI4ara285lUicwFgmHw5xEACmkSTbccTma2VF4L7w7AF4DJd2DZS4HbctR0oGLD3RDAm9mUpH2CPZOM-_Pbx-bo0pYK5AGuGl-pBamB_dAQGaRL4DuAK0hg5ox1fw-JEEb4lvzlGa7dLMd8tluBQNi3t9DQAXKtovhCwP-mGSU0Jtml9NtzojPYiym1EaB9xGYuEAYPQHDOceLGzRlV4PrXSkBcz6xGAUMH3Urp5TxpAUreZEbZ7SqKsS8Wjb-zEMWBu7_b9YlcnMQAlKSNXv3cJRQViqs0o-G_QHxN5281MeoX86mwBBJPmDgyW06tn8vBuwn7IRY5k2fntUET6my3nZxEBz0L8i0iO4nMUAIJXHqL4n0nL120L58viM61QQ8QOEUODLi0gypc5ykOw2xSztFTGDoy2ho30Yfr4bkk28blEwIcuowAMA841IJlNRnWzcibEItu3FsEpos18gbKpYYUF0ZbZFT7rzunTbZxKbcIbVQdihHKUYJHr8uHMC7Db27o5UQaziEBinlwagYAhKWUNjFyinohElNSN-Knpe9vSOw5xCs8w1ZH0yXuxE6nwuuy5WH3CNIGB31Pqw4ZpgF86j-A7W6XcbGysLqPXqibor9WFVddHBle5AWqEbfO4-7w9UbQAqpPGf9LKv63ZFkyrz0neZkN9LliWQcIqxq5a1xPSlzsXZdvwWTQLFBe0Tuh2Pa0Vcneb3lFmM8iFWneXoKE_8jyNj1m1tjOVPJVeA6Zyp5Q24yT0IFK064v0JeeICiq3l_TcGBeYIwThkxVqKZ9j7lJPGkOwpMDd9im1o2ZC2iiVmQ1Al3gV1qo_ZCN5G5Xwt8kD-G5hpiioXLxnqcHTCYRt8EWopJMu9e3xKN8PJ0Sz3WC7hBPCrG5zAF51bwBPj4pDtJYpHUh2d54jTxhr60ScCVEuWcZTzzT9g3IHXWul8zNCqU-2gXFwtV-5GM0q93rahi-VpQSGDgYJLZhAAsD9TqQC_zexmNK3RB842kuaCjj8dlny3masSupfUhlhMnPN9xX7jJWKVNSv2pg3wMyeDSIOwQEyeC0A6OoeQE",
+        "iv": "5CacbRzccXcTOwBGqXNI8wG3-be4-xOy",
+        "protected": "eyJ0eXAiOiJhcHBsaWNhdGlvbi9kaWRjb21tLWVuY3J5cHRlZCtqc29uIiwiZW5jIjoiWEMyMFAiLCJraWQiOiJub21NTHFNbnRrelB3eVluMXRKN3NuRHVmOWZ0NHlFNGRXdGZxbHdjbHp3Iiwic2tpZCI6ImRpZDpub2RleDp0ZXN0OkVpRDFUNjU3TWhfV1RMMlA2dE4yV3VZd3FpVWUtUUpnWU9oNkxGR1g1UG1YTlEiLCJhbGciOiJFQ0RILTFQVStYQzIwUEtXIn0",
+        "recipients": [
+            {
+                "encrypted_key": "0I1uB5c8rSZTRwA5Ud5u8UnKLXkbxNxv6HX-yFFh4v4",
+                "header": {
+                    "alg": "ECDH-1PU+XC20PKW",
+                    "epk": {
+                        "crv": "X25519",
+                        "kty": "OKP",
+                        "x": "v72FYsMD6Xpoki6dthH9h7dqS9JWlebwEsnB_-Ra6Qg"
+                    },
+                    "iv": "mGBcQnSxeHhb94_mUZZwJ31GM8Jas0L7",
+                    "key_ops": [],
+                    "kid": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ",
+                    "tag": "pKdEAiL4OJZoLoqLbVPI_g"
+                }
+            }
+        ],
+        "tag": "EtH6ll0apH133Y74wbqU4A"
     }
 ```
 
@@ -90,7 +110,7 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
   :<header Content\\-Type: Specifies :code:`application/json` as a fixed value.
   :<json String required message: An application message sent by the sending application, assuming the data structure defined in DIDComm Message.
 
-  :>json String message: The message used in the request to generate the Verifiable Message is returned.
+  **Response JSON Objects:** Response JSON Objects follow the VerifiableCredentials data model. See `here <https://www.w3.org/TR/vc-data-model/#basic-concepts>`_ for details.
 
   :status 200: Success.
   :status 400: Bad Request.
@@ -115,27 +135,27 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
         payload = {
             "message": """
                 {
-                    "ciphertext": "ycha9AtTBdFTXjP9zPm0cv85EP89uzBF05hvyKJ08lQ8npw6MES9htmLjyyiFl-rXxIW1lFf2FVGD28Gg0jv65tXWyQX7c0MoDmjF9FgIVwTzzgJ_4aR67U7ncX8T03Ib20cXakJWsrOJp1hzJdFEwkoDRJSszbuA4cCkYzeW2ia9jXsZNig90Q2b_m3kFzXCw20tV_JU68xrfs9OtQHwiAUB9_nuskBvdV-lJeoblT8yV3H1Jz5FjLN7JUOV5NBdBk0aDsO0kQ1eFiqZtj5HlZKDB-uKp52ISf80JTJNCb9uB1c-DnCkJw6-D0kk3f83-3y7GN3LfQYSYpxlrpMDnQVtXll0nCTvakiQOUCqQl0eAFMEXeROe-a4dOz3MRdgENnI1fh2N7GMsuh3pax6PI_ssAH51Ya85h_VtJDc6ZqzHkoLhxGALPBJ1-lONXjXdkdPeq5iiGmvkHXwwq4Spe6KyuLiVwbbSVsCQ-qd2yVTuU01EjEo4YVP3L64bA1alwvbZwPfQTBAFAH3J31_50nYmPb4-DdwlFkivQD3CB_1VWUaTQ_7LYlqY_x05UAcb8pYC2sD3rWfV-U18RmRzThfJ9WiycZHaOCn-sKqfYt2UFH8iFBDxYSjy-0dJ0ZvJ_0j9fdPV5vsVchpF8x5ZLXx9jYyucvW9KtIR2c8kp6BWjG-_2Ht87tBMla1dHFjrXfLuNVw9NBpuLcQHkQ-YCAuR5L-PxrLSI51Tg5xBDwnyhZpH4n0RxOWFfXECWduNCJhpFvBtxjSjaqegrk4AW2QJtaPouKHJ24QtlXlJpIHo5n5iS7kV7CQKl7twXIG8OOaL6dlaqx2nuAb6HZpo2xHkLpG3VlMXGl4Lky9PDTk_LTVyUwLxRa7Y-9dBQfrwr3TaGzERol7e1D-Add2zSSOpVYCnIdnw7aRQvXliyF29E0dSlMlMU5lvhjBBa1ya4tbnwHruWd_ZpXWEQzlbBj1pOA3yKblzJyNTLhdqqv5OERIccg3DNLYx3LpVBzxS1ya7vU3GsaRON6qYvOtcaNw74qo1iHiRTDD_dhal4MQ2AEoyU3Tzx0Okgukel9oLPQ_yM5xYQZxEcuXAXWq6twAWYSZBQ0mmJf1C-P2VcQFvLnSufD88pY9xmpc5cb8salBYr21evRF8fvWxL8-KDMRIBdYh9_gUFhadlzz2Qh_Oqhsorvxrv6TtsES0q8ggsIrDmDwQTiG1A6NMkJv4Y4lEYvFT4TJbMK8opvY3H59hVZbsZcdzRc2Hi8GTw2XB08PdGrvtVZhK97oIbnNv8CmLR-9bcDDwny2mE9FcCHSYwwXQ_yCEMiXyImKzxNvNovm8isnDaqva2uP6ERzB_AEAZboiOIKVfrW0kddR1_xCYg1a0TwazFrgXO-8wekBmAzVdhvcIkSPnZblu8LovR9AN9YPOqLkZonYRaj6eeDS4ww5kb_IVXzumcbIiNOEoqHwZoNGASxnO7HktiWncfpnridPY4nhH9fFhTITZsypCoZY5wGEbtlwZEDs8dcFq1-vB70m5ukvQN9Cr3IcqSUYBGI4jSr1NBESVELKyzbu-yasRjD_C60IlSB9VmNrw232Wno-jYWp0nmAcU43kxM2RY9pkjfQaDEXtDUKrTD2fRXlqrAUnOBPest3xeiK1ztUae8mpU9AyRH8KKLI3seY3Un_25deYCZjMJi3FgQ1gsTdTab5oANgd60vvND7NAZadCLDjkgsxUXykQOF5p4W_sd64DQeFyBVlPmK9mnxPo7vqMrs_rpywm7sRSbB49R1UsopDcZxv2cZmVPyzXSGxbV4T9e65k1XBSSeUaf3FI_itOOcDDIS-ms_D81__Ubs5YO4VyN6oR2KvkJGXHUFaNZybvu2hZhaAoqLqAZDlx6p9jGM_OUOwS-0ttWe2HC4BeMb53zrrg8T6dmizgwqQV0C0AU-q7cdPb0uhOl4nHXcTnQDA2PHUmhhEBGZMeZezzZ-Dnseox5ucit5tsTkV8zSVnYWYKgM3cgJTJhLJ1kLaS_oYFmSIuL3KnPjRgUMWAkS7HCU6b1XALusCWACwo6FC7iUspc6UBMrtbLLE70C2n17DnHWxSyVnZoo2OIUeQsvBivmnGT8SnD77V83jVMgYC6m1lEKTrMQki8y4BtVYtL1CfdHHFYZqhXdNegFMOf_3d4uWpHqxZbQnAQu3mz4LAJzcg3gLKRv1bVGhbajGc4IowCFV4hknRKx4WZanIQrtQ-3Q4_OjbHgxTSQ01uImaS-rPpIWH7HBKFw6PVfmumBZgYiAu8O4IhJFY-_py3MXdVQR-bDw2cqjXiF93Pf7-O8PzMeK6T5XMnoy5eK2LbT0a0QSqOHR9PvpM9xYlLoSUeJ03TfxUUxTekyOarF2ACrAOV41_D4gbBklcYmKhdJ69YXNl6wiuiLuxKLQFy4QWxkEC-jEZe5GOGkFgTN1udA4BrOE03Bt3QSNfglxKmF3HBUyAByoU2Sd2h8fr5aUmSSoA0-u4qSvl_E8ODhqEyKK_9THfj4N8QuhLyyQn2tW0Om0x0d0CTNv_OJI9Y8lvWWuDHQ7jOanujqN5xpDucM_dJJnDGGMylsYAazviLusf4gzR3B49qbV-owmGQS_2gWaXV0N8ubTnD1cYjAbto8TQdLXYO3KwQwLwu5Nsr4UskH7MkQI5eupHXyBPxIkyJRkQqbNJUdwcZj_KRYzqzvyWdnnlyCPQBTOE8TneCFeIrBtcYrYHL8eL12c0HIcZG4O4nCa8chTHzd5te4D8TQdUUFE60nlCVHg6n_lT7fo9kgRfl85Ly1QooXVKZCJUh4TQYE5TPJLQeHNszNnhDuMJ7qTR51xsnmvBrKWuWAei0JwfdFfFTqtSU1TLfxmxmTxYhPT-5bR76GWru1v0MDS4vDjzso3hNcpvM5tJIEpYoM17NLCHlrUkKBaXcKrNVlkrZhAW5hb_yczmNVoHQxodTasFyqDFvmSPTQpvnRm0ynTPyqbTj8rbeCqXobmuFLgHybHVd5lz7JtQ6ooAv2JZaTXA21rq6hT5G63BmCaagMpLziNieH0EILjftQ",
-                    "iv": "UzE5VwKyQB_7sVgDPcPezLgRY87P2g3d",
-                    "protected": "eyJ0eXAiOiJhcHBsaWNhdGlvbi9kaWRjb21tLWVuY3J5cHRlZCtqc29uIiwiZW5jIjoiWEMyMFAiLCJraWQiOiJsYUJEZl9PeENFLTF6aVdMLWJUT093RFZVMUYyNGluTk1kWkhOd1ZxUEFBIiwic2tpZCI6ImRpZDp1bmlkOnRlc3Q6RWlCcHJYcmVNaWJhNGxveWwzcHNYbTBSc0VDZHRsQ2lRSWpNOEc5QnRkUXBsQSIsImFsZyI6IkVDREgtMVBVK1hDMjBQS1cifQ",
+                    "ciphertext": "Kl3qKzuRblaTH9371vabsTo0hFVCMrG2OIevNvDg_WwIME7MEUqwNIlaMuj-U4ym9ri4WT74AsfkigkUBiBFYPhz9LwjW6tpmBNfrDNvhCClGMqApT8ostS-s2ML4uDbWdEtQSBX2yOlDb1LnI8uDsk02QNvE9AHaJJk6M22859VvxvCzaguZzltjOmQJOcntC2b4Rerup9-Qx8dijGE4dP6pkTAJ4NRJ2cl4r9n4NQeZcJCx43T95lTlEyGoNsEajHAOJJyexHtASycgewNC817ypodIb3Do-iiuJ0LuQ-v8tqe6tg8jmuZpQ-vL0_TjVlY4tI6djo3TmXk3iWua_pz6aj2VDu5T_Bt-YhgbZKfKwSw2p9zOugjPhfNdDNG0FpmYRCtnrvK0E2KAbcjDpNz2SUZqvS-RII44NVNc22tBC4SqSJEIYVKzT2oUuPAWCkukCi_NFmAfot6gcAO9zxddfLV-hUuu6nbjyDTs06IRQQnZGy-qydr-7jYcSDvPOdfMmoXkRME6iXhtaLRuKP0w_liZuLm0yWJn4dKvq5kHuqybBcklt_CZmNUI0VUe-ipUdfH8yrW_7WYROQCLbg2AI7bxA9zpLXn2HrJJQTDOZRKZanadSqRVnEPKbRazGMPywQenx817AzbqKYN9h-FnqPoi5ToLJO8x6egqT5UBz6H-YvYqvtXTCpkw4_d34cIwG8NY8CNqBASteE6V0qgj7iu2qIUemtuOtEesaFRVirlcyZ1k3T__mxtNwhm9wUxtYpGY9FXA1j_6hUpmwmmWhQ7UGJOubvRDdqgnP8Q7cgM7atUboJmJOhiBvgJhp4IKh9U_kje2ryNwXTWDsRT4z1GcAR3xTo-fuSEozIlElb0dLWPjb3yxDChA0NdNEmPB36LXKFmMn3muE_ETv14vcK34-46T9qPvvIALth8uUIgcxcon6tFrJ2iycJZ1CfTbZa3FTTW10fk0IKuevW0PMWcr13v6oZiQV0xbW9sRpqbESncyk9m845HdEsz5Jl4mHdg3WTi0MdDPSb4l2Uj3Qb74zy8J8lL7YLcBp_HTnbHIVXVcEg1tE3rMF4RCCaDg2WVUzfcthK0WyIW_bB3JeLNa0CNN5VTeyyqjcI4xk9I_kQBuIbnpbglefMYtHKB7DD28Dl78xY8J9toKVdcR5EzOg5UYMDO3GgztCbpGzGujwkLu2H7UI5mLeouu8dVhYvve43VPCtNNRki22Ku953ZYAHqOX-JZJDnx02pVa4_k5ZNTszR34vUf0KVlmyHBFYRhDtuUsLFr1a5yd2mQdRNQvuOIYdknTTRkyvQTk_CpfiF6nw_NNZCH554J3kMCuq7oDyvs0nbah82eKAnGsLCojAQWsNUmzzKBg463ru--w_tI5U419wNqHpNzU36QKfDlfhOIhm96DVhhx3w4Kh9nrAfxMeHm6JHflO4KgWQOjc-iRem9sKKTuAQP_dXybosCOT4WgnBiiw1pd1q5QlORlt-hKzkkn_4uw6QKm6VPfv2NtLfnms9esb7-TND7Fu_5wXkgr8SFTtCld5Gty1d15orkEo3VfhgKVi62HrjqNF0X8DKva-XnJLpjvet7_aUkKfGpGwHyy9Y32onp2P_lKNCOe2ZQfjd8rA2B1mhSKbVStSt_YBMogJGxuaR81QL6Amm065xJp56KDbkMZXn97WEqZn8XwwXJ2Zr6ynQn11IOBdOlih3T768m0rPcXaClO0yOqioPK2BgJEjTQ_THmvQ3Ol5xgXWWjjFGGvd60gM2B-9zI9SAc0M3jfXS3Mj56IVVzE-7BhjtSYuiv8JsCY5eXj1DiKFvr9naW0CCS-J-776wXflee9qQTFu3sIu9c3iPe2t6acbLDgJlbU3chHqktbM1Knpha7ECUsWfEOn0YJuu1hF8AQsz9_OD2Vw271Q8O2lv7JfBCc5DsS5QkIrYRB7VTOtVhT6wm1cDIbwgJFKSdRgjpfVndjc8EW0UxW55h4sjTmVrO47hWbo1WLYVkAr-NaQlKyf6qN3M64OVTnLVOr-WgQOzw_lp7j3ViQeFqpLWL-5ZMZyZOnEtxEpU4SIYPCFmxdmaPY_6RL7RZsSMBc3tNg-2De5LdXz9l1CiS-mZwXCcfZqwSNStUHEWhyTGnKM4DhvLjJgC7YGSlMthiqs4k8hXyPo54u52CL9IMS-0VjHm556nM_y93wXqI076yHxOexvcQXywCe4gzaAqahqEIeM2bZikFb_f8uZyEOCazNRQQAQky4oHLYmQbCVeviVvAZLc1SnuGiJY0kZUuw3ooxpB006GN00ZMjj1dsgsy7GG3IeEGZuDNqEaffI96JGFzuTxAcxhPblR_kPMYDMPOy35eu3TNKHuIAIrmFnWVMhR2IZMYI4ara285lUicwFgmHw5xEACmkSTbccTma2VF4L7w7AF4DJd2DZS4HbctR0oGLD3RDAm9mUpH2CPZOM-_Pbx-bo0pYK5AGuGl-pBamB_dAQGaRL4DuAK0hg5ox1fw-JEEb4lvzlGa7dLMd8tluBQNi3t9DQAXKtovhCwP-mGSU0Jtml9NtzojPYiym1EaB9xGYuEAYPQHDOceLGzRlV4PrXSkBcz6xGAUMH3Urp5TxpAUreZEbZ7SqKsS8Wjb-zEMWBu7_b9YlcnMQAlKSNXv3cJRQViqs0o-G_QHxN5281MeoX86mwBBJPmDgyW06tn8vBuwn7IRY5k2fntUET6my3nZxEBz0L8i0iO4nMUAIJXHqL4n0nL120L58viM61QQ8QOEUODLi0gypc5ykOw2xSztFTGDoy2ho30Yfr4bkk28blEwIcuowAMA841IJlNRnWzcibEItu3FsEpos18gbKpYYUF0ZbZFT7rzunTbZxKbcIbVQdihHKUYJHr8uHMC7Db27o5UQaziEBinlwagYAhKWUNjFyinohElNSN-Knpe9vSOw5xCs8w1ZH0yXuxE6nwuuy5WH3CNIGB31Pqw4ZpgF86j-A7W6XcbGysLqPXqibor9WFVddHBle5AWqEbfO4-7w9UbQAqpPGf9LKv63ZFkyrz0neZkN9LliWQcIqxq5a1xPSlzsXZdvwWTQLFBe0Tuh2Pa0Vcneb3lFmM8iFWneXoKE_8jyNj1m1tjOVPJVeA6Zyp5Q24yT0IFK064v0JeeICiq3l_TcGBeYIwThkxVqKZ9j7lJPGkOwpMDd9im1o2ZC2iiVmQ1Al3gV1qo_ZCN5G5Xwt8kD-G5hpiioXLxnqcHTCYRt8EWopJMu9e3xKN8PJ0Sz3WC7hBPCrG5zAF51bwBPj4pDtJYpHUh2d54jTxhr60ScCVEuWcZTzzT9g3IHXWul8zNCqU-2gXFwtV-5GM0q93rahi-VpQSGDgYJLZhAAsD9TqQC_zexmNK3RB842kuaCjj8dlny3masSupfUhlhMnPN9xX7jJWKVNSv2pg3wMyeDSIOwQEyeC0A6OoeQE",
+                    "iv": "5CacbRzccXcTOwBGqXNI8wG3-be4-xOy",
+                    "protected": "eyJ0eXAiOiJhcHBsaWNhdGlvbi9kaWRjb21tLWVuY3J5cHRlZCtqc29uIiwiZW5jIjoiWEMyMFAiLCJraWQiOiJub21NTHFNbnRrelB3eVluMXRKN3NuRHVmOWZ0NHlFNGRXdGZxbHdjbHp3Iiwic2tpZCI6ImRpZDpub2RleDp0ZXN0OkVpRDFUNjU3TWhfV1RMMlA2dE4yV3VZd3FpVWUtUUpnWU9oNkxGR1g1UG1YTlEiLCJhbGciOiJFQ0RILTFQVStYQzIwUEtXIn0",
                     "recipients": [
                         {
-                            "encrypted_key": "ytXSszSTNkVbZw5PZ_7iHQ1waV4yT27idrAuODWO7IY",
+                            "encrypted_key": "0I1uB5c8rSZTRwA5Ud5u8UnKLXkbxNxv6HX-yFFh4v4",
                             "header": {
                                 "alg": "ECDH-1PU+XC20PKW",
                                 "epk": {
                                     "crv": "X25519",
                                     "kty": "OKP",
-                                    "x": "XFRApJksjGAcFGzALqYd5mAE1W5Ja3GHDzU_Cy2jd0Y"
+                                    "x": "v72FYsMD6Xpoki6dthH9h7dqS9JWlebwEsnB_-Ra6Qg"
                                 },
-                                "iv": "qWBwU5xflciNmEZ3SYCJ5ulwKJo9M4hW",
+                                "iv": "mGBcQnSxeHhb94_mUZZwJ31GM8Jas0L7",
                                 "key_ops": [],
-                                "kid": "did:nodex:test:EiBprXreMiba4loyl3psXm0RsECdtlCiQIjM8G9BtdQplA",
-                                "tag": "zdt-fMYmk_9IDhRuwWqWXw"
+                                "kid": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ",
+                                "tag": "pKdEAiL4OJZoLoqLbVPI_g"
                             }
                         }
                     ],
-                    "tag": "cp7atcUAXtPgLFRogRxRcA"
+                    "tag": "EtH6ll0apH133Y74wbqU4A"
                 }
             """
         }
@@ -152,11 +172,34 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
     :caption: Response (JSON)
 
     {
-        "string": "value",
-        "number": 1,
-        "boolean": True,
-        "array": ["foo", "bar", "baz"],
-        "map": {"key": "value"},
+        "issuer": {
+            "id": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ"
+        },
+        "issuanceDate": "2024-03-28T11:46:12.375150+00:00",
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1"
+        ],
+        "type": [
+            "VerifiableCredential"
+        ],
+        "credentialSubject": {
+            "container": {
+                "created_at": "2024-03-28T11:46:12.375150+00:00",
+                "message_id": "bcf0b192-2179-4d72-8912-21c321e60e61",
+                "payload": "{\"string\": \"value\",\"number\": 1,\"boolean\": true,\"array\": [],\"map\": {}}",
+                "project_hmac": "7163c1c9be173e830e9bbe8d9020413770899b01a5153d331c56985a9a83c80b"
+            }
+        },
+        "proof": {
+            "type": "EcdsaSecp256k1Signature2019",
+            "proofPurpose": "authentication",
+            "created": "2024-03-28T11:46:12.448829+00:00",
+            "verificationMethod": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ#signingKey",
+            "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..prBjKzEsaZC7wZgjUPNh-6dPy8-e69gqB0kzn_qbJm92aRn_FjFyOcZN3mC8stczaBMK5AtFA3HWLnItN2LzVA",
+            "controller": null,
+            "challenge": null,
+            "domain": null
+        }
     }
 ```
 
@@ -165,7 +208,7 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
 #### Create Verifiable Message
 
 ```{eval-rst}
-.. http:post:: /create-didcomm-message
+.. http:post:: /create-verifiable-message
 
   Create DIDComm message using the DIDComm protocol.
 
@@ -195,7 +238,7 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
     import pprint
 
     destination_did = (
-        "did:nodex:test:EiAHYZMJelX_UKoCYcMf1q_aUZozkGwChO_aBxRVRyQXQA"
+        "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ"
     )
     message = {
         "message": {
@@ -234,9 +277,9 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
 
     {
         "issuer": {
-            "id": "$ISSUER_DID"
-        },  
-        "issuanceDate": "2024-03-10T06:29:41.750407+00:00",
+            "id": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ"
+        },
+        "issuanceDate": "2024-03-28T11:56:36.876469+00:00",
         "@context": [
             "https://www.w3.org/2018/credentials/v1"
         ],
@@ -245,19 +288,19 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
         ],
         "credentialSubject": {
             "container": {
-                "created_at": "2024-03-10T06:29:41.750407+00:00",
-                "destination_did": "$DESTINATION_DID",
-                "message_id": "2b30ff6a-fa6e-44cc-9b1e-92aa2f96f3f5",
-                "payload": "{\"string\": \"value\",\"number\": 1,\"boolean\": true,\"array\": [\"foo\", \"bar\", \"baz\"],\"map\": {\"key\": \"value\"}}",
-                "project_hmac": "b843ea611f2229cd645fdbe92c247c0887e5b2dcbed5f5fa75895bb553eee5dc"
+                "created_at": "2024-03-28T11:56:36.876469+00:00",
+                "destination_did": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ",
+                "message_id": "d3bda5b9-9fc8-4169-8725-e87e9d8a5ed5",
+                "payload": "{\"message\": {\"string\": \"value\", \"number\": 1, \"boolean\": true, \"array\": [\"foo\", \"bar\", \"baz\"], \"map\": {\"key\": \"value\"}}}",
+                "project_hmac": "7163c1c9be173e830e9bbe8d9020413770899b01a5153d331c56985a9a83c80b"
             }
         },
         "proof": {
             "type": "EcdsaSecp256k1Signature2019",
             "proofPurpose": "authentication",
-            "created": "2024-03-10T06:29:41.908757+00:00",
-            "verificationMethod": "",
-            "jws": "",
+            "created": "2024-03-28T11:56:36.945673+00:00",
+            "verificationMethod": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ#signingKey",
+            "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..hsOsSYVBgeozKiPd_ryUt2zDEdoJLJWb-h-MBz6_A54DE6Vdxior3QEzxKflyiSpjpywCl92CxM09JCiszeI8Q",
             "controller": null,
             "challenge": null,
             "domain": null
@@ -277,7 +320,7 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
   :<json Array<Map<String, Any>> required messages: Specifies data to be sent through the DIDComm protocol.
   :<json Map<String, Any> required metadata: Specifies the metadata for sending messages.
 
-  :>json String message: The message used in the request to generate the Verifiable Message is returned.
+  **Response JSON Objects:** Response JSON Objects follow the VerifiableCredentials data model. See `here <https://www.w3.org/TR/vc-data-model/#basic-concepts>`_ for details.
 
   :status 200: Success.
   :status 400: Bad Request.
@@ -298,34 +341,34 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
 
     message = {
         "issuer": {
-            "id": "did:nodex:test:DummyDummyDummyDummyDummyDummyDummyDummyDummyD"
+            "id": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ"
         },
-        "issuanceDate": "2024-03-22T11:43:47.741035+00:00",
-        "@context": ["https://www.w3.org/2018/credentials/v1"],
-        "type": ["VerifiableCredential"],
+        "issuanceDate": "2024-03-28T11:56:36.876469+00:00",
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1"
+        ],
+        "type": [
+            "VerifiableCredential"
+        ],
         "credentialSubject": {
             "container": {
-                "created_at": "2024-03-22T11:43:47.741035+00:00",
-                "destination_did": "did:nodex:test:DummyDummyDummyDummyDummyDummyDummyDummyDummyD",
-                "message_id": "d8b8bfbc-88ed-4d93-bfa5-a634e35d104e",
-                "payload": '{"message": {"string": '
-                '"value", "number": 1, '
-                '"boolean": true, "array": '
-                '["foo", "bar", "baz"], "map": '
-                '{"key": "value"}}}',
-                "project_hmac": "fc67f9f5c17ccd44ff3f8e270870c2b04f0980e22766b619a62f7c7ac4c95058",
+                "created_at": "2024-03-28T11:56:36.876469+00:00",
+                "destination_did": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ",
+                "message_id": "d3bda5b9-9fc8-4169-8725-e87e9d8a5ed5",
+                "payload": "{\"message\": {\"string\": \"value\", \"number\": 1, \"boolean\": true, \"array\": [\"foo\", \"bar\", \"baz\"], \"map\": {\"key\": \"value\"}}}",
+                "project_hmac": "7163c1c9be173e830e9bbe8d9020413770899b01a5153d331c56985a9a83c80b"
             }
         },
         "proof": {
             "type": "EcdsaSecp256k1Signature2019",
             "proofPurpose": "authentication",
-            "created": "2024-03-22T11:43:47.775189+00:00",
-            "verificationMethod": "did:nodex:test:DummyDummyDummyDummyDummyDummyDummyDummyDummyD#signingKey",
-            "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..AnO3rmljCEHhbxvvLKxml8coj-JOwSSczlCxS7zfVBRy11AABM-aFBvwJKP32-VMESZnfF_EH0PZvkJSCAnqOg",
+            "created": "2024-03-28T11:56:36.945673+00:00",
+            "verificationMethod": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ#signingKey",
+            "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..hsOsSYVBgeozKiPd_ryUt2zDEdoJLJWb-h-MBz6_A54DE6Vdxior3QEzxKflyiSpjpywCl92CxM09JCiszeI8Q",
             "controller": None,
             "challenge": None,
-            "domain": None,
-        },
+            "domain": None
+        }
     }
 
 
@@ -349,11 +392,35 @@ See the Low Level API if you want to select the type of DIDComm messages on the 
     :caption: Response (JSON)
 
     {
-        "string": "value",
-        "number": 1,
-        "boolean": true,
-        "array": ["foo", "bar", "baz"],
-        "map": {"key": "value"}
+        "issuer": {
+            "id": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ"
+        },
+        "issuanceDate": "2024-03-28T11:56:36.876469+00:00",
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1"
+        ],
+        "type": [
+            "VerifiableCredential"
+        ],
+        "credentialSubject": {
+            "container": {
+                "created_at": "2024-03-28T11:56:36.876469+00:00",
+                "destination_did": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ",
+                "message_id": "d3bda5b9-9fc8-4169-8725-e87e9d8a5ed5",
+                "payload": "{\"message\": {\"string\": \"value\", \"number\": 1, \"boolean\": true, \"array\": [\"foo\", \"bar\", \"baz\"], \"map\": {\"key\": \"value\"}}}",
+                "project_hmac": "7163c1c9be173e830e9bbe8d9020413770899b01a5153d331c56985a9a83c80b"
+            }
+        },
+        "proof": {
+            "type": "EcdsaSecp256k1Signature2019",
+            "proofPurpose": "authentication",
+            "created": "2024-03-28T11:56:36.945673+00:00",
+            "verificationMethod": "did:nodex:test:EiD1T657Mh_WTL2P6tN2WuYwqiUe-QJgYOh6LFGX5PmXNQ#signingKey",
+            "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..hsOsSYVBgeozKiPd_ryUt2zDEdoJLJWb-h-MBz6_A54DE6Vdxior3QEzxKflyiSpjpywCl92CxM09JCiszeI8Q",
+            "controller": null,
+            "challenge": null,
+            "domain": null
+        }
     }
 ```
 
