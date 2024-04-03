@@ -12,7 +12,7 @@ Currently, NodeX officially offers the following types of pre-built binaries.
 
 It is also possible to build and install from source code instead of pre-built binaries. 
 
-## Tested OS
+## Supported OS
 
 The following table shows the operating systems and versions on which the NodeX Agent has been tested.
 
@@ -21,4 +21,4 @@ The following table shows the operating systems and versions on which the NodeX 
 | [Ubuntu](https://wiki.ubuntu.com/Releases) | 20.04(LTS), 22.04(LTS)                                        |
 | [Debian](https://www.debian.org/releases/) | Debian 12 (bookworm), Debian 11 (bullseye), Debian 10 (buster) |
 | [macOS](https://developer.apple.com/documentation/macos-release-notes)  | macOS Monterey 12, macOS Ventura 13, macOS Sonoma 14         |
-| [Yocto](https://wiki.yoctoproject.org/wiki/Releases)  | Mickledore 4.2, Nanbield 4.3                                 |
+| [Yocto](https://wiki.yoctoproject.org/wiki/Releases)  | Mickledore 4.2                             |
