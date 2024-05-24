@@ -1,4 +1,4 @@
-## Message Sequence
+# Message Sequence
 
 This section describes the overall message flow when using the NodeX agent.
 
@@ -7,7 +7,7 @@ There are two possible message flows when using the NodeX agent.
 1. Verifiable Message
 2. E2E Encrypted (VM)
 
-#### Verifiable Message
+## Verifiable Message
 
 NodeX Agent sends and receives verifiable messages between devices.
 Below is a sequence diagram of the message from transmission to reception.
@@ -40,7 +40,7 @@ sequenceDiagram
 ```
 
 
-#### E2E Encrypted (VM)
+## E2E Encrypted (VM)
 
 NodeX Agent sends and receives E2E Ecrypted verifiable messages between devices.
 Below is a sequence diagram of the message from transmission to reception.
